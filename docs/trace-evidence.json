@@ -1,6 +1,6 @@
 {
   "schema": "sbay.leap2026.octet-bloom-trace.v1",
-  "release": "2.7.4",
+  "release": "2.7.5",
   "reference": "20:13",
   "interpretation": {
     "visibleGrain": "one bit",

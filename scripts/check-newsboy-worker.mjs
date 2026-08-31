@@ -73,7 +73,14 @@ try {
   assert.equal(reader.headers.get("x-frame-options"), "SAMEORIGIN");
   const html = await reader.text();
   assert.match(html, /<base href="https:\/\/newsboy\.sbay\.sa\/">/u);
-  assert.match(html, /href="\/newsboy-assets\/fonts\/fonts\.css"/u);
+  assert.match(
+    html,
+    /href="https:\/\/leap2026\.sbay\.sa\/newsboy-assets\/fonts\/fonts\.css"/u
+  );
+  assert.doesNotMatch(
+    html,
+    /href="https:\/\/newsboy\.sbay\.sa\/newsboy-assets\/fonts\//u
+  );
   assert.match(
     html,
     /<a href="\/stories\/example" target="_blank" rel="noopener noreferrer">/u

@@ -1,5 +1,6 @@
 const NEWSBOY_ORIGIN = "https://newsboy.sbay.sa";
 const NEWSBOY_COVERAGE_URL = `${NEWSBOY_ORIGIN}/coverage/leap-2026`;
+const PRESSROOM_ORIGIN = "https://leap2026.sbay.sa";
 const READER_PATHS = new Set(["/newsboy-reader", "/newsboy-reader/"]);
 const FONT_PROXY_PREFIX = "/newsboy-assets/fonts/";
 
@@ -89,7 +90,10 @@ export function transformNewsboyFontCss(css) {
 export function transformNewsboyHtml(html) {
   let transformed = html
     .replace(/<script\b[^>]*>[\s\S]*?<\/script\s*>/giu, "")
-    .replace(/(["'])\/fonts\//giu, `$1${FONT_PROXY_PREFIX}`)
+    .replace(
+      /(["'])\/fonts\//giu,
+      `$1${PRESSROOM_ORIGIN}${FONT_PROXY_PREFIX}`
+    )
     .replace(/<a\b([^>]*)>/giu, (_match, attributes) =>
       transformAnchor(attributes));
 

@@ -145,6 +145,14 @@ assert.match(
   embeddedHtml,
   /<base href="https:\/\/newsboy\.sbay\.sa\/">/u
 );
+assert.match(
+  embeddedHtml,
+  /href="https:\/\/leap2026\.sbay\.sa\/newsboy-assets\/fonts\/fonts\.css/iu
+);
+assert.doesNotMatch(
+  embeddedHtml,
+  /href="https:\/\/newsboy\.sbay\.sa\/newsboy-assets\/fonts\//iu
+);
 assert.doesNotMatch(embeddedHtml, /<script\b/iu);
 
 const embeddedFontCssResponse = await fetch(
