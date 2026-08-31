@@ -8,6 +8,7 @@ const ignoredFiles = new Set([
   "evidence/release-manifest.json",
   "docs/release.json"
 ]);
+const binaryExtensions = new Set([".png", ".wasm"]);
 
 async function collect(directory, prefix = "") {
   const files = [];
@@ -33,7 +34,13 @@ const files = (await collect(root)).sort(
 );
 const records = [];
 for (const file of files) {
-  const bytes = await readFile(file.absolute);
+  const sourceBytes = await readFile(file.absolute);
+  const bytes = binaryExtensions.has(path.extname(file.relative).toLowerCase())
+    ? sourceBytes
+    : Buffer.from(
+        sourceBytes.toString("utf8").replace(/\r\n?/gu, "\n"),
+        "utf8"
+      );
   records.push({
     path: file.relative,
     bytes: bytes.length,
