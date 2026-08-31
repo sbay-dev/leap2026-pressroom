@@ -5,7 +5,7 @@
   "releaseId": "leap2026-pressroom-2.5.0",
   "classification": "public-non-enabling-press-material",
   "fileCount": 60,
-  "releaseRoot": "1bf89e776daa15c7c3925302af7fb3a048fe370bbbad4f70f9b1486c025c17e8",
+  "releaseRoot": "8c737ed235300f41bec690ba23ca723971491f97a3e457bd41a7bbb6ffbc2ace",
   "files": [
     {
       "path": ".gitattributes",
@@ -59,8 +59,8 @@
     },
     {
       "path": "docs/annex-intelligence.html",
-      "bytes": 18128,
-      "sha256": "b8d2d2a6ad59001953d9aa20b2afb5a6d6ce8498a2475147e2aaf3a75950ee52"
+      "bytes": 18123,
+      "sha256": "e6465fa263e541e6f91ae3171ef9944fc1857a48dfd34468d4d129f70d73cd00"
     },
     {
       "path": "docs/app.js",
@@ -129,8 +129,8 @@
     },
     {
       "path": "docs/index.html",
-      "bytes": 57495,
-      "sha256": "52e9ee818fd3794963b02ceda0391e7453e8b2ea02354ed0e1dc25c31db3a6ab"
+      "bytes": 57485,
+      "sha256": "cc19cb716bf94c76210b1523ca7e313d5107e7a861cd8b772aeef00e97516da7"
     },
     {
       "path": "docs/manifest.webmanifest",
@@ -149,8 +149,8 @@
     },
     {
       "path": "docs/sitemap.xml",
-      "bytes": 447,
-      "sha256": "5173cf19b4dbbbf8b332abf4f929b12ed053e505141b94c575f53fa6eadb8224"
+      "bytes": 442,
+      "sha256": "04c41861f665e8175f1409fbea51101f0d868e4afdaee5ba18863b903d02d636"
     },
     {
       "path": "docs/styles.css",
@@ -269,8 +269,8 @@
     },
     {
       "path": "scripts/check-public-boundary.mjs",
-      "bytes": 19479,
-      "sha256": "bafeeaf41b8e4dfc29a5e7c50b17daee9369095a1be466ec7262769109c3307a"
+      "bytes": 19484,
+      "sha256": "dedd4763b3294805079d5f617c07673a60e785b0661502cdfb60ba5b23da74a5"
     },
     {
       "path": "scripts/compile-wasm.ps1",
@@ -279,8 +279,8 @@
     },
     {
       "path": "scripts/verify-live.mjs",
-      "bytes": 9364,
-      "sha256": "c53e856556ccef3a25bf77c2ac92e5b0e05166021b210c8ac5251d0cd8fa603f"
+      "bytes": 9363,
+      "sha256": "ae7a5679a51e53c1fc77ed5d23cddde6040a801513ab22b2e2f3e4396209c199"
     },
     {
       "path": "scripts/verify-wasm.mjs",

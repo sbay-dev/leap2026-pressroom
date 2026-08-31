@@ -41,11 +41,11 @@ assert.match(html, /newsboy-cultural-edition\.png/u);
 assert.match(html, /newsboy-classic-editorial\.png/u);
 assert.match(html, /id="adg-cipher"[^>]*data-loop-seconds="5"/u);
 assert.match(html, /class="cipher-note"/u);
-assert.match(html, /annex-intelligence\.html/u);
+assert.match(html, /href="\.\/annex-intelligence"/u);
 assert.doesNotMatch(html, /<code>void<\/code>/u);
 assert.doesNotMatch(html, /RasmMaskHex|RasmRecordHex/iu);
 assert.doesNotMatch(html, /cloudflareinsights|beacon\.min\.js/iu);
-const annexResponse = await fetch(`${baseUrl}/annex-intelligence.html`, { redirect: "follow" });
+const annexResponse = await fetch(`${baseUrl}/annex-intelligence`, { redirect: "error" });
 assert.equal(annexResponse.status, 200, "the technical annex must be published");
 const annexHtml = await annexResponse.text();
 for (const label of ["IF", "ID", "EX", "MEM", "WB", "void"]) {

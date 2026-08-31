@@ -400,7 +400,7 @@ assert.match(index, /not presented as audited institutional traction/iu);
 assert.match(index, /id="adg-cipher"/u);
 assert.match(index, /data-loop-seconds="5"/u);
 assert.match(index, /class="cipher-note"/u, "the disclosure note must stay on the page");
-assert.match(index, /annex-intelligence\.html/u, "the hero must link to the technical annex");
+assert.match(index, /href="\.\/annex-intelligence"/u, "the hero must link to the technical annex");
 
 // Dense technical material lives in the annex, never in the main narrative.
 for (const label of ["IF", "ID", "EX", "MEM", "WB", "void"]) {
