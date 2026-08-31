@@ -5,7 +5,7 @@
   "releaseId": "leap2026-pressroom-1.0.0",
   "classification": "public-non-enabling-press-material",
   "fileCount": 41,
-  "releaseRoot": "520508c4f1eda5dbaea81856d0744d1d9ae228a64443e3aea9bf5dbf82dc97bb",
+  "releaseRoot": "8877d497ae89054dac930345f19db364248cf9e989ec8293a899a699eb1ee53d",
   "files": [
     {
       "path": ".gitattributes",
@@ -20,17 +20,17 @@
     {
       "path": ".github/workflows/codeql.yml",
       "bytes": 539,
-      "sha256": "513f5518e0becad38fd0114c38c2c3a7a6b6528dddeb3b4f430319989a0ab418"
+      "sha256": "6101ddc312c3e614febdd400dbdff4e98283f9e4da32cf5a6c8f0042d2d94aef"
     },
     {
       "path": ".github/workflows/pages.yml",
       "bytes": 1023,
-      "sha256": "ab613c3c58bb5b80df38053d1288857bace066be94302e592c6cc23ab76e5e04"
+      "sha256": "e1bb31e59237c7fcf52ca4bd56e2b3f48703ca7bd90408425f48e43ba5c00acf"
     },
     {
       "path": ".github/workflows/public-boundary.yml",
       "bytes": 535,
-      "sha256": "1409d83c165fc6bb605adc0f311276891bfd991eb2239470d79851235df73ba4"
+      "sha256": "3e58650212a7abb5ffd0864522954f8fe130c50fd64e0c7a3f0e5c2f6923cda2"
     },
     {
       "path": ".gitignore",
