@@ -1,6 +1,6 @@
 {
-  "name": "SBAY LEAP + DeepFest 2026 Pressroom",
-  "short_name": "SBAY Pressroom",
+  "name": "منصة تموين sbay — LEAP + DeepFest 2026",
+  "short_name": "منصة تموين sbay",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#040815",

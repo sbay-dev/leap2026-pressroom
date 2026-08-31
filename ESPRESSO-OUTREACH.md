@@ -4,40 +4,51 @@ Use the canonical link: `https://leap2026.sbay.sa/`
 
 ## Arabic subject options
 
-1. من الرياض: SBAY تعرض صبي الجرائد وكسار خلال LEAP وDeepFest 2026
-2. كسار: منتجان عربيان وحوسبة صغيرة الأثر في موجز SBAY الصحفي
-3. صبي الجرائد وكسار — أدلة عامة بلا كشف أسرار CNS
+1. منصة تموين sbay تعرض البنية الذكية للمشتريات في LEAP وDeepFest 2026
+2. من الطلب إلى التوريد: رؤية منصة تموين sbay للمشتريات المدعومة بالذكاء
+3. منصة سعودية تربط المشتري والمورد والمصنع في دورة شراء واحدة
 
 ## Arabic short pitch
 
-خلال أسبوع LEAP وDeepFest 2026 في الرياض، تنشر SBAY غرفة صحافة مستقلة بعنوان
-«كسار» تجمع منتجيها الرئيسيين: صبي الجرائد لاكتشاف الأخبار العربية مع مراعاة
-الحقوق، وكسار لتجربة التجارة والسوق المباشر. يتضمن الموجز لقطات صحفية عالية
-الدقة، وعرضًا ثلاثي الأبعاد، ودالة WASM عامة بحجم بالغ الصغر، وسجل أدلة
-SHA-256. تعرَض نتائج التضمين بحدودها العلمية دون أوزان أو بيانات تدريب أو
-تفاصيل قابلة للهندسة العكسية.
+خلال أسبوع LEAP وDeepFest 2026 في الرياض، تقدم **منصة تموين sbay** رؤيتها
+للبنية الذكية للمشتريات وسلاسل الإمداد. تنطلق الصفحة من مشكلة تشتت الطلبات
+والعروض والموافقات، ثم تعرض منصة موحدة لإدارة دورة الشراء، وطبقة ذكاء لدعم
+مطابقة الموردين وتحليل المستندات والتوصيات وفهم أنماط الطلب.
+
+تنشر الصفحة مؤشرات منصة تموين sbay العامة، وتعرض كسار وصبي الجرائد وCP
+كدليل تشغيل مختصر، مع حدود إفصاح تستبعد الأوزان وبيانات التدريب والأسرار
+القابلة للهندسة العكسية.
+
+**من الطلب إلى التوريد. من البيانات إلى القرار.**
 
 الرابط: `https://leap2026.sbay.sa/`
 
 ## English subject options
 
-1. From Riyadh: SBAY presents NewsBoy and Ksar during LEAP and DeepFest 2026
-2. KSAR: Arabic flagship products with a small-footprint cloud story
-3. NewsBoy + Ksar — public evidence without exposing CNS trade secrets
+1. SBAY Tamween presents intelligent procurement infrastructure at LEAP and DeepFest 2026
+2. From Procurement to Fulfillment: SBAY Tamween's enterprise AI vision
+3. A Saudi platform connecting buyers, suppliers and factories in one procurement lifecycle
 
 ## English short pitch
 
-During LEAP and DeepFest 2026 week in Riyadh, SBAY is publishing an independent
-pressroom titled “KSAR” around two flagship products: NewsBoy for rights-aware
-Arabic news discovery and Ksar for commerce and live-market experiences. The
-brief includes high-resolution editorial media, an interactive 3D product map,
-a deliberately tiny public WASM proof and SHA-256 evidence records. Embedding
-results are reported at their measured boundary, without weights, training
-data or reverse-engineerable implementation detail.
+During LEAP and DeepFest 2026 week in Riyadh, **SBAY Tamween** presents its
+vision for intelligent procurement and supply chain infrastructure. The page
+starts with fragmented requests, quotations and approvals, then shows a
+unified enterprise platform and an intelligence direction for supplier
+matching, document analysis, recommendations and demand understanding.
+
+The pressroom publishes verified SBAY public signals and uses Ksar, NewsBoy and
+CP as concise operating proof, while excluding weights, training data and
+reverse-engineerable trade secrets.
+
+**From Procurement to Fulfillment. From Data to Decisions.**
 
 Link: `https://leap2026.sbay.sa/`
 
 ## Required footer
 
-SBAY is an independent participant. This material is not issued, sponsored or
-endorsed by LEAP, DeepFest, Tahaluf, SDAIA or MCIT.
+منصة تموين sbay مشاركة مستقلة. هذه المادة ليست صادرة عن LEAP أو DeepFest أو
+الجهات المنظمة ولا تتضمن رعاية أو تأييدًا منها.
+
+SBAY Tamween is an independent participant. This material is not issued,
+sponsored or endorsed by LEAP, DeepFest or their organizers.

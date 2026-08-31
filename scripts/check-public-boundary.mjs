@@ -98,9 +98,49 @@ const index = await readFile(path.join(root, "docs", "index.html"), "utf8");
 assert.doesNotMatch(index, /<script[^>]+src=["']https?:/iu);
 assert.doesNotMatch(index, /<link[^>]+href=["']https?:[^"']+\.(?:css|woff2?)/iu);
 assert.doesNotMatch(index, /<form\b/iu);
+assert.match(index, /منصة تموين <bdi lang="en">sbay<\/bdi>/u);
+assert.match(index, /SBAY Tamween/u);
+assert.match(index, /25\+/u);
+assert.match(index, /500\+/u);
+assert.match(index, /platform scope/iu);
 assert.match(index, /Independent participation/iu);
 assert.match(index, /no general MTEB superiority claim/iu);
 assert.match(index, /not an official LEAP or DeepFest page/iu);
+assert.doesNotMatch(index, /آلاف المنتجات|موردون معتمدون|من أيام إلى دقائق/u);
+assert.match(index, /without presenting a guaranteed forecast/iu);
+assert.match(index, /without a guaranteed savings claim/iu);
+
+const narrativeSections = [
+  'id="problem"',
+  'id="platform"',
+  'id="intelligence"',
+  'id="outcomes"',
+  'id="vision"'
+];
+let previousSection = -1;
+for (const section of narrativeSections) {
+  const sectionIndex = index.indexOf(section);
+  assert.ok(sectionIndex > previousSection, `Narrative order failed at ${section}`);
+  previousSection = sectionIndex;
+}
+
+const positioningEvidence = JSON.parse(await readFile(
+  path.join(root, "evidence", "tamween-positioning-snapshot-20260831T040937Z.json"),
+  "utf8"
+));
+assert.equal(positioningEvidence.tradeName.arabic, "منصة تموين sbay");
+assert.equal(positioningEvidence.publicSource.observedSignals.publishedCustomers, "500+");
+assert.equal(positioningEvidence.claimTreatment.costOutcome.includes("no guaranteed"), true);
+
+const pressKit = JSON.parse(await readFile(
+  path.join(root, "docs", "press-kit.json"),
+  "utf8"
+));
+assert.equal(pressKit.schema, "sbay.press-kit.v2");
+assert.equal(pressKit.tradeName.arabic, "منصة تموين sbay");
+assert.equal(pressKit.claims.guaranteedCostSaving, false);
+assert.equal(pressKit.claims.guaranteedDemandForecast, false);
+assert.equal(pressKit.claims.allModulesGenerallyAvailable, false);
 
 const headers = await readFile(path.join(root, "docs", "_headers"), "utf8");
 assert.match(

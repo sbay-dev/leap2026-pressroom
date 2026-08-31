@@ -4,6 +4,16 @@ Audit ID: `SBAY-LEAP-DEEPFEST-20260831T020340Z`
 
 ## Public material allowed
 
+- The registered trade name, written exactly as `منصة تموين sbay` in Arabic
+  and with `sbay` kept in Latin characters.
+- Public `sbay.sa` signals captured by URL, byte length, and SHA-256:
+  `25+` digital services and products, `500+` customers, `99.9%` published
+  uptime, and `24/7` published support.
+- Procurement modules presented as enterprise platform scope, with detailed
+  availability explicitly deferred to the live demo and contract.
+- AI supplier matching, document analysis, recommendations, and demand
+  insights presented as product and research direction supporting human
+  decisions, not as guaranteed production outcomes.
 - Product names, public URLs, public interface screenshots, and release labels.
 - Facts already published at `sbay-dev.github.io/sarmadAi`.
 - A bounded embedding result summary: task-specific wins on XQuAD and Tatoeba,
@@ -30,6 +40,12 @@ Audit ID: `SBAY-LEAP-DEEPFEST-20260831T020340Z`
   exhibition status, or organizer approval.
 - Claims of general model superiority, production readiness beyond the named
   live products, guaranteed cost savings, or guaranteed investment return.
+- Unsupported counts of products, suppliers, factories, requests, contracts,
+  or transactions.
+- Guaranteed procurement-cycle reductions, guaranteed supplier matching,
+  guaranteed document extraction, or guaranteed demand forecasts.
+- An uncited market-size, revenue, valuation, or total-addressable-market
+  number.
 
 ## Patent-aware publication rule
 

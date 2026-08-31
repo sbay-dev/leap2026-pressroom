@@ -3,6 +3,11 @@ import { readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
+const packageMetadata = JSON.parse(await readFile(
+  path.join(root, "package.json"),
+  "utf8"
+));
+const releaseId = `leap2026-pressroom-${packageMetadata.version}`;
 const ignoredDirectories = new Set([".git", ".wrangler", "node_modules", "dist"]);
 const ignoredFiles = new Set([
   "evidence/release-manifest.json",
@@ -55,7 +60,7 @@ const manifest = {
   schema: "sbay.leap2026.public-release.v1",
   auditId: source.auditId,
   capturedAtUtc: source.capturedAtUtc,
-  releaseId: "leap2026-pressroom-1.0.0",
+  releaseId,
   classification: "public-non-enabling-press-material",
   fileCount: records.length,
   releaseRoot,

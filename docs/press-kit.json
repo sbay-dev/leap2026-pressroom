@@ -1,12 +1,44 @@
 {
-  "schema": "sbay.press-kit.v1",
+  "schema": "sbay.press-kit.v2",
   "auditId": "SBAY-LEAP-DEEPFEST-20260831T020340Z",
-  "title": "KSAR — SBAY at LEAP + DeepFest 2026",
-  "publisher": "SBAY",
+  "title": "منصة تموين sbay — Intelligent Procurement & Supply Infrastructure",
+  "publisher": "منصة تموين sbay",
+  "tradeName": {
+    "arabic": "منصة تموين sbay",
+    "english": "SBAY Tamween",
+    "status": "registered — owner attestation",
+    "registryDetailsPublished": false
+  },
   "position": "Independent participant",
   "eventDates": "2026-08-31/2026-09-03",
   "canonicalUrl": "https://leap2026.sbay.sa/",
-  "products": [
+  "positioning": {
+    "category": "Enterprise AI procurement and supply platform",
+    "taglineAr": "من الطلب إلى التوريد. من البيانات إلى القرار.",
+    "taglineEn": "From Procurement to Fulfillment. From Data to Decisions."
+  },
+  "publicSignals": {
+    "source": "https://sbay.sa/",
+    "digitalServicesAndProducts": "25+",
+    "publishedCustomers": "500+",
+    "publishedUptime": "99.9%",
+    "publishedSupport": "24/7"
+  },
+  "platformScope": [
+    "Purchase request management",
+    "Supplier management",
+    "RFQ and tender workflows",
+    "Contract lifecycle management",
+    "Spend analytics",
+    "B2B marketplace"
+  ],
+  "intelligenceDirection": [
+    "Intelligent supplier matching",
+    "Automated document analysis",
+    "Smart procurement recommendations",
+    "Predictive demand insights"
+  ],
+  "operatingProof": [
     {
       "name": "NewsBoy",
       "nameAr": "صبي الجرائد",
@@ -20,7 +52,7 @@
       "summary": "Arabic-first commerce and live-market experience."
     }
   ],
-  "supportingSurfaces": [
+  "supportingEvidence": [
     {
       "name": "Sarmad",
       "url": "https://sbay-dev.github.io/sarmadAi/"
@@ -34,7 +66,10 @@
     "generalMtebSuperiority": false,
     "officialEventPartnership": false,
     "guaranteedCostSaving": false,
-    "containsModelArtifacts": false
+    "guaranteedDemandForecast": false,
+    "allModulesGenerallyAvailable": false,
+    "containsModelArtifacts": false,
+    "containsPrivatePatentEnablement": false
   },
   "media": [
     "assets/press/newsboy-classic-hero.png",

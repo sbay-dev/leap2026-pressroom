@@ -1,0 +1,66 @@
+{
+  "schema": "sbay.tamween.positioning-evidence.v1",
+  "capturedAtUtc": "2026-08-31T04:09:37.925Z",
+  "auditId": "SBAY-LEAP-DEEPFEST-20260831T020340Z",
+  "tradeName": {
+    "arabic": "منصة تموين sbay",
+    "englishPresentation": "SBAY Tamween",
+    "registrationStatus": "owner-attested",
+    "registryNumberPublished": false,
+    "brandRule": "Keep sbay in Latin characters; do not transliterate it into Arabic."
+  },
+  "publicSource": {
+    "url": "https://sbay.sa/",
+    "httpStatus": 200,
+    "bytes": 54596,
+    "sha256": "877da51c2f7c90847936ac6eafc919d071c98ff8ad54fb482dfb26057934b29b",
+    "observedSignals": {
+      "digitalServicesAndProducts": "25+",
+      "publishedCustomers": "500+",
+      "publishedUptime": "99.9%",
+      "publishedSupport": "24/7"
+    },
+    "observedContactTargets": {
+      "email": "mailto:team@sbay.store",
+      "contactSection": "https://sbay.sa/#contact"
+    }
+  },
+  "pageNarrative": [
+    "Problem",
+    "Platform",
+    "Intelligence",
+    "Outcomes",
+    "Vision"
+  ],
+  "platformScope": [
+    "Purchase request management",
+    "Supplier management",
+    "RFQ and tender workflows",
+    "Contract lifecycle management",
+    "Spend analytics",
+    "B2B marketplace"
+  ],
+  "intelligenceDirection": [
+    "Intelligent supplier matching",
+    "Automated document analysis",
+    "Smart procurement recommendations",
+    "Predictive demand insights"
+  ],
+  "claimTreatment": {
+    "publicSignals": "Published fact tied to the captured sbay.sa source.",
+    "platformModules": "Enterprise platform scope; detailed availability is confirmed in the live demo and contract.",
+    "intelligenceCapabilities": "Product and research direction supporting accountable human decisions; no guaranteed output.",
+    "marketOpportunity": "Addressed through buyer, supplier, factory and integration segments without an unsupported market-size number.",
+    "costOutcome": "Optimization objective only; no guaranteed savings claim.",
+    "demandForecast": "Planning support only; no guaranteed forecast claim."
+  },
+  "excludedClaims": [
+    "Unverified product count",
+    "Unverified supplier count",
+    "Guaranteed procurement-cycle reduction",
+    "Guaranteed cost saving",
+    "Guaranteed demand forecast",
+    "General MTEB superiority",
+    "Official LEAP or DeepFest affiliation"
+  ]
+}

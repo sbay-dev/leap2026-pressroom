@@ -35,6 +35,7 @@ const browser = await chromium.launch({
     "--no-default-browser-check"
   ]
 });
+const ogOnly = process.argv.includes("--og-only");
 
 async function freshContext(options) {
   return browser.newContext({
@@ -69,64 +70,66 @@ async function selectClassic(page) {
 }
 
 try {
-  const desktop = await freshContext({
-    viewport: { width: 1800, height: 1125 },
-    deviceScaleFactor: 1.5
-  });
-  const newsboy = await desktop.newPage();
-  await openPublic(newsboy, "https://newsboy.sbay.sa/");
-  await selectClassic(newsboy);
-  await newsboy.screenshot({
-    path: path.join(output, "newsboy-classic-hero.png"),
-    animations: "disabled"
-  });
-  await newsboy.screenshot({
-    path: path.join(output, "newsboy-classic-full.png"),
-    fullPage: true,
-    animations: "disabled"
-  });
-  await desktop.close();
+  if (!ogOnly) {
+    const desktop = await freshContext({
+      viewport: { width: 1800, height: 1125 },
+      deviceScaleFactor: 1.5
+    });
+    const newsboy = await desktop.newPage();
+    await openPublic(newsboy, "https://newsboy.sbay.sa/");
+    await selectClassic(newsboy);
+    await newsboy.screenshot({
+      path: path.join(output, "newsboy-classic-hero.png"),
+      animations: "disabled"
+    });
+    await newsboy.screenshot({
+      path: path.join(output, "newsboy-classic-full.png"),
+      fullPage: true,
+      animations: "disabled"
+    });
+    await desktop.close();
 
-  const mobile = await freshContext({
-    viewport: { width: 430, height: 932 },
-    deviceScaleFactor: 2,
-    isMobile: true,
-    hasTouch: true
-  });
-  const newsboyMobile = await mobile.newPage();
-  await openPublic(newsboyMobile, "https://newsboy.sbay.sa/");
-  await selectClassic(newsboyMobile);
-  await newsboyMobile.screenshot({
-    path: path.join(output, "newsboy-classic-mobile.png"),
-    fullPage: false,
-    animations: "disabled"
-  });
-  await mobile.close();
+    const mobile = await freshContext({
+      viewport: { width: 430, height: 932 },
+      deviceScaleFactor: 2,
+      isMobile: true,
+      hasTouch: true
+    });
+    const newsboyMobile = await mobile.newPage();
+    await openPublic(newsboyMobile, "https://newsboy.sbay.sa/");
+    await selectClassic(newsboyMobile);
+    await newsboyMobile.screenshot({
+      path: path.join(output, "newsboy-classic-mobile.png"),
+      fullPage: false,
+      animations: "disabled"
+    });
+    await mobile.close();
 
-  const productContext = await freshContext({
-    viewport: { width: 1800, height: 1125 },
-    deviceScaleFactor: 1.5
-  });
-  const ksar = await productContext.newPage();
-  await openPublic(ksar, "https://ksar.store/");
-  await ksar.evaluate(() => {
-    for (const openDialog of document.querySelectorAll("dialog[open]")) {
-      openDialog.close();
-    }
-    scrollTo(0, 0);
-  });
-  await ksar.screenshot({
-    path: path.join(output, "ksar-market.png"),
-    animations: "disabled"
-  });
+    const productContext = await freshContext({
+      viewport: { width: 1800, height: 1125 },
+      deviceScaleFactor: 1.5
+    });
+    const ksar = await productContext.newPage();
+    await openPublic(ksar, "https://ksar.store/");
+    await ksar.evaluate(() => {
+      for (const openDialog of document.querySelectorAll("dialog[open]")) {
+        openDialog.close();
+      }
+      scrollTo(0, 0);
+    });
+    await ksar.screenshot({
+      path: path.join(output, "ksar-market.png"),
+      animations: "disabled"
+    });
 
-  const cp = await productContext.newPage();
-  await openPublic(cp, "https://cp.sbay.sa/");
-  await cp.screenshot({
-    path: path.join(output, "cp-dashboard.png"),
-    animations: "disabled"
-  });
-  await productContext.close();
+    const cp = await productContext.newPage();
+    await openPublic(cp, "https://cp.sbay.sa/");
+    await cp.screenshot({
+      path: path.join(output, "cp-dashboard.png"),
+      animations: "disabled"
+    });
+    await productContext.close();
+  }
 
   const mime = new Map([
     [".css", "text/css; charset=utf-8"],
@@ -183,5 +186,5 @@ console.log(JSON.stringify({
   ok: true,
   output,
   browser: executablePath,
-  captures: 6
+  captures: ogOnly ? 1 : 6
 }));

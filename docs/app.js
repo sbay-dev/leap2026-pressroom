@@ -92,14 +92,16 @@ const canvas = document.getElementById("product-space");
 const context = canvas?.getContext("2d");
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const nodes = [
-  { name: "NEWSBOY", color: "#58ddff", x: -1.25, y: -.55, z: .4, size: 1.2 },
-  { name: "KSAR", color: "#5ff0bb", x: 1.15, y: -.45, z: .7, size: 1.25 },
-  { name: "SARMAD", color: "#f4c767", x: -.45, y: 1.1, z: -.8, size: 1.05 },
-  { name: "CP", color: "#ff7b9d", x: .65, y: 1.05, z: .05, size: .9 },
-  { name: "WASM", color: "#a987ff", x: .1, y: -.1, z: -1.35, size: .8 }
+  { name: "TAMWEEN", color: "#5ff0bb", x: 0, y: 0, z: .15, size: 1.45 },
+  { name: "BUYER", color: "#58ddff", x: -1.45, y: -.65, z: .65, size: 1.05 },
+  { name: "SUPPLIER", color: "#f4c767", x: 1.4, y: -.55, z: .8, size: 1.05 },
+  { name: "FACTORY", color: "#ff7b9d", x: -1.05, y: 1.2, z: -.6, size: .95 },
+  { name: "AI", color: "#a987ff", x: 1.15, y: 1.15, z: -.35, size: .9 },
+  { name: "OPS", color: "#1b8cff", x: .1, y: -1.35, z: -1.1, size: .85 }
 ];
 const links = [
-  [0, 2], [0, 3], [1, 2], [1, 3], [2, 3], [2, 4], [3, 4], [0, 1]
+  [0, 1], [0, 2], [0, 3], [0, 4], [0, 5],
+  [1, 2], [2, 3], [3, 5], [4, 5]
 ];
 let rotationX = -.28;
 let rotationY = .55;
