@@ -5,7 +5,7 @@
   "releaseId": "leap2026-pressroom-2.5.0",
   "classification": "public-non-enabling-press-material",
   "fileCount": 60,
-  "releaseRoot": "50517dabea221dd9bae33c01edfa56217bccf4d20a52c7294fea54b5e76f3f72",
+  "releaseRoot": "1bf89e776daa15c7c3925302af7fb3a048fe370bbbad4f70f9b1486c025c17e8",
   "files": [
     {
       "path": ".gitattributes",
@@ -279,8 +279,8 @@
     },
     {
       "path": "scripts/verify-live.mjs",
-      "bytes": 9293,
-      "sha256": "a1454e069848d4f048b2cd91f7423e35828ce4a5186c3b8543b8f696e4900493"
+      "bytes": 9364,
+      "sha256": "c53e856556ccef3a25bf77c2ac92e5b0e05166021b210c8ac5251d0cd8fa603f"
     },
     {
       "path": "scripts/verify-wasm.mjs",

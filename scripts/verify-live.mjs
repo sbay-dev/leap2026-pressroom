@@ -157,7 +157,8 @@ const expectedRelease = JSON.parse(await readFile(
   new URL("../docs/release.json", import.meta.url),
   "utf8"
 ));
-assert.equal(release.releaseId, "leap2026-pressroom-2.4.0");
+assert.equal(release.releaseId, expectedRelease.releaseId);
+assert.match(release.releaseId, /^leap2026-pressroom-\d+\.\d+\.\d+$/u);
 assert.equal(release.releaseRoot, expectedRelease.releaseRoot);
 assert.equal(release.fileCount, expectedRelease.fileCount);
 
