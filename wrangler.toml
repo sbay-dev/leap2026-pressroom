@@ -1,4 +1,5 @@
 name = "sbay-leap2026-pressroom"
+account_id = "8ba0f8980fb2f466848eb0e13b292e76"
 compatibility_date = "2026-08-31"
 workers_dev = false
 preview_urls = false
