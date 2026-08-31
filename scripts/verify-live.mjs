@@ -201,7 +201,7 @@ assert.equal(
 );
 assert.match(
   embeddedFont.headers.get("content-type") || "",
-  /(?:font\/|application\/octet-stream)/iu
+  /^(?:font\/|application\/(?:octet-stream|x-font-ttf|font-sfnt))/iu
 );
 
 const directNewsboy = await fetch(

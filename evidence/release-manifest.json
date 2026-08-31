@@ -2,10 +2,10 @@
   "schema": "sbay.leap2026.public-release.v1",
   "auditId": "SBAY-LEAP-DEEPFEST-20260831T043818Z",
   "capturedAtUtc": "2026-08-31T04:38:18.532Z",
-  "releaseId": "leap2026-pressroom-2.7.3",
+  "releaseId": "leap2026-pressroom-2.7.4",
   "classification": "public-non-enabling-press-material",
   "fileCount": 71,
-  "releaseRoot": "326cb102b277cd512abca3a0e8708787b817cd1011929b9c2312e8b68ad7a8af",
+  "releaseRoot": "62db41ca1673bb1533fd596fb15896c41cef71a038656a78a221ff3c919b22cd",
   "files": [
     {
       "path": ".gitattributes",
@@ -180,7 +180,7 @@
     {
       "path": "docs/trace-evidence.json",
       "bytes": 6192,
-      "sha256": "40946f857b98600dfa7a82629311bb9814338f7c8a57c73af78793c0eb6d41d3"
+      "sha256": "818e1b4f2074cbdb065c396e524fd999b1269c4e2186c0871362f91d5b257d4b"
     },
     {
       "path": "ESPRESSO-OUTREACH.md",
@@ -250,12 +250,12 @@
     {
       "path": "package-lock.json",
       "bytes": 49900,
-      "sha256": "618f6ced6a64f85cfc89f9243a149d87d2f9d97ffd02d8ee059c205e40f4fd8d"
+      "sha256": "cfe44174cefbcaf6cf5dad0b2d8f887e5a06764bac29e9905ff03e059c594ac1"
     },
     {
       "path": "package.json",
       "bytes": 1315,
-      "sha256": "942743f7c70bd082c173a84c2bf278bb338d33d06561be58a16383cdcb08d2cb"
+      "sha256": "f2d599eacdda6fcc0c4405bb4c891abf11b82389c3f6e19535fd3b42d22e841b"
     },
     {
       "path": "PNU-MEDIA-CENTER-BRIEF.md",
@@ -329,8 +329,8 @@
     },
     {
       "path": "scripts/verify-live.mjs",
-      "bytes": 17084,
-      "sha256": "4a6efbb7dcae6369c3c19934960d9c2652f441a912567e1726a8cf72e4f354b7"
+      "bytes": 17110,
+      "sha256": "699320c505675509a0a56dc570d89a08f983041ebb01d1e1503ef3676bdca8be"
     },
     {
       "path": "scripts/verify-wasm.mjs",
