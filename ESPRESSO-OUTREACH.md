@@ -45,6 +45,46 @@ reverse-engineerable trade secrets.
 
 Link: `https://leap2026.sbay.sa/`
 
+## KSAR launch outreach
+
+### Arabic subject options
+
+1. كسار تطلق السوق المباشر السعودي في إصدارها التجاري لموسم LEAP 2026
+2. شاهد المنتج وفاوض البائع في بث واحد مع كسار
+3. كسار 2.1.0 تحول الكتالوج إلى جلسة بيع عربية مباشرة
+
+### Arabic short pitch
+
+أطلقت **كسار** إصدارها التجاري `2.1.0-leap2026`: سوق عربي مباشر يربط
+المنتج بالبائع والجلسة الحية. يستطيع المتسوق مشاهدة المنتج، وطلب فحصه أو
+مقارنته، والتفاوض مع البائع المباشر قبل الانتقال نحو الاتفاق.
+
+تنشر غرفة صحافة منصة تموين رابط التجربة الحية، والتوثيق العام، وهوية الإصدار
+وأدلة البوابة الآلية. الأرقام الظاهرة في العرض بيانات تجريبية، ولا تتضمن
+المادة ادعاء استضافة سعودية فعلية أو حل تجمد CPOLY المبلغ عنه.
+
+الرابط المباشر: `https://leap2026.sbay.sa/#ksar`
+
+### English subject options
+
+1. KSAR launches its commercial live market for LEAP 2026 week
+2. Watch the product and negotiate with the seller in one KSAR session
+3. KSAR 2.1.0 turns the catalog into an Arabic live-commerce experience
+
+### English short pitch
+
+**KSAR** has launched release `2.1.0-leap2026`: an Arabic-first live market
+that connects the product, direct seller and live session. Shoppers can watch
+the product, request an inspection or comparison, and negotiate before moving
+toward an agreement.
+
+The SBAY pressroom publishes the live experience, public documentation,
+release identity and automated gate evidence. Displayed figures are
+demonstration data; the material does not claim Saudi physical hosting or
+resolution of the reported CPOLY freeze.
+
+Direct link: `https://leap2026.sbay.sa/#ksar`
+
 ## NewsBoy editorial links
 
 - الإحالات والمصادر:

@@ -810,6 +810,124 @@ footer strong { color: var(--text); font-size: 1.1rem; }
 }
 .market-lens strong { color: var(--cyan); }
 .market-lens small { color: var(--muted); }
+.ksar-stage {
+  position: relative;
+  border-block: 1px solid rgba(88, 221, 255, .28);
+  background:
+    radial-gradient(circle at 14% 18%, rgba(88, 221, 255, .17), transparent 28rem),
+    radial-gradient(circle at 85% 82%, rgba(95, 240, 187, .12), transparent 30rem),
+    #050d1d;
+  overflow: hidden;
+}
+.ksar-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .2;
+  background-image:
+    linear-gradient(rgba(88, 221, 255, .08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(88, 221, 255, .08) 1px, transparent 1px);
+  background-size: 58px 58px;
+  mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent);
+}
+.ksar-layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+.ksar-copy h2 {
+  margin: 0;
+  font-size: clamp(2.5rem, 5.2vw, 4.9rem);
+  line-height: 1.08;
+  letter-spacing: -.05em;
+}
+.ksar-release-label {
+  width: fit-content;
+  margin: 0 0 .9rem;
+  padding: .35rem .72rem;
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  border: 1px solid rgba(95, 240, 187, .28);
+  border-radius: 999px;
+  color: var(--mint);
+  background: rgba(95, 240, 187, .06);
+  font-size: .72rem;
+  font-weight: 800;
+}
+.ksar-release-label .status-dot {
+  width: 7px;
+  height: 7px;
+}
+.ksar-lead {
+  color: var(--muted);
+  font-size: 1.02rem;
+}
+.ksar-actions {
+  margin-top: 1.3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+}
+.ksar-facts {
+  margin: 1.4rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .65rem;
+}
+.ksar-facts div {
+  min-height: 108px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgba(88, 221, 255, .2);
+  border-radius: 15px;
+  background: rgba(88, 221, 255, .045);
+}
+.ksar-facts strong {
+  color: var(--cyan);
+  font: 800 clamp(1.15rem, 2.3vw, 1.65rem) Consolas, monospace;
+}
+.ksar-facts span {
+  color: var(--muted);
+  font-size: .75rem;
+}
+.ksar-boundary {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  border-inline-start: 3px solid var(--gold);
+  color: var(--muted);
+  background: rgba(244, 199, 103, .05);
+  font-size: .78rem;
+}
+.ksar-visual {
+  display: grid;
+  gap: .85rem;
+}
+.ksar-shot {
+  background: #050d1d;
+  box-shadow: 0 28px 75px rgba(0, 0, 0, .34);
+}
+.ksar-capabilities {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .7rem;
+}
+.ksar-capabilities article {
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: rgba(4, 8, 21, .62);
+}
+.ksar-capabilities strong { color: var(--cyan); }
+.ksar-capabilities p {
+  margin: .35rem 0 0;
+  color: var(--muted);
+  font-size: .75rem;
+}
 .adjudication-stage {
   position: relative;
   border-block: 1px solid rgba(244, 199, 103, .22);
@@ -1039,6 +1157,7 @@ footer strong { color: var(--text); font-size: 1.1rem; }
   .intelligence-layout,
   .deepfest-layout,
   .vision-section,
+  .ksar-layout,
   .adjudication-layout,
   .final-layout { grid-template-columns: 1fr; }
   .problem-grid,
@@ -1075,6 +1194,8 @@ footer strong { color: var(--text); font-size: 1.1rem; }
   .signal-grid,
   .adjudication-facts,
   .adjudication-principles,
+  .ksar-facts,
+  .ksar-capabilities,
   .market-lens,
   .meeting-list { grid-template-columns: 1fr; }
   .hero .tamween-title { font-size: clamp(2.8rem, 15vw, 4.8rem); }

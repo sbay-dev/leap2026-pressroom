@@ -55,7 +55,23 @@
       "name": "Ksar",
       "nameAr": "كسار",
       "url": "https://ksar.store/",
-      "summary": "Arabic-first commerce and live-market experience."
+      "liveMarketUrl": "https://ksar.store/live",
+      "documentationUrl": "https://ksar.store/documentation",
+      "release": "2.1.0-leap2026",
+      "workerVersion": "a065ed86-74d9-4b42-8668-4e32faf23581",
+      "containerImageDigest": "sha256:7b303c7e9feca856a6f77bdc7952cc7a95f2a5527b7fe18f3e8691211bd9aa44",
+      "deployedSourceMerkleRoot": "ff3e47c0b30f29a9e8f4e32be7ff9c1fcd99809a85085b265b708966d3670f89",
+      "deploymentDossierMerkleRoot": "d60527d959bccc0614297b8d714243c530c2a787edb9658990e7347e01afb8ae",
+      "featuredMedia": [
+        "assets/press/ksar-market.png"
+      ],
+      "verifiedContracts": {
+        "sourceAndEdge": 236,
+        "focusedCommercialContent": 8,
+        "failed": 0
+      },
+      "summary": "Arabic-first live commerce: watch the product, negotiate with the direct seller and move toward an agreement in one bounded live session.",
+      "claimBoundary": "Displayed room, viewer, rating and catalog figures are demonstration data. No Saudi physical-hosting, universal-device-acceptance or CPOLY-freeze-resolution claim is made."
     }
   ],
   "supportingEvidence": [
@@ -104,6 +120,12 @@
     "universityEndorsement": false,
     "finalArabicCorrectionService": false,
     "humanLoginCompletionClaimed": false,
+    "ksarSaudiPhysicalHosting": false,
+    "ksarSaudiLegalDataResidency": false,
+    "ksarUniversalCrossDeviceAcceptance": false,
+    "ksarCpolyFreezeResolved": false,
+    "ksarSalesMetricsClaimed": false,
+    "ksarAudienceMetricsClaimed": false,
     "guaranteedCostSaving": false,
     "guaranteedDemandForecast": false,
     "allModulesGenerallyAvailable": false,

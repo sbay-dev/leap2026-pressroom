@@ -15,6 +15,15 @@ Audit ID: `SBAY-LEAP-DEEPFEST-20260831T043818Z`
   insights presented as product and research direction supporting human
   decisions, not as guaranteed production outcomes.
 - Product names, public URLs, public interface screenshots, and release labels.
+- KSAR `2.1.0-leap2026`, its public storefront/live/documentation URLs, Worker
+  version, container image digest, source and dossier Merkle roots, automated
+  contract totals, and public production screenshot.
+- The bounded KSAR proposition: watch the product, negotiate with the direct
+  seller, request inspection or comparison, and move toward an agreement in a
+  live session.
+- KSAR transport evidence limited to application-owned VP8 emitted after the
+  approved Canvas and sealed with SHA-256; this is not a sensor RAW, ordinary
+  RTP byte-equality, or decoded-pixel equality claim.
 - Facts already published at `sbay-dev.github.io/sarmadAi`.
 - A bounded embedding result summary: task-specific wins on XQuAD and Tatoeba,
   a loss on Sadeem, and no claim of general MTEB superiority.
@@ -57,6 +66,11 @@ Audit ID: `SBAY-LEAP-DEEPFEST-20260831T043818Z`
   live products, guaranteed cost savings, or guaranteed investment return.
 - Unsupported counts of products, suppliers, factories, requests, contracts,
   or transactions.
+- Claims that KSAR room, viewer, rating, or seeded catalog figures are real
+  sales, audience, growth, conversion, or investment metrics.
+- Claims that KSAR is physically hosted or legally resident in Saudi Arabia,
+  has universal cross-device acceptance, broadcasts RAW/IR/Windows Hello
+  media, or has resolved the reported CPOLY short-interval freeze.
 - Guaranteed procurement-cycle reductions, guaranteed supplier matching,
   guaranteed document extraction, or guaranteed demand forecasts.
 - An uncited market-size, revenue, valuation, or total-addressable-market

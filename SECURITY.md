@@ -12,3 +12,8 @@ markers. It is a release gate, not a substitute for human review.
 `docs/_headers`. GitHub Pages does not process `_headers`; its repository
 mirror uses GitHub's platform defaults and must not be described as having the
 same response-header policy.
+
+The `Public disclosure boundary` workflow uploads dependency and boundary
+reports as a GitHub Actions artifact named
+`public-boundary-security-evidence-<commit>`. Generated reports are not
+committed; see `security/reports/README.md`.

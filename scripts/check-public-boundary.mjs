@@ -58,7 +58,11 @@ const forbiddenPatterns = [
   [/\broute[- ]bound receipt\b/iu, "private receipt detail"],
   [/[A-Z]:\\Patents\\CNS/iu, "private patent path"],
   [/[A-Z]:\\source\\(?:CNS|QdrantServer)(?:\\|$)/iu, "private source path"],
-  [/\bpostgres(?:ql)?:\/\/[^/\s]+:[^@\s]+@/iu, "database credential"]
+  [/\bpostgres(?:ql)?:\/\/[^/\s]+:[^@\s]+@/iu, "database credential"],
+  [/KSAR\s+is\s+(?:fully\s+)?hosted\s+in\s+Saudi\s+Arabia/iu, "unsupported KSAR hosting claim"],
+  [/كسار\s+مستضاف(?:ة)?\s+(?:بالكامل\s+)?داخل\s+السعودية/iu, "unsupported KSAR hosting claim"],
+  [/(?:the\s+)?CPOLY\s+freeze\s+(?:has\s+been\s+)?resolved/iu, "unsupported CPOLY resolution claim"],
+  [/تم\s+حل\s+تجمد\s+CPOLY/iu, "unsupported CPOLY resolution claim"]
 ];
 
 async function collect(directory, prefix = "") {
@@ -105,6 +109,13 @@ assert.match(index, /<span class="ar">منصة تموين<\/span>/u);
 assert.match(index, /<span class="en">SBAY<\/span>/u);
 assert.doesNotMatch(index, /SBAY\s+Tamween/iu);
 assert.doesNotMatch(index, /منصة تموين\s*<bdi[^>]*>sbay<\/bdi>/iu);
+assert.match(index, /id="ksar"/u);
+assert.match(index, /السوق المباشر: شاهد المنتج، فاوِض البائع، وأتمم الاتفاق في بث واحد/u);
+assert.match(index, /2\.1\.0-leap2026/u);
+assert.match(index, /https:\/\/ksar\.store\/live/u);
+assert.match(index, /https:\/\/ksar\.store\/documentation/u);
+assert.match(index, /بيانات توضيحية وليست مؤشرات مبيعات أو جمهور/u);
+assert.match(index, /does not claim (?:physical Saudi|Saudi physical) hosting/iu);
 assert.match(index, /25\+/u);
 assert.match(index, /500\+/u);
 assert.match(index, /platform scope/iu);
@@ -132,6 +143,7 @@ const narrativeSections = [
   'id="intelligence"',
   'id="outcomes"',
   'id="vision"',
+  'id="ksar"',
   'id="adjudication"'
 ];
 let previousSection = -1;
@@ -182,6 +194,12 @@ assert.equal(pressKit.claims.officialUniversityPartnership, false);
 assert.equal(pressKit.claims.universityEndorsement, false);
 assert.equal(pressKit.claims.finalArabicCorrectionService, false);
 assert.equal(pressKit.claims.humanLoginCompletionClaimed, false);
+assert.equal(pressKit.claims.ksarSaudiPhysicalHosting, false);
+assert.equal(pressKit.claims.ksarSaudiLegalDataResidency, false);
+assert.equal(pressKit.claims.ksarUniversalCrossDeviceAcceptance, false);
+assert.equal(pressKit.claims.ksarCpolyFreezeResolved, false);
+assert.equal(pressKit.claims.ksarSalesMetricsClaimed, false);
+assert.equal(pressKit.claims.ksarAudienceMetricsClaimed, false);
 const newsBoy = pressKit.operatingProof.find(item => item.name === "NewsBoy");
 assert.ok(newsBoy);
 assert.equal(newsBoy.citationsUrl, "https://newsboy.sbay.sa/#m-citations-section");
@@ -190,6 +208,48 @@ assert.deepEqual(newsBoy.featuredMedia, [
   "assets/press/newsboy-cultural-edition.png",
   "assets/press/newsboy-classic-editorial.png"
 ]);
+const ksar = pressKit.operatingProof.find(item => item.name === "Ksar");
+assert.ok(ksar);
+assert.equal(ksar.release, "2.1.0-leap2026");
+assert.equal(ksar.url, "https://ksar.store/");
+assert.equal(ksar.liveMarketUrl, "https://ksar.store/live");
+assert.equal(ksar.documentationUrl, "https://ksar.store/documentation");
+assert.equal(
+  ksar.deployedSourceMerkleRoot,
+  "ff3e47c0b30f29a9e8f4e32be7ff9c1fcd99809a85085b265b708966d3670f89"
+);
+assert.equal(
+  ksar.deploymentDossierMerkleRoot,
+  "d60527d959bccc0614297b8d714243c530c2a787edb9658990e7347e01afb8ae"
+);
+assert.deepEqual(ksar.featuredMedia, ["assets/press/ksar-market.png"]);
+assert.equal(ksar.verifiedContracts.sourceAndEdge, 236);
+assert.equal(ksar.verifiedContracts.focusedCommercialContent, 8);
+assert.equal(ksar.verifiedContracts.failed, 0);
+
+const ksarEvidence = JSON.parse(await readFile(
+  path.join(root, "evidence", "ksar-leap2026-release-20260831T081610Z.json"),
+  "utf8"
+));
+assert.equal(ksarEvidence.schema, "sbay.leap2026.ksar-public-evidence.v1");
+assert.equal(ksarEvidence.release.id, "2.1.0-leap2026");
+assert.equal(ksarEvidence.publicPage.httpStatus, 200);
+assert.equal(ksarEvidence.publicPage.bytes, 100320);
+assert.equal(
+  ksarEvidence.publicPage.sha256,
+  "df99eb59a7e0b73f264f555bfe868e88885c0140233bfbb3937e0b5abaa42d03"
+);
+assert.equal(ksarEvidence.automation.failed, 0);
+assert.equal(ksarEvidence.browserAcceptance.pageExceptions, 0);
+assert.equal(ksarEvidence.browserAcceptance.horizontalOverflowPixels, 0);
+assert.equal(ksarEvidence.claimBoundary.saudiPhysicalHosting, false);
+assert.equal(ksarEvidence.claimBoundary.cpolyFreezeResolved, false);
+const ksarMedia = await readFile(path.join(root, ksarEvidence.media.path));
+assert.equal(ksarMedia.length, ksarEvidence.media.bytes);
+assert.equal(
+  createHash("sha256").update(ksarMedia).digest("hex"),
+  ksarEvidence.media.sha256
+);
 
 const newsBoyMediaEvidence = JSON.parse(await readFile(
   path.join(root, "evidence", "newsboy-media-snapshot-20260831T055356Z.json"),

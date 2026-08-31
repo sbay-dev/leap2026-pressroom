@@ -1,0 +1,65 @@
+{
+  "schema": "sbay.leap2026.ksar-public-evidence.v1",
+  "capturedAtUtc": "2026-08-31T08:16:10.370Z",
+  "release": {
+    "id": "2.1.0-leap2026",
+    "productionUrl": "https://ksar.store/",
+    "liveMarketUrl": "https://ksar.store/live",
+    "documentationUrl": "https://ksar.store/documentation",
+    "deployedSourceMerkleRoot": "ff3e47c0b30f29a9e8f4e32be7ff9c1fcd99809a85085b265b708966d3670f89",
+    "deploymentDossierMerkleRoot": "d60527d959bccc0614297b8d714243c530c2a787edb9658990e7347e01afb8ae",
+    "workerVersion": "a065ed86-74d9-4b42-8668-4e32faf23581",
+    "containerImageDigest": "sha256:7b303c7e9feca856a6f77bdc7952cc7a95f2a5527b7fe18f3e8691211bd9aa44"
+  },
+  "publicPage": {
+    "httpStatus": 200,
+    "bytes": 100320,
+    "sha256": "df99eb59a7e0b73f264f555bfe868e88885c0140233bfbb3937e0b5abaa42d03",
+    "heroAr": "السوق المباشر: شاهد المنتج، فاوِض البائع، وأتمم الاتفاق في بث واحد.",
+    "demoMetricsDisclosed": true,
+    "leapPressroomLinked": true
+  },
+  "automation": {
+    "sourceAndEdgeContracts": 236,
+    "passed": 222,
+    "skipped": 14,
+    "failed": 0,
+    "focusedCommercialContentContracts": 8,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "knownNugetVulnerabilities": 0,
+    "knownNpmVulnerabilities": 0
+  },
+  "browserAcceptance": {
+    "desktopViewport": "1440x1000",
+    "mobileViewport": "430x932",
+    "productCards": 6,
+    "allLiveBenefitsPresent": true,
+    "allLiveRoomLinksPresent": true,
+    "sameOriginFailures": 0,
+    "pageExceptions": 0,
+    "horizontalOverflowPixels": 0
+  },
+  "transportEvidence": {
+    "visualPath": "WebRTC",
+    "exactBytePath": "application-owned VP8 after the approved Canvas",
+    "digest": "SHA-256",
+    "sensorRawClaimed": false,
+    "ordinaryRtpByteEqualityClaimed": false
+  },
+  "media": {
+    "path": "docs/assets/press/ksar-market.png",
+    "bytes": 631150,
+    "sha256": "637f010748d5125ed24826ac37e2d9d57a079d7ebb26b87d27088698936662ac"
+  },
+  "claimBoundary": {
+    "saudiPhysicalHosting": false,
+    "saudiLegalDataResidency": false,
+    "universalCrossDeviceAcceptance": false,
+    "cpolyFreezeResolved": false,
+    "rawIrOrWindowsHelloBroadcast": false,
+    "salesMetricsClaimed": false,
+    "audienceMetricsClaimed": false,
+    "investmentPerformanceClaimed": false
+  }
+}

@@ -22,13 +22,28 @@ Published for event week: 31 August–3 September 2026, Riyadh.
 والعقود والتحليلات وقدرات الذكاء فتُعرض في غرفة الصحافة كنطاق منصة مؤسسي؛
 يُثبت التوفر التفصيلي والتكامل والمتطلبات في العرض المباشر ونطاق العقد.
 
-تظهر كسار وصبي الجرائد وCP كأدلة تشغيل مختصرة على قدرة الفريق على بناء
-تجارب تجارة عربية ومنتجات عامة وتشغيل صغير الأثر، لا بوصفها قصة الصفحة
-الرئيسية. وتبقى الأوزان وبيانات التدريب وخرائط الخبراء والمفاتيح وتفاصيل
-المطالبات البرائية خارج الإصدار العام.
+تظهر صبي الجرائد وCP كأدلة تشغيل مختصرة، بينما تحصل كسار على مساحة مستقلة
+لإطلاق نسختها التجارية الحية. وتبقى الأوزان وبيانات التدريب وخرائط الخبراء
+والمفاتيح وتفاصيل المطالبات البرائية خارج الإصدار العام.
 
 هذه مشاركة مستقلة وليست إعلانًا عن رعاية أو شراكة رسمية مع LEAP أو DeepFest
 أو الجهات المنظمة.
+
+### كسار 2.1.0 — السوق المباشر
+
+تقدم **كسار** في إصدار `2.1.0-leap2026` تجربة تجارة حية عربية تبدأ من
+المنتج لا من صفحة دفع جامدة: يشاهد المتسوق المنتج، ويتواصل مع البائع المباشر،
+ويطلب الفحص أو المقارنة، ويفاوض قبل الانتقال نحو الاتفاق في الجلسة نفسها.
+
+ترتبط غرفة الصحافة مباشرة بواجهة السوق، وسطح البث الحي، والتوثيق العام،
+وتنشر هوية الإصدار وجذري Merkle وصورة مأخوذة من واجهة الإنتاج. اجتازت
+بوابة الإصدار 236 عقدًا آليًا للمصدر والحافة، منها 222 ناجحة و14 متخطاة
+و0 فاشلة، إضافة إلى ثمانية عقود مركزة للمحتوى التجاري.
+
+الأرقام الظاهرة لعدد الغرف والمشاهدين والتقييمات والكتالوج بيانات عرض وليست
+مبيعات أو جمهورًا محققًا. لا يدعي الإصدار استضافة مادية أو إقامة بيانات
+قانونية داخل السعودية، ولا قبولًا شاملًا لكل الأجهزة، ولا بث RAW أو IR أو
+Windows Hello، ولا حل تجمد CPOLY المبلغ عنه.
 
 ### منصّة تحكيم اللغة العربية
 
@@ -67,14 +82,32 @@ RFQ, contracts, analytics and AI capabilities are presented in the pressroom
 as enterprise platform scope; detailed availability, integrations and
 requirements are confirmed in the live demo and contract scope.
 
-Ksar, NewsBoy and CP appear as concise operating proof that the team can build
-Arabic commerce experiences, public products and small-footprint operations.
-They are not the primary narrative. Model weights, training data, expert maps,
-credentials and unpublished patent enablement remain outside the public
+NewsBoy and CP appear as concise operating proof, while KSAR has a dedicated
+stage for its commercial live release. Model weights, training data, expert
+maps, credentials and unpublished patent enablement remain outside the public
 release.
 
 This is independent participation, not a statement of official sponsorship or
 partnership with LEAP, DeepFest or their organizers.
+
+### KSAR 2.1.0 — The Live Market
+
+**KSAR** release `2.1.0-leap2026` presents an Arabic-first live-commerce
+experience that starts with the product rather than a static checkout page.
+The shopper can watch the product, contact the direct seller, request an
+inspection or comparison, and negotiate before moving toward an agreement in
+the same session.
+
+The pressroom links directly to the storefront, live-market surface and public
+documentation, and publishes the release identity, two Merkle roots and a
+current production-interface image. The release gate covered 236 automated
+source and edge contracts: 222 passed, 14 skipped and 0 failed, plus eight
+focused commercial-content contracts.
+
+Displayed room, viewer, rating and catalog figures are demonstration data, not
+verified sales or audience performance. The release does not claim Saudi
+physical hosting or legal data residency, universal device acceptance,
+RAW/IR/Windows Hello broadcasting, or resolution of the reported CPOLY freeze.
 
 ### ADG Arabic Adjudication Platform
 
@@ -106,6 +139,9 @@ announcement.
   `https://newsboy.sbay.sa/#m-citations-section`
 - NewsBoy site archive: `https://newsboy.sbay.sa/#m-archive-section`
 - Ksar: `https://ksar.store/`
+- Ksar live market: `https://ksar.store/live`
+- Ksar public documentation: `https://ksar.store/documentation`
+- Ksar LEAP stage: `https://leap2026.sbay.sa/#ksar`
 - CP: `https://cp.sbay.sa/`
 - Sarmad public evidence: `https://sbay-dev.github.io/sarmadAi/`
 - منصّة تحكيم اللغة العربية: `https://adg.sbay.sa/`

@@ -22,8 +22,16 @@ The narrative follows:
 
 The primary positioning is SBAY as an enterprise AI procurement and supply
 platform.
-Ksar, NewsBoy, CP, Sarmad, CNS and QdrantServer appear only as bounded operating
-or technical evidence.
+NewsBoy, CP, Sarmad, CNS and QdrantServer appear as bounded operating or
+technical evidence. KSAR now has a dedicated live-commerce stage linked to its
+verified `2.1.0-leap2026` production release.
+
+The KSAR stage presents one bounded proposition: watch the product, negotiate
+with the direct seller, and move toward an agreement in one live session. It
+links to the storefront, live market and public documentation, and publishes
+the release identities without claiming Saudi physical hosting, universal
+cross-device acceptance, sales or audience performance, raw IR broadcasting,
+or correction of the reported CPOLY freeze.
 
 NewsBoy is represented by its supplied classic editorial and modern culture
 edition captures. Its proof card links directly to the public citations and
@@ -55,6 +63,11 @@ claims, or proprietary source code. Run the disclosure gate before publishing:
 npm ci
 npm run check
 ```
+
+The `Public disclosure boundary` workflow also runs `npm audit`, rebuilds the
+deterministic release manifest and uploads a retained
+`public-boundary-security-evidence-<commit>` artifact. Report conventions are
+documented in `security/reports/README.md`.
 
 Media capture uses a fresh headless Edge context and public, unauthenticated
 pages only:

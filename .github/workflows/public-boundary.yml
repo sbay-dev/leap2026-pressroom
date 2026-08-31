@@ -18,8 +18,29 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
-      - run: npm run check
-      - run: npm run manifest
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Prepare report directory
+        run: mkdir -p "$RUNNER_TEMP/security-reports"
+      - name: Audit dependencies
+        run: npm audit --audit-level=high --json | tee "$RUNNER_TEMP/security-reports/npm-audit.json"
+      - name: Verify public disclosure boundary
+        run: npm run check 2>&1 | tee "$RUNNER_TEMP/security-reports/public-boundary.log"
+      - name: Build deterministic release manifest
+        run: npm run manifest 2>&1 | tee "$RUNNER_TEMP/security-reports/release-manifest.log"
       - name: Require deterministic release files
         run: git diff --exit-code -- evidence/release-manifest.json docs/release.json
+      - name: Record workflow evidence
+        if: always()
+        run: |
+          mkdir -p security/reports/generated
+          cp -f "$RUNNER_TEMP/security-reports/"* security/reports/generated/ 2>/dev/null || true
+          node -e 'const fs=require("fs"); fs.writeFileSync("security/reports/generated/run.json", JSON.stringify({repository:process.env.GITHUB_REPOSITORY,commit:process.env.GITHUB_SHA,runId:process.env.GITHUB_RUN_ID,runAttempt:process.env.GITHUB_RUN_ATTEMPT,workflow:process.env.GITHUB_WORKFLOW,generatedAtUtc:new Date().toISOString()},null,2)+"\n")'
+      - name: Upload security evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: public-boundary-security-evidence-${{ github.sha }}
+          path: security/reports/generated/
+          if-no-files-found: error
+          retention-days: 90

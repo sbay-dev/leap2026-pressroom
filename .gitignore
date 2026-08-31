@@ -4,3 +4,4 @@ dist/
 *.log
 *.tmp
 .playwright/
+security/reports/generated/

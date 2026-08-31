@@ -13,6 +13,14 @@ assert.match(html, /<span class="ar">منصة تموين<\/span>/u);
 assert.match(html, /<span class="en">SBAY<\/span>/u);
 assert.doesNotMatch(html, /SBAY\s+Tamween/iu);
 assert.doesNotMatch(html, /منصة تموين\s*<bdi[^>]*>sbay<\/bdi>/iu);
+assert.match(html, /id="ksar"/u);
+assert.match(html, /السوق المباشر: شاهد المنتج، فاوِض البائع، وأتمم الاتفاق في بث واحد/u);
+assert.match(html, /2\.1\.0-leap2026/u);
+assert.match(html, /https:\/\/ksar\.store\/live/u);
+assert.match(html, /https:\/\/ksar\.store\/documentation/u);
+assert.match(html, /does not claim (?:physical Saudi|Saudi physical) hosting/iu);
+assert.doesNotMatch(html, /KSAR\s+is\s+(?:fully\s+)?hosted\s+in\s+Saudi\s+Arabia/iu);
+assert.doesNotMatch(html, /(?:the\s+)?CPOLY\s+freeze\s+(?:has\s+been\s+)?resolved/iu);
 assert.match(html, /25\+/u);
 assert.match(html, /500\+/u);
 assert.match(html, /NewsBoy/u);
@@ -34,7 +42,8 @@ assert.ok(html.indexOf('id="problem"') < html.indexOf('id="platform"'));
 assert.ok(html.indexOf('id="platform"') < html.indexOf('id="intelligence"'));
 assert.ok(html.indexOf('id="intelligence"') < html.indexOf('id="outcomes"'));
 assert.ok(html.indexOf('id="outcomes"') < html.indexOf('id="vision"'));
-assert.ok(html.indexOf('id="vision"') < html.indexOf('id="adjudication"'));
+assert.ok(html.indexOf('id="vision"') < html.indexOf('id="ksar"'));
+assert.ok(html.indexOf('id="ksar"') < html.indexOf('id="adjudication"'));
 assert.ok(html.indexOf('id="adjudication"') < html.indexOf('id="proof"'));
 
 const cacheControl = page.headers.get("cache-control");
@@ -51,6 +60,12 @@ assert.equal(pressKit.publisher, "SBAY");
 assert.equal(pressKit.publicSignals.publishedCustomers, "500+");
 assert.equal(pressKit.claims.generalMtebSuperiority, false);
 assert.equal(pressKit.claims.officialEventPartnership, false);
+assert.equal(pressKit.claims.ksarSaudiPhysicalHosting, false);
+assert.equal(pressKit.claims.ksarSaudiLegalDataResidency, false);
+assert.equal(pressKit.claims.ksarUniversalCrossDeviceAcceptance, false);
+assert.equal(pressKit.claims.ksarCpolyFreezeResolved, false);
+assert.equal(pressKit.claims.ksarSalesMetricsClaimed, false);
+assert.equal(pressKit.claims.ksarAudienceMetricsClaimed, false);
 assert.equal(pressKit.claims.guaranteedCostSaving, false);
 assert.equal(pressKit.claims.guaranteedDemandForecast, false);
 assert.equal(pressKit.claims.allModulesGenerallyAvailable, false);
@@ -66,6 +81,23 @@ const newsBoy = pressKit.operatingProof.find(item => item.name === "NewsBoy");
 assert.ok(newsBoy);
 assert.equal(newsBoy.citationsUrl, "https://newsboy.sbay.sa/#m-citations-section");
 assert.equal(newsBoy.archiveUrl, "https://newsboy.sbay.sa/#m-archive-section");
+const ksar = pressKit.operatingProof.find(item => item.name === "Ksar");
+assert.ok(ksar);
+assert.equal(ksar.release, "2.1.0-leap2026");
+assert.equal(ksar.liveMarketUrl, "https://ksar.store/live");
+assert.equal(ksar.documentationUrl, "https://ksar.store/documentation");
+assert.equal(
+  ksar.deployedSourceMerkleRoot,
+  "ff3e47c0b30f29a9e8f4e32be7ff9c1fcd99809a85085b265b708966d3670f89"
+);
+assert.equal(
+  ksar.deploymentDossierMerkleRoot,
+  "d60527d959bccc0614297b8d714243c530c2a787edb9658990e7347e01afb8ae"
+);
+assert.deepEqual(ksar.featuredMedia, ["assets/press/ksar-market.png"]);
+assert.equal(ksar.verifiedContracts.sourceAndEdge, 236);
+assert.equal(ksar.verifiedContracts.focusedCommercialContent, 8);
+assert.equal(ksar.verifiedContracts.failed, 0);
 
 for (const [asset, expectedSha256] of [
   [
@@ -75,6 +107,10 @@ for (const [asset, expectedSha256] of [
   [
     "newsboy-classic-editorial.png",
     "40702e9be92cb5dc850203b2cf3db356f66bd0df80f542a89cc59d3abd5bf178"
+  ],
+  [
+    "ksar-market.png",
+    "637f010748d5125ed24826ac37e2d9d57a079d7ebb26b87d27088698936662ac"
   ]
 ]) {
   const image = await fetch(`${baseUrl}/assets/press/${asset}`);
@@ -92,6 +128,11 @@ const adjudicationImage = await fetch(
 );
 assert.equal(adjudicationImage.status, 200);
 assert.match(adjudicationImage.headers.get("content-type") || "", /image\/png/iu);
+
+const releaseResponse = await fetch(`${baseUrl}/release.json`);
+assert.equal(releaseResponse.status, 200);
+const release = await releaseResponse.json();
+assert.equal(release.releaseId, "leap2026-pressroom-2.4.0");
 
 const wasm = await fetch(`${baseUrl}/evidence-match.wasm`);
 assert.equal(wasm.status, 200);
@@ -113,6 +154,8 @@ console.log(JSON.stringify({
   ok: true,
   baseUrl,
   auditId: pressKit.auditId,
+  pressroomRelease: release.releaseId,
+  ksarRelease: ksar.release,
   wasmBytes: bytes.length,
   contentSecurityPolicy: Boolean(csp),
   noTransform: true,

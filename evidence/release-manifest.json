@@ -2,10 +2,10 @@
   "schema": "sbay.leap2026.public-release.v1",
   "auditId": "SBAY-LEAP-DEEPFEST-20260831T043818Z",
   "capturedAtUtc": "2026-08-31T04:38:18.532Z",
-  "releaseId": "leap2026-pressroom-2.3.0",
+  "releaseId": "leap2026-pressroom-2.4.0",
   "classification": "public-non-enabling-press-material",
-  "fileCount": 53,
-  "releaseRoot": "9e21f26b9f56beee218ba0de64dd98f19280fc708b6ed89c2ec56c9a4e5f9f1e",
+  "fileCount": 56,
+  "releaseRoot": "eb5c268b7cef4a50b6097d3a51e2bcff02442cede9156488e149123b39b3cd57",
   "files": [
     {
       "path": ".gitattributes",
@@ -29,13 +29,13 @@
     },
     {
       "path": ".github/workflows/public-boundary.yml",
-      "bytes": 535,
-      "sha256": "3e58650212a7abb5ffd0864522954f8fe130c50fd64e0c7a3f0e5c2f6923cda2"
+      "bytes": 1894,
+      "sha256": "6eb25f8082558f93f9cbc38aee7f513c831344d8fb85ec1de2d5cc19f4eba235"
     },
     {
       "path": ".gitignore",
-      "bytes": 56,
-      "sha256": "34a44e6e755a56304ac4fad7e3d3f01fb30f7a25e67d896507c6851a449684c8"
+      "bytes": 84,
+      "sha256": "44d945d1333c11de3918deeacf86629087627fa470b8bcf8bbfbe6dae0f6af4f"
     },
     {
       "path": "docs/_headers",
@@ -69,8 +69,8 @@
     },
     {
       "path": "docs/assets/press/ksar-market.png",
-      "bytes": 1117957,
-      "sha256": "21d9ee380b74695e4cb76bc26e4a7fe4048bdf99d3315e63ea15912cb71ef7b3"
+      "bytes": 631150,
+      "sha256": "637f010748d5125ed24826ac37e2d9d57a079d7ebb26b87d27088698936662ac"
     },
     {
       "path": "docs/assets/press/newsboy-classic-editorial.png",
@@ -99,8 +99,8 @@
     },
     {
       "path": "docs/assets/press/og-card.png",
-      "bytes": 240570,
-      "sha256": "bd988585fdc7068200a05649e8447a3c1522a68515c420bb7526cd29d2ecae7d"
+      "bytes": 221509,
+      "sha256": "ea6cd940a30367c0f026a719c14bde7133bbab78609fc49484d5fd4ba153780e"
     },
     {
       "path": "docs/assets/sbay-cube.svg",
@@ -114,8 +114,8 @@
     },
     {
       "path": "docs/index.html",
-      "bytes": 47697,
-      "sha256": "8e8986d8aa172ddb6006c4052d99f2ae99f3d312cc2b770218d6ab73f25ea0ad"
+      "bytes": 54309,
+      "sha256": "014de536d4356dcaaa36367e5b5592db39d214e805d7dbf3a4020ac7e1c807ca"
     },
     {
       "path": "docs/manifest.webmanifest",
@@ -124,8 +124,8 @@
     },
     {
       "path": "docs/press-kit.json",
-      "bytes": 4335,
-      "sha256": "2da85bb1f26a9acd9eb0d6f04fe04ec825bd8446a192fdeef5a99f9f096fb12f"
+      "bytes": 5590,
+      "sha256": "2b2626408a2915aba52bc8b03d90c838b3c0351d1845d368900bbbeb65519f89"
     },
     {
       "path": "docs/robots.txt",
@@ -139,13 +139,13 @@
     },
     {
       "path": "docs/styles.css",
-      "bytes": 26319,
-      "sha256": "84aaf13792f347d44008797f490a16b93247b90ba4fc75a9ed6d6dfd9dd965b0"
+      "bytes": 29022,
+      "sha256": "03638ed98a3ad1ab5820a82a8a8039366ee141f1bc0982bf447bcb945d134c00"
     },
     {
       "path": "ESPRESSO-OUTREACH.md",
-      "bytes": 5525,
-      "sha256": "6035fb149d5ec724a0418652d5cb9cdb7a32f9d8b6f05e4af903f66a782fa8c8"
+      "bytes": 7518,
+      "sha256": "11cc4c3f4c17dabe734ddd7a379f781098b316ca55245dbaebb4b7c57071685d"
     },
     {
       "path": "evidence/adjudication-positioning-snapshot-20260831T043818Z.json",
@@ -173,19 +173,29 @@
       "sha256": "eaf9d5a65581d25aed009304c4b32327a52ad0d832cde668659b8c5794b2a96c"
     },
     {
+      "path": "evidence/ksar-leap2026-release-20260831T081610Z.json",
+      "bytes": 2326,
+      "sha256": "5265dd3ea15e3b6bb15c2142800097b2b2146919f816ff3eaf12696731513a6d"
+    },
+    {
       "path": "evidence/newsboy-media-snapshot-20260831T055356Z.json",
       "bytes": 1960,
       "sha256": "73d576351181a8966444adecef003c300bb05d7c8a0c1ced244aa56a10530117"
     },
     {
       "path": "evidence/source-snapshot.json",
-      "bytes": 3949,
-      "sha256": "dda0f01fc668dde120e72259c150178167f3ed3e7a67bb6e47f13eb828993820"
+      "bytes": 4042,
+      "sha256": "0ef32fe6836eebb8baad862242e2315f520042d36a54461c28ad6a6487060d10"
     },
     {
       "path": "evidence/tamween-positioning-snapshot-20260831T040937Z.json",
       "bytes": 2404,
       "sha256": "93f4061e2fa7205ecf5b0a8c34deff9f4f327e094d749a3642bb1173b9405cc5"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 429,
+      "sha256": "84fe7dade68fd5299c168214513d09232fef57efdbbd0da51228ed5523c013ae"
     },
     {
       "path": "MEDIA-LICENSE.md",
@@ -195,12 +205,12 @@
     {
       "path": "package-lock.json",
       "bytes": 49900,
-      "sha256": "548daad15eeb0675b67f5dd409e4dc70b9f31b8558cd856c7be69ae09d4b1b07"
+      "sha256": "e9042823c22ea5a12f98ea3e1f546ad317a8aeb4df60d75ed039227a522b86d3"
     },
     {
       "path": "package.json",
       "bytes": 833,
-      "sha256": "0ae77888492ade9eaa7f7bac1533f3dafcd5c51cfdbf106cc0b7d0ae6997cfba"
+      "sha256": "e9964236022a545f43e72468bd64c543ea6e94d73b8a87442a706a5a93a38b60"
     },
     {
       "path": "PNU-MEDIA-CENTER-BRIEF.md",
@@ -209,18 +219,18 @@
     },
     {
       "path": "PRESS-NOTES.md",
-      "bytes": 6717,
-      "sha256": "e77346116f50bd62cc013d928142c9d6e1dbce08a7d42e9107035d324dca984d"
+      "bytes": 9098,
+      "sha256": "d3be1c4d98ba442406a7f1f4e7fc69216a857b4d8116e32d9183b5923a1e54c3"
     },
     {
       "path": "PUBLIC-DISCLOSURE-BOUNDARY.md",
-      "bytes": 5428,
-      "sha256": "715686227927c3d75fcabbaf52827c505fd7c4bb918c10807fd750d3d41841bd"
+      "bytes": 6373,
+      "sha256": "4baca824930e6e4a3adef605189de2d5f382ae4b040098394f8388c2031a1701"
     },
     {
       "path": "README.md",
-      "bytes": 2870,
-      "sha256": "7fce339d62123ccc798b7f5a3622eb98b265a1104113f825143dc4bf49692200"
+      "bytes": 3647,
+      "sha256": "64d1227bb464c0472c6fee6bd8e848ac9c57b1746adc0c61310ded8a792b29ad"
     },
     {
       "path": "scripts/build-release-manifest.mjs",
@@ -239,8 +249,8 @@
     },
     {
       "path": "scripts/check-public-boundary.mjs",
-      "bytes": 10290,
-      "sha256": "a0bcf845d31bca61d388003a56eec226350547b3c43b16262fe24db2ef44df32"
+      "bytes": 13490,
+      "sha256": "6fd7c50f24e71445cb68a9e33233ebab17dd1e8cdb07ad3e7b8b2603faf554ca"
     },
     {
       "path": "scripts/compile-wasm.ps1",
@@ -249,8 +259,8 @@
     },
     {
       "path": "scripts/verify-live.mjs",
-      "bytes": 5500,
-      "sha256": "4f206ecc6b97bdd198bcd8b563809eb68f0e55bc7470b3221d2f8ddfa4bb1c67"
+      "bytes": 7686,
+      "sha256": "1930aae8b0d13359e89fa468e197d5f2329ac0ff6f1dda79b0ff52a521608387"
     },
     {
       "path": "scripts/verify-wasm.mjs",
@@ -259,8 +269,13 @@
     },
     {
       "path": "SECURITY.md",
-      "bytes": 716,
-      "sha256": "1ee3a49454267d53c79c07eac67328009bf1219e166065879de264fe4da3ea06"
+      "bytes": 951,
+      "sha256": "632ff8b2b74ac750b783551a3af058139b174d2a9a78acc553d536d379291d87"
+    },
+    {
+      "path": "security/reports/README.md",
+      "bytes": 420,
+      "sha256": "1aa6e7a47fcaf35543bfcf3c8f5340e5330ac55eafc5bc806f5961552894fe71"
     },
     {
       "path": "wasm/evidence_match.rs",
