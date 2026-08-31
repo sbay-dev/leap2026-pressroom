@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
+import { readFile } from "node:fs/promises";
 
 const baseUrl = String(
   process.env.PRESSROOM_URL || "https://leap2026.sbay.sa"
@@ -132,7 +133,13 @@ assert.match(adjudicationImage.headers.get("content-type") || "", /image\/png/iu
 const releaseResponse = await fetch(`${baseUrl}/release.json`);
 assert.equal(releaseResponse.status, 200);
 const release = await releaseResponse.json();
+const expectedRelease = JSON.parse(await readFile(
+  new URL("../docs/release.json", import.meta.url),
+  "utf8"
+));
 assert.equal(release.releaseId, "leap2026-pressroom-2.4.0");
+assert.equal(release.releaseRoot, expectedRelease.releaseRoot);
+assert.equal(release.fileCount, expectedRelease.fileCount);
 
 const wasm = await fetch(`${baseUrl}/evidence-match.wasm`);
 assert.equal(wasm.status, 200);
