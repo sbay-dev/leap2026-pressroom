@@ -24,6 +24,10 @@ The primary positioning is an enterprise AI procurement and supply platform.
 Ksar, NewsBoy, CP, Sarmad, CNS and QdrantServer appear only as bounded operating
 or technical evidence.
 
+NewsBoy is represented by its supplied classic editorial and modern culture
+edition captures. Its proof card links directly to the public citations and
+sources section and the public site archive.
+
 The pressroom also includes the public **ADG Arabic Adjudication Platform** as
 a separate institutional research announcement. Its two-sample public pilot
 uses blind independent annotation, a third adjudicator for disagreements and

@@ -45,6 +45,18 @@ reverse-engineerable trade secrets.
 
 Link: `https://leap2026.sbay.sa/`
 
+## NewsBoy editorial links
+
+- الإحالات والمصادر:
+  `https://newsboy.sbay.sa/#m-citations-section`
+- أرشيف الموقع:
+  `https://newsboy.sbay.sa/#m-archive-section`
+
+- Citations and sources:
+  `https://newsboy.sbay.sa/#m-citations-section`
+- Site archive:
+  `https://newsboy.sbay.sa/#m-archive-section`
+
 ## Princess Nourah University media-center submission
 
 ### Arabic subject options

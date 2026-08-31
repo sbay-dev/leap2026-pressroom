@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 
 const baseUrl = String(
   process.env.PRESSROOM_URL || "https://leap2026.sbay.sa"
@@ -22,6 +23,10 @@ assert.match(html, /112/u);
 assert.match(html, /not a final correction service/iu);
 assert.match(html, /مركز إعلام جامعة الأميرة نورة بنت عبدالرحمن/u);
 assert.match(html, /does not mean the material is issued, approved, sponsored or endorsed by the university/iu);
+assert.match(html, /https:\/\/newsboy\.sbay\.sa\/#m-citations-section/u);
+assert.match(html, /https:\/\/newsboy\.sbay\.sa\/#m-archive-section/u);
+assert.match(html, /newsboy-cultural-edition\.png/u);
+assert.match(html, /newsboy-classic-editorial\.png/u);
 assert.doesNotMatch(html, /cloudflareinsights|beacon\.min\.js/iu);
 assert.ok(html.indexOf('id="problem"') < html.indexOf('id="platform"'));
 assert.ok(html.indexOf('id="platform"') < html.indexOf('id="intelligence"'));
@@ -53,6 +58,30 @@ assert.equal(pressKit.adjudication.mediaCenter.issuedByUniversity, false);
 assert.equal(pressKit.claims.officialUniversityPartnership, false);
 assert.equal(pressKit.claims.universityEndorsement, false);
 assert.equal(pressKit.claims.finalArabicCorrectionService, false);
+const newsBoy = pressKit.operatingProof.find(item => item.name === "NewsBoy");
+assert.ok(newsBoy);
+assert.equal(newsBoy.citationsUrl, "https://newsboy.sbay.sa/#m-citations-section");
+assert.equal(newsBoy.archiveUrl, "https://newsboy.sbay.sa/#m-archive-section");
+
+for (const [asset, expectedSha256] of [
+  [
+    "newsboy-cultural-edition.png",
+    "a42f7aef65acc12194f6561ab1861d468f703ecea426ef56cc59d1f28dcf0de5"
+  ],
+  [
+    "newsboy-classic-editorial.png",
+    "40702e9be92cb5dc850203b2cf3db356f66bd0df80f542a89cc59d3abd5bf178"
+  ]
+]) {
+  const image = await fetch(`${baseUrl}/assets/press/${asset}`);
+  assert.equal(image.status, 200);
+  assert.match(image.headers.get("content-type") || "", /image\/png/iu);
+  const imageBytes = Buffer.from(await image.arrayBuffer());
+  assert.equal(
+    createHash("sha256").update(imageBytes).digest("hex"),
+    expectedSha256
+  );
+}
 
 const adjudicationImage = await fetch(
   `${baseUrl}/assets/press/adg-adjudication-platform.png`

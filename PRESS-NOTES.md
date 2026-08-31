@@ -102,6 +102,9 @@ announcement.
 - منصة تموين sbay: `https://sbay.sa/`
 - Pressroom: `https://leap2026.sbay.sa/`
 - NewsBoy: `https://newsboy.sbay.sa/`
+- NewsBoy citations and sources:
+  `https://newsboy.sbay.sa/#m-citations-section`
+- NewsBoy site archive: `https://newsboy.sbay.sa/#m-archive-section`
 - Ksar: `https://ksar.store/`
 - CP: `https://cp.sbay.sa/`
 - Sarmad public evidence: `https://sbay-dev.github.io/sarmadAi/`

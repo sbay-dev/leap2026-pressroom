@@ -43,7 +43,13 @@
       "name": "NewsBoy",
       "nameAr": "صبي الجرائد",
       "url": "https://newsboy.sbay.sa/",
-      "summary": "Rights-aware Arabic news discovery."
+      "citationsUrl": "https://newsboy.sbay.sa/#m-citations-section",
+      "archiveUrl": "https://newsboy.sbay.sa/#m-archive-section",
+      "featuredMedia": [
+        "assets/press/newsboy-cultural-edition.png",
+        "assets/press/newsboy-classic-editorial.png"
+      ],
+      "summary": "Rights-aware Arabic daily news with public source citations and a navigable site archive."
     },
     {
       "name": "Ksar",
@@ -106,6 +112,8 @@
   },
   "media": [
     "assets/press/adg-adjudication-platform.png",
+    "assets/press/newsboy-cultural-edition.png",
+    "assets/press/newsboy-classic-editorial.png",
     "assets/press/newsboy-classic-hero.png",
     "assets/press/newsboy-classic-full.png",
     "assets/press/newsboy-classic-mobile.png",

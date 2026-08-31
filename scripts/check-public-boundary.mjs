@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 
@@ -113,6 +114,10 @@ assert.match(index, /112/u);
 assert.match(index, /not a final correction service/iu);
 assert.match(index, /مركز إعلام جامعة الأميرة نورة بنت عبدالرحمن/u);
 assert.match(index, /does not mean the material is issued, approved, sponsored or endorsed by the university/iu);
+assert.match(index, /https:\/\/newsboy\.sbay\.sa\/#m-citations-section/u);
+assert.match(index, /https:\/\/newsboy\.sbay\.sa\/#m-archive-section/u);
+assert.match(index, /newsboy-cultural-edition\.png/u);
+assert.match(index, /newsboy-classic-editorial\.png/u);
 assert.doesNotMatch(index, /آلاف المنتجات|موردون معتمدون|من أيام إلى دقائق/u);
 assert.match(index, /without presenting a guaranteed forecast/iu);
 assert.match(index, /without a guaranteed savings claim/iu);
@@ -170,6 +175,31 @@ assert.equal(pressKit.claims.officialUniversityPartnership, false);
 assert.equal(pressKit.claims.universityEndorsement, false);
 assert.equal(pressKit.claims.finalArabicCorrectionService, false);
 assert.equal(pressKit.claims.humanLoginCompletionClaimed, false);
+const newsBoy = pressKit.operatingProof.find(item => item.name === "NewsBoy");
+assert.ok(newsBoy);
+assert.equal(newsBoy.citationsUrl, "https://newsboy.sbay.sa/#m-citations-section");
+assert.equal(newsBoy.archiveUrl, "https://newsboy.sbay.sa/#m-archive-section");
+assert.deepEqual(newsBoy.featuredMedia, [
+  "assets/press/newsboy-cultural-edition.png",
+  "assets/press/newsboy-classic-editorial.png"
+]);
+
+const newsBoyMediaEvidence = JSON.parse(await readFile(
+  path.join(root, "evidence", "newsboy-media-snapshot-20260831T055356Z.json"),
+  "utf8"
+));
+assert.equal(newsBoyMediaEvidence.publicPage.httpStatus, 200);
+assert.equal(newsBoyMediaEvidence.deepLinks.citations.elementFound, true);
+assert.equal(newsBoyMediaEvidence.deepLinks.archive.elementFound, true);
+assert.equal(newsBoyMediaEvidence.publishedAssets.length, 2);
+for (const asset of newsBoyMediaEvidence.publishedAssets) {
+  const bytes = await readFile(path.join(root, asset.path));
+  assert.equal(bytes.length, asset.bytes);
+  assert.equal(
+    createHash("sha256").update(bytes).digest("hex"),
+    asset.sha256
+  );
+}
 
 const universityBrief = await readFile(
   path.join(root, "PNU-MEDIA-CENTER-BRIEF.md"),
@@ -189,6 +219,8 @@ assert.doesNotMatch(headers, /(?:^|\s)'unsafe-eval'(?:\s|;|$)/u);
 
 for (const asset of [
   "adg-adjudication-platform.png",
+  "newsboy-cultural-edition.png",
+  "newsboy-classic-editorial.png",
   "newsboy-classic-hero.png",
   "newsboy-classic-full.png",
   "newsboy-classic-mobile.png",

@@ -1,0 +1,62 @@
+{
+  "schema": "sbay.newsboy.public-media-snapshot.v1",
+  "capturedAtUtc": "2026-08-31T05:53:56.535Z",
+  "publicPage": {
+    "url": "https://newsboy.sbay.sa/",
+    "httpStatus": 200,
+    "title": "صَبِيّ الجرايد — الصحيفة العربية اليومية",
+    "responseBytes": 43788,
+    "responseSha256": "88b0e568d2104b6efd568d1f5e2259d3bfaf2c5ed9c491484810850900041ecb"
+  },
+  "deepLinks": {
+    "citations": {
+      "url": "https://newsboy.sbay.sa/#m-citations-section",
+      "elementId": "m-citations-section",
+      "elementFound": true
+    },
+    "archive": {
+      "url": "https://newsboy.sbay.sa/#m-archive-section",
+      "elementId": "m-archive-section",
+      "elementFound": true
+    }
+  },
+  "sourceAttachments": [
+    {
+      "order": 1,
+      "originalBytes": 35588872,
+      "originalWidth": 3604,
+      "originalHeight": 10127,
+      "originalSha256": "7bdd18b1252887f31a3fd1ffa159f86a6fe85f44ea439bd9ad761653f29b3574"
+    },
+    {
+      "order": 2,
+      "originalBytes": 3382555,
+      "originalWidth": 3768,
+      "originalHeight": 1941,
+      "originalSha256": "a42f7aef65acc12194f6561ab1861d468f703ecea426ef56cc59d1f28dcf0de5"
+    }
+  ],
+  "publishedAssets": [
+    {
+      "path": "docs/assets/press/newsboy-classic-editorial.png",
+      "bytes": 14484785,
+      "width": 2400,
+      "height": 6744,
+      "sha256": "40702e9be92cb5dc850203b2cf3db356f66bd0df80f542a89cc59d3abd5bf178",
+      "treatment": "High-quality bicubic resize preserving the full supplied capture."
+    },
+    {
+      "path": "docs/assets/press/newsboy-cultural-edition.png",
+      "bytes": 3382555,
+      "width": 3768,
+      "height": 1941,
+      "sha256": "a42f7aef65acc12194f6561ab1861d468f703ecea426ef56cc59d1f28dcf0de5",
+      "treatment": "Published byte-identical to the supplied capture."
+    }
+  ],
+  "privacyBoundary": {
+    "publicInterfaceOnly": true,
+    "containsCredentials": false,
+    "containsPrivateSessionData": false
+  }
+}
