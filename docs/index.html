@@ -100,17 +100,31 @@
       <div class="hero-visual">
         <figure class="cipher-stage">
           <div class="cipher-frame">
-            <canvas id="adg-cipher" width="720" height="720" role="img" data-loop-seconds="5"
-              aria-label="A five second loop in which a lattice of cipher cells blooms into flowers, the visual signature of the SBAY intelligence layer."></canvas>
+            <canvas id="adg-cipher" width="960" height="420" role="img" data-loop-seconds="5"
+              aria-label="A five second visual trace of the published flag-octet pattern. Runtime verification details are provided after the visual module loads."></canvas>
+            <div class="cipher-lane" aria-hidden="true">
+              <span data-cipher-step="fetch">IF</span>
+              <span data-cipher-step="decode">ID</span>
+              <span data-cipher-step="execute">EX</span>
+              <span class="is-bypassed">MEM</span>
+              <span class="is-bypassed">WB</span>
+            </div>
+            <p class="cipher-void" aria-hidden="true">
+              <code>void</code>
+              <span class="ar">ذاكرة WASM لم تتغيّر · لا قيمة عائدة</span>
+              <span class="en">Wasm memory unchanged · no return value</span>
+            </p>
           </div>
           <figcaption class="visual-caption">
-            <span class="ar">طبقة الذكاء في منصة تموين — تمثيل بصري حي</span>
-            <span class="en">The SBAY intelligence layer — a live visual signature</span>
+            <span class="ar">قراءة الأوكتتات ← فكّ البتات ← التفتّح ← الهدوء ← <code>void</code></span>
+            <span class="en">Octet read → bit decode → bloom → quiet → <code>void</code></span>
           </figcaption>
         </figure>
         <p class="cipher-note">
-          <span class="ar">هذا التمثيل مبني على مخرجات حقيقية للمحلل العربي. تفاصيله الكاملة في <a href="./annex-intelligence">الملحق التقني ↗</a>.</span>
-          <span class="en">The visual is driven by real analyser output. Full detail lives in the <a href="./annex-intelligence">technical annex ↗</a>.</span>
+          <span class="ar cipher-runtime-wasm">إعادة عرض حتمية لنتائج عمليات بتّية تحسبها وحدة WebAssembly صغيرة مسبقًا على الأوكتتات المشتقة المنشورة؛ وليست تسجيلًا لدورات معالج مادي. المنهج والحدود في <a href="./annex-intelligence">الملحق التقني ↗</a>.</span>
+          <span class="en cipher-runtime-wasm">A deterministic replay of bit-operation results precomputed by a small WebAssembly module over the published derived octets; not a recording of physical processor cycles. Method and limits are in the <a href="./annex-intelligence">technical annex ↗</a>.</span>
+          <span class="ar cipher-runtime-fallback">تعذّر تشغيل وحدة WebAssembly في هذا العميل؛ لذلك يُعرض نمط مرجعي بالعمليات البتّية المحلية من دون إظهار دعوى الذاكرة الخاصة بـ<code>trace_void</code>. التفاصيل في <a href="./annex-intelligence">الملحق التقني ↗</a>.</span>
+          <span class="en cipher-runtime-fallback">WebAssembly is unavailable in this client, so a local bit-operation reference is shown without presenting the <code>trace_void</code> memory claim. Details are in the <a href="./annex-intelligence">technical annex ↗</a>.</span>
         </p>
       </div>    </section>
 
@@ -441,8 +455,8 @@
         <div class="wasm-copy">
           <p class="section-kicker">MINIMUM PORTABLE FUNCTION</p>
           <h2 id="wasm-heading"><span class="ar">وظيفة عامة بسيطة، لا نموذج سري</span><span class="en">A Simple Public Function, Not the Private Model</span></h2>
-          <p class="ar">ملف WebAssembly صغير يقارن عددين صحيحين لإثبات الحزم المحمولة والتحقق الحتمي فقط.</p>
-          <p class="en">A tiny WebAssembly file compares two integers solely to demonstrate portable packaging and deterministic verification.</p>
+          <p class="ar">ملف WebAssembly عام صغير يقدّم عمليات عددية حتمية محدودة: المقارنة المستخدمة أدناه، واستخراج البت وعدّ البتات اللذين يقودان المشهد البصري، ودالة <code>trace_void</code> الفارغة. لا يحلل نصًا ولا يحتوي نموذجًا.</p>
+          <p class="en">A small public WebAssembly file provides bounded deterministic integer operations: the comparison below, bit extraction and bit counting that drive the visual, and an empty <code>trace_void</code> function. It parses no text and contains no model.</p>
           <code>evidence_match(expected, observed) → 0 | 1</code>
         </div>
         <div class="wasm-lab">

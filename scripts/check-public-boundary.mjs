@@ -372,6 +372,11 @@ for (const asset of [
 const cipher = await readFile(path.join(root, "docs", "adg-cipher.js"), "utf8");
 await stat(path.join(root, "docs", "annex.js"));
 const annex = await readFile(path.join(root, "docs", "annex-intelligence.html"), "utf8");
+const wasmSource = await readFile(path.join(root, "wasm", "evidence_match.rs"), "utf8");
+const disclosureBoundary = await readFile(
+  path.join(root, "PUBLIC-DISCLOSURE-BOUNDARY.md"),
+  "utf8"
+);
 assert.match(cipher, /const LOOP_SECONDS = 5/u);
 assert.match(cipher, /createCanvasPainter/u, "a non-WebGPU fallback painter is mandatory");
 assert.match(cipher, /popcount\(flag\)/u, "petal count must be the population count of the flag byte");
@@ -402,8 +407,15 @@ assert.match(index, /id="adg-cipher"/u);
 assert.match(index, /data-loop-seconds="5"/u);
 assert.match(index, /class="cipher-note"/u, "the disclosure note must stay on the page");
 assert.match(index, /href="\.\/annex-intelligence"/u, "the hero must link to the technical annex");
+assert.match(index, /إعادة عرض حتمية/u);
+assert.match(index, /deterministic replay/u);
+assert.match(index, /ليست تسجيلًا لدورات معالج مادي/u);
+assert.match(index, /not a recording of physical processor cycles/u);
+assert.match(index, /Wasm memory unchanged · no return value/u);
+assert.match(index, /cipher-runtime-fallback/u);
+assert.match(index, /WebAssembly is unavailable in this client/u);
 
-// Dense technical material lives in the annex, never in the main narrative.
+// The hero names the route; all interpretation and limitations stay here.
 for (const label of ["IF", "ID", "EX", "MEM", "WB", "void"]) {
   assert.ok(annex.includes(`<code>${label}</code>`), `missing pipeline label ${label} in the annex`);
 }
@@ -412,6 +424,15 @@ assert.match(annex, /taha-rasm-birmingham\.png/u, "the authorised manuscript emb
 assert.match(annex, /Mingana Islamic Arabic 1572a/u, "the manuscript attribution is mandatory");
 assert.match(annex, /Public domain via Wikimedia Commons/u, "the licence statement is mandatory");
 assert.match(annex, /codePoint &amp; 0xFF/u, "the annex must publish the derivation");
+assert.match(annex, /flag_bit/u);
+assert.match(annex, /flag_popcount/u);
+assert.match(annex, /trace_void/u);
+assert.match(annex, /ليست قياسًا أو تسجيلًا لمراحل معالج مادي/u);
+assert.match(annex, /not a measurement or recording of physical processor stages/u);
+assert.match(annex, /void<\/code> لا يعني عمومًا/u);
+assert.match(annex, /does not generally mean that a function cannot write memory/u);
+assert.match(annex, /https:\/\/sbay-dev\.github\.io\/sarmadAi\//u);
+assert.doesNotMatch(annex, /نقلٌ أمين|faithful port/iu);
 // Content Security Policy allows no inline script: the annex must load a module file.
 assert.equal(/<script(?![^>]*\ssrc=)/u.test(annex), false, "no inline script in the annex");
 assert.match(annex, /<script type="module" src="\.\/annex\.js">/u);
@@ -431,6 +452,19 @@ assert.ok(creditIndex > -1 && manuscriptIndex > creditIndex,
 for (const figure of ["84", "23", "184", "85"]) {
   assert.ok(annex.includes(figure), `missing derived figure ${figure} in the annex`);
 }
+assert.match(cipher, /loadWasmAnalyzer/u);
+assert.match(cipher, /flagBit/u);
+assert.match(cipher, /flagPopcount/u);
+assert.match(cipher, /voidMemoryWrites/u);
+assert.match(cipher, /stageForPhase/u);
+assert.match(cipher, /traceMode: "precomputed-replay"/u);
+assert.match(cipher, /stageRoot\.dataset\.analyzer = analyzer\.kind/u);
+assert.doesNotMatch(cipher, /faithful port/iu);
+assert.match(wasmSource, /fn flag_bit/u);
+assert.match(wasmSource, /fn flag_popcount/u);
+assert.match(wasmSource, /fn trace_void\(\) \{\}/u);
+assert.match(disclosureBoundary, /not measured\s+hardware pipeline stages/u);
+assert.match(disclosureBoundary, /`void` type generally proves absence of\s+memory side effects/u);
 for (const [pattern, label] of [
   [/RasmMaskHex|RasmRecordHex/iu, "proprietary rasm mask table"],
   [/0x8003|0x0817/u, "proprietary rasm mask value"],

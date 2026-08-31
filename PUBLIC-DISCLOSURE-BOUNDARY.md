@@ -28,9 +28,18 @@ Audit ID: `SBAY-LEAP-DEEPFEST-20260831T043818Z`
   a loss on Sadeem, and no claim of general MTEB superiority.
 - Repository visibility, commit identifiers, file hashes, and release roots
   that do not reveal private content.
-- A deliberately trivial WebAssembly equality function used to demonstrate
-  portable packaging. It is not a CNS, CGN, Genius, retrieval, or inference
-  implementation.
+- A deliberately small WebAssembly evidence module: equality, bit extraction,
+  population count over one public octet, and an empty `trace_void` export.
+  The release test verifies that `trace_void` returns no value and leaves the
+  module's complete linear memory unchanged. The module does not parse the
+  verse and is not a CNS, CGN, Genius, retrieval, inference, or private Arabic
+  analyser implementation.
+- A deterministic five-second replay over the 23 published low octets. The
+  WebAssembly bit results are precomputed before drawing; WebGPU when available
+  or Canvas2D otherwise then presents read, bit decode, bloom and quiet,
+  followed by the live `trace_void` call.
+  `IF`, `ID`, `EX`, `MEM` and `WB` are explanatory visual labels, not measured
+  hardware pipeline stages.
 - The functional category of QdrantServer: a private .NET provider host for
   data, runtime, health, and administrative integrations.
 - The public name `منصّة تحكيم اللغة العربية`, its live URL, public release
@@ -85,6 +94,10 @@ recorded way for a reader to check it.
 - Corpora, evaluation rows, private prompts, labels, or expert assignments.
 - Proprietary routing rules, thresholds, masks, graph topology, or training
   recipes.
+- Any claim that the public bloom is an instrumented native-assembly or
+  physical-processor trace, that the public WebAssembly module contains the
+  private Arabic analyser, or that the `void` type generally proves absence of
+  memory side effects.
 - Private patent claims, claim charts, inventor records, filing documents, or
   unpublished enablement detail.
 - Keys, tokens, certificates, connection strings, internal hostnames, identity

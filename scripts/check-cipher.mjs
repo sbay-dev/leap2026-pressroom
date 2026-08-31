@@ -104,19 +104,47 @@ for (const view of [
       gpuError: canvas?.dataset.gpuError ?? null,
       gpuValidation: canvas?.dataset.gpuValidation ?? null,
       instances: canvas?.dataset.instances ?? null,
+      analyzer: canvas?.dataset.analyzer ?? null,
+      analyzerError: canvas?.dataset.analyzerError ?? null,
+      traceMode: canvas?.dataset.traceMode ?? null,
+      voidReturn: canvas?.dataset.voidReturn ?? null,
+      voidMemoryWrites: canvas?.dataset.voidMemoryWrites ?? null,
       facts,
+      traceStages: [],
       overflow: document.documentElement.scrollWidth
         - document.documentElement.clientWidth
     };
   });
 
   const canvas = page.locator("#adg-cipher");
+  if (view.name === "desktop") {
+    report.views[view.name].traceStages = await page.evaluate(() =>
+      new Promise(resolve => {
+        const observed = new Set();
+        const canvasNode = document.getElementById("adg-cipher");
+        const sample = setInterval(() => {
+          if (canvasNode?.dataset.traceStage) {
+            observed.add(canvasNode.dataset.traceStage);
+          }
+        }, 50);
+        setTimeout(() => {
+          clearInterval(sample);
+          resolve([...observed]);
+        }, 5250);
+      }));
+  }
   for (let frame = 0; frame < 8; frame += 1) {
     await page.waitForTimeout(620);
+    report.views[view.name].traceStages.push(
+      await canvas.getAttribute("data-trace-stage")
+    );
     await canvas.screenshot({
       path: path.join(outDir, `${view.name}-frame-${frame}.png`)
     });
   }
+  report.views[view.name].voidInvocations = Number(
+    await canvas.getAttribute("data-void-invocations") || 0
+  );
   await page.screenshot({
     path: path.join(outDir, `${view.name}-hero.png`),
     clip: { x: 0, y: 0, width: view.width, height: Math.min(view.height, 1000) }
@@ -156,7 +184,9 @@ report.reducedMotion = {
   framesAfterWait: await reduced.evaluate(() =>
     document.getElementById("adg-cipher")?.dataset.frames ?? null),
   backend: await reduced.evaluate(() =>
-    document.getElementById("adg-cipher")?.dataset.backend ?? null)
+    document.getElementById("adg-cipher")?.dataset.backend ?? null),
+  ariaLabel: await reduced.evaluate(() =>
+    document.getElementById("adg-cipher")?.getAttribute("aria-label") ?? "")
 };
 await reduced.locator("#adg-cipher").screenshot({
   path: path.join(outDir, "reduced-motion.png")
@@ -199,6 +229,10 @@ report.annex = await annexPage.evaluate(() => {
     backend: canvas?.dataset.backend ?? null,
     frames: canvas?.dataset.frames ?? null,
     instances: canvas?.dataset.instances ?? null,
+    analyzer: canvas?.dataset.analyzer ?? null,
+    traceMode: canvas?.dataset.traceMode ?? null,
+    voidReturn: canvas?.dataset.voidReturn ?? null,
+    voidMemoryWrites: canvas?.dataset.voidMemoryWrites ?? null,
     manuscriptWidth: image?.naturalWidth ?? 0,
     overflow: document.documentElement.scrollWidth
       - document.documentElement.clientWidth
@@ -213,6 +247,42 @@ await annexPage.screenshot({
   clip: { x: 0, y: 0, width: 1280, height: 900 }
 });
 await annexPage.close();
+
+const fallbackPage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+await fallbackPage.addInitScript(() => {
+  Object.defineProperty(navigator, "gpu", {
+    configurable: true,
+    value: undefined
+  });
+});
+fallbackPage.on("console", message => {
+  if (message.type() === "error") {
+    report.consoleErrors.push(`canvas2d: ${message.text()}`);
+  }
+});
+fallbackPage.on("pageerror", error => {
+  report.pageErrors.push(`canvas2d: ${error.message}`);
+});
+await fallbackPage.goto(origin, { waitUntil: "networkidle" });
+await fallbackPage.locator("#adg-cipher").scrollIntoViewIfNeeded();
+await fallbackPage.waitForTimeout(1900);
+report.canvas2d = await fallbackPage.evaluate(() => {
+  const canvas = document.getElementById("adg-cipher");
+  return {
+    backend: canvas?.dataset.backend ?? null,
+    analyzer: canvas?.dataset.analyzer ?? null,
+    traceMode: canvas?.dataset.traceMode ?? null,
+    fallbackNoteVisible: getComputedStyle(
+      document.querySelector(".cipher-runtime-fallback")
+    ).display !== "none",
+    overflow: document.documentElement.scrollWidth
+      - document.documentElement.clientWidth
+  };
+});
+await fallbackPage.locator("#adg-cipher").screenshot({
+  path: path.join(outDir, "canvas2d.png")
+});
+await fallbackPage.close();
 
 await browser.close();
 await new Promise(resolve => server.close(resolve));
@@ -248,6 +318,51 @@ if (report.annex.overflow > 0) {
 }
 if (report.annex.languageToggle !== "en/ltr") {
   failures.push(`annex language toggle did not switch: ${report.annex.languageToggle}`);
+}
+for (const view of ["desktop", "mobile"]) {
+  const result = report.views[view];
+  if (result.analyzer !== "wasm-i32") {
+    failures.push(`${view}: WebAssembly analyser not active (${result.analyzer})`);
+  }
+  if (result.traceMode !== "precomputed-replay") {
+    failures.push(`${view}: trace mode is not the disclosed precomputed replay`);
+  }
+  if (result.voidReturn !== "none" || result.voidMemoryWrites !== "0") {
+    failures.push(`${view}: void contract not verified`);
+  }
+  if (result.gpuAvailable && result.backend !== "webgpu") {
+    failures.push(`${view}: WebGPU was available but the renderer fell back`);
+  }
+  if (result.gpuError || result.gpuValidation) {
+    failures.push(`${view}: GPU error ${result.gpuError || result.gpuValidation}`);
+  }
+  if (Number(result.frames || 0) < 1) {
+    failures.push(`${view}: no animation frame was painted`);
+  }
+}
+for (const stage of ["fetch", "decode", "execute", "quiet", "void"]) {
+  if (!report.views.desktop.traceStages.includes(stage)) {
+    failures.push(`desktop: trace never entered ${stage}`);
+  }
+}
+if (report.views.desktop.voidInvocations < 1) {
+  failures.push("desktop: trace_void was never invoked by the loop");
+}
+if (report.annex.analyzer !== "wasm-i32"
+  || report.annex.traceMode !== "precomputed-replay"
+  || report.annex.voidReturn !== "none"
+  || report.annex.voidMemoryWrites !== "0") {
+  failures.push("annex: WebAssembly void contract not active");
+}
+if (report.canvas2d.backend !== "canvas2d"
+  || report.canvas2d.analyzer !== "wasm-i32"
+  || report.canvas2d.traceMode !== "precomputed-replay"
+  || report.canvas2d.fallbackNoteVisible
+  || report.canvas2d.overflow > 0) {
+  failures.push("Canvas2D fallback does not match the disclosed trace contract");
+}
+if (!report.reducedMotion.ariaLabel.startsWith("Static reduced-motion frame")) {
+  failures.push("reduced motion accessibility label describes an animation");
 }
 if (failures.length) {
   console.error("FAILED:\n" + failures.join("\n"));

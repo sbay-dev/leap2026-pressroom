@@ -19,12 +19,21 @@ assert.deepEqual(names, [
   "__data_end",
   "__heap_base",
   "evidence_match",
-  "memory"
+  "flag_bit",
+  "flag_popcount",
+  "memory",
+  "trace_void"
 ]);
 const callableExports = Object.entries(module.instance.exports)
   .filter(([, value]) => typeof value === "function")
-  .map(([name]) => name);
-assert.deepEqual(callableExports, ["evidence_match"]);
+  .map(([name]) => name)
+  .sort();
+assert.deepEqual(callableExports, [
+  "evidence_match",
+  "flag_bit",
+  "flag_popcount",
+  "trace_void"
+]);
 assert.ok(
   module.instance.exports.memory.buffer.byteLength <= 65_536,
   "WASM memory exceeds one page."
@@ -32,10 +41,33 @@ assert.ok(
 assert.equal(module.instance.exports.evidence_match(42, 42), 1);
 assert.equal(module.instance.exports.evidence_match(42, 41), 0);
 assert.equal(module.instance.exports.evidence_match(-7, -7), 1);
+for (let flag = 0; flag <= 0xff; flag += 1) {
+  let expectedPopcount = 0;
+  for (let bit = 0; bit < 8; bit += 1) {
+    const expected = (flag >> bit) & 1;
+    expectedPopcount += expected;
+    assert.equal(module.instance.exports.flag_bit(flag, bit), expected);
+  }
+  assert.equal(module.instance.exports.flag_popcount(flag), expectedPopcount);
+}
+assert.equal(module.instance.exports.flag_bit(0xff, -1), 0);
+assert.equal(module.instance.exports.flag_bit(0xff, 8), 0);
+
+const memoryBeforeVoid = new Uint8Array(
+  module.instance.exports.memory.buffer
+).slice();
+assert.equal(module.instance.exports.trace_void(), undefined);
+assert.deepEqual(
+  new Uint8Array(module.instance.exports.memory.buffer),
+  memoryBeforeVoid,
+  "trace_void must not change WebAssembly linear memory"
+);
 
 console.log(JSON.stringify({
   ok: true,
   bytes: bytes.length,
   callableExports,
-  memoryBytes: module.instance.exports.memory.buffer.byteLength
+  memoryBytes: module.instance.exports.memory.buffer.byteLength,
+  voidReturn: "none",
+  voidMemoryWrites: 0
 }));

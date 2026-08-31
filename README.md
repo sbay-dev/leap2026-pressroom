@@ -12,7 +12,9 @@ Live targets:
 The custom domain is served through Cloudflare and applies the checked-in
 security headers. Its `no-transform` cache directive prevents edge analytics
 injection, while the CSP grants only the narrow WebAssembly compilation
-capability required by the public equality proof. GitHub Pages does not support
+capability required by the small public evidence module. That module exposes
+integer equality, bit extraction, population count and an empty `trace_void`;
+it does not contain the private Arabic analyser. GitHub Pages does not support
 repository-defined response headers, so the mirror uses GitHub's default
 headers and is not the canonical security boundary.
 
@@ -25,6 +27,12 @@ platform.
 NewsBoy, CP, Sarmad, CNS and QdrantServer appear as bounded operating or
 technical evidence. KSAR now has a dedicated live-commerce stage linked to its
 verified `2.1.0-leap2026` production release.
+
+The hero replays the WebAssembly-derived public flag pattern through WebGPU
+when available and Canvas2D otherwise: octet read, bit decode, bloom, quiet,
+then a live `trace_void` call. The processor-stage labels are explanatory, not
+a recording of physical CPU cycles. Release checks prove that this specific
+void function returns no value and leaves WebAssembly linear memory unchanged.
 
 The KSAR stage presents one bounded proposition: watch the product, negotiate
 with the direct seller, and move toward an agreement in one live session. It

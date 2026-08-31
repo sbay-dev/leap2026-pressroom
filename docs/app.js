@@ -39,6 +39,7 @@ dialog?.addEventListener("click", event => {
 });
 
 let wasmMatch = null;
+let wasmExports = null;
 function renderMatchResult() {
   if (!result) return;
   const arabic = body.classList.contains("lang-ar");
@@ -67,6 +68,7 @@ try {
   if (!response.ok) throw new Error(`WASM HTTP ${response.status}`);
   const bytes = await response.arrayBuffer();
   const module = await WebAssembly.instantiate(bytes);
+  wasmExports = module.instance.exports;
   wasmMatch = module.instance.exports.evidence_match;
   setResult(true);
 } catch (error) {
@@ -379,7 +381,7 @@ if (canvas) {
 
 const cipherCanvas = document.getElementById("adg-cipher");
 if (cipherCanvas) {
-  mountAdgCipher(cipherCanvas).then(instance => {
+  mountAdgCipher(cipherCanvas, wasmExports).then(instance => {
     if (!instance) return;
     const facts = {
       reference: instance.scene.reference,

@@ -42,7 +42,10 @@ assert.match(html, /newsboy-classic-editorial\.png/u);
 assert.match(html, /id="adg-cipher"[^>]*data-loop-seconds="5"/u);
 assert.match(html, /class="cipher-note"/u);
 assert.match(html, /href="\.\/annex-intelligence"/u);
-assert.doesNotMatch(html, /<code>void<\/code>/u);
+assert.match(html, /<code>void<\/code>/u);
+assert.match(html, /deterministic replay/u);
+assert.match(html, /not a recording of physical processor cycles/u);
+assert.match(html, /Wasm memory unchanged · no return value/u);
 assert.doesNotMatch(html, /RasmMaskHex|RasmRecordHex/iu);
 assert.doesNotMatch(html, /cloudflareinsights|beacon\.min\.js/iu);
 const annexResponse = await fetch(`${baseUrl}/annex-intelligence`, { redirect: "error" });
@@ -55,6 +58,12 @@ assert.match(annexHtml, /Quran 20:13/u);
 assert.match(annexHtml, /Mingana Islamic Arabic 1572a/u);
 assert.match(annexHtml, /Public domain via Wikimedia Commons/u);
 assert.match(annexHtml, /taha-rasm-birmingham\.png/u);
+assert.match(annexHtml, /flag_bit/u);
+assert.match(annexHtml, /flag_popcount/u);
+assert.match(annexHtml, /trace_void/u);
+assert.match(annexHtml, /not a measurement or recording of physical processor stages/u);
+assert.match(annexHtml, /does not generally mean that a function cannot write memory/u);
+assert.doesNotMatch(annexHtml, /faithful port/iu);
 assert.doesNotMatch(annexHtml, /RasmMaskHex|RasmRecordHex/iu);
 const manuscript = await fetch(`${baseUrl}/assets/press/taha-rasm-birmingham.png`, { method: "GET" });
 assert.equal(manuscript.status, 200, "the manuscript witness must be published");
@@ -169,6 +178,18 @@ assert.deepEqual([...bytes.subarray(0, 4)], [0, 97, 115, 109]);
 const instance = await WebAssembly.instantiate(bytes);
 assert.equal(instance.instance.exports.evidence_match(9, 9), 1);
 assert.equal(instance.instance.exports.evidence_match(9, 8), 0);
+assert.equal(instance.instance.exports.flag_bit(0x48, 6), 1);
+assert.equal(instance.instance.exports.flag_bit(0x48, 3), 1);
+assert.equal(instance.instance.exports.flag_bit(0x48, 0), 0);
+assert.equal(instance.instance.exports.flag_popcount(0x48), 2);
+const memoryBeforeVoid = new Uint8Array(
+  instance.instance.exports.memory.buffer
+).slice();
+assert.equal(instance.instance.exports.trace_void(), undefined);
+assert.deepEqual(
+  new Uint8Array(instance.instance.exports.memory.buffer),
+  memoryBeforeVoid
+);
 
 const csp = page.headers.get("content-security-policy");
 if (csp) {
@@ -185,6 +206,12 @@ console.log(JSON.stringify({
   pressroomRelease: release.releaseId,
   ksarRelease: ksar.release,
   wasmBytes: bytes.length,
+  wasmTrace: {
+    flagBit: true,
+    flagPopcount: true,
+    voidReturn: "none",
+    voidMemoryWrites: 0
+  },
   contentSecurityPolicy: Boolean(csp),
   noTransform: true,
   analyticsInjection: false

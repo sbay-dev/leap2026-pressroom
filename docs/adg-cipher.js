@@ -1,23 +1,28 @@
 /*
  * ADG Cipher -> Bloom
- * A faithful port of the original CNS "Flower Bloom Cipher" study published at
- * https://sbay-dev.github.io/sarmadAi/ , with the real numbers applied to it.
+ * A deterministic, data-driven adaptation of the CNS "Flower Bloom Cipher"
+ * study embedded in the single page at https://sbay-dev.github.io/sarmadAi/ .
  *
- * Nothing here is invented for decoration:
- *   - the lattice is 23 columns by 8 rows, the 184 flag bits of one parsed verse
- *   - a column blooms only where its bit is set
- *   - the petal count of a flower equals the population count of that unit
- *   - the cipher label above a column is that unit's flag byte in hexadecimal
+ * The public evidence shown here is deliberately narrow:
+ *   - 23 published low octets form a 23 by 8 lattice of 184 flag positions
+ *   - WebAssembly extracts each bit and computes each octet's population count
+ *   - a set bit blooms; its petals equal that octet's population count
+ *   - the final trace_void call returns no value and changes no linear memory
  *
- * The verse itself is never typed into this file. Only the derived byte values
- * are published, and they come from the public Unicode scalar of each classical
- * rasm unit. No proprietary mask table, routing rule, threshold or weight is
- * present. The verse image is reproduced in the annex from a public domain
- * manuscript, never redrawn here.
+ * IF, ID and EX are visual phase labels, not an instrumented hardware trace.
+ * The verse is never typed into this file. No proprietary mask table, routing
+ * rule, threshold, weight or model artefact is present.
  */
 
 const LOOP_SECONDS = 5;
-const MAX_BACKING_PIXELS = 1024;
+const MAX_BACKING_AREA = 1_000_000;
+const TRACE = Object.freeze({
+  fetchEnd: 0.18,
+  decodeEnd: 0.34,
+  executeEnd: 0.70,
+  quietEnd: 0.82,
+  voidEnd: 0.96
+});
 
 /*
  * Derived byte reality for Quran 20:13. Per word: UTF-8 length, then the low
@@ -41,11 +46,66 @@ const popcount = byte => {
   return bits;
 };
 
+const JS_ANALYZER = Object.freeze({
+  kind: "js-fallback",
+  flagBit: (flag, bit) => bit >= 0 && bit < 8 ? (flag >> bit) & 1 : 0,
+  flagPopcount: popcount,
+  traceVoid: () => undefined,
+  voidReturn: "none",
+  voidMemoryWrites: "not-observed"
+});
+
+function createWasmAnalyzer(exports) {
+  for (const name of ["flag_bit", "flag_popcount", "trace_void"]) {
+    if (typeof exports?.[name] !== "function") {
+      throw new TypeError(`Missing WebAssembly export: ${name}`);
+    }
+  }
+  if (!(exports.memory instanceof WebAssembly.Memory)) {
+    throw new TypeError("Missing WebAssembly linear memory");
+  }
+
+  const before = new Uint8Array(exports.memory.buffer).slice();
+  const result = exports.trace_void();
+  const after = new Uint8Array(exports.memory.buffer);
+  const unchanged = before.length === after.length
+    && before.every((value, index) => value === after[index]);
+  if (result !== undefined || !unchanged) {
+    throw new Error("trace_void changed memory or returned a value");
+  }
+
+  return Object.freeze({
+    kind: "wasm-i32",
+    flagBit: (flag, bit) => exports.flag_bit(flag, bit),
+    flagPopcount: flag => exports.flag_popcount(flag),
+    traceVoid: () => exports.trace_void(),
+    voidReturn: "none",
+    voidMemoryWrites: 0
+  });
+}
+
+async function loadWasmAnalyzer(providedExports) {
+  if (providedExports) return createWasmAnalyzer(providedExports);
+  const response = await fetch("./evidence-match.wasm");
+  if (!response.ok) {
+    throw new Error(`WebAssembly analyser HTTP ${response.status}`);
+  }
+  const module = await WebAssembly.instantiate(await response.arrayBuffer());
+  return createWasmAnalyzer(module.instance.exports);
+}
+
+function stageForPhase(phase) {
+  if (phase < TRACE.fetchEnd) return "fetch";
+  if (phase < TRACE.decodeEnd) return "decode";
+  if (phase < TRACE.executeEnd) return "execute";
+  if (phase < TRACE.quietEnd) return "quiet";
+  if (phase < TRACE.voidEnd) return "void";
+  return "reset";
+}
+
 const PALETTE = {
   rasm: [0.90, 0.97, 1.0],
   clearBit: [0.20, 0.34, 0.52],
-  stage: [0.55, 0.75, 0.95],
-  packet: [0.96, 0.78, 0.4],
   voidLane: [0.62, 0.55, 0.95],
   // Cyan to violet across the five words, carrying the bloom study forward.
   words: [
@@ -59,27 +119,34 @@ const PALETTE = {
 
 const KIND = {
   GLYPH: 0,
-  BIT: 1,
-  PETAL: 2,
-  STAGE: 3,
-  PACKET: 4,
-  VOID: 5,
-  RULE: 6,
-  STREAM: 7,
-  CELL: 8
+  CELL: 1,
+  BIT: 2,
+  PETAL: 3,
+  GLOW: 4,
+  RULE: 5,
+  GRID: 6,
+  VOID: 7
 };
 
 /** Builds the deterministic scene model shared by both painters. */
-export function buildScene() {
+export function buildScene(analyzer = JS_ANALYZER) {
   const units = [];
   RASM.words.forEach((word, wordIndex) => {
     word.flags.forEach((flag, glyphIndex) => {
+      const bits = Array.from(
+        { length: 8 },
+        (_, bit) => analyzer.flagBit(flag, bit)
+      );
+      const petals = analyzer.flagPopcount(flag);
+      if (petals !== bits.reduce((sum, value) => sum + value, 0)) {
+        throw new Error(`Inconsistent analyser output for flag 0x${flag.toString(16)}`);
+      }
       units.push({
         wordIndex,
         glyphIndex,
         flag,
-        // Petals of this unit's flower: the bits that caused the interaction.
-        petals: popcount(flag),
+        bits,
+        petals,
         label: flag.toString(16).toUpperCase().padStart(2, "0")
       });
     });
@@ -96,7 +163,11 @@ export function buildScene() {
     totalUtf8,
     transportBits,
     transportBytes: units.length,
-    ratio: totalUtf8 / units.length
+    ratio: totalUtf8 / units.length,
+    analyser: analyzer.kind,
+    traceMode: "precomputed-replay",
+    voidReturn: analyzer.voidReturn,
+    voidMemoryWrites: analyzer.voidMemoryWrites
   };
 }
 
@@ -105,80 +176,145 @@ export function buildScene() {
  * ------------------------------------------------------------------ */
 
 /**
- * Places every drawable in clip space. Arabic reads right to left, so unit 0
- * sits at the right edge. Rows run from the most significant bit downwards, so
- * a cell's row is its bit position and its column is its assembly position.
+ * Places the public octet trace in clip space. Unit zero sits at the right
+ * edge. Rows run from the most significant bit downwards.
  */
 function layout(scene) {
   const items = [];
   const columns = scene.units.length;
   const rows = 8;
-  const halfWidth = 0.93;
+  const halfWidth = 0.94;
   const stepX = (halfWidth * 2) / columns;
   const columnX = index => halfWidth - stepX * (index + 0.5);
 
-  const latticeTop = -0.46;
-  const stepY = 0.145;
-  const cellSize = stepX * 0.34;
+  const latticeTop = -0.52;
+  const latticeBottom = 0.42;
+  const stepY = (latticeBottom - latticeTop) / rows;
+  const latticeCenter = (latticeTop + latticeBottom) / 2;
+
+  // The grid is part of the data: 23 octet positions by 8 bit positions.
+  for (let boundary = 0; boundary <= columns; boundary += 1) {
+    items.push({
+      kind: KIND.GRID,
+      x: -halfWidth + boundary * stepX,
+      y: latticeCenter,
+      w: 0.0022,
+      h: latticeBottom - latticeTop,
+      color: PALETTE.clearBit,
+      seed: boundary,
+      t0: 0,
+      span: 0.001,
+      atlas: -1,
+      value: 0
+    });
+  }
+  for (let boundary = 0; boundary <= rows; boundary += 1) {
+    items.push({
+      kind: KIND.GRID,
+      x: 0,
+      y: latticeTop + boundary * stepY,
+      w: halfWidth * 2,
+      h: 0.0022,
+      color: PALETTE.clearBit,
+      seed: columns + boundary,
+      t0: 0,
+      span: 0.001,
+      atlas: -1,
+      value: 0
+    });
+  }
 
   scene.units.forEach((unit, index) => {
     const x = columnX(index);
     const tint = PALETTE.words[unit.wordIndex];
+    const unitOrder = index / Math.max(1, columns - 1);
 
-    // Cipher layer: the real flag byte, in the place the original study drew a
-    // random character before it resolved into a flower.
+    // IF: the immutable published low octet enters from right to left.
     items.push({
-      kind: KIND.GLYPH, x, y: latticeTop - stepY * 1.05,
-      w: stepX * 1.1, h: stepY * 0.52,
+      kind: KIND.GLYPH,
+      x,
+      y: latticeTop - stepY * 0.78,
+      w: stepX * 0.96,
+      h: stepY * 0.54,
       color: PALETTE.rasm, seed: index,
-      t0: 0.01 + index * 0.008, span: 0.18,
-      atlas: index, value: 1, to: null
+      t0: 0.018 + unitOrder * 0.09,
+      span: 0.075,
+      atlas: index,
+      value: 1
     });
 
     for (let bit = 7; bit >= 0; bit -= 1) {
-      const set = (unit.flag >> bit) & 1;
+      const set = unit.bits[bit];
       const row = 7 - bit;
-      const y = latticeTop + row * stepY;
+      const y = latticeTop + (row + 0.5) * stepY;
+      const cellOrder = (index * rows + row) / (columns * rows - 1);
+      const decodeAt = TRACE.fetchEnd + unitOrder * 0.08 + row * 0.0025;
 
-      // Permanent lattice: every one of the 184 flag positions is drawn.
+      // ID: every bit position remains visible; set positions brighten.
       items.push({
-        kind: KIND.CELL, x, y,
-        w: cellSize, h: cellSize,
+        kind: KIND.CELL,
+        x,
+        y,
+        w: stepX * 0.17,
+        h: stepX * 0.17,
         color: PALETTE.clearBit, seed: index * 8 + row,
-        t0: 0, span: 0.001,
-        atlas: -1, value: 0, to: null
+        t0: decodeAt,
+        span: 0.07,
+        atlas: -1,
+        value: set
       });
 
       if (!set) continue;
 
-      const t0 = 0.16 + index * 0.0155 + row * 0.006;
-      // A flower opens only where a bit is set, and only with as many petals
-      // as there are set bits in the byte that produced it. Each petal is an
-      // ellipse offset outward along its own angle, exactly as the original.
-      const reach = stepX * 0.92;
+      // EX: the set bit becomes the centre of a bounded, translucent bloom.
+      const bloomAt = TRACE.decodeEnd + cellOrder * 0.23;
       for (let petal = 0; petal < unit.petals; petal += 1) {
-        const angle = (Math.PI * 2 / unit.petals) * petal + (index + row) * 0.21;
+        const angle = (Math.PI * 2 / unit.petals) * petal
+          + (index * 0.17 + row * 0.11);
         items.push({
-          kind: KIND.PETAL, x, y,
-          w: reach * 1.2, h: reach * 0.5,
+          kind: KIND.PETAL,
+          x,
+          y,
+          w: stepX * 0.56,
+          h: stepX * 0.23,
           color: tint, seed: index * 8 + row + petal,
-          t0: t0 + 0.02, span: 0.3,
-          atlas: -1, value: 1,
-          to: [x + Math.cos(angle) * reach * 0.5, y + Math.sin(angle) * reach * 0.5],
+          t0: bloomAt,
+          span: 0.075,
+          atlas: -1,
+          value: 1,
+          orbit: stepX * 0.19,
           rotation: angle
         });
       }
       items.push({
-        kind: KIND.BIT, x, y,
-        w: cellSize * 1.15, h: cellSize * 1.15,
+        kind: KIND.GLOW,
+        x,
+        y,
+        w: stepX * 0.72,
+        h: stepX * 0.72,
+        color: tint,
+        seed: index * 8 + row,
+        t0: bloomAt,
+        span: 0.09,
+        atlas: -1,
+        value: 1
+      });
+      items.push({
+        kind: KIND.BIT,
+        x,
+        y,
+        w: stepX * 0.19,
+        h: stepX * 0.19,
         color: tint, seed: index * 8 + row,
-        t0, span: 0.16,
-        atlas: -1, value: 1, to: null
+        t0: decodeAt,
+        span: 0.07,
+        atlas: -1,
+        value: 1
       });
     }
   });
 
-  // One rule per word: five ordered blocks, the shape the abstraction reads.
+  // Five public word groups remain visible while the transient blooms settle.
   let cursor = 0;
   scene.words.forEach((word, wordIndex) => {
     const first = cursor;
@@ -189,13 +325,33 @@ function layout(scene) {
     items.push({
       kind: KIND.RULE,
       x: (left + right) / 2,
-      y: latticeTop + stepY * 7.7,
+      y: latticeBottom + stepY * 0.38,
       w: right - left, h: 0.006,
       color: PALETTE.words[wordIndex], seed: wordIndex,
-      t0: 0.1 + wordIndex * 0.02, span: 0.2,
-      atlas: -1, value: 1, to: null
+      t0: 0.08 + wordIndex * 0.012,
+      span: 0.12,
+      atlas: -1,
+      value: 1
     });
   });
+
+  // A no-op call has no visual payload: only three rings dissipate, leaving
+  // the permanent grid behind. The HTML overlay names the verified void state.
+  for (let ring = 0; ring < 3; ring += 1) {
+    items.push({
+      kind: KIND.VOID,
+      x: 0,
+      y: latticeCenter,
+      w: 0.13 + ring * 0.08,
+      h: 0.13 + ring * 0.08,
+      color: PALETTE.voidLane,
+      seed: ring,
+      t0: TRACE.quietEnd + ring * 0.018,
+      span: 0.09,
+      atlas: -1,
+      value: ring
+    });
+  }
 
   return items;
 }
@@ -250,7 +406,7 @@ struct Uniforms {
   phase : f32,
   intensity : f32,
   fade : f32,
-  reserved : f32,
+  aspect : f32,
 };
 
 @group(0) @binding(0) var<uniform> uniforms : Uniforms;
@@ -275,6 +431,17 @@ fn envelope(t0 : f32, span : f32) -> f32 {
   return easeOut((uniforms.phase - t0) / span);
 }
 
+fn flowerEnvelope(t0 : f32, span : f32) -> f32 {
+  let rise = envelope(t0, span);
+  let localFade = 1.0 - smoothstep(
+    t0 + span + 0.055,
+    t0 + span + 0.20,
+    uniforms.phase
+  );
+  let quiet = 1.0 - smoothstep(0.70, 0.82, uniforms.phase);
+  return rise * localFade * quiet;
+}
+
 @vertex
 fn vertexMain(
   @location(0) corner : vec2f,
@@ -290,59 +457,85 @@ fn vertexMain(
   let span = timing.w;
 
   let grow = envelope(t0, span);
-  var scale = mix(0.35, 1.0, grow);
+  var scale = 1.0;
   var offset = vec2f(0.0, 0.0);
-  var energy = grow;
+  var energy = 1.0;
   let breathe = sin((uniforms.phase * 6.2831853) + seed * 0.45);
+  var angle = rect.z;
 
   if (kind < 0.5) {
-    // Rasm glyph: permanent stage, never cycles.
-    scale = 1.0;
-    energy = 1.0;
+    // IF: the published low octet enters from right to left.
+    scale = mix(0.76, 1.0, grow);
+    energy = grow * (1.0 - smoothstep(0.70, 0.82, uniforms.phase));
   } else if (kind < 1.5) {
-    // Lit flag cell: rises, holds, then is consumed by the transport stream.
-    scale = mix(0.1, 1.0, grow);
-    energy = grow * (1.0 - smoothstep(0.80, 0.96, uniforms.phase));
+    // ID: the full 23 by 8 lattice remains as the stable evidence surface.
+    let decode = smoothstep(0.18, 0.34, uniforms.phase)
+      * (1.0 - smoothstep(0.70, 0.82, uniforms.phase));
+    let voidDip = smoothstep(0.82, 0.88, uniforms.phase)
+      * (1.0 - smoothstep(0.94, 1.0, uniforms.phase));
+    energy = 0.20 + decode * 0.28 - voidDip * 0.08;
   } else if (kind < 2.5) {
-    // Bloom petal: opens outward along its own angle and keeps a slow breath.
-    scale = grow * (1.0 + breathe * 0.06 * uniforms.intensity);
-    offset = (vec2f(rect.x, rect.y) - center) * grow;
-    energy = grow * (1.0 - smoothstep(0.78, 0.94, uniforms.phase));
+    // A set bit becomes the centre shared by its bloom.
+    scale = mix(0.22, 1.0, grow);
+    energy = grow * (1.0 - smoothstep(0.68, 0.82, uniforms.phase));
   } else if (kind < 3.5) {
-    // Pipeline stage: permanent.
-    scale = 1.0;
-    energy = 1.0;
+    // EX: the original ellipse grows and rotates around the same bit centre.
+    let flower = flowerEnvelope(t0, span);
+    angle = rect.z + uniforms.phase * 1.35;
+    scale = flower * (1.0 + breathe * 0.045 * uniforms.intensity);
+    offset = vec2f(
+      cos(angle) * rect.x,
+      sin(angle) * rect.x * uniforms.aspect
+    ) * flower;
+    energy = flower;
   } else if (kind < 4.5) {
-    // Packet: travels the lane right to left, then leaves through void.
-    let travel = easeOut((uniforms.phase - t0) / span);
-    offset.x = -travel * seed;
-    energy = grow * (1.0 - smoothstep(0.82, 1.0, travel));
+    // The low-opacity halo is visual only and carries no additional datum.
+    let flower = flowerEnvelope(t0, span);
+    scale = mix(0.35, 1.08, flower);
+    energy = flower;
   } else if (kind < 5.5) {
-    // Void return dashes: light only while the packet leaves.
-    scale = mix(0.4, 1.0, grow);
-    energy = grow * (1.0 - smoothstep(0.90, 0.995, uniforms.phase));
+    // Word grouping is permanent but recedes during the void call.
+    let wordLight = smoothstep(0.08, 0.24, uniforms.phase)
+      * (1.0 - smoothstep(0.70, 0.82, uniforms.phase));
+    let voidDip = smoothstep(0.82, 0.88, uniforms.phase)
+      * (1.0 - smoothstep(0.94, 1.0, uniforms.phase));
+    energy = 0.30 + wordLight * 0.44 - voidDip * 0.10;
   } else if (kind < 6.5) {
-    // Word rule: permanent.
-    scale = 1.0;
-    energy = 1.0;
-  } else if (kind < 7.5) {
-    // Transport stream: the flag columns converge on the pipeline entry.
-    let travel = easeOut((uniforms.phase - t0) / span);
-    offset = (vec2f(rect.x, rect.y) - center) * travel;
-    energy = grow * (1.0 - smoothstep(0.72, 1.0, travel));
-    scale = mix(0.5, 1.0, grow);
+    // Exact grid lines brighten during decode and dim after execution.
+    let decode = smoothstep(0.18, 0.34, uniforms.phase)
+      * (1.0 - smoothstep(0.70, 0.82, uniforms.phase));
+    let voidDip = smoothstep(0.82, 0.88, uniforms.phase)
+      * (1.0 - smoothstep(0.94, 1.0, uniforms.phase));
+    energy = 0.22 + decode * 0.28 - voidDip * 0.08;
   } else {
-    // Unlit lattice cell: permanent grid.
-    scale = 1.0;
-    energy = 1.0;
+    // trace_void: a dissipating ring, with no data packet or write-back.
+    scale = mix(0.30, 1.0 + seed * 0.22, grow);
+    energy = grow * (1.0 - smoothstep(0.93, 0.995, uniforms.phase));
   }
 
   var local = corner * size * scale;
-  // Non glyph instances may carry a rotation in the spare atlas slot.
-  if (kind > 0.5 && rect.z != 0.0) {
-    let c = cos(rect.z);
-    let s = sin(rect.z);
-    local = vec2f(local.x * c - local.y * s, local.x * s + local.y * c);
+  if (
+    (kind > 0.5 && kind < 2.5)
+    || (kind > 3.5 && kind < 4.5)
+    || kind > 6.5
+  ) {
+    // Keep dots, halos and void rings circular on a wide canvas.
+    local.y = corner.y * size.x * uniforms.aspect * scale;
+  }
+  if (kind > 2.5 && kind < 3.5) {
+    // Rotate each petal in pixel space so the old ellipse is not distorted by
+    // the canvas aspect ratio.
+    var pixelLocal = vec2f(
+      corner.x * size.x * uniforms.aspect,
+      corner.y * size.x * uniforms.aspect * 0.42
+    ) * scale;
+    let c = cos(angle);
+    let s = sin(angle);
+    pixelLocal = vec2f(
+      pixelLocal.x * c - pixelLocal.y * s,
+      pixelLocal.x * s + pixelLocal.y * c
+    );
+    local = vec2f(pixelLocal.x / uniforms.aspect, pixelLocal.y);
   }
   let world = center + offset + local;
 
@@ -371,26 +564,24 @@ fn fragmentMain(input : VertexOut) -> @location(0) vec4f {
   if (kind < 0.5) {
     alpha = glyph;
   } else if (kind < 1.5) {
-    let d = roundedBox(input.local, 0.42);
-    alpha = 1.0 - smoothstep(-0.06, 0.06, d);
-  } else if (kind > 7.5) {
-    let d = roundedBox(input.local, 0.42);
-    alpha = 1.0 - smoothstep(-0.06, 0.06, d);
-  } else if (kind < 2.5) {
-    // One elliptical petal, the shape the original study drew per petal.
     let r = length(input.local);
-    alpha = (1.0 - smoothstep(0.55, 1.0, r)) * 0.5;
+    alpha = 1.0 - smoothstep(0.58, 1.0, r);
+  } else if (kind < 2.5) {
+    let r = length(input.local);
+    alpha = 1.0 - smoothstep(0.45, 1.0, r);
   } else if (kind < 3.5) {
-    let d = roundedBox(input.local, 0.3);
-    let border = 1.0 - smoothstep(0.0, 0.05, abs(d + 0.02));
-    let fill = (1.0 - smoothstep(-0.05, 0.05, d)) * 0.12;
-    alpha = max(border, fill);
+    // The ellipse is exactly one translucent petal.
+    let r = length(input.local);
+    alpha = (1.0 - smoothstep(0.68, 1.0, r)) * 0.54;
   } else if (kind < 4.5) {
     let r = length(input.local);
-    alpha = (1.0 - smoothstep(0.1, 0.6, r)) + (1.0 - smoothstep(0.2, 1.0, r)) * 0.5;
+    alpha = pow(max(0.0, 1.0 - r), 2.0) * 0.13;
+  } else if (kind < 6.5) {
+    let d = roundedBox(input.local, 0.48);
+    alpha = 1.0 - smoothstep(-0.08, 0.08, d);
   } else {
-    let d = roundedBox(input.local, 0.5);
-    alpha = 1.0 - smoothstep(-0.1, 0.1, d);
+    let r = length(input.local);
+    alpha = (1.0 - smoothstep(0.03, 0.12, abs(r - 0.72))) * 0.55;
   }
 
   let coverage = alpha * input.energy * input.tint.a;
@@ -407,9 +598,11 @@ function packInstances(items, atlasRows) {
     const base = index * FLOATS_PER_INSTANCE;
     const rect = item.atlas >= 0
       ? atlasRect(item.atlas, atlasRows)
-      : [item.to?.[0] ?? 0, item.to?.[1] ?? 0, item.rotation ?? 0, 0];
-    const alpha = item.kind === KIND.CELL ? 0.5
-      : item.kind === KIND.GLYPH ? 0.42
+      : item.kind === KIND.PETAL
+        ? [item.orbit ?? 0, 0, item.rotation ?? 0, 0]
+        : [0, 0, 0, 0];
+    const alpha = item.kind === KIND.GLYPH ? 0.58
+      : item.kind === KIND.GRID ? 0.72
         : 1;
     data[base] = item.x;
     data[base + 1] = item.y;
@@ -420,7 +613,7 @@ function packInstances(items, atlasRows) {
     data[base + 6] = item.color[2];
     data[base + 7] = alpha;
     data[base + 8] = item.kind;
-    data[base + 9] = item.kind === KIND.PACKET ? item.value : item.seed;
+    data[base + 9] = item.seed;
     data[base + 10] = item.t0;
     data[base + 11] = item.span;
     data[base + 12] = rect[0];
@@ -564,7 +757,6 @@ async function createGpuPainter(canvas, scene, items) {
   let lost = false;
   device.lost?.then(() => { lost = true; });
   device.addEventListener?.("uncapturederror", event => {
-    lost = true;
     canvas.dataset.gpuError = event.error?.message ?? "unknown";
   });
 
@@ -576,6 +768,7 @@ async function createGpuPainter(canvas, scene, items) {
       uniforms[0] = phase;
       uniforms[1] = intensity;
       uniforms[2] = fade;
+      uniforms[3] = canvas.width / Math.max(1, canvas.height);
       device.queue.writeBuffer(uniformBuffer, 0, uniforms);
 
       const encoder = device.createCommandEncoder();
@@ -613,9 +806,19 @@ function createCanvasPainter(canvas, scene, items) {
     const clamped = Math.min(1, Math.max(0, value));
     return 1 - Math.pow(1 - clamped, 3);
   };
-  const smoothLoop = (value, from, to) => {
+  const smoothstep = (value, from, to) => {
     const t = Math.min(1, Math.max(0, (value - from) / (to - from)));
     return t * t * (3 - 2 * t);
+  };
+  const flowerEnvelope = (phase, item) => {
+    const rise = easeOut((phase - item.t0) / item.span);
+    const localFade = 1 - smoothstep(
+      phase,
+      item.t0 + item.span + 0.055,
+      item.t0 + item.span + 0.20
+    );
+    const quiet = 1 - smoothstep(phase, TRACE.executeEnd, TRACE.quietEnd);
+    return rise * localFade * quiet;
   };
   const rgba = (color, alpha) =>
     `rgba(${Math.round(color[0] * 255)},${Math.round(color[1] * 255)},${Math.round(color[2] * 255)},${alpha})`;
@@ -628,7 +831,8 @@ function createCanvasPainter(canvas, scene, items) {
       const height = canvas.height;
       const toX = value => (value * 0.5 + 0.5) * width;
       const toY = value => (value * 0.5 + 0.5) * height;
-      const unit = Math.min(width, height) * 0.5;
+      const toW = value => Math.abs(value) * width * 0.5;
+      const toH = value => Math.abs(value) * height * 0.5;
 
       context.clearRect(0, 0, width, height);
       context.textAlign = "center";
@@ -636,80 +840,101 @@ function createCanvasPainter(canvas, scene, items) {
 
       for (const item of items) {
         const grow = easeOut((phase - item.t0) / item.span);
-        const permanent = item.kind === KIND.GLYPH || item.kind === KIND.STAGE
-          || item.kind === KIND.RULE || item.kind === KIND.CELL;
-        if (!permanent && grow <= 0.001) continue;
-        let energy = permanent ? 1 : grow * fade;
-        let x = item.x;
-        let y = item.y;
-        if (item.kind === KIND.BIT) {
-          energy = grow * fade * (1 - smoothLoop(phase, 0.80, 0.96));
+        let energy = 1;
+        let scale = 1;
+        let flower = 0;
+        if (item.kind === KIND.GLYPH) {
+          scale = 0.76 + grow * 0.24;
+          energy = grow * (1 - smoothstep(phase, TRACE.executeEnd, TRACE.quietEnd));
+        } else if (item.kind === KIND.CELL) {
+          const decode = smoothstep(phase, TRACE.fetchEnd, TRACE.decodeEnd)
+            * (1 - smoothstep(phase, TRACE.executeEnd, TRACE.quietEnd));
+          const voidDip = smoothstep(phase, TRACE.quietEnd, 0.88)
+            * (1 - smoothstep(phase, 0.94, 1));
+          energy = 0.20 + decode * 0.28 - voidDip * 0.08;
+        } else if (item.kind === KIND.BIT) {
+          scale = 0.22 + grow * 0.78;
+          energy = grow * (1 - smoothstep(phase, 0.68, TRACE.quietEnd));
         } else if (item.kind === KIND.PETAL) {
-          energy = grow * fade * (1 - smoothLoop(phase, 0.78, 0.94));
+          flower = flowerEnvelope(phase, item);
+          const breathe = 1 + Math.sin(phase * Math.PI * 2 + item.seed * 0.45)
+            * 0.045 * intensity;
+          scale = flower * breathe;
+          energy = flower;
+        } else if (item.kind === KIND.GLOW) {
+          flower = flowerEnvelope(phase, item);
+          scale = 0.35 + flower * 0.73;
+          energy = flower;
+        } else if (item.kind === KIND.RULE) {
+          const active = smoothstep(phase, 0.08, 0.24)
+            * (1 - smoothstep(phase, TRACE.executeEnd, TRACE.quietEnd));
+          const voidDip = smoothstep(phase, TRACE.quietEnd, 0.88)
+            * (1 - smoothstep(phase, 0.94, 1));
+          energy = 0.30 + active * 0.44 - voidDip * 0.10;
+        } else if (item.kind === KIND.GRID) {
+          const decode = smoothstep(phase, TRACE.fetchEnd, TRACE.decodeEnd)
+            * (1 - smoothstep(phase, TRACE.executeEnd, TRACE.quietEnd));
+          const voidDip = smoothstep(phase, TRACE.quietEnd, 0.88)
+            * (1 - smoothstep(phase, 0.94, 1));
+          energy = 0.22 + decode * 0.28 - voidDip * 0.08;
         } else if (item.kind === KIND.VOID) {
-          energy = grow * fade * (1 - smoothLoop(phase, 0.90, 0.995));
-        } else if (item.kind === KIND.PACKET) {
-          const travel = easeOut((phase - item.t0) / item.span);
-          x -= travel * item.value;
-          energy = grow * fade * (1 - Math.min(1, Math.max(0, (travel - 0.82) / 0.18)));
-        } else if (item.kind === KIND.STREAM && item.to) {
-          const travel = easeOut((phase - item.t0) / item.span);
-          x += (item.to[0] - item.x) * travel;
-          y += (item.to[1] - item.y) * travel;
-          energy = grow * fade * (1 - Math.min(1, Math.max(0, (travel - 0.72) / 0.28)));
+          scale = 0.30 + grow * (0.70 + item.seed * 0.22);
+          energy = grow * (1 - smoothstep(phase, 0.93, 0.995));
         }
+        energy *= fade;
         if (energy <= 0.001) continue;
 
-        const alpha = item.kind === KIND.CELL ? energy * 0.5
-          : item.kind === KIND.GLYPH ? energy * 0.42
+        const alpha = item.kind === KIND.GLYPH ? energy * 0.58
+          : item.kind === KIND.GRID ? energy * 0.72
             : energy;
-        const px = toX(x);
-        const py = toY(y);
-        const w = item.w * unit;
-        const h = item.h * unit;
+        const px = toX(item.x);
+        const py = toY(item.y);
+        const w = toW(item.w);
+        const h = toH(item.h);
 
         if (item.kind === KIND.GLYPH) {
           context.fillStyle = rgba(item.color, alpha);
-          context.font = `600 ${h * 0.62}px ui-monospace, Consolas, monospace`;
+          context.font = `600 ${h * 0.72 * scale}px ui-monospace, Consolas, monospace`;
           context.fillText(scene.units[item.atlas].label, px, py);
         } else if (item.kind === KIND.PETAL) {
-          const breathe = 1 + Math.sin(phase * 6.2831853 + item.seed * 0.45) * 0.06 * intensity;
-          const spread = grow;
-          const cx = toX(item.x + ((item.to?.[0] ?? item.x) - item.x) * spread);
-          const cy = toY(item.y + ((item.to?.[1] ?? item.y) - item.y) * spread);
+          const angle = (item.rotation ?? 0) + phase * 1.35;
+          const orbit = toW(item.orbit ?? 0) * flower;
+          const cx = px + Math.cos(angle) * orbit;
+          const cy = py + Math.sin(angle) * orbit;
+          const major = (w / 2) * scale * 0.84;
           context.save();
           context.translate(cx, cy);
-          context.rotate(item.rotation ?? 0);
-          context.fillStyle = rgba(item.color, alpha * 0.5);
+          context.rotate(angle);
+          context.fillStyle = rgba(item.color, alpha * 0.54);
           context.beginPath();
-          context.ellipse(0, 0, (w / 2) * grow * breathe, (h / 2) * grow * breathe, 0, 0, Math.PI * 2);
+          context.ellipse(0, 0, major, major * 0.42, 0, 0, Math.PI * 2);
           context.fill();
           context.restore();
-        } else if (item.kind === KIND.PACKET) {
-          const gradient = context.createRadialGradient(px, py, 0, px, py, w / 2);
-          gradient.addColorStop(0, rgba(item.color, alpha));
+        } else if (item.kind === KIND.GLOW) {
+          const radius = (w / 2) * scale;
+          const gradient = context.createRadialGradient(px, py, 0, px, py, radius);
+          gradient.addColorStop(0, rgba(item.color, alpha * 0.13));
           gradient.addColorStop(1, rgba(item.color, 0));
           context.fillStyle = gradient;
           context.beginPath();
-          context.arc(px, py, w / 2, 0, Math.PI * 2);
+          context.arc(px, py, radius, 0, Math.PI * 2);
           context.fill();
-        } else if (item.kind === KIND.STAGE) {
-          context.strokeStyle = rgba(item.color, alpha);
-          context.lineWidth = Math.max(1, unit * 0.004);
-          context.strokeRect(px - w / 2, py - h / 2, w, h);
-        } else {
-          const scale = item.kind === KIND.BIT ? grow : 1;
-          context.save();
-          context.translate(px, py);
-          if (item.rotation) context.rotate(item.rotation);
+        } else if (item.kind === KIND.RULE || item.kind === KIND.GRID) {
           context.fillStyle = rgba(item.color, alpha);
-          context.fillRect(
-            -(w * scale) / 2,
-            -(h * scale) / 2,
-            w * scale,
-            h * scale
-          );
-          context.restore();
+          context.fillRect(px - w / 2, py - h / 2, w, h);
+        } else if (item.kind === KIND.VOID) {
+          const radius = (w / 2) * scale * 0.72;
+          context.strokeStyle = rgba(item.color, alpha * 0.55);
+          context.lineWidth = Math.max(1, radius * 0.24);
+          context.beginPath();
+          context.arc(px, py, radius, 0, Math.PI * 2);
+          context.stroke();
+        } else {
+          context.fillStyle = rgba(item.color, alpha);
+          context.beginPath();
+          const radiusFactor = item.kind === KIND.CELL ? 0.78 : 0.72;
+          context.arc(px, py, (w / 2) * scale * radiusFactor, 0, Math.PI * 2);
+          context.fill();
         }
       }
     },
@@ -721,11 +946,21 @@ function createCanvasPainter(canvas, scene, items) {
  * Mount
  * ------------------------------------------------------------------ */
 
-export async function mountAdgCipher(canvas) {
+export async function mountAdgCipher(canvas, providedWasmExports = null) {
   if (!canvas) return null;
-  const scene = buildScene();
+  let analyzer = JS_ANALYZER;
+  try {
+    analyzer = await loadWasmAnalyzer(providedWasmExports);
+  } catch (error) {
+    canvas.dataset.analyzerError = error instanceof Error
+      ? error.message
+      : String(error);
+  }
+
+  const scene = buildScene(analyzer);
   const items = layout(scene);
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const stageRoot = canvas.closest(".cipher-stage");
 
   let painter = await createGpuPainter(canvas, scene, items);
   if (!painter) painter = createCanvasPainter(canvas, scene, items);
@@ -735,17 +970,42 @@ export async function mountAdgCipher(canvas) {
   canvas.dataset.loopSeconds = String(LOOP_SECONDS);
   canvas.dataset.verse = scene.reference;
   canvas.dataset.instances = String(items.length);
+  canvas.dataset.analyzer = analyzer.kind;
+  canvas.dataset.traceMode = scene.traceMode;
+  canvas.dataset.voidReturn = analyzer.voidReturn;
+  canvas.dataset.voidMemoryWrites = String(analyzer.voidMemoryWrites);
+  if (stageRoot) stageRoot.dataset.analyzer = analyzer.kind;
+
+  if (reduceMotion) {
+    canvas.setAttribute(
+      "aria-label",
+      analyzer.kind === "wasm-i32"
+        ? "Static reduced-motion frame of the WebAssembly-derived set-bit bloom. Animation is disabled; the verified trace_void contract is documented in the technical annex."
+        : "Static reduced-motion fallback of the published flag pattern. WebAssembly is unavailable, so no trace_void memory claim is presented."
+    );
+  } else {
+    canvas.setAttribute(
+      "aria-label",
+      analyzer.kind === "wasm-i32"
+        ? "A deterministic five second replay: published flag octets are read, WebAssembly-derived bits bloom, the scene settles, then trace_void runs without changing WebAssembly linear memory or returning a value."
+        : "A five second local fallback replay of the published flag pattern. WebAssembly is unavailable, so no trace_void memory claim is presented."
+    );
+  }
 
   const resize = () => {
     const rect = canvas.getBoundingClientRect();
-    const ratio = Math.min(devicePixelRatio || 1, 2);
-    const side = Math.min(
-      MAX_BACKING_PIXELS,
-      Math.max(320, Math.round(Math.min(rect.width, rect.height || rect.width) * ratio))
+    const pixelRatio = Math.min(devicePixelRatio || 1, 2);
+    let width = Math.max(320, Math.round(rect.width * pixelRatio));
+    let height = Math.max(140, Math.round(rect.height * pixelRatio));
+    const areaScale = Math.min(
+      1,
+      Math.sqrt(MAX_BACKING_AREA / Math.max(1, width * height))
     );
-    if (canvas.width !== side || canvas.height !== side) {
-      canvas.width = side;
-      canvas.height = side;
+    width = Math.max(320, Math.round(width * areaScale));
+    height = Math.max(140, Math.round(height * areaScale));
+    if (canvas.width !== width || canvas.height !== height) {
+      canvas.width = width;
+      canvas.height = height;
       return true;
     }
     return false;
@@ -757,8 +1017,24 @@ export async function mountAdgCipher(canvas) {
   let running = false;
   let startedAt = 0;
   let painted = 0;
+  let lastStage = "";
+  let voidInvocations = 0;
 
   const paint = phase => {
+    const stage = stageForPhase(phase);
+    if (stage !== lastStage) {
+      lastStage = stage;
+      canvas.dataset.traceStage = stage;
+      if (stageRoot) stageRoot.dataset.traceStage = stage;
+      if (stage === "void") {
+        const result = analyzer.traceVoid();
+        if (result !== undefined) {
+          canvas.dataset.voidError = "trace_void returned a value";
+        }
+        voidInvocations += 1;
+        canvas.dataset.voidInvocations = String(voidInvocations);
+      }
+    }
     painter.draw(phase, reduceMotion ? 0 : 1, 1);
     painted += 1;
     canvas.dataset.frames = String(painted);
@@ -790,7 +1066,7 @@ export async function mountAdgCipher(canvas) {
 
   if (reduceMotion) {
     resize();
-    paint(0.62);
+    paint(0.56);
   } else {
     start();
   }
@@ -807,10 +1083,10 @@ export async function mountAdgCipher(canvas) {
 
   addEventListener("resize", () => {
     if (!reduceMotion) return;
-    if (resize()) paint(0.62);
+    if (resize()) paint(0.56);
   }, { passive: true });
 
-  return { scene, painter, start, stop };
+  return { scene, painter, analyzer, start, stop };
 }
 
 export const CIPHER_FACTS = buildScene();

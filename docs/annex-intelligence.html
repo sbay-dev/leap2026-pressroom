@@ -138,6 +138,10 @@
           <span class="ar">مثال محسوب — الوحدة رقم صفر: بايت العلم <code>0x48</code>، أي <code>0100&nbsp;1000</code>. البتّان المضاءان هما في الموضعين ٦ و٣، ومجموع البتات المضاءة اثنان، فتفتح زهرة ذات بتلتين. رقما البتّ العامّان لهذين الموضعين هما ١ و٤.</span>
           <span class="en">Worked example — unit zero: flag byte <code>0x48</code>, that is <code>0100&nbsp;1000</code>. Two bits are set, at positions 6 and 3, so a two-petal flower opens. Their global bit indices are 1 and 4.</span>
         </p>
+        <p>
+          <span class="ar">تنفّذ وحدة WebAssembly العامة الدالتين <code>flag_bit</code> و<code>flag_popcount</code> على هذه الأوكتتات المنشورة فقط. لا تحلل الوحدة نصّ الآية، ولا تحتوي المحلل العربي الخاص أو أي جدول أقنعة محمي.</span>
+          <span class="en">The public WebAssembly module executes <code>flag_bit</code> and <code>flag_popcount</code> over these published octets only. It does not parse the verse and contains neither the private Arabic analyser nor any protected mask table.</span>
+        </p>
       </div>
     </section>
 
@@ -148,13 +152,13 @@
           <span class="ar">كيف تُقرأ الشبكة</span>
           <span class="en">How to read the lattice</span>
         </h2>
-        <p class="ar">التمثيل نقلٌ أمين لدراسة <b>CNS Cipher → Bloom</b> المنشورة في مستودع سرمد، مطبَّقًا عليها الأرقام الحقيقية بدل القيم العشوائية الأصلية.</p>
-        <p class="en">The visual is a faithful port of the <b>CNS Cipher → Bloom</b> study published in the Sarmad repository, with the real numbers applied in place of its original random values.</p>
+        <p class="ar">التمثيل تطوير حتمي للغة البصرية في دراسة <a href="https://sbay-dev.github.io/sarmadAi/" rel="noopener" target="_blank"><b>CNS Cipher → Bloom</b></a> المضمّنة داخل صفحة سرمد الواحدة. يحتفظ بتحول الرمز إلى زهرة وهالتها وشفافيتها، ويستبدل القيم العشوائية بالأوكتتات والبتات المنشورة أعلاه.</p>
+        <p class="en">The visual is a deterministic adaptation of the visual grammar in the <a href="https://sbay-dev.github.io/sarmadAi/" rel="noopener" target="_blank"><b>CNS Cipher → Bloom</b></a> study embedded in Sarmad's single page. It retains the cipher-to-flower transition, halo and translucency while replacing random values with the published octets and bits above.</p>
       </div>
       <ul class="annex-list">
         <li>
-          <span class="ar"><b>العمود</b> هو موضع الوحدة في مستوى التجميع، من صفر إلى اثنين وعشرين، ويبدأ من اليمين لأن العربية تُقرأ من اليمين.</span>
-          <span class="en"><b>A column</b> is the unit's assembly-level position, 0 to 22, starting from the right because Arabic reads right to left.</span>
+          <span class="ar"><b>العمود</b> هو موضع الوحدة في جدول الأوكتتات المشتقة المنشور، من صفر إلى اثنين وعشرين، ويبدأ من اليمين لأن العربية تُقرأ من اليمين.</span>
+          <span class="en"><b>A column</b> is the unit's position in the published derived-octet table, 0 to 22, starting from the right because Arabic reads right to left.</span>
         </li>
         <li>
           <span class="ar"><b>الصف</b> هو موضع البتّ داخل البايت، الأعلى قيمةً في الأعلى.</span>
@@ -169,8 +173,8 @@
           <span class="en"><b>A flower</b> appears only where a bit is set, and <b>its petal count equals the number of set bits in the byte that produced the interaction</b>. In this scene flowers therefore carry between two and five petals.</span>
         </li>
         <li>
-          <span class="ar"><b>الرقم الست عشري</b> فوق كل عمود هو بايت العلم لتلك الوحدة، في الموضع نفسه الذي كانت الدراسة الأصلية ترسم فيه محرفًا عشوائيًا قبل تفتّحه.</span>
-          <span class="en"><b>The hexadecimal label</b> above each column is that unit's flag byte, in the same place the original study drew a random character before it bloomed.</span>
+          <span class="ar"><b>الرقم الست عشري</b> فوق كل عمود هو أوكتت العلم لتلك الوحدة. وهو بديل حتمي لمحرف التشفير العشوائي في الدراسة الأصلية.</span>
+          <span class="en"><b>The hexadecimal label</b> above each column is that unit's flag octet. It is the deterministic replacement for the original study's random cipher character.</span>
         </li>
         <li>
           <span class="ar"><b>اللون</b> يتدرّج عبر الكلمات الخمس، فتظهر الكتل المنتظمة التي يقرؤها المحلل بوصفها وحدات، لا حروفًا متفرقة.</span>
@@ -179,12 +183,24 @@
       </ul>
       <figure class="cipher-stage annex-stage">
         <div class="cipher-frame">
-          <canvas id="annex-cipher" width="720" height="720" role="img" data-loop-seconds="5"
-            aria-label="The same five second loop as on the main page: twenty-three columns of eight cells, blooming only where a flag bit is set."></canvas>
+          <canvas id="annex-cipher" width="960" height="420" role="img" data-loop-seconds="5"
+            aria-label="The same five second visual trace as on the main page. Runtime verification details are provided after the visual module loads."></canvas>
+          <div class="cipher-lane" aria-hidden="true">
+            <span data-cipher-step="fetch">IF</span>
+            <span data-cipher-step="decode">ID</span>
+            <span data-cipher-step="execute">EX</span>
+            <span class="is-bypassed">MEM</span>
+            <span class="is-bypassed">WB</span>
+          </div>
+          <p class="cipher-void" aria-hidden="true">
+            <code>void</code>
+            <span class="ar">ذاكرة WASM لم تتغيّر · لا قيمة عائدة</span>
+            <span class="en">Wasm memory unchanged · no return value</span>
+          </p>
         </div>
         <figcaption class="visual-caption">
-          <span class="ar">الحلقة نفسها المعروضة في الصفحة الرئيسة، بطول خمس ثوانٍ ومن دون قطع</span>
-          <span class="en">The same seamless five second loop shown on the main page</span>
+          <span class="ar">قراءة حتمية، فكّ بتات، تفتّح، هدوء، ثم استدعاء <code>trace_void</code></span>
+          <span class="en">Deterministic read, bit decode, bloom, quiet, then a <code>trace_void</code> call</span>
         </figcaption>
       </figure>
     </section>
@@ -196,10 +212,10 @@
           <span class="ar">ممر المعالج والمسار الذي لا يكتب</span>
           <span class="en">The pipeline and the route that never writes</span>
         </h2>
-        <p class="ar">مراحل الممر الكلاسيكي خمس: الجلب <code>IF</code>، وفكّ الترميز <code>ID</code>، والتنفيذ <code>EX</code>، والذاكرة <code>MEM</code>، وإعادة الكتابة <code>WB</code>. المسار الذي يصف هذا التمثيل يمرّ بالثلاث الأولى ثم يعود، فلا تُضاء <code>MEM</code> ولا <code>WB</code>.</p>
-        <p class="en">The classical pipeline has five stages: fetch <code>IF</code>, decode <code>ID</code>, execute <code>EX</code>, memory <code>MEM</code> and write back <code>WB</code>. The route described here passes the first three and returns; <code>MEM</code> and <code>WB</code> stay unlit.</p>
-        <p class="ar">هذا هو معنى <code>void</code> هنا بالضبط: التصنيف يقع، والقرار يقع، ولا يُخزَّن شيء ولا يُسترجع شيء. لا حالة تُترك خلف الاستدعاء.</p>
-        <p class="en">That is precisely what <code>void</code> means here: classification happens, a decision happens, nothing is stored and nothing is retrieved. The call leaves no state behind.</p>
+        <p class="ar">قبل بدء الرسم، تحسب وحدة WebAssembly البتات وعددها باستدعاء <code>flag_bit</code> و<code>flag_popcount</code>، ثم تعيد الصفحة عرض الناتج الحتمي عبر WebGPU عند توفره أو Canvas2D بديلًا: قراءة الأوكتت، وفك نمطه، وتحويل البتات المضاءة إلى زهور، ثم الهدوء. تستعير الحركة العلامات <code>IF</code> و<code>ID</code> و<code>EX</code> و<code>MEM</code> و<code>WB</code> لشرح هذا التسلسل البصري فقط؛ وهي <b>ليست قياسًا أو تسجيلًا لمراحل معالج مادي</b>.</p>
+        <p class="en">Before drawing starts, the WebAssembly module computes the bits and their count through <code>flag_bit</code> and <code>flag_popcount</code>. The page then replays that deterministic result through WebGPU when available or Canvas2D as a fallback: octet read, pattern decode, set-bit bloom, then quiet. The motion borrows <code>IF</code>, <code>ID</code>, <code>EX</code>, <code>MEM</code> and <code>WB</code> solely to explain this visual sequence; it is <b>not a measurement or recording of physical processor stages</b>.</p>
+        <p class="ar"><code>void</code> لا يعني عمومًا أن الدالة لا تكتب في الذاكرة؛ لذلك لا ندّعي ذلك من اسم النوع. الدليل هنا خاص بالدالة العامة <code>trace_void</code>: لا تستقبل بيانات، ولا تعيد قيمة، ويقارن اختبار النشر الذاكرة الخطية كاملة قبل الاستدعاء وبعده ويثبت عدم تغيّرها. لهذا تبقى <code>MEM</code> و<code>WB</code> خافتتين في <b>هذا التمثيل وحده</b>.</p>
+        <p class="en"><code>void</code> does not generally mean that a function cannot write memory, so no such claim is inferred from the type name. The evidence here is specific to the public <code>trace_void</code> function: it accepts no data, returns no value, and the release test compares the complete linear memory before and after the call and confirms it is unchanged. That is why <code>MEM</code> and <code>WB</code> remain dim in <b>this visual only</b>.</p>
       </div>
     </section>
 

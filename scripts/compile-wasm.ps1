@@ -20,6 +20,9 @@ rustc $source `
     -C codegen-units=1 `
     -C link-arg=--no-entry `
     -C link-arg=--export=evidence_match `
+    -C link-arg=--export=flag_bit `
+    -C link-arg=--export=flag_popcount `
+    -C link-arg=--export=trace_void `
     -C link-arg=-z `
     -C link-arg=stack-size=1024 `
     -C link-arg=--initial-memory=65536 `
