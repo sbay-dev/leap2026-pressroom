@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>الملحق التقني · منصة تموين · LEAP + DeepFest 2026</title>
+  <meta name="description" content="الملحق التقني للتمثيل البصري في صفحة منصة تموين: مصدر الرسم، اشتقاق البايتات، قراءة الشبكة، ودلالة المسار الذي لا يكتب.">
+  <meta name="theme-color" content="#040815">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://leap2026.sbay.sa/annex-intelligence.html">
+  <link rel="icon" href="./assets/sbay-cube.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="lang-ar annex-page">
+  <a class="skip-link" href="#main">
+    <span class="ar">انتقل إلى المحتوى</span>
+    <span class="en">Skip to content</span>
+  </a>
+
+  <header class="site-header" data-header>
+    <a class="brand" href="./index.html" aria-label="SBAY">
+      <img src="./assets/sbay-cube.svg" alt="" width="34" height="34">
+      <span>
+        <span class="ar">منصة تموين</span>
+        <span class="en">SBAY</span>
+        <small>TECHNICAL ANNEX</small>
+      </span>
+    </a>
+    <nav aria-label="Annex">
+      <a href="./index.html"><span class="ar">عودة إلى الصفحة</span><span class="en">Back to page</span></a>
+    </nav>
+    <button class="lang-toggle" type="button" data-language aria-label="Switch language">
+      <span class="ar">EN</span><span class="en">العربية</span>
+    </button>
+  </header>
+
+  <main id="main" class="annex-main">
+    <section class="section-shell" aria-labelledby="annex-heading">
+      <div class="section-heading wide-heading">
+        <p class="section-kicker">ANNEX / INTELLIGENCE</p>
+        <h1 id="annex-heading">
+          <span class="ar">الملحق التقني للتمثيل البصري</span>
+          <span class="en">Technical annex to the visual</span>
+        </h1>
+        <p class="ar">هذه الصفحة تشرح، بلا مبالغة ولا اختصار مخلّ، ما الذي يرسمه التمثيل الحي في الصفحة الرئيسة. كل رقم هنا مشتقّ من ترميز عام قابل لإعادة الحساب، ولا يُنشر منه أي جدول أقنعة أو قاعدة توجيه أو عتبة أو وزن.</p>
+        <p class="en">This page explains exactly what the live visual on the main page draws. Every number here is derived from public encoding and can be recomputed independently. No mask table, routing rule, threshold or weight is published.</p>
+      </div>
+    </section>
+
+    <section class="section-shell" aria-labelledby="source-heading">
+      <div class="section-heading wide-heading">
+        <p class="section-kicker">01 / SOURCE</p>
+        <h2 id="source-heading">
+          <span class="ar">المصدر: رسم غير منقوط ولا مشكول</span>
+          <span class="en">The source: an undotted, unvowelled rasm</span>
+        </h2>
+        <p class="ar">التجريد الذي بُني عليه المحلل يعالج الرسم كما كُتب أولًا: بلا تنقيط وبلا تشكيل. ولإثبات ذلك لا نعيد كتابة النص، بل نعرض شاهدًا مصوّرًا من مخطوطة عامة الملكية.</p>
+        <p class="en">The abstraction reads the rasm as it was first written: without dots and without vowel marks. Rather than retyping the text, the annex reproduces a public-domain manuscript witness.</p>
+      </div>
+
+      <figure class="annex-figure">
+        <img src="./assets/press/taha-rasm-birmingham.png" width="1530" height="500" loading="lazy" decoding="async"
+          alt="A high resolution crop of the Birmingham Quran manuscript showing the closing lines of a Ta-Ha folio in undotted, unvowelled Hijazi script, ending with a verse divider followed by the opening letters of the next verse.">
+        <figcaption>
+          <span class="ar"><b>مخطوطة برمنغهام القرآنية</b> — Mingana Islamic Arabic 1572a، مكتبة كادبري البحثية، جامعة برمنغهام. الورقة تحمل طه ١–٤٠، وفي آخر سطر من هذا القصّ تظهر فاصلة الآية ثم مطلع الآية ١٣ مباشرة. الصورة عامة الملكية عبر ويكيميديا كومنز.</span>
+          <span class="en"><b>The Birmingham Quran manuscript</b> — Mingana Islamic Arabic 1572a, Cadbury Research Library, University of Birmingham. The folio carries Ta-Ha 1–40; on the last line of this crop a verse divider is followed immediately by the opening of verse 13. Public domain via Wikimedia Commons.</span>
+        </figcaption>
+      </figure>
+      <p class="annex-note">
+        <span class="ar">الشاهد معروض للتوثيق فقط. المرجع النصّي المستعمل في الحساب هو <b>القرآن ٢٠:١٣</b>، وهو الموضع الذي جرى تحليله فعليًا.</span>
+        <span class="en">The witness is reproduced for documentation only. The textual reference used in the computation is <b>Quran 20:13</b>, the location the analyser actually parsed.</span>
+      </p>
+    </section>
+
+    <section class="section-shell" aria-labelledby="numbers-heading">
+      <div class="section-heading wide-heading">
+        <p class="section-kicker">02 / NUMBERS</p>
+        <h2 id="numbers-heading">
+          <span class="ar">الأرقام الأربعة</span>
+          <span class="en">The four figures</span>
+        </h2>
+        <p class="ar">الآية خمس كلمات. طولها بترميز UTF‑8 أربعة وثمانون بايتًا، منها ثمانون للحروف وأربعة للفواصل بين الكلمات. ورسمها ثلاث وعشرون وحدة، وكل وحدة بايت علم واحد، أي مئة وأربعة وثمانون بتًا.</p>
+        <p class="en">The verse is five words. Its UTF-8 length is eighty-four bytes: eighty for the letters and four for the separators between words. Its rasm is twenty-three units, one flag byte each, so one hundred and eighty-four bits.</p>
+      </div>
+
+      <div class="annex-table-wrap">
+        <table class="annex-table">
+          <caption>
+            <span class="ar">اشتقاق الأرقام لكل كلمة</span>
+            <span class="en">Per-word derivation</span>
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col"><span class="ar">الكلمة</span><span class="en">Word</span></th>
+              <th scope="col"><span class="ar">بايتات UTF‑8</span><span class="en">UTF-8 bytes</span></th>
+              <th scope="col"><span class="ar">وحدات الرسم</span><span class="en">Rasm units</span></th>
+              <th scope="col"><span class="ar">بتات العلم</span><span class="en">Flag bits</span></th>
+              <th scope="col"><span class="ar">بايتات العلم (ست عشري)</span><span class="en">Flag bytes (hex)</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">1</th><td>14</td><td>4</td><td>32</td><td><code>48 27 BA 27</code></td></tr>
+            <tr><th scope="row">2</th><td>22</td><td>6</td><td>48</td><td><code>27 2D BA 31 BA 43</code></td></tr>
+            <tr><th scope="row">3</th><td>22</td><td>6</td><td>48</td><td><code>A1 27 33 BA 45 39</code></td></tr>
+            <tr><th scope="row">4</th><td>10</td><td>3</td><td>24</td><td><code>44 45 27</code></td></tr>
+            <tr><th scope="row">5</th><td>12</td><td>4</td><td>32</td><td><code>6E 48 2D 49</code></td></tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row"><span class="ar">المجموع</span><span class="en">Total</span></th>
+              <td><span dir="ltr">80 + 4 = <b>84</b></span></td>
+              <td><b>23</b></td>
+              <td><b>184</b></td>
+              <td><span class="ar"><b>85</b> بتًا مضاءً</span><span class="en">85 set bits</span></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-shell" aria-labelledby="derive-heading">
+      <div class="section-heading wide-heading">
+        <p class="section-kicker">03 / DERIVATION</p>
+        <h2 id="derive-heading">
+          <span class="ar">من الوحدة إلى بايت العلم</span>
+          <span class="en">From unit to flag byte</span>
+        </h2>
+        <p class="ar">بايت العلم لكل وحدة رسم هو الثمانية بتات الدنيا من القيمة العددية العامة لمحرفها في يونيكود. لا شيء غير ذلك. أي قارئ يستطيع إعادة الحساب من جدول يونيكود وحده والوصول إلى البايتات نفسها المنشورة أعلاه.</p>
+        <p class="en">The flag byte of a rasm unit is the low octet of the public Unicode scalar of its character. Nothing else enters. Any reader can recompute the published bytes from the Unicode tables alone.</p>
+      </div>
+      <div class="annex-example">
+        <p class="mono">flag = codePoint &amp; 0xFF</p>
+        <p>
+          <span class="ar">مثال محسوب — الوحدة رقم صفر: بايت العلم <code>0x48</code>، أي <code>0100&nbsp;1000</code>. البتّان المضاءان هما في الموضعين ٦ و٣، ومجموع البتات المضاءة اثنان، فتفتح زهرة ذات بتلتين. رقما البتّ العامّان لهذين الموضعين هما ١ و٤.</span>
+          <span class="en">Worked example — unit zero: flag byte <code>0x48</code>, that is <code>0100&nbsp;1000</code>. Two bits are set, at positions 6 and 3, so a two-petal flower opens. Their global bit indices are 1 and 4.</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="section-shell" aria-labelledby="read-heading">
+      <div class="section-heading wide-heading">
+        <p class="section-kicker">04 / READING</p>
+        <h2 id="read-heading">
+          <span class="ar">كيف تُقرأ الشبكة</span>
+          <span class="en">How to read the lattice</span>
+        </h2>
+        <p class="ar">التمثيل نقلٌ أمين لدراسة <b>CNS Cipher → Bloom</b> المنشورة في مستودع سرمد، مطبَّقًا عليها الأرقام الحقيقية بدل القيم العشوائية الأصلية.</p>
+        <p class="en">The visual is a faithful port of the <b>CNS Cipher → Bloom</b> study published in the Sarmad repository, with the real numbers applied in place of its original random values.</p>
+      </div>
+      <ul class="annex-list">
+        <li>
+          <span class="ar"><b>العمود</b> هو موضع الوحدة في مستوى التجميع، من صفر إلى اثنين وعشرين، ويبدأ من اليمين لأن العربية تُقرأ من اليمين.</span>
+          <span class="en"><b>A column</b> is the unit's assembly-level position, 0 to 22, starting from the right because Arabic reads right to left.</span>
+        </li>
+        <li>
+          <span class="ar"><b>الصف</b> هو موضع البتّ داخل البايت، الأعلى قيمةً في الأعلى.</span>
+          <span class="en"><b>A row</b> is the bit position inside the byte, most significant at the top.</span>
+        </li>
+        <li>
+          <span class="ar"><b>الخلية</b> هي بتّ واحد من المئة وأربعة وثمانين. رقمها العام يساوي رقم العمود مضروبًا في ثمانية زائد رقم الصف.</span>
+          <span class="en"><b>A cell</b> is one of the 184 bits. Its global index is the column index times eight plus the row index.</span>
+        </li>
+        <li>
+          <span class="ar"><b>الزهرة</b> لا تظهر إلا حيث يكون البتّ مضاءً، و<b>عدد بتلاتها يساوي عدد البتات المضاءة في البايت الذي أحدث التفاعل</b>. لذلك تتراوح الزهور بين بتلتين وخمس بتلات في هذا المشهد.</span>
+          <span class="en"><b>A flower</b> appears only where a bit is set, and <b>its petal count equals the number of set bits in the byte that produced the interaction</b>. In this scene flowers therefore carry between two and five petals.</span>
+        </li>
+        <li>
+          <span class="ar"><b>الرقم الست عشري</b> فوق كل عمود هو بايت العلم لتلك الوحدة، في الموضع نفسه الذي كانت الدراسة الأصلية ترسم فيه محرفًا عشوائيًا قبل تفتّحه.</span>
+          <span class="en"><b>The hexadecimal label</b> above each column is that unit's flag byte, in the same place the original study drew a random character before it bloomed.</span>
+        </li>
+        <li>
+          <span class="ar"><b>اللون</b> يتدرّج عبر الكلمات الخمس، فتظهر الكتل المنتظمة التي يقرؤها المحلل بوصفها وحدات، لا حروفًا متفرقة.</span>
+          <span class="en"><b>Colour</b> advances across the five words, so the ordered blocks the analyser reads appear as units rather than scattered letters.</span>
+        </li>
+      </ul>
+      <figure class="cipher-stage annex-stage">
+        <div class="cipher-frame">
+          <canvas id="annex-cipher" width="720" height="720" role="img" data-loop-seconds="5"
+            aria-label="The same five second loop as on the main page: twenty-three columns of eight cells, blooming only where a flag bit is set."></canvas>
+        </div>
+        <figcaption class="visual-caption">
+          <span class="ar">الحلقة نفسها المعروضة في الصفحة الرئيسة، بطول خمس ثوانٍ ومن دون قطع</span>
+          <span class="en">The same seamless five second loop shown on the main page</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="section-shell" aria-labelledby="void-heading">
+      <div class="section-heading wide-heading">
+        <p class="section-kicker">05 / ROUTE</p>
+        <h2 id="void-heading">
+          <span class="ar">ممر المعالج والمسار الذي لا يكتب</span>
+          <span class="en">The pipeline and the route that never writes</span>
+        </h2>
+        <p class="ar">مراحل الممر الكلاسيكي خمس: الجلب <code>IF</code>، وفكّ الترميز <code>ID</code>، والتنفيذ <code>EX</code>، والذاكرة <code>MEM</code>، وإعادة الكتابة <code>WB</code>. المسار الذي يصف هذا التمثيل يمرّ بالثلاث الأولى ثم يعود، فلا تُضاء <code>MEM</code> ولا <code>WB</code>.</p>
+        <p class="en">The classical pipeline has five stages: fetch <code>IF</code>, decode <code>ID</code>, execute <code>EX</code>, memory <code>MEM</code> and write back <code>WB</code>. The route described here passes the first three and returns; <code>MEM</code> and <code>WB</code> stay unlit.</p>
+        <p class="ar">هذا هو معنى <code>void</code> هنا بالضبط: التصنيف يقع، والقرار يقع، ولا يُخزَّن شيء ولا يُسترجع شيء. لا حالة تُترك خلف الاستدعاء.</p>
+        <p class="en">That is precisely what <code>void</code> means here: classification happens, a decision happens, nothing is stored and nothing is retrieved. The call leaves no state behind.</p>
+      </div>
+    </section>
+
+    <section class="section-shell" aria-labelledby="boundary-heading">
+      <div class="section-heading wide-heading">
+        <p class="section-kicker">06 / BOUNDARY</p>
+        <h2 id="boundary-heading">
+          <span class="ar">حدّ الإفصاح</span>
+          <span class="en">Disclosure boundary</span>
+        </h2>
+        <p class="ar">المنشور في هذه الصفحة وفي شفرتها هو القيم المشتقة من ترميز يونيكود العام فقط. لم يُنشر ولن يُنشر هنا: جدول الأقنعة، أو قاعدة التوجيه، أو أي عتبة، أو أي وزن، أو أي ملفّ نموذج. ولا يُكتب نصّ الآية في الشفرة؛ الشاهد المصوّر أعلاه هو التضمين المصرَّح به.</p>
+        <p class="en">What this page and its source publish are values derived from public Unicode encoding only. Not published here, and never to be: the mask table, the routing rule, any threshold, any weight, any model artefact. The verse text is not typed into the source; the manuscript witness above is the authorised embedding.</p>
+        <p class="ar">كل ما سبق قابل لإعادة الحساب من هذه الصفحة وحدها. ما لا يمكن إثباته من هذه الصفحة لا يُدّعى فيها.</p>
+        <p class="en">Everything above is recomputable from this page alone. Anything that cannot be evidenced from this page is not claimed on it.</p>
+      </div>
+      <p class="annex-note">
+        <a href="./index.html"><span class="ar">← عودة إلى صفحة منصة تموين</span><span class="en">← Back to the SBAY page</span></a>
+      </p>
+    </section>
+  </main>
+
+  <script type="module">
+    const body = document.body;
+    document.querySelector("[data-language]")?.addEventListener("click", () => {
+      const next = body.classList.contains("lang-ar") ? "en" : "ar";
+      body.classList.toggle("lang-ar", next === "ar");
+      body.classList.toggle("lang-en", next === "en");
+      document.documentElement.lang = next;
+      document.documentElement.dir = next === "ar" ? "rtl" : "ltr";
+    });
+    const { mountAdgCipher } = await import("./adg-cipher.js");
+    await mountAdgCipher(document.getElementById("annex-cipher"));
+  </script>
+</body>
+</html>

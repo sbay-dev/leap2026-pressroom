@@ -6,9 +6,8 @@ Audit ID: `SBAY-LEAP-DEEPFEST-20260831T043818Z`
 
 - The registered trade name, written exactly as `منصة تموين` in Arabic and
   `SBAY` in English. The two names must not be combined or transliterated.
-- Public `sbay.sa` signals captured by URL, byte length, and SHA-256:
-  `25+` digital services and products, `500+` customers, `99.9%` published
-  uptime, and `24/7` published support.
+- Verifiable signals only: live product URLs anyone can open, the public
+  evidence cited on the page, and the declared pre-seed stage.
 - Procurement modules presented as enterprise platform scope, with detailed
   availability explicitly deferred to the live demo and contract.
 - AI supplier matching, document analysis, recommendations, and demand
@@ -50,8 +49,38 @@ Audit ID: `SBAY-LEAP-DEEPFEST-20260831T043818Z`
   denies university issuance, approval, sponsorship, endorsement and
   partnership until an official university publication exists.
 
+## Numeric-claim rule
+
+Every number rendered as a headline figure on a public surface must be
+registered in `docs/press-kit.json` under `numericClaims.entries` with one of
+four bases, and `scripts/check-public-boundary.mjs` fails the build if any
+rendered figure is unregistered:
+
+| Basis | Meaning | Page obligation |
+| --- | --- | --- |
+| `recomputable` | The reader can derive it from the page itself | none |
+| `public-link` | A public URL on the page shows it | the link must be present |
+| `declared` | Stated from an internal record | the tile must read `· declared` / `· معلن`, and the section must say it was not independently reviewed |
+| `estimate` | A planning figure, not a measurement | the tile must read `expected, not measured` / `زمن متوقّع لا مقيس` |
+
+Why this is a hard gate and not a matter of care: presenting unaudited or
+unverifiable figures to the public is not merely a reputational risk in Saudi
+Arabia. The Saudi Organization for Chartered and Professional Accountants has
+publicly stressed that misleading the public by any means, presenting false
+data, or attesting to figures that were not audited falls under Article 10 of
+the Accounting and Auditing Profession Law, carrying up to five years of
+imprisonment and a fine of up to two million riyals. A pressroom aimed at
+investors and journalists is exactly such a surface. No figure ships without a
+recorded way for a reader to check it.
 ## Material prohibited from this repository
 
+- Customer counts, satisfied-customer figures, market-share claims, uptime
+  percentages, and support-availability promises. Earlier `sbay.sa` figures
+  describe independent freelance activity, evidenced only by scattered
+  invoices and transfers. They are not audited institutional traction and
+  must never appear on an investor-facing surface.
+- Any headline figure that is not registered in `docs/press-kit.json` under
+  `numericClaims.entries` with a basis and a source. See the rule below.
 - Model weights, checkpoints, ONNX payloads, tokenizer or vocabulary files.
 - Corpora, evaluation rows, private prompts, labels, or expert assignments.
 - Proprietary routing rules, thresholds, masks, graph topology, or training

@@ -49,8 +49,10 @@ brief expressly denies university issuance, approval, sponsorship,
 endorsement or partnership unless the center publishes an official
 announcement.
 
-Public figures (`25+`, `500+`, `99.9%`, `24/7`) are tied to a captured
-`sbay.sa` source. Procurement modules are presented as enterprise platform
+No customer counts, uptime percentages or market-share claims are published.
+Earlier `sbay.sa` figures describe independent freelance activity evidenced
+only by scattered invoices and transfers, so they are excluded from every
+investor-facing surface. Procurement modules are presented as enterprise platform
 scope, and detailed availability is confirmed through the live demo and
 contract. AI capabilities are framed as decision support rather than
 guaranteed automation.

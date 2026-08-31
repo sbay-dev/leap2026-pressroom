@@ -17,8 +17,9 @@ Published for event week: 31 August–3 September 2026, Riyadh.
 
 > من الطلب إلى التوريد. من البيانات إلى القرار.
 
-ينشر الموقع العام لـ`sbay.sa` مؤشرات قدرها `25+` خدمة ومنتج رقمي، و`500+`
-عميل، و`99.9%` وقت تشغيل، ودعم فني `24/7`. أما وحدات إدارة الموردين وRFQ
+لا تنشر غرفة الصحافة أرقام عملاء ولا نسب تشغيل ولا حصة سوقية. نشاط `sbay.sa`
+السابق نشأ من عمل حر فردي بفواتير وتحويلات متفرقة، ولا يُقدَّم بوصفه جذبًا
+مؤسسيًا مدقَّقًا. أما وحدات إدارة الموردين وRFQ
 والعقود والتحليلات وقدرات الذكاء فتُعرض في غرفة الصحافة كنطاق منصة مؤسسي؛
 يُثبت التوفر التفصيلي والتكامل والمتطلبات في العرض المباشر ونطاق العقد.
 
@@ -76,8 +77,10 @@ The central positioning is:
 
 > From Procurement to Fulfillment. From Data to Decisions.
 
-The public `sbay.sa` site publishes `25+` digital services and products, `500+`
-customers, `99.9%` uptime and `24/7` technical support. Supplier management,
+The pressroom publishes no customer counts, uptime percentages or market-share
+claims. Earlier `sbay.sa` activity came from independent freelance work with
+scattered invoices and transfers, and is not audited institutional traction.
+Supplier management,
 RFQ, contracts, analytics and AI capabilities are presented in the pressroom
 as enterprise platform scope; detailed availability, integrations and
 requirements are confirmed in the live demo and contract scope.

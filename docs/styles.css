@@ -263,6 +263,34 @@ nav a:hover { color: var(--cyan); }
   border-inline-end: 1px solid var(--line);
 }
 .proof-strip div:last-child { border: 0; }
+.public-signals {
+  display: block;
+  padding: 0;
+}
+.public-signals .signals-provenance {
+  padding: .7rem .9rem;
+  font-size: .72rem;
+  line-height: 1.6;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+.public-signals > [role="list"] {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.public-signals > [role="list"] > div:last-child { border-inline-end: 0; }
+.public-signals strong {
+  font-size: 1.05rem;
+  line-height: 1.3;
+  hyphens: none;
+  overflow-wrap: normal;
+}
+.public-signals strong span { font-size: inherit; color: inherit; }
+@media (max-width: 900px) {
+  .public-signals > [role="list"] { grid-template-columns: 1fr; }
+  .public-signals > [role="list"] > div { border-inline-end: 0; border-bottom: 1px solid var(--line); }
+  .public-signals > [role="list"] > div:last-child { border-bottom: 0; }
+}
 .proof-strip strong { color: var(--cyan); font-size: 1rem; }
 .proof-strip span { color: var(--muted); font-size: .7rem; }
 .hero-visual { position: relative; min-width: 0; }
@@ -1247,7 +1275,7 @@ footer strong { color: var(--text); font-size: 1.1rem; }
   .market-lens,
   .meeting-list { grid-template-columns: 1fr; }
   .hero .tamween-title { font-size: clamp(2.8rem, 15vw, 4.8rem); }
-  .public-signals { grid-template-columns: 1fr 1fr; }
+  .public-signals > [role="list"] { grid-template-columns: 1fr; }
   .feature-card,
   .ai-grid article,
   .outcome-grid article { min-height: auto; }
@@ -1292,7 +1320,8 @@ footer strong { color: var(--text); font-size: 1.1rem; }
     linear-gradient(90deg, rgba(88, 221, 255, .05) 1px, transparent 1px);
   background-size: 34px 34px;
 }
-#adg-cipher {
+#adg-cipher,
+#annex-cipher {
   position: relative;
   z-index: 1;
   display: block;
@@ -1476,3 +1505,105 @@ footer strong { color: var(--text); font-size: 1.1rem; }
   .ai-grid article:hover,
   .outcome-grid article:hover { transform: none; }
 }
+
+/* ---------------------------------------------------------------- *
+ * Technical annex
+ * ---------------------------------------------------------------- */
+.annex-main { padding-top: clamp(72px, 12vh, 132px); }
+.annex-page .site-header nav a { font-weight: 600; }
+.annex-main .section-shell { padding-block: clamp(28px, 5vw, 56px); }
+.annex-figure {
+  margin: 0 auto;
+  max-width: 980px;
+  border-radius: var(--md-sys-shape-corner-large);
+  overflow: hidden;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  background: var(--md-sys-color-surface-container-lowest);
+  box-shadow: var(--md-sys-elevation-2);
+}
+.annex-figure img { display: block; width: 100%; height: auto; }
+.annex-figure figcaption {
+  padding: 14px 18px 16px;
+  font-size: .86rem;
+  line-height: 1.75;
+  color: var(--md-sys-color-on-surface-variant);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+}
+.annex-note {
+  max-width: 980px;
+  margin: 16px auto 0;
+  font-size: .9rem;
+  line-height: 1.85;
+  color: var(--md-sys-color-on-surface-variant);
+}
+.annex-table-wrap { max-width: 980px; margin: 0 auto; overflow-x: auto; }
+.annex-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .92rem;
+  background: var(--md-sys-color-surface-container-lowest);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium);
+  overflow: hidden;
+}
+.annex-table caption {
+  caption-side: top;
+  text-align: start;
+  padding-block-end: 10px;
+  font-size: .84rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--md-sys-color-on-surface-variant);
+}
+.annex-table th,
+.annex-table td {
+  padding: 11px 14px;
+  text-align: start;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+.annex-table thead th {
+  font-size: .8rem;
+  letter-spacing: .04em;
+  color: var(--md-sys-color-on-surface-variant);
+  background: var(--md-sys-color-surface-container-low);
+}
+.annex-table tfoot td,
+.annex-table tfoot th {
+  background: var(--md-sys-color-surface-container-low);
+  border-bottom: 0;
+}
+.annex-table code {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: .88em;
+  letter-spacing: .08em;
+  color: var(--md-sys-color-secondary);
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+.annex-list {
+  max-width: 980px;
+  margin: 0 auto;
+  padding-inline-start: 1.25em;
+  display: grid;
+  gap: 12px;
+  line-height: 1.9;
+  color: var(--md-sys-color-on-surface-variant);
+}
+.annex-list b { color: var(--md-sys-color-on-surface); }
+.annex-example {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 18px 20px;
+  border-inline-start: 3px solid var(--md-sys-color-primary);
+  background: var(--md-sys-color-surface-container-lowest);
+  border-radius: var(--md-sys-shape-corner-medium);
+  line-height: 1.9;
+}
+.annex-example .mono {
+  font-family: ui-monospace, Consolas, monospace;
+  direction: ltr;
+  unicode-bidi: isolate;
+  color: var(--md-sys-color-secondary);
+  margin: 0 0 8px;
+}
+.annex-stage { margin-top: 26px; }

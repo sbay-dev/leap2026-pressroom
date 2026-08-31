@@ -2,10 +2,10 @@
   "schema": "sbay.leap2026.public-release.v1",
   "auditId": "SBAY-LEAP-DEEPFEST-20260831T043818Z",
   "capturedAtUtc": "2026-08-31T04:38:18.532Z",
-  "releaseId": "leap2026-pressroom-2.4.0",
+  "releaseId": "leap2026-pressroom-2.5.0",
   "classification": "public-non-enabling-press-material",
-  "fileCount": 58,
-  "releaseRoot": "9c10a1cbdd315a3feeb0ab25af2482989c49caedba0fa99ea3d522b00ecbffab",
+  "fileCount": 60,
+  "releaseRoot": "50517dabea221dd9bae33c01edfa56217bccf4d20a52c7294fea54b5e76f3f72",
   "files": [
     {
       "path": ".gitattributes",
@@ -54,8 +54,13 @@
     },
     {
       "path": "docs/adg-cipher.js",
-      "bytes": 27258,
-      "sha256": "976118d4116a2d61e6b931f10b5475cc8b95da7e8a5193ed0811681aab54e752"
+      "bytes": 26380,
+      "sha256": "fc8d6c723874e6308bcbead3c205a85fff16e872b5f657b2988dbefe0a56db9d"
+    },
+    {
+      "path": "docs/annex-intelligence.html",
+      "bytes": 18128,
+      "sha256": "b8d2d2a6ad59001953d9aa20b2afb5a6d6ce8498a2475147e2aaf3a75950ee52"
     },
     {
       "path": "docs/app.js",
@@ -104,8 +109,13 @@
     },
     {
       "path": "docs/assets/press/og-card.png",
-      "bytes": 387292,
-      "sha256": "ce9489c05acbc410ab16dfd36bcee5de84c909f3e02fc8ae6d5661698d847b98"
+      "bytes": 421285,
+      "sha256": "c49521e64cc402192f92cdf2357a0935b0c6467c052d666befae8882696c54f4"
+    },
+    {
+      "path": "docs/assets/press/taha-rasm-birmingham.png",
+      "bytes": 1816140,
+      "sha256": "2543cd3f591c908904fa384ab6143aa109b772b64df15d3ddf7d78a0ef294bc8"
     },
     {
       "path": "docs/assets/sbay-cube.svg",
@@ -119,8 +129,8 @@
     },
     {
       "path": "docs/index.html",
-      "bytes": 56918,
-      "sha256": "8b4a88a747d9ac5fc0aa3f590f0f0265de0b100917512659c5d6da5ddd8c0816"
+      "bytes": 57495,
+      "sha256": "52e9ee818fd3794963b02ceda0391e7453e8b2ea02354ed0e1dc25c31db3a6ab"
     },
     {
       "path": "docs/manifest.webmanifest",
@@ -129,8 +139,8 @@
     },
     {
       "path": "docs/press-kit.json",
-      "bytes": 5590,
-      "sha256": "2b2626408a2915aba52bc8b03d90c838b3c0351d1845d368900bbbeb65519f89"
+      "bytes": 7945,
+      "sha256": "e8444781ec95b267080c267c517bc9b42bdd181790a851f51cef9fd3c8d56b4d"
     },
     {
       "path": "docs/robots.txt",
@@ -139,13 +149,13 @@
     },
     {
       "path": "docs/sitemap.xml",
-      "bytes": 267,
-      "sha256": "b3db7a3a48d1048c2ad2cecb2b795cb5434cf16cd94d54a1e1d00752907c0edc"
+      "bytes": 447,
+      "sha256": "5173cf19b4dbbbf8b332abf4f929b12ed053e505141b94c575f53fa6eadb8224"
     },
     {
       "path": "docs/styles.css",
-      "bytes": 37161,
-      "sha256": "f5728354b17d551d64f5a30a8085c09b689c3d8f2ed336e14f1e0f84788ac89b"
+      "bytes": 41011,
+      "sha256": "c1542ec8abb08a6de45d80db6379ec617f081c273f11d19bb3bd557a24d40b16"
     },
     {
       "path": "ESPRESSO-OUTREACH.md",
@@ -210,12 +220,12 @@
     {
       "path": "package-lock.json",
       "bytes": 49900,
-      "sha256": "e9042823c22ea5a12f98ea3e1f546ad317a8aeb4df60d75ed039227a522b86d3"
+      "sha256": "1c5f9aba67c7798721cb1daaa6356ae0edebd8ae7211bdf6f82b0506a2b58865"
     },
     {
       "path": "package.json",
       "bytes": 909,
-      "sha256": "4b5f073025e3df8b98640ddba542bba536e695114636a221d092381d7b2b093f"
+      "sha256": "e0dbcd653335854a040a31e26e2ed156dd41511769a371b789e21729c859eccd"
     },
     {
       "path": "PNU-MEDIA-CENTER-BRIEF.md",
@@ -224,18 +234,18 @@
     },
     {
       "path": "PRESS-NOTES.md",
-      "bytes": 9098,
-      "sha256": "d3be1c4d98ba442406a7f1f4e7fc69216a857b4d8116e32d9183b5923a1e54c3"
+      "bytes": 9313,
+      "sha256": "652f9f05ab7bd7bf4a87346a9747d1541909358f784409b11d2c55fdb75d9e68"
     },
     {
       "path": "PUBLIC-DISCLOSURE-BOUNDARY.md",
-      "bytes": 6373,
-      "sha256": "4baca824930e6e4a3adef605189de2d5f382ae4b040098394f8388c2031a1701"
+      "bytes": 8261,
+      "sha256": "d595950e1a4c3b309501ca20c392f9ed424171fc6f18ab7a226eb93aa47fbab3"
     },
     {
       "path": "README.md",
-      "bytes": 3647,
-      "sha256": "64d1227bb464c0472c6fee6bd8e848ac9c57b1746adc0c61310ded8a792b29ad"
+      "bytes": 3810,
+      "sha256": "c4863373048a30d21daf953b83e84f346c621582ca3dbc41d5f2ed3b6b880f3f"
     },
     {
       "path": "scripts/build-release-manifest.mjs",
@@ -259,8 +269,8 @@
     },
     {
       "path": "scripts/check-public-boundary.mjs",
-      "bytes": 15039,
-      "sha256": "bb55134e1ccd0f756ad37b67d4920917b807a2e22b39bb8763782b5147094e1f"
+      "bytes": 19479,
+      "sha256": "bafeeaf41b8e4dfc29a5e7c50b17daee9369095a1be466ec7262769109c3307a"
     },
     {
       "path": "scripts/compile-wasm.ps1",
@@ -269,8 +279,8 @@
     },
     {
       "path": "scripts/verify-live.mjs",
-      "bytes": 8218,
-      "sha256": "06ae5461d2d687cd72aebf6fd339b9d3234e49a7517a7ae832f6766cf4dddf54"
+      "bytes": 9293,
+      "sha256": "a1454e069848d4f048b2cd91f7423e35828ce4a5186c3b8543b8f696e4900493"
     },
     {
       "path": "scripts/verify-wasm.mjs",

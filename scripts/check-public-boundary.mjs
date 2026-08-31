@@ -116,8 +116,6 @@ assert.match(index, /https:\/\/ksar\.store\/live/u);
 assert.match(index, /https:\/\/ksar\.store\/documentation/u);
 assert.match(index, /بيانات توضيحية وليست مؤشرات مبيعات أو جمهور/u);
 assert.match(index, /does not claim (?:physical Saudi|Saudi physical) hosting/iu);
-assert.match(index, /25\+/u);
-assert.match(index, /500\+/u);
 assert.match(index, /platform scope/iu);
 assert.match(index, /Independent participation/iu);
 assert.match(index, /no general MTEB superiority claim/iu);
@@ -178,6 +176,57 @@ const pressKit = JSON.parse(await readFile(
   path.join(root, "docs", "press-kit.json"),
   "utf8"
 ));
+// The observation snapshot may record what sbay.sa displays, but the published
+// pressroom must never repeat it as SBAY traction.
+assert.equal(pressKit.publicSignals.customerCountsPublished, false);
+assert.equal(pressKit.publicSignals.marketShareClaimed, false);
+assert.equal(pressKit.publicSignals.uptimeOrSupportPromised, false);
+for (const [pattern, label] of [
+  [/\d[\d,]*\s*\+?\s*(?:عميل|عملاء)/u, "customer count"],
+  [/\b\d+(?:\.\d+)?%\s*(?:uptime|وقت التشغيل)/iu, "uptime promise"],
+  [/\b24\s*\/\s*7\b/u, "support availability promise"],
+  [/(?:market share|حصة سوقية)[^<]{0,40}\d/iu, "quantified market-share claim"],
+  [/\d[^<]{0,40}(?:market share|حصة سوقية)/iu, "quantified market-share claim"]
+]) {
+  assert.equal(pattern.test(index), false, `${label} in docs/index.html`);
+}
+assert.match(index, /لا تعرض هذه الصفحة أرقام عملاء أو حصة سوقية/u);
+assert.match(index, /not presented as audited institutional traction/iu);
+
+// Numeric-claim gate. Every headline figure rendered in a metric tile must be
+// registered in press-kit.json with a basis, so no number reaches the public
+// page without a recorded way for a reader to check it.
+const ALLOWED_BASES = new Set(["recomputable", "public-link", "declared", "estimate"]);
+const registeredClaims = new Map(
+  pressKit.numericClaims.entries.map(entry => [entry.value, entry])
+);
+for (const entry of pressKit.numericClaims.entries) {
+  assert.ok(
+    ALLOWED_BASES.has(entry.basis),
+    `unknown claim basis "${entry.basis}" for ${entry.value}`
+  );
+  assert.ok(entry.source, `missing source for numeric claim ${entry.value}`);
+}
+const tileValues = [...index.matchAll(/<div(?: role="listitem")?><strong>(.*?)<\/strong>/gu)]
+  .map(match => match[1])
+  .filter(value => !value.includes("<span") && /[0-9]/u.test(value));
+assert.ok(tileValues.length >= 12, `expected headline figures, found ${tileValues.length}`);
+for (const value of tileValues) {
+  const entry = registeredClaims.get(value);
+  assert.ok(entry, `unregistered headline figure "${value}" in docs/index.html`);
+  if (entry.basis === "declared") {
+    assert.ok(
+      index.includes("· معلن") && index.includes("· declared"),
+      `declared figure "${value}" must be labelled as declared on the page`
+    );
+  }
+  if (entry.basis === "estimate") {
+    assert.ok(
+      index.includes("زمن متوقّع لا مقيس") && index.includes("expected, not measured"),
+      `estimate "${value}" must be labelled as an estimate on the page`
+    );
+  }
+}
 assert.equal(pressKit.schema, "sbay.press-kit.v2");
 assert.equal(pressKit.tradeName.arabic, "منصة تموين");
 assert.equal(pressKit.tradeName.english, "SBAY");
@@ -314,15 +363,30 @@ for (const asset of [
   "newsboy-classic-mobile.png",
   "ksar-market.png",
   "cp-dashboard.png",
+  "taha-rasm-birmingham.png",
   "og-card.png"
 ]) {
   await stat(path.join(root, "docs", "assets", "press", asset));
 }
 
 const cipher = await readFile(path.join(root, "docs", "adg-cipher.js"), "utf8");
-assert.match(cipher, /codePointAt\(0\) & 0xff/u, "flag bits must be derived from public Unicode scalars");
+const annex = await readFile(path.join(root, "docs", "annex-intelligence.html"), "utf8");
 assert.match(cipher, /const LOOP_SECONDS = 5/u);
 assert.match(cipher, /createCanvasPainter/u, "a non-WebGPU fallback painter is mandatory");
+assert.match(cipher, /popcount\(flag\)/u, "petal count must be the population count of the flag byte");
+// The verse text is never typed into the shipped source. Only derived byte
+// values may appear, and the manuscript image is the authorised embedding.
+assert.equal(
+  /[\u0600-\u06FF]/u.test(cipher),
+  false,
+  "no Arabic script may be embedded in docs/adg-cipher.js"
+);
+const publishedFlags = [
+  0x48, 0x27, 0xba, 0x27, 0x27, 0x2d, 0xba, 0x31, 0xba, 0x43, 0xa1, 0x27,
+  0x33, 0xba, 0x45, 0x39, 0x44, 0x45, 0x27, 0x6e, 0x48, 0x2d, 0x49
+];
+assert.equal(publishedFlags.length, 23, "the rasm must stay at 23 units");
+assert.equal(publishedFlags.length * 8, 184, "the lattice must stay at 184 bits");
 for (const [pattern, label] of [
   [/RasmMaskHex|RasmRecordHex/iu, "proprietary rasm mask table"],
   [/0x8003|0x0817/u, "proprietary rasm mask value"],
@@ -331,12 +395,31 @@ for (const [pattern, label] of [
   assert.equal(pattern.test(cipher), false, `${label} in docs/adg-cipher.js`);
   assert.equal(pattern.test(index), false, `${label} in docs/index.html`);
 }
+assert.match(index, /لا تعرض هذه الصفحة أرقام عملاء أو حصة سوقية/u);
+assert.match(index, /not presented as audited institutional traction/iu);
 assert.match(index, /id="adg-cipher"/u);
 assert.match(index, /data-loop-seconds="5"/u);
-assert.match(index, /20:13/u, "the hero must cite its public verse reference");
 assert.match(index, /class="cipher-note"/u, "the disclosure note must stay on the page");
+assert.match(index, /annex-intelligence\.html/u, "the hero must link to the technical annex");
+
+// Dense technical material lives in the annex, never in the main narrative.
 for (const label of ["IF", "ID", "EX", "MEM", "WB", "void"]) {
-  assert.ok(index.includes(`>${label}<`), `missing pipeline label ${label}`);
+  assert.ok(annex.includes(`<code>${label}</code>`), `missing pipeline label ${label} in the annex`);
+}
+assert.match(annex, /20:13/u, "the annex must cite its public verse reference");
+assert.match(annex, /taha-rasm-birmingham\.png/u, "the authorised manuscript embedding must stay");
+assert.match(annex, /Mingana Islamic Arabic 1572a/u, "the manuscript attribution is mandatory");
+assert.match(annex, /Public domain via Wikimedia Commons/u, "the licence statement is mandatory");
+assert.match(annex, /codePoint &amp; 0xFF/u, "the annex must publish the derivation");
+for (const figure of ["84", "23", "184", "85"]) {
+  assert.ok(annex.includes(figure), `missing derived figure ${figure} in the annex`);
+}
+for (const [pattern, label] of [
+  [/RasmMaskHex|RasmRecordHex/iu, "proprietary rasm mask table"],
+  [/0x8003|0x0817/u, "proprietary rasm mask value"],
+  [/routingThreshold|expertWeight|availabilityMask/iu, "protected routing internals"]
+]) {
+  assert.equal(pattern.test(annex), false, `${label} in docs/annex-intelligence.html`);
 }
 
 console.log(JSON.stringify({

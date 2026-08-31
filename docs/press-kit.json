@@ -18,13 +18,34 @@
     "taglineEn": "From Procurement to Fulfillment. From Data to Decisions."
   },
   "publicSignals": {
-    "source": "https://sbay.sa/",
-    "digitalServicesAndProducts": "25+",
-    "publishedCustomers": "500+",
-    "publishedUptime": "99.9%",
-    "publishedSupport": "24/7"
+    "customerCountsPublished": false,
+    "marketShareClaimed": false,
+    "uptimeOrSupportPromised": false,
+    "verifiableSignals": [
+      "Four live products reachable on the public internet",
+      "Every claim on this page carries its public link",
+      "Pre-seed stage, seeking a first institutional partner"
+    ],
+    "priorActivityDisclosure": "Earlier sbay.sa activity came from independent freelance work with scattered invoices and transfers. It is not audited institutional traction and is not presented as such."
   },
-  "platformScope": [
+  "numericClaims": {
+    "policy": "Every number rendered as a headline figure on the page must be registered here with its basis. Permitted bases: recomputable (the reader can derive it from this page), public-link (a public URL shows it), declared (stated from an internal record and labelled as declared on the page), estimate (labelled as an estimate on the page). Any unregistered headline number fails the publication gate.",
+    "entries": [
+      { "value": "4", "basis": "recomputable", "source": "https://leap2026.sbay.sa/", "note": "Four product links are present on this page and each resolves." },
+      { "value": "2.1.0-leap2026", "basis": "public-link", "source": "https://ksar.store/documentation" },
+      { "value": "236", "basis": "declared", "source": "internal KSAR release manifest", "note": "Labelled as declared on the page; not independently reviewed." },
+      { "value": "8", "basis": "declared", "source": "internal KSAR release manifest", "note": "Labelled as declared on the page; not independently reviewed." },
+      { "value": "SHA-256", "basis": "recomputable", "source": "https://ksar.store/documentation", "note": "Algorithm name, not a measurement." },
+      { "value": "2", "basis": "public-link", "source": "https://adg.sbay.sa/" },
+      { "value": "16", "basis": "public-link", "source": "https://adg.sbay.sa/" },
+      { "value": "112", "basis": "public-link", "source": "https://adg.sbay.sa/" },
+      { "value": "15\u201325", "basis": "estimate", "source": "planning estimate", "note": "Labelled on the page as expected, not measured." },
+      { "value": "21.7M", "basis": "public-link", "source": "https://sbay-dev.github.io/sarmadAi/" },
+      { "value": "83 MB", "basis": "public-link", "source": "https://sbay-dev.github.io/sarmadAi/" },
+      { "value": "12D", "basis": "public-link", "source": "https://sbay-dev.github.io/sarmadAi/" },
+      { "value": "768D", "basis": "public-link", "source": "https://sbay-dev.github.io/sarmadAi/" }
+    ]
+  },  "platformScope": [
     "Purchase request management",
     "Supplier management",
     "RFQ and tender workflows",

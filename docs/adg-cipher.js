@@ -1,27 +1,44 @@
 /*
- * ADG Cipher — Arabic Assembly Cycle
- * A five second seamless loop rendered on WebGPU with a Canvas2D fallback.
+ * ADG Cipher -> Bloom
+ * A faithful port of the original CNS "Flower Bloom Cipher" study published at
+ * https://sbay-dev.github.io/sarmadAi/ , with the real numbers applied to it.
  *
- * Scene source: Quran 20:13, the verse the ADG abstraction actually parsed.
- * Everything drawn here is derived from public byte reality only:
- *   - the UTF-8 encoding of the verse
- *   - the classical rasm skeleton, written without dots and without vowel marks
- *   - flag bits taken from the public Unicode scalar of each rasm unit
- * No proprietary mask table, routing rule, threshold or weight is present.
+ * Nothing here is invented for decoration:
+ *   - the lattice is 23 columns by 8 rows, the 184 flag bits of one parsed verse
+ *   - a column blooms only where its bit is set
+ *   - the petal count of a flower equals the population count of that unit
+ *   - the cipher label above a column is that unit's flag byte in hexadecimal
+ *
+ * The verse itself is never typed into this file. Only the derived byte values
+ * are published, and they come from the public Unicode scalar of each classical
+ * rasm unit. No proprietary mask table, routing rule, threshold or weight is
+ * present. The verse image is reproduced in the annex from a public domain
+ * manuscript, never redrawn here.
  */
 
 const LOOP_SECONDS = 5;
 const MAX_BACKING_PIXELS = 1024;
 
-const VERSE = {
+/*
+ * Derived byte reality for Quran 20:13. Per word: UTF-8 length, then the low
+ * octet of the Unicode scalar of every rasm unit in that word.
+ */
+const RASM = {
   reference: "20:13",
   words: [
-    { text: "وَأَنَا", rasm: "واںا", utf8: 14 },
-    { text: "اخْتَرْتُكَ", rasm: "احںرںك", utf8: 22 },
-    { text: "فَاسْتَمِعْ", rasm: "ڡاسںمع", utf8: 22 },
-    { text: "لِمَا", rasm: "لما", utf8: 10 },
-    { text: "يُوحَى", rasm: "ٮوحى", utf8: 12 }
+    { utf8: 14, flags: [0x48, 0x27, 0xba, 0x27] },
+    { utf8: 22, flags: [0x27, 0x2d, 0xba, 0x31, 0xba, 0x43] },
+    { utf8: 22, flags: [0xa1, 0x27, 0x33, 0xba, 0x45, 0x39] },
+    { utf8: 10, flags: [0x44, 0x45, 0x27] },
+    { utf8: 12, flags: [0x6e, 0x48, 0x2d, 0x49] }
   ]
+};
+
+const popcount = byte => {
+  let value = byte;
+  let bits = 0;
+  while (value) { value &= value - 1; bits += 1; }
+  return bits;
 };
 
 const PALETTE = {
@@ -55,26 +72,27 @@ const KIND = {
 /** Builds the deterministic scene model shared by both painters. */
 export function buildScene() {
   const units = [];
-  VERSE.words.forEach((word, wordIndex) => {
-    Array.from(word.rasm).forEach((glyph, glyphIndex) => {
+  RASM.words.forEach((word, wordIndex) => {
+    word.flags.forEach((flag, glyphIndex) => {
       units.push({
-        glyph,
         wordIndex,
         glyphIndex,
-        // Flag byte is the low octet of the public Unicode scalar.
-        flag: glyph.codePointAt(0) & 0xff
+        flag,
+        // Petals of this unit's flower: the bits that caused the interaction.
+        petals: popcount(flag),
+        label: flag.toString(16).toUpperCase().padStart(2, "0")
       });
     });
   });
 
-  const totalUtf8 = VERSE.words.reduce((sum, word) => sum + word.utf8, 0)
-    + (VERSE.words.length - 1);
+  const totalUtf8 = RASM.words.reduce((sum, word) => sum + word.utf8, 0)
+    + (RASM.words.length - 1);
   const transportBits = units.length * 8;
 
   return {
     units,
-    words: VERSE.words,
-    reference: VERSE.reference,
+    words: RASM.words,
+    reference: RASM.reference,
     totalUtf8,
     transportBits,
     transportBytes: units.length,
@@ -86,156 +104,98 @@ export function buildScene() {
  * Layout
  * ------------------------------------------------------------------ */
 
-const STAGES = ["IF", "ID", "EX", "MEM", "WB"];
-
 /**
  * Places every drawable in clip space. Arabic reads right to left, so unit 0
- * sits at the right edge and the pipeline packet also travels right to left.
+ * sits at the right edge. Rows run from the most significant bit downwards, so
+ * a cell's row is its bit position and its column is its assembly position.
  */
 function layout(scene) {
   const items = [];
-  const count = scene.units.length;
-  const stripHalf = 0.88;
-  const step = (stripHalf * 2) / count;
-  const columnX = index => stripHalf - step * (index + 0.5);
+  const columns = scene.units.length;
+  const rows = 8;
+  const halfWidth = 0.93;
+  const stepX = (halfWidth * 2) / columns;
+  const columnX = index => halfWidth - stepX * (index + 0.5);
 
-  const rasmY = -0.80;
-  const ruleY = -0.665;
-  const latticeTop = -0.575;
-  const bitGap = step;
-  const bitSize = step * 0.6;
-  const latticeBottom = latticeTop + bitGap * 7;
-  const laneY = 0.62;
-  const laneHalf = 0.84;
-  const stageWidth = (laneHalf * 2) / STAGES.length;
-  const entryX = laneHalf - stageWidth * 0.5;
+  const latticeTop = -0.46;
+  const stepY = 0.145;
+  const cellSize = stepX * 0.34;
 
   scene.units.forEach((unit, index) => {
     const x = columnX(index);
     const tint = PALETTE.words[unit.wordIndex];
 
+    // Cipher layer: the real flag byte, in the place the original study drew a
+    // random character before it resolved into a flower.
     items.push({
-      kind: KIND.GLYPH, x, y: rasmY,
-      w: step * 1.15, h: step * 1.15,
+      kind: KIND.GLYPH, x, y: latticeTop - stepY * 1.05,
+      w: stepX * 1.1, h: stepY * 0.52,
       color: PALETTE.rasm, seed: index,
-      t0: 0.012 + index * 0.0105, span: 0.19,
+      t0: 0.01 + index * 0.008, span: 0.18,
       atlas: index, value: 1, to: null
     });
 
     for (let bit = 7; bit >= 0; bit -= 1) {
       const set = (unit.flag >> bit) & 1;
       const row = 7 - bit;
-      const y = latticeTop + row * bitGap;
-      const t0 = 0.225 + index * 0.0128 + row * 0.005;
-      if (set) {
+      const y = latticeTop + row * stepY;
+
+      // Permanent lattice: every one of the 184 flag positions is drawn.
+      items.push({
+        kind: KIND.CELL, x, y,
+        w: cellSize, h: cellSize,
+        color: PALETTE.clearBit, seed: index * 8 + row,
+        t0: 0, span: 0.001,
+        atlas: -1, value: 0, to: null
+      });
+
+      if (!set) continue;
+
+      const t0 = 0.16 + index * 0.0155 + row * 0.006;
+      // A flower opens only where a bit is set, and only with as many petals
+      // as there are set bits in the byte that produced it. Each petal is an
+      // ellipse offset outward along its own angle, exactly as the original.
+      const reach = stepX * 0.92;
+      for (let petal = 0; petal < unit.petals; petal += 1) {
+        const angle = (Math.PI * 2 / unit.petals) * petal + (index + row) * 0.21;
         items.push({
           kind: KIND.PETAL, x, y,
-          w: bitSize * 3.6, h: bitSize * 3.6,
-          color: tint, seed: index * 8 + row,
-          t0: t0 + 0.025, span: 0.28,
-          atlas: -1, value: 1, to: null
+          w: reach * 1.2, h: reach * 0.5,
+          color: tint, seed: index * 8 + row + petal,
+          t0: t0 + 0.02, span: 0.3,
+          atlas: -1, value: 1,
+          to: [x + Math.cos(angle) * reach * 0.5, y + Math.sin(angle) * reach * 0.5],
+          rotation: angle
         });
       }
       items.push({
-        kind: set ? KIND.BIT : KIND.CELL, x, y,
-        w: bitSize, h: bitSize,
-        color: set ? tint : PALETTE.clearBit,
-        seed: index * 8 + row,
-        t0: set ? t0 : 0, span: set ? 0.17 : 0.001,
-        atlas: -1, value: set, to: null
-      });
-    }
-
-    for (let pass = 0; pass < 2; pass += 1) {
-      items.push({
-        kind: KIND.STREAM, x,
-        y: latticeBottom + bitGap * (0.85 + pass * 0.5),
-        w: step * 0.3, h: step * 0.6,
-        color: tint, seed: index * 2 + pass,
-        t0: 0.42 + index * 0.008 + pass * 0.12, span: 0.34,
-        atlas: -1, value: 1,
-        to: [entryX, laneY - 0.135]
+        kind: KIND.BIT, x, y,
+        w: cellSize * 1.15, h: cellSize * 1.15,
+        color: tint, seed: index * 8 + row,
+        t0, span: 0.16,
+        atlas: -1, value: 1, to: null
       });
     }
   });
 
-  // One underline per word keeps the five ENUM Flag blocks legible.
+  // One rule per word: five ordered blocks, the shape the abstraction reads.
   let cursor = 0;
   scene.words.forEach((word, wordIndex) => {
     const first = cursor;
-    const last = cursor + Array.from(word.rasm).length - 1;
+    const last = cursor + word.flags.length - 1;
     cursor = last + 1;
-    const left = columnX(last) - step * 0.42;
-    const right = columnX(first) + step * 0.42;
+    const left = columnX(last) - stepX * 0.44;
+    const right = columnX(first) + stepX * 0.44;
     items.push({
       kind: KIND.RULE,
       x: (left + right) / 2,
-      y: rasmY + step * 0.95,
+      y: latticeTop + stepY * 7.7,
       w: right - left, h: 0.006,
       color: PALETTE.words[wordIndex], seed: wordIndex,
-      t0: 0.13 + wordIndex * 0.022, span: 0.2,
+      t0: 0.1 + wordIndex * 0.02, span: 0.2,
       atlas: -1, value: 1, to: null
     });
   });
-
-  items.push({
-    kind: KIND.RULE, x: 0, y: ruleY,
-    w: stripHalf * 2, h: 0.0035,
-    color: PALETTE.stage, seed: 0,
-    t0: 0.19, span: 0.22,
-    atlas: -1, value: 1, to: null
-  });
-
-  STAGES.forEach((_, stageIndex) => {
-    items.push({
-      kind: KIND.STAGE,
-      x: laneHalf - stageWidth * (stageIndex + 0.5),
-      y: laneY,
-      w: stageWidth * 0.86, h: 0.185,
-      // Memory and write back stay unlit: this route stores nothing.
-      color: stageIndex >= 3 ? PALETTE.voidLane : PALETTE.stage,
-      seed: stageIndex,
-      t0: 0.4 + stageIndex * 0.032, span: 0.2,
-      atlas: -1, value: stageIndex >= 3 ? 0 : 1, to: null
-    });
-  });
-
-  // Closed write ports: the memory and write back stages accept no store.
-  [3, 4].forEach(stageIndex => {
-    const centre = laneHalf - stageWidth * (stageIndex + 0.5);
-    for (const rotation of [Math.PI / 4, -Math.PI / 4]) {
-      items.push({
-        kind: KIND.RULE, x: centre, y: laneY + 0.13,
-        w: 0.052, h: 0.008,
-        color: PALETTE.voidLane, seed: stageIndex,
-        t0: 0.58 + stageIndex * 0.02, span: 0.2,
-        atlas: -1, value: 1, to: null, rotation
-      });
-    }
-  });
-
-  items.push({
-    kind: KIND.PACKET, x: entryX, y: laneY,
-    w: 0.13, h: 0.13,
-    color: PALETTE.packet, seed: 0,
-    t0: 0.5, span: 0.42,
-    atlas: -1,
-    value: stageWidth * (STAGES.length - 1), to: null
-  });
-
-  const dashes = 24;
-  for (let dash = 0; dash < dashes; dash += 1) {
-    const ratio = dash / (dashes - 1);
-    items.push({
-      kind: KIND.VOID,
-      x: -laneHalf + laneHalf * 2 * ratio,
-      y: laneY + 0.195,
-      w: 0.032, h: 0.011,
-      color: PALETTE.voidLane, seed: dash,
-      t0: 0.7 + ratio * 0.15, span: 0.16,
-      atlas: -1, value: 1, to: null
-    });
-  }
 
   return items;
 }
@@ -257,12 +217,12 @@ function buildAtlas(scene) {
   context.fillStyle = "#ffffff";
   context.textAlign = "center";
   context.textBaseline = "middle";
-  context.font = `600 ${ATLAS_CELL * 0.72}px "Segoe UI", Tahoma, Arial, sans-serif`;
+  context.font = `600 ${ATLAS_CELL * 0.46}px ui-monospace, "Cascadia Mono", Consolas, monospace`;
   scene.units.forEach((unit, index) => {
     const column = index % ATLAS_COLS;
     const row = Math.floor(index / ATLAS_COLS);
     context.fillText(
-      unit.glyph,
+      unit.label,
       column * ATLAS_CELL + ATLAS_CELL / 2,
       row * ATLAS_CELL + ATLAS_CELL * 0.54
     );
@@ -344,8 +304,9 @@ fn vertexMain(
     scale = mix(0.1, 1.0, grow);
     energy = grow * (1.0 - smoothstep(0.80, 0.96, uniforms.phase));
   } else if (kind < 2.5) {
-    // Bloom petal: opens and keeps a slow breath.
-    scale = mix(0.0, 1.0, grow) * (1.0 + breathe * 0.06 * uniforms.intensity);
+    // Bloom petal: opens outward along its own angle and keeps a slow breath.
+    scale = grow * (1.0 + breathe * 0.06 * uniforms.intensity);
+    offset = (vec2f(rect.x, rect.y) - center) * grow;
     energy = grow * (1.0 - smoothstep(0.78, 0.94, uniforms.phase));
   } else if (kind < 3.5) {
     // Pipeline stage: permanent.
@@ -416,13 +377,9 @@ fn fragmentMain(input : VertexOut) -> @location(0) vec4f {
     let d = roundedBox(input.local, 0.42);
     alpha = 1.0 - smoothstep(-0.06, 0.06, d);
   } else if (kind < 2.5) {
-    // Six petal bloom, the cipher motif carried over from the original study.
+    // One elliptical petal, the shape the original study drew per petal.
     let r = length(input.local);
-    let a = atan2(input.local.y, input.local.x);
-    let petal = 0.52 + 0.40 * abs(cos(3.0 * a));
-    let halo = (1.0 - smoothstep(petal - 0.5, petal, r)) * 0.26;
-    let core = (1.0 - smoothstep(0.0, 0.5, r)) * 0.2;
-    alpha = halo + core;
+    alpha = (1.0 - smoothstep(0.55, 1.0, r)) * 0.5;
   } else if (kind < 3.5) {
     let d = roundedBox(input.local, 0.3);
     let border = 1.0 - smoothstep(0.0, 0.05, abs(d + 0.02));
@@ -452,7 +409,7 @@ function packInstances(items, atlasRows) {
       ? atlasRect(item.atlas, atlasRows)
       : [item.to?.[0] ?? 0, item.to?.[1] ?? 0, item.rotation ?? 0, 0];
     const alpha = item.kind === KIND.CELL ? 0.5
-      : item.kind === KIND.STAGE && !item.value ? 0.65
+      : item.kind === KIND.GLYPH ? 0.42
         : 1;
     data[base] = item.x;
     data[base + 1] = item.y;
@@ -704,7 +661,7 @@ function createCanvasPainter(canvas, scene, items) {
         if (energy <= 0.001) continue;
 
         const alpha = item.kind === KIND.CELL ? energy * 0.5
-          : item.kind === KIND.STAGE && !item.value ? energy * 0.65
+          : item.kind === KIND.GLYPH ? energy * 0.42
             : energy;
         const px = toX(x);
         const py = toY(y);
@@ -713,20 +670,21 @@ function createCanvasPainter(canvas, scene, items) {
 
         if (item.kind === KIND.GLYPH) {
           context.fillStyle = rgba(item.color, alpha);
-          context.font = `600 ${w * 0.9}px "Segoe UI", Tahoma, Arial, sans-serif`;
-          context.fillText(scene.units[item.atlas].glyph, px, py);
+          context.font = `600 ${h * 0.62}px ui-monospace, Consolas, monospace`;
+          context.fillText(scene.units[item.atlas].label, px, py);
         } else if (item.kind === KIND.PETAL) {
-          const radius = (w / 2) * grow * (1 + Math.sin(phase * 6.2831853 + item.seed * 0.45) * 0.06 * intensity);
-          context.fillStyle = rgba(item.color, alpha * 0.22);
+          const breathe = 1 + Math.sin(phase * 6.2831853 + item.seed * 0.45) * 0.06 * intensity;
+          const spread = grow;
+          const cx = toX(item.x + ((item.to?.[0] ?? item.x) - item.x) * spread);
+          const cy = toY(item.y + ((item.to?.[1] ?? item.y) - item.y) * spread);
+          context.save();
+          context.translate(cx, cy);
+          context.rotate(item.rotation ?? 0);
+          context.fillStyle = rgba(item.color, alpha * 0.5);
           context.beginPath();
-          for (let step = 0; step <= 48; step += 1) {
-            const angle = (step / 48) * Math.PI * 2;
-            const r = radius * (0.40 + 0.52 * Math.abs(Math.cos(3 * angle)));
-            const method = step === 0 ? "moveTo" : "lineTo";
-            context[method](px + Math.cos(angle) * r, py + Math.sin(angle) * r);
-          }
-          context.closePath();
+          context.ellipse(0, 0, (w / 2) * grow * breathe, (h / 2) * grow * breathe, 0, 0, Math.PI * 2);
           context.fill();
+          context.restore();
         } else if (item.kind === KIND.PACKET) {
           const gradient = context.createRadialGradient(px, py, 0, px, py, w / 2);
           gradient.addColorStop(0, rgba(item.color, alpha));
