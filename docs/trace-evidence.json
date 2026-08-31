@@ -1,6 +1,6 @@
 {
   "schema": "sbay.leap2026.octet-bloom-trace.v1",
-  "release": "2.7.0",
+  "release": "2.7.1",
   "reference": "20:13",
   "interpretation": {
     "visibleGrain": "one bit",
@@ -179,13 +179,13 @@
     },
     {
       "path": "docs/index.html",
-      "bytes": 65397,
-      "sha256": "781a895117f86a9d397f40f546ca01917621a085abc8ce7341b6a25a78a48956"
+      "bytes": 67224,
+      "sha256": "e1405314733a8f5a10dbec5836af28ef911ad30e925f6ffc558cb99cfa6b05de"
     },
     {
       "path": "docs/styles.css",
-      "bytes": 49500,
-      "sha256": "09628cdcecd971d3f5dc8c2f0592e4a8c18ad0701b5b728e5b819dbeebfbde03"
+      "bytes": 52499,
+      "sha256": "bc75915b713249de832de50ca6f47500a531c4772e47761fa1a88a376331190d"
     },
     {
       "path": "wasm/evidence_match.rs",
@@ -209,8 +209,8 @@
     },
     {
       "path": "scripts/check-cipher.mjs",
-      "bytes": 20025,
-      "sha256": "d0924908b9d06996cd282eef741b69c88f348bb54cd0aeee7abb74d1574e3b77"
+      "bytes": 30242,
+      "sha256": "df24ab9ede735e5c04b16abeaa174cd78527641bf9ce5cdf3c45a7eb1f9a6fff"
     },
     {
       "path": "scripts/verify-wasm.mjs",

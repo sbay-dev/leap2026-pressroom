@@ -66,13 +66,17 @@
       "url": "https://newsboy.sbay.sa/",
       "citationsUrl": "https://newsboy.sbay.sa/#m-citations-section",
       "archiveUrl": "https://newsboy.sbay.sa/#m-archive-section",
+      "liveCoverageUrl": "https://newsboy.sbay.sa/coverage/leap-2026",
+      "embeddedReaderUrl": "https://leap2026.sbay.sa/newsboy-reader",
+      "embeddedReaderBoundary": "Read-only same-origin relay of the live NewsBoy HTML route. Scripts are removed, article links open separately, and an incomplete upstream response fails visibly instead of serving a stale edition.",
+      "featuredArticleUrl": "https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412",
       "leap5PaperUrl": "https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412",
       "featuredMedia": [
         "assets/press/newsboy-leap5-paper.png",
         "assets/press/newsboy-cultural-edition.png",
         "assets/press/newsboy-classic-editorial.png"
       ],
-      "summary": "Rights-aware Arabic daily news with public source citations, a navigable site archive and a semantic LEAP5 paper reader."
+      "summary": "Rights-aware Arabic daily news with public source citations, a navigable site archive and a live semantic LEAP and DeepFest edition reader."
     },
     {
       "name": "Ksar",

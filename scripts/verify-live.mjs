@@ -39,9 +39,16 @@ assert.match(html, /https:\/\/newsboy\.sbay\.sa\/#m-citations-section/u);
 assert.match(html, /https:\/\/newsboy\.sbay\.sa\/#m-archive-section/u);
 assert.match(
   html,
-  /https:\/\/newsboy\.sbay\.sa\/coverage\/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412/u
+  /https:\/\/newsboy\.sbay\.sa\/coverage\/leap-2026/u
 );
-assert.match(html, /newsboy-leap5-paper\.png/u);
+assert.match(html, /src="\/newsboy-reader"/u);
+assert.match(html, /scrolling="no"/u);
+assert.match(
+  html,
+  /sandbox="allow-popups allow-popups-to-escape-sandbox"/u
+);
+assert.doesNotMatch(html, /coverage\/leap-2026#article-/u);
+assert.doesNotMatch(html, /newsboy-leap5-paper\.png/u);
 assert.match(html, /class="newsboy-paper-break"/u);
 assert.match(html, /newsboy-cultural-edition\.png/u);
 assert.match(html, /newsboy-classic-editorial\.png/u);
@@ -96,6 +103,45 @@ assert.ok(html.indexOf('id="adjudication"') < html.indexOf('id="proof"'));
 const cacheControl = page.headers.get("cache-control");
 assert.match(cacheControl || "", /(?:^|,)\s*no-transform(?:,|$)/u);
 
+const embeddedReader = await fetch(`${baseUrl}/newsboy-reader`, {
+  redirect: "error"
+});
+assert.equal(embeddedReader.status, 200, "the live NewsBoy reader must load");
+assert.equal(
+  embeddedReader.headers.get("x-sbay-newsboy-source"),
+  "https://newsboy.sbay.sa/coverage/leap-2026"
+);
+assert.equal(
+  embeddedReader.headers.get("x-sbay-newsboy-upstream-status"),
+  "200"
+);
+assert.match(
+  embeddedReader.headers.get("content-security-policy") || "",
+  /frame-ancestors 'self'/u
+);
+assert.match(
+  embeddedReader.headers.get("content-security-policy") || "",
+  /script-src 'none'/u
+);
+assert.equal(embeddedReader.headers.get("x-frame-options"), "SAMEORIGIN");
+const embeddedHtml = await embeddedReader.text();
+assert.match(embeddedHtml, /<main\b[^>]*class=["'][^"']*\bpaper\b/iu);
+assert.match(
+  embeddedHtml,
+  /<base href="https:\/\/newsboy\.sbay\.sa\/">/u
+);
+assert.doesNotMatch(embeddedHtml, /<script\b/iu);
+
+const directNewsboy = await fetch(
+  "https://newsboy.sbay.sa/coverage/leap-2026",
+  { redirect: "error" }
+);
+assert.equal(directNewsboy.status, 200);
+assert.match(
+  directNewsboy.headers.get("content-security-policy") || "",
+  /frame-ancestors 'none'/u
+);
+
 const kit = await fetch(`${baseUrl}/press-kit.json`);
 assert.equal(kit.status, 200);
 const pressKit = await kit.json();
@@ -129,6 +175,19 @@ const newsBoy = pressKit.operatingProof.find(item => item.name === "NewsBoy");
 assert.ok(newsBoy);
 assert.equal(newsBoy.citationsUrl, "https://newsboy.sbay.sa/#m-citations-section");
 assert.equal(newsBoy.archiveUrl, "https://newsboy.sbay.sa/#m-archive-section");
+assert.equal(
+  newsBoy.liveCoverageUrl,
+  "https://newsboy.sbay.sa/coverage/leap-2026"
+);
+assert.equal(
+  newsBoy.embeddedReaderUrl,
+  `${baseUrl}/newsboy-reader`
+);
+assert.match(newsBoy.embeddedReaderBoundary, /fails visibly/u);
+assert.equal(
+  newsBoy.featuredArticleUrl,
+  "https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412"
+);
 assert.equal(
   newsBoy.leap5PaperUrl,
   "https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412"

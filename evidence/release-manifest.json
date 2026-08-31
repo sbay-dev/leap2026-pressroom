@@ -2,10 +2,10 @@
   "schema": "sbay.leap2026.public-release.v1",
   "auditId": "SBAY-LEAP-DEEPFEST-20260831T043818Z",
   "capturedAtUtc": "2026-08-31T04:38:18.532Z",
-  "releaseId": "leap2026-pressroom-2.7.0",
+  "releaseId": "leap2026-pressroom-2.7.1",
   "classification": "public-non-enabling-press-material",
-  "fileCount": 69,
-  "releaseRoot": "88f77f8d8059f1841ab0c739cbbfd8c03c62ef9069b6e56fce4d2f7bdf3d577d",
+  "fileCount": 71,
+  "releaseRoot": "e95069d47336260a61065ee49985c58a81954e9222f9c036a3cb58aff60e19df",
   "files": [
     {
       "path": ".gitattributes",
@@ -39,8 +39,8 @@
     },
     {
       "path": "docs/_headers",
-      "bytes": 768,
-      "sha256": "90d4413d52c2553570d5093c5c8992beab890ac4a41083feeed640cb138d5348"
+      "bytes": 786,
+      "sha256": "4e82a45f9d14c5cfe87ff48c6a5fb0fda09f7252b96301eef585a5056244dc34"
     },
     {
       "path": "docs/.nojekyll",
@@ -69,8 +69,8 @@
     },
     {
       "path": "docs/app.js",
-      "bytes": 13599,
-      "sha256": "8fb8e93e9f4948e2c31e773cd83b0a38e07be7d2825f736e40393f3a958649ac"
+      "bytes": 17739,
+      "sha256": "1ca1b83d5250af4de12d17f1dde390d4c48ae2363bdc6b94c609bcd9a9ce1493"
     },
     {
       "path": "docs/assets/press/adg-adjudication-platform.png",
@@ -149,8 +149,8 @@
     },
     {
       "path": "docs/index.html",
-      "bytes": 65397,
-      "sha256": "781a895117f86a9d397f40f546ca01917621a085abc8ce7341b6a25a78a48956"
+      "bytes": 67224,
+      "sha256": "e1405314733a8f5a10dbec5836af28ef911ad30e925f6ffc558cb99cfa6b05de"
     },
     {
       "path": "docs/manifest.webmanifest",
@@ -159,8 +159,8 @@
     },
     {
       "path": "docs/press-kit.json",
-      "bytes": 8180,
-      "sha256": "cc6a1965a4c5a78edf466d424927c3a0412bac6309cee497ca3d941b3a58870d"
+      "bytes": 8690,
+      "sha256": "3cf9e44e1275aeca9bafa6617926c8d1d872c9c9c00b46064cbb62fd44bcfc78"
     },
     {
       "path": "docs/robots.txt",
@@ -174,13 +174,13 @@
     },
     {
       "path": "docs/styles.css",
-      "bytes": 49500,
-      "sha256": "09628cdcecd971d3f5dc8c2f0592e4a8c18ad0701b5b728e5b819dbeebfbde03"
+      "bytes": 52499,
+      "sha256": "bc75915b713249de832de50ca6f47500a531c4772e47761fa1a88a376331190d"
     },
     {
       "path": "docs/trace-evidence.json",
       "bytes": 6192,
-      "sha256": "c5c952b776ecd241c9ceabf89d0bafdb6f4da5922cf37118392afbe8da597f02"
+      "sha256": "baeec87cc5511979196093be2a7f84479a52be58f139c13236519660863485b5"
     },
     {
       "path": "ESPRESSO-OUTREACH.md",
@@ -250,12 +250,12 @@
     {
       "path": "package-lock.json",
       "bytes": 49900,
-      "sha256": "879544924fe5ff5525f008d77332ad8eabe3f762113c078cba66840499db622e"
+      "sha256": "5da543db79c8d311ef076842f94919bf13024226a3051b815b144668649dafd3"
     },
     {
       "path": "package.json",
-      "bytes": 1248,
-      "sha256": "8284b881ec5fc6e6a58f1a578c14cfe591b3f59ffe12d1ec3d79f3648599e9d2"
+      "bytes": 1315,
+      "sha256": "05d0a88a1e526f137b06a82bb71b12f6ba5786053c74f8806c049829055d1ba7"
     },
     {
       "path": "PNU-MEDIA-CENTER-BRIEF.md",
@@ -264,18 +264,18 @@
     },
     {
       "path": "PRESS-NOTES.md",
-      "bytes": 9585,
-      "sha256": "6759575528713e3fe5a63fd33f2cef8c4bf88c06f12e3779311b3fe0659501a4"
+      "bytes": 9966,
+      "sha256": "d8b9901adf3b72713dbb3b6275776ffca411a34a05ba0439fbc54945faff15a8"
     },
     {
       "path": "PUBLIC-DISCLOSURE-BOUNDARY.md",
-      "bytes": 10124,
-      "sha256": "d0b56c37b0c31b602800d248bca9f02d48fa27341c916dff935832e1059f7a0d"
+      "bytes": 10464,
+      "sha256": "6c69479c659026346e28b36787c0f6c1b705689a1afdf18aad46bf61bf08da85"
     },
     {
       "path": "README.md",
-      "bytes": 5165,
-      "sha256": "d7c98c1f51a21e68a67dd90d86904d3838e66b3c01cee106b50c3c5c86d44a75"
+      "bytes": 5597,
+      "sha256": "4452924288b7f614c606eb560512b73b56c688c3775bdf065bff7791b27974b2"
     },
     {
       "path": "scripts/build-release-manifest.mjs",
@@ -309,13 +309,18 @@
     },
     {
       "path": "scripts/check-cipher.mjs",
-      "bytes": 20025,
-      "sha256": "d0924908b9d06996cd282eef741b69c88f348bb54cd0aeee7abb74d1574e3b77"
+      "bytes": 30242,
+      "sha256": "df24ab9ede735e5c04b16abeaa174cd78527641bf9ce5cdf3c45a7eb1f9a6fff"
+    },
+    {
+      "path": "scripts/check-newsboy-worker.mjs",
+      "bytes": 3798,
+      "sha256": "5fee19493e9641e361826c2d93b97afeb1505928d63ea4befe2c3c26ae4a024e"
     },
     {
       "path": "scripts/check-public-boundary.mjs",
-      "bytes": 27925,
-      "sha256": "760ecd11e36ec6495789253bf952b352730c83251578fbd854ca5f78ba400fc0"
+      "bytes": 30803,
+      "sha256": "231ade97256575ca708fb2099f7175d4419d88eb81ad05a145fbb45000a0ea4e"
     },
     {
       "path": "scripts/compile-wasm.ps1",
@@ -324,8 +329,8 @@
     },
     {
       "path": "scripts/verify-live.mjs",
-      "bytes": 13098,
-      "sha256": "fc11ceeec0165342085d5668e63c76582b984a8ce057b41f080cf7718e5f8aa3"
+      "bytes": 14836,
+      "sha256": "c2aabeafdf9da0d1e08a7b8559447a42f339c293c79163c5c7ab7cf53028f061"
     },
     {
       "path": "scripts/verify-wasm.mjs",
@@ -348,9 +353,14 @@
       "sha256": "ea9ac32efdcd95be9db1288ac246925237dedb55a246ae9003a7a1472254a11f"
     },
     {
+      "path": "worker.js",
+      "bytes": 6889,
+      "sha256": "285fdd9f08e83e8614c6b81f7896a917e497b031340de7efc9401f39fe6d2f54"
+    },
+    {
       "path": "wrangler.toml",
-      "bytes": 328,
-      "sha256": "2d7b1b0aed9607d10c1d39c8f96cc65c8d50137b040f850e1df5add7f6482b7b"
+      "bytes": 366,
+      "sha256": "06944ab7798db81a5ace6d0bda25c33b7374fdd59c76b5e43b8b6ac9100673e2"
     }
   ]
 }

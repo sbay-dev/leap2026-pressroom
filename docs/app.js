@@ -38,6 +38,131 @@ dialog?.addEventListener("click", event => {
   if (event.target === dialog) dialog.close();
 });
 
+const newsboySection = document.querySelector("[data-newsboy-section]");
+const newsboyReader = document.querySelector("[data-newsboy-reader]");
+const newsboyFrame = document.querySelector("[data-newsboy-frame]");
+const newsboyOpen = document.querySelector("[data-newsboy-open]");
+const newsboyClose = document.querySelector("[data-newsboy-close]");
+let newsboyExpanded = false;
+let newsboyRestoreY = 0;
+let newsboyReload = 0;
+let newsboyRestorePending = false;
+
+function setNewsboyReaderState(expanded, mode) {
+  if (!newsboyReader || !newsboyFrame || !newsboyOpen || !newsboyClose) return;
+  newsboyExpanded = expanded;
+  newsboyReader.dataset.expanded = String(expanded);
+  newsboyReader.dataset.mode = mode;
+  newsboyOpen.setAttribute("aria-expanded", String(expanded));
+  newsboyClose.hidden = !expanded;
+  newsboyFrame.setAttribute("scrolling", expanded ? "yes" : "no");
+  newsboyFrame.style.pointerEvents = expanded ? "auto" : "none";
+  newsboyFrame.tabIndex = expanded ? 0 : -1;
+  newsboyFrame.setAttribute("aria-hidden", String(!expanded));
+  body.classList.toggle("newsboy-reader-open", expanded);
+  if (expanded) {
+    newsboyReader.setAttribute("role", "dialog");
+    newsboyReader.setAttribute("aria-modal", "true");
+    newsboyReader.setAttribute(
+      "aria-label",
+      "NewsBoy live edition full-screen reader"
+    );
+  } else {
+    newsboyReader.setAttribute("role", "group");
+    newsboyReader.removeAttribute("aria-modal");
+    newsboyReader.setAttribute(
+      "aria-label",
+      "NewsBoy live edition preview"
+    );
+  }
+}
+
+function reloadNewsboyAtTop() {
+  if (!newsboyFrame) return;
+  const source = newsboyFrame.dataset.src;
+  if (!source) return;
+  newsboyReload += 1;
+  newsboyFrame.loading = "eager";
+  if (newsboyReader) newsboyReader.dataset.frameState = "loading";
+  const separator = source.includes("?") ? "&" : "?";
+  newsboyFrame.src = `${source}${separator}refresh=${Date.now()}`;
+  newsboyFrame.dataset.reloadCount = String(newsboyReload);
+}
+
+function restoreNewsboyPosition() {
+  const previousScrollBehavior = document.documentElement.style.scrollBehavior;
+  document.documentElement.style.scrollBehavior = "auto";
+  window.scrollTo(0, newsboyRestoreY);
+  const rect = newsboySection?.getBoundingClientRect();
+  if (rect && (rect.bottom <= 0 || rect.top >= window.innerHeight)) {
+    newsboySection.scrollIntoView({ block: "center", behavior: "auto" });
+  }
+  newsboyOpen?.focus({ preventScroll: true });
+  document.documentElement.style.scrollBehavior = previousScrollBehavior;
+}
+
+function finishNewsboyClose() {
+  if (!newsboyExpanded) return;
+  setNewsboyReaderState(false, "preview");
+  newsboyRestorePending = true;
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      reloadNewsboyAtTop();
+      restoreNewsboyPosition();
+    });
+  });
+}
+
+function openNewsboyReader() {
+  if (
+    newsboyExpanded
+    || !newsboyReader
+    || !newsboyFrame
+    || !newsboyClose
+  ) return;
+  newsboyRestorePending = false;
+  newsboyRestoreY = window.scrollY;
+  setNewsboyReaderState(true, "viewport");
+  newsboyClose.focus({ preventScroll: true });
+}
+
+function closeNewsboyReader() {
+  if (!newsboyExpanded) return;
+  finishNewsboyClose();
+}
+
+newsboyFrame?.addEventListener("load", () => {
+  if (newsboyReader) newsboyReader.dataset.frameState = "loaded";
+  if (!newsboyExpanded) newsboyFrame.loading = "lazy";
+  if (newsboyRestorePending) {
+    setTimeout(() => {
+      restoreNewsboyPosition();
+      newsboyRestorePending = false;
+    }, 80);
+  }
+});
+newsboyOpen?.addEventListener("click", openNewsboyReader);
+newsboyClose?.addEventListener("click", closeNewsboyReader);
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && newsboyExpanded) {
+    event.preventDefault();
+    closeNewsboyReader();
+  }
+});
+document.addEventListener("focusin", event => {
+  if (
+    newsboyExpanded
+    && newsboyReader
+    && event.target instanceof Node
+    && !newsboyReader.contains(event.target)
+  ) {
+    newsboyClose?.focus({ preventScroll: true });
+  }
+});
+newsboySection?.addEventListener("focusin", () => {
+  if (!newsboyExpanded) newsboyRestoreY = window.scrollY;
+});
+
 let wasmMatch = null;
 let wasmExports = null;
 function renderMatchResult() {

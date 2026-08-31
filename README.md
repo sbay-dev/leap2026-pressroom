@@ -49,11 +49,18 @@ cross-device acceptance, sales or audience performance, raw IR broadcasting,
 or correction of the reported CPOLY freeze.
 
 NewsBoy is represented by its supplied classic editorial and modern culture
-edition captures, plus the semantic LEAP5 paper reader already published at
-`newsboy.sbay.sa`. The pressroom uses a static front-page preview and native
-link to that reader rather than recreating it with a page-turning JavaScript
-library. Its proof card also links directly to the public citations and
-sources section and the public site archive.
+edition captures plus a live semantic LEAP and DeepFest reader. The still
+preview cannot scroll or receive keyboard focus; a deliberate click opens a
+viewport-filling reader, and closing it reloads the source at the top while
+returning focus and the parent page to the NewsBoy section.
+
+The iframe uses the same-origin `/newsboy-reader` boundary in `worker.js`.
+That boundary fetches only the fixed NewsBoy coverage route, strips scripts,
+opens article links separately and proxies only the `/fonts/` asset family.
+It fails visibly when the upstream response is not a complete paper and never
+serves a saved capture as the latest issue. NewsBoy itself retains
+`frame-ancestors 'none'`; the pressroom does not weaken its global embedding
+policy or expose a general-purpose proxy.
 
 The pressroom also includes the public **ADG Arabic Adjudication Platform** as
 a separate institutional research announcement. Its two-sample public pilot

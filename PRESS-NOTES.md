@@ -86,11 +86,15 @@ as enterprise platform scope; detailed availability, integrations and
 requirements are confirmed in the live demo and contract scope.
 
 NewsBoy and CP appear as concise operating proof, while KSAR has a dedicated
-stage for its commercial live release. The NewsBoy section links to the
-existing semantic LEAP5 paper reader with a static preview rather than adding
-a synthetic JavaScript page-turning experience. Model weights, training data,
-expert maps, credentials and unpublished patent enablement remain outside the
-public release.
+stage for its commercial live release. The NewsBoy section shows the top of
+the live LEAP and DeepFest edition without scroll or keyboard capture. A
+deliberate click opens a viewport-filling semantic HTML reader; closing it
+reloads the source at the top and returns the visitor to the section. The
+fixed read-only relay strips scripts, opens article links separately and fails
+visibly rather than presenting a stale capture. It does not add a synthetic
+JavaScript page-turning experience or weaken NewsBoy's global embedding
+policy. Model weights, training data, expert maps, credentials and unpublished
+patent enablement remain outside the public release.
 
 This is independent participation, not a statement of official sponsorship or
 partnership with LEAP, DeepFest or their organizers.
@@ -143,8 +147,10 @@ announcement.
 - NewsBoy citations and sources:
   `https://newsboy.sbay.sa/#m-citations-section`
 - NewsBoy site archive: `https://newsboy.sbay.sa/#m-archive-section`
-- NewsBoy LEAP5 paper:
-  `https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412`
+- NewsBoy live LEAP and DeepFest paper:
+  `https://newsboy.sbay.sa/coverage/leap-2026`
+- Pressroom NewsBoy reader:
+  `https://leap2026.sbay.sa/newsboy-reader`
 - Ksar: `https://ksar.store/`
 - Ksar live market: `https://ksar.store/live`
 - Ksar public documentation: `https://ksar.store/documentation`

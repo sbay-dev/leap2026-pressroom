@@ -129,6 +129,25 @@ assert.match(index, /مركز إعلام جامعة الأميرة نورة بن
 assert.match(index, /does not mean the material is issued, approved, sponsored or endorsed by the university/iu);
 assert.match(index, /https:\/\/newsboy\.sbay\.sa\/#m-citations-section/u);
 assert.match(index, /https:\/\/newsboy\.sbay\.sa\/#m-archive-section/u);
+assert.match(index, /https:\/\/newsboy\.sbay\.sa\/coverage\/leap-2026/u);
+assert.match(index, /src="\/newsboy-reader"/u);
+assert.match(index, /data-src="\/newsboy-reader"/u);
+assert.match(index, /data-newsboy-open/u);
+assert.match(index, /data-newsboy-close hidden/u);
+assert.match(index, /scrolling="no"/u);
+assert.match(
+  index,
+  /sandbox="allow-popups allow-popups-to-escape-sandbox"/u
+);
+assert.doesNotMatch(
+  index,
+  /<iframe[^>]+src="https:\/\/newsboy\.sbay\.sa/iu
+);
+assert.doesNotMatch(
+  index,
+  /coverage\/leap-2026#article-/u
+);
+assert.doesNotMatch(index, /newsboy-leap5-paper\.png/u);
 assert.match(index, /newsboy-cultural-edition\.png/u);
 assert.match(index, /newsboy-classic-editorial\.png/u);
 assert.doesNotMatch(index, /آلاف المنتجات|موردون معتمدون|من أيام إلى دقائق/u);
@@ -254,6 +273,19 @@ assert.ok(newsBoy);
 assert.equal(newsBoy.citationsUrl, "https://newsboy.sbay.sa/#m-citations-section");
 assert.equal(newsBoy.archiveUrl, "https://newsboy.sbay.sa/#m-archive-section");
 assert.equal(
+  newsBoy.liveCoverageUrl,
+  "https://newsboy.sbay.sa/coverage/leap-2026"
+);
+assert.equal(
+  newsBoy.embeddedReaderUrl,
+  "https://leap2026.sbay.sa/newsboy-reader"
+);
+assert.match(newsBoy.embeddedReaderBoundary, /Read-only same-origin relay/u);
+assert.equal(
+  newsBoy.featuredArticleUrl,
+  "https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412"
+);
+assert.equal(
   newsBoy.leap5PaperUrl,
   "https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412"
 );
@@ -368,6 +400,12 @@ assert.match(app, /nearestFibonacciZoom/u);
 assert.match(app, /event\.touches\.length === 2/u);
 assert.match(app, /touchDistance\(event\.touches\)/u);
 assert.match(app, /frameMaximumZoom/u);
+assert.match(app, /setNewsboyReaderState\(true, "viewport"\)/u);
+assert.doesNotMatch(app, /requestFullscreen|document\.exitFullscreen/u);
+assert.match(app, /setAttribute\("scrolling", expanded \? "yes" : "no"\)/u);
+assert.match(app, /reloadNewsboyAtTop/u);
+assert.match(app, /window\.scrollTo\(0, newsboyRestoreY\)/u);
+assert.match(app, /newsboyOpen\?\.focus\(\{ preventScroll: true \}\)/u);
 
 const headers = await readFile(path.join(root, "docs", "_headers"), "utf8");
 assert.match(
@@ -375,7 +413,22 @@ assert.match(
   /Cache-Control: public, max-age=0, must-revalidate, no-transform/u
 );
 assert.match(headers, /script-src 'self' 'wasm-unsafe-eval'/u);
+assert.match(headers, /frame-src 'self'/u);
 assert.doesNotMatch(headers, /(?:^|\s)'unsafe-eval'(?:\s|;|$)/u);
+
+const worker = await readFile(path.join(root, "worker.js"), "utf8");
+assert.match(worker, /const READER_PATHS = new Set/u);
+assert.match(worker, /const FONT_PROXY_PREFIX = "\/newsboy-assets\/fonts\/"/u);
+assert.match(worker, /frame-ancestors 'self'/u);
+assert.match(worker, /script-src 'none'/u);
+assert.match(worker, /sandbox allow-popups allow-popups-to-escape-sandbox/u);
+assert.match(worker, /!\/<main\\b\[\^>\]\*class=/u);
+assert.match(worker, /No stale capture is presented as current/u);
+assert.doesNotMatch(worker, /url\.searchParams\.get\(["']url["']\)/u);
+
+const wrangler = await readFile(path.join(root, "wrangler.toml"), "utf8");
+assert.match(wrangler, /^main = "worker\.js"$/mu);
+assert.match(wrangler, /^binding = "ASSETS"$/mu);
 
 for (const asset of [
   "adg-adjudication-platform.png",
@@ -458,11 +511,24 @@ assert.match(
   "only the technical-annex link may remain visibly below the hero trace"
 );
 assert.match(index, /class="newsboy-paper-break"/u);
-assert.match(index, /عدد LEAP5 الورقي/u);
-assert.match(index, /newsboy-leap5-paper\.png/u);
-assert.match(
-  index,
-  /https:\/\/newsboy\.sbay\.sa\/coverage\/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412/u
+const newsboySectionStart = index.indexOf(
+  '<article class="newsboy-paper-break"'
+);
+const newsboySectionEnd = index.indexOf("</article>", newsboySectionStart);
+assert.ok(newsboySectionStart >= 0 && newsboySectionEnd > newsboySectionStart);
+const newsboySectionHtml = index.slice(
+  newsboySectionStart,
+  newsboySectionEnd
+);
+assert.match(index, /أعلى العدد أولًا، والتصفح الكامل عند الطلب/u);
+assert.match(index, /لا تلتقط المعاينة التمرير أو لوحة المفاتيح/u);
+assert.match(index, /عند الإغلاق يعاد تحميل المصدر من أعلاه/u);
+assert.match(index, /The edition masthead first, full browsing on demand/u);
+assert.match(index, /src="\/newsboy-reader"/u);
+assert.doesNotMatch(newsboySectionHtml, /طبعة اليوم|Today's edition/u);
+assert.doesNotMatch(
+  newsboySectionHtml,
+  /31 أغسطس 2026|31 August 2026/u
 );
 assert.doesNotMatch(index, /octet-bloom-trace-v270\.webm/u);
 

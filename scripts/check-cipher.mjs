@@ -40,8 +40,40 @@ const CSP = readFileSync(path.join(docs, "_headers"), "utf8")
   .split("Content-Security-Policy:")[1]
   .trim();
 
+const NEWSBOY_FIXTURE = `<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>NewsBoy live reader fixture</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f7efdb;color:#21180f;font-family:Tahoma,Arial,sans-serif}
+    main{min-height:2400px;padding:1.25rem;background:linear-gradient(#fffaf0,#eadcbf)}
+    header{padding:1rem;border-block:4px double #382b1d;text-align:center}
+    h1{margin:.4rem;font-size:clamp(2rem,8vw,5rem)}
+    article{margin-top:2rem;padding:1.5rem;border-top:1px solid #8f8068}
+  </style>
+</head>
+<body><main class="paper"><header><p>LEAP × DeepFest</p><h1>صبي الجرائد</h1></header><article><h2>العدد الحي</h2><p>Deterministic browser fixture for reader interaction.</p></article></main></body>
+</html>`;
+let newsboyFixtureRequests = 0;
+
 const server = createServer((request, response) => {
   const requested = decodeURIComponent((request.url || "/").split("?")[0]);
+  if (requested === "/newsboy-reader" || requested === "/newsboy-reader/") {
+    newsboyFixtureRequests += 1;
+    response.writeHead(200, {
+      "Content-Type": "text/html; charset=utf-8",
+      "Content-Security-Policy":
+        "default-src 'none'; base-uri https://newsboy.sbay.sa; "
+        + "script-src 'none'; style-src 'unsafe-inline'; "
+        + "frame-ancestors 'self'; "
+        + "sandbox allow-popups allow-popups-to-escape-sandbox",
+      "X-Frame-Options": "SAMEORIGIN"
+    });
+    response.end(NEWSBOY_FIXTURE);
+    return;
+  }
   let file = path.join(docs, requested);
   if (!existsSync(file) || statSync(file).isDirectory()) {
     file = path.join(docs, "index.html");
@@ -174,23 +206,184 @@ for (const view of [
   });
 
   await page.locator(".newsboy-paper-break").scrollIntoViewIfNeeded();
-  await page.waitForTimeout(500);
-  report.views[`${view.name}-paper`] = await page.evaluate(() => {
+  try {
+    await page.waitForFunction(() =>
+      document.querySelector("[data-newsboy-reader]")?.dataset.frameState
+        === "loaded", null, { timeout: 10000 });
+  } catch (error) {
+    const state = await page.evaluate(() => ({
+      frameState: document.querySelector("[data-newsboy-reader]")
+        ?.dataset.frameState ?? null,
+      frameSource: document.querySelector("[data-newsboy-frame]")
+        ?.getAttribute("src") ?? null,
+      expanded: document.querySelector("[data-newsboy-reader]")
+        ?.dataset.expanded ?? null
+    }));
+    throw new Error(
+      `NewsBoy iframe did not load its preview: ${JSON.stringify(state)}`,
+      { cause: error }
+    );
+  }
+  await page.waitForTimeout(250);
+  const paperBefore = await page.evaluate(() => {
     const section = document.querySelector(".newsboy-paper-break");
-    const image = section?.querySelector("img");
-    const links = [...(section?.querySelectorAll("a") ?? [])];
+    const shell = section?.querySelector("[data-newsboy-reader]");
+    const frame = section?.querySelector("[data-newsboy-frame]");
     return {
-      imageWidth: image?.naturalWidth ?? 0,
-      articleLinks: links.filter(link =>
-        link.href.includes("coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412")
-      ).length,
+      frameState: shell?.dataset.frameState ?? null,
+      expanded: shell?.dataset.expanded ?? null,
+      mode: shell?.dataset.mode ?? null,
+      frameSource: frame?.getAttribute("src") ?? null,
+      frameScrolling: frame?.getAttribute("scrolling") ?? null,
+      framePointerEvents: frame ? getComputedStyle(frame).pointerEvents : null,
+      frameTabIndex: frame?.tabIndex ?? null,
+      frameAriaHidden: frame?.getAttribute("aria-hidden") ?? null,
       heading: section?.querySelector("h3")?.textContent
         .replace(/\s+/gu, " ").trim() ?? "",
+      parentScrollY: window.scrollY,
       overflow: section
         ? Math.max(0, section.scrollWidth - section.clientWidth)
         : null
     };
   });
+  await page.locator("[data-newsboy-open]").click();
+  await page.waitForFunction(() =>
+    document.querySelector("[data-newsboy-reader]")?.dataset.expanded
+      === "true");
+  await page.waitForTimeout(250);
+  const paperExpanded = await page.evaluate(() => {
+    const shell = document.querySelector("[data-newsboy-reader]");
+    const frame = document.querySelector("[data-newsboy-frame]");
+    const close = document.querySelector("[data-newsboy-close]");
+    const rect = shell?.getBoundingClientRect();
+    return {
+      expanded: shell?.dataset.expanded ?? null,
+      mode: shell?.dataset.mode ?? null,
+      width: rect?.width ?? 0,
+      height: rect?.height ?? 0,
+      x: rect?.x ?? null,
+      y: rect?.y ?? null,
+      viewportWidth: window.innerWidth,
+      viewportHeight: window.innerHeight,
+      frameScrolling: frame?.getAttribute("scrolling") ?? null,
+      framePointerEvents: frame ? getComputedStyle(frame).pointerEvents : null,
+      frameTabIndex: frame?.tabIndex ?? null,
+      frameAriaHidden: frame?.getAttribute("aria-hidden") ?? null,
+      closeVisible: close ? !close.hidden : false,
+      bodyOverflow: getComputedStyle(document.body).overflow
+    };
+  });
+  paperExpanded.focusTrapped = await page.evaluate(() => {
+    document.querySelector("[data-language]")?.focus();
+    return document.activeElement?.hasAttribute("data-newsboy-close") ?? false;
+  });
+  const readerFrame = page.frames().find(frame =>
+    frame.url().includes("/newsboy-reader"));
+  const frameScrollBeforeClose = readerFrame
+    ? await readerFrame.evaluate(() => {
+        scrollTo(0, 420);
+        return scrollY;
+      })
+    : -1;
+  await page.locator("[data-newsboy-close]").click();
+  await page.waitForFunction(() =>
+    document.querySelector("[data-newsboy-reader]")?.dataset.expanded
+      === "false"
+    && Number(document.querySelector("[data-newsboy-frame]")
+      ?.dataset.reloadCount || 0) > 0);
+  try {
+    await page.waitForFunction(() =>
+      document.querySelector("[data-newsboy-reader]")?.dataset.frameState
+        === "loaded", null, { timeout: 10000 });
+  } catch (error) {
+    const state = await page.evaluate(() => ({
+      frameState: document.querySelector("[data-newsboy-reader]")
+        ?.dataset.frameState ?? null,
+      frameSource: document.querySelector("[data-newsboy-frame]")
+        ?.getAttribute("src") ?? null,
+      expanded: document.querySelector("[data-newsboy-reader]")
+        ?.dataset.expanded ?? null
+    }));
+    const frameStates = await Promise.all(page.frames().map(async frame => ({
+      url: frame.url(),
+      readyState: await frame.evaluate(() => document.readyState)
+        .catch(() => "unavailable")
+    })));
+    throw new Error(
+      "NewsBoy iframe did not reload after close: "
+      + JSON.stringify({ ...state, newsboyFixtureRequests, frameStates }),
+      { cause: error }
+    );
+  }
+  await page.waitForTimeout(800);
+  const paperAfter = await page.evaluate(() => {
+    const section = document.querySelector(".newsboy-paper-break");
+    const shell = document.querySelector("[data-newsboy-reader]");
+    const frame = document.querySelector("[data-newsboy-frame]");
+    const sectionRect = section?.getBoundingClientRect();
+    return {
+      expanded: shell?.dataset.expanded ?? null,
+      mode: shell?.dataset.mode ?? null,
+      frameSource: frame?.getAttribute("src") ?? null,
+      frameScrolling: frame?.getAttribute("scrolling") ?? null,
+      framePointerEvents: frame ? getComputedStyle(frame).pointerEvents : null,
+      frameTabIndex: frame?.tabIndex ?? null,
+      frameAriaHidden: frame?.getAttribute("aria-hidden") ?? null,
+      reloadCount: Number(frame?.dataset.reloadCount || 0),
+      parentScrollY: window.scrollY,
+      sectionTop: sectionRect?.top ?? null,
+      sectionBottom: sectionRect?.bottom ?? null,
+      viewportHeight: window.innerHeight,
+      openFocused: document.activeElement?.hasAttribute("data-newsboy-open")
+        ?? false,
+      bodyOverflow: getComputedStyle(document.body).overflow
+    };
+  });
+  const reloadedFrame = page.frames().find(frame =>
+    frame.url().includes("/newsboy-reader"));
+  const frameScrollAfterClose = reloadedFrame
+    ? await reloadedFrame.evaluate(() => scrollY)
+    : -1;
+  let escapeClose = null;
+  if (view.name === "desktop") {
+    await page.locator("[data-newsboy-open]").click();
+    await page.waitForFunction(() =>
+      document.querySelector("[data-newsboy-reader]")?.dataset.expanded
+        === "true");
+    await page.keyboard.press("Escape");
+    await page.waitForFunction(() =>
+      document.querySelector("[data-newsboy-reader]")?.dataset.expanded
+        === "false"
+      && Number(document.querySelector("[data-newsboy-frame]")
+        ?.dataset.reloadCount || 0) > 1);
+    await page.waitForFunction(() =>
+      document.querySelector("[data-newsboy-reader]")?.dataset.frameState
+        === "loaded");
+    await page.waitForTimeout(800);
+    escapeClose = await page.evaluate(() => {
+      const section = document.querySelector(".newsboy-paper-break");
+      const frame = document.querySelector("[data-newsboy-frame]");
+      const rect = section?.getBoundingClientRect();
+      return {
+        expanded: document.querySelector("[data-newsboy-reader]")
+          ?.dataset.expanded ?? null,
+        reloadCount: Number(frame?.dataset.reloadCount || 0),
+        sectionVisible: Boolean(
+          rect && rect.bottom > 0 && rect.top < window.innerHeight
+        ),
+        openFocused: document.activeElement
+          ?.hasAttribute("data-newsboy-open") ?? false
+      };
+    });
+  }
+  report.views[`${view.name}-paper`] = {
+    preview: paperBefore,
+    expanded: paperExpanded,
+    closed: paperAfter,
+    frameScrollBeforeClose,
+    frameScrollAfterClose,
+    escapeClose
+  };
   await page.locator(".newsboy-paper-break").screenshot({
     path: path.join(outDir, `${view.name}-newsboy-paper.png`)
   });
@@ -470,11 +663,55 @@ for (const view of ["desktop", "mobile"]) {
     }
   }
   const paper = report.views[`${view}-paper`];
-  if (paper.imageWidth < 1
-    || paper.articleLinks < 1
-    || !paper.heading.includes("وزير الاتصالات")
-    || paper.overflow > 0) {
-    failures.push(`${view}: NewsBoy paper section failed its image, link, or overflow gate`);
+  if (paper.preview.frameState !== "loaded"
+    || paper.preview.expanded !== "false"
+    || paper.preview.frameSource !== "/newsboy-reader"
+    || paper.preview.frameScrolling !== "no"
+    || paper.preview.framePointerEvents !== "none"
+    || paper.preview.frameTabIndex !== -1
+    || paper.preview.frameAriaHidden !== "true"
+    || !paper.preview.heading.includes("أعلى العدد")
+    || paper.preview.overflow > 0) {
+    failures.push(`${view}: NewsBoy preview is not a loaded, still top-of-edition card`);
+  }
+  if (paper.expanded.expanded !== "true"
+    || paper.expanded.mode !== "viewport"
+    || Math.abs(paper.expanded.width - paper.expanded.viewportWidth) > 2
+    || Math.abs(paper.expanded.height - paper.expanded.viewportHeight) > 2
+    || Math.abs(paper.expanded.x) > 2
+    || Math.abs(paper.expanded.y) > 2
+    || paper.expanded.frameScrolling !== "yes"
+    || paper.expanded.framePointerEvents !== "auto"
+    || paper.expanded.frameTabIndex !== 0
+    || paper.expanded.frameAriaHidden !== "false"
+    || !paper.expanded.closeVisible
+    || !paper.expanded.focusTrapped
+    || paper.expanded.bodyOverflow !== "hidden"
+    || paper.frameScrollBeforeClose < 300) {
+    failures.push(`${view}: NewsBoy reader did not become a scrollable full-screen view`);
+  }
+  if (paper.closed.expanded !== "false"
+    || paper.closed.mode !== "preview"
+    || !paper.closed.frameSource.startsWith("/newsboy-reader?refresh=")
+    || paper.closed.frameScrolling !== "no"
+    || paper.closed.framePointerEvents !== "none"
+    || paper.closed.frameTabIndex !== -1
+    || paper.closed.frameAriaHidden !== "true"
+    || paper.closed.reloadCount < 1
+    || paper.closed.sectionBottom <= 0
+    || paper.closed.sectionTop >= paper.closed.viewportHeight
+    || !paper.closed.openFocused
+    || paper.closed.bodyOverflow === "hidden"
+    || paper.frameScrollAfterClose !== 0) {
+    failures.push(`${view}: NewsBoy close did not reset the reader and restore the section`);
+  }
+  if (view === "desktop" && (
+    paper.escapeClose?.expanded !== "false"
+    || paper.escapeClose?.reloadCount < 2
+    || !paper.escapeClose?.sectionVisible
+    || !paper.escapeClose?.openFocused
+  )) {
+    failures.push("desktop: Escape did not close and reset the NewsBoy reader");
   }
 }
 for (const stage of ["fetch", "decode", "execute", "quiet", "void"]) {

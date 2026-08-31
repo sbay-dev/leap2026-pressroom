@@ -49,10 +49,14 @@ Audit ID: `SBAY-LEAP-DEEPFEST-20260831T043818Z`
   WebGPU remains the primary live renderer where available. A public trace
   board binds each phrase to the implementing file, public call contract and
   recomputable compute amount.
-- The existing semantic NewsBoy LEAP5 paper reader, linked as a normal public
-  HTML document with a static pressroom preview. Its native links, scrolling,
-  print stylesheet and reduced-motion rule are reused without introducing a
-  simulated page-turning reader.
+- The existing semantic NewsBoy LEAP and DeepFest paper reader, relayed through
+  a fixed same-origin read-only display boundary. The preview cannot scroll or
+  receive keyboard focus; a deliberate click opens a viewport-filling reader.
+  Closing reloads the source at the top and restores the pressroom section.
+  The relay strips scripts, opens article links separately, proxies only the
+  NewsBoy font family, and fails visibly rather than presenting a stale capture.
+  NewsBoy retains its global `frame-ancestors 'none'` policy, and no general
+  proxy or simulated page-turning library is introduced.
 - The functional category of QdrantServer: a private .NET provider host for
   data, runtime, health, and administrative integrations.
 - The public name `منصّة تحكيم اللغة العربية`, its live URL, public release
