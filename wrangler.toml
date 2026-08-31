@@ -12,5 +12,10 @@ routes = [
 [assets]
 directory = "./docs"
 binding = "ASSETS"
+run_worker_first = [
+  "/newsboy-reader",
+  "/newsboy-reader/",
+  "/newsboy-assets/fonts/*"
+]
 not_found_handling = "404-page"
 html_handling = "auto-trailing-slash"

@@ -62,7 +62,9 @@ const forbiddenPatterns = [
   [/KSAR\s+is\s+(?:fully\s+)?hosted\s+in\s+Saudi\s+Arabia/iu, "unsupported KSAR hosting claim"],
   [/كسار\s+مستضاف(?:ة)?\s+(?:بالكامل\s+)?داخل\s+السعودية/iu, "unsupported KSAR hosting claim"],
   [/(?:the\s+)?CPOLY\s+freeze\s+(?:has\s+been\s+)?resolved/iu, "unsupported CPOLY resolution claim"],
-  [/تم\s+حل\s+تجمد\s+CPOLY/iu, "unsupported CPOLY resolution claim"]
+  [/تم\s+حل\s+تجمد\s+CPOLY/iu, "unsupported CPOLY resolution claim"],
+  [/نشأ\s+من\s+عمل\s+حر|فواتير\s+وتحويلات\s+متفرقة/iu, "obsolete investor framing"],
+  [/independent\s+freelance\s+work|scattered\s+invoices\s+and\s+transfers/iu, "obsolete investor framing"]
 ];
 
 async function collect(directory, prefix = "") {
@@ -195,11 +197,12 @@ const pressKit = JSON.parse(await readFile(
   path.join(root, "docs", "press-kit.json"),
   "utf8"
 ));
-// The observation snapshot may record what sbay.sa displays, but the published
-// pressroom must never repeat it as SBAY traction.
-assert.equal(pressKit.publicSignals.customerCountsPublished, false);
-assert.equal(pressKit.publicSignals.marketShareClaimed, false);
-assert.equal(pressKit.publicSignals.uptimeOrSupportPromised, false);
+assert.equal(
+  pressKit.publicSignals.basis,
+  "Directly verifiable public operating evidence"
+);
+assert.equal(pressKit.positioning.investmentStage, "Pre-seed");
+assert.match(pressKit.positioning.investmentThesis, /measurable growth/u);
 for (const [pattern, label] of [
   [/\d[\d,]*\s*\+?\s*(?:عميل|عملاء)/u, "customer count"],
   [/\b\d+(?:\.\d+)?%\s*(?:uptime|وقت التشغيل)/iu, "uptime promise"],
@@ -209,8 +212,14 @@ for (const [pattern, label] of [
 ]) {
   assert.equal(pattern.test(index), false, `${label} in docs/index.html`);
 }
-assert.match(index, /لا تعرض هذه الصفحة أرقام عملاء أو حصة سوقية/u);
-assert.match(index, /not presented as audited institutional traction/iu);
+assert.match(index, /أطروحة الاستثمار/u);
+assert.match(index, /Investment thesis/u);
+assert.match(index, /رتّب اجتماعًا استثماريًا/u);
+assert.match(index, /Schedule an Investor Meeting/u);
+assert.match(index, /محطات نمو قابلة للقياس/u);
+assert.match(index, /ناقش فرصة الاستثمار والتوسع المؤسسي/u);
+assert.doesNotMatch(index, /شبكة متنامية|Growing network/iu);
+assert.doesNotMatch(index, /عمل حر|فواتير وتحويلات|freelance work/iu);
 
 // Numeric-claim gate. Every headline figure rendered in a metric tile must be
 // registered in press-kit.json with a basis, so no number reaches the public
@@ -429,6 +438,14 @@ assert.doesNotMatch(worker, /url\.searchParams\.get\(["']url["']\)/u);
 const wrangler = await readFile(path.join(root, "wrangler.toml"), "utf8");
 assert.match(wrangler, /^main = "worker\.js"$/mu);
 assert.match(wrangler, /^binding = "ASSETS"$/mu);
+assert.match(wrangler, /run_worker_first = \[/u);
+for (const route of [
+  '"/newsboy-reader"',
+  '"/newsboy-reader/"',
+  '"/newsboy-assets/fonts/*"'
+]) {
+  assert.ok(wrangler.includes(route), `missing Worker-first route ${route}`);
+}
 
 for (const asset of [
   "adg-adjudication-platform.png",
@@ -480,8 +497,8 @@ for (const [pattern, label] of [
   assert.equal(pattern.test(cipher), false, `${label} in docs/adg-cipher.js`);
   assert.equal(pattern.test(index), false, `${label} in docs/index.html`);
 }
-assert.match(index, /لا تعرض هذه الصفحة أرقام عملاء أو حصة سوقية/u);
-assert.match(index, /not presented as audited institutional traction/iu);
+assert.match(index, /أطروحة الاستثمار/u);
+assert.match(index, /measurable growth milestones/u);
 assert.match(index, /id="adg-cipher"/u);
 assert.match(index, /data-loop-seconds="5"/u);
 assert.match(index, /class="cipher-note"/u, "the disclosure note must stay on the page");

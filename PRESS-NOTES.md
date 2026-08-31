@@ -17,11 +17,11 @@ Published for event week: 31 August–3 September 2026, Riyadh.
 
 > من الطلب إلى التوريد. من البيانات إلى القرار.
 
-لا تنشر غرفة الصحافة أرقام عملاء ولا نسب تشغيل ولا حصة سوقية. نشاط `sbay.sa`
-السابق نشأ من عمل حر فردي بفواتير وتحويلات متفرقة، ولا يُقدَّم بوصفه جذبًا
-مؤسسيًا مدقَّقًا. أما وحدات إدارة الموردين وRFQ
-والعقود والتحليلات وقدرات الذكاء فتُعرض في غرفة الصحافة كنطاق منصة مؤسسي؛
-يُثبت التوفر التفصيلي والتكامل والمتطلبات في العرض المباشر ونطاق العقد.
+تتمحور أطروحة الاستثمار حول توسيع بنية تقنية سعودية تشغّل منتجات حية إلى
+منصة مؤسسية موحدة للمشتريات وسلاسل الإمداد، عبر التكاملات والشراكات ومحطات
+نمو قابلة للقياس. وتُعرض وحدات إدارة الموردين وRFQ والعقود والتحليلات
+وقدرات الذكاء كنطاق منصة مؤسسي؛ ويُحسم التوفر التفصيلي والتكامل والمتطلبات
+في العرض المباشر ونطاق العقد.
 
 تظهر صبي الجرائد وCP كأدلة تشغيل مختصرة، بينما تحصل كسار على مساحة مستقلة
 لإطلاق نسختها التجارية الحية. وتبقى الأوزان وبيانات التدريب وخرائط الخبراء
@@ -77,13 +77,12 @@ The central positioning is:
 
 > From Procurement to Fulfillment. From Data to Decisions.
 
-The pressroom publishes no customer counts, uptime percentages or market-share
-claims. Earlier `sbay.sa` activity came from independent freelance work with
-scattered invoices and transfers, and is not audited institutional traction.
-Supplier management,
-RFQ, contracts, analytics and AI capabilities are presented in the pressroom
-as enterprise platform scope; detailed availability, integrations and
-requirements are confirmed in the live demo and contract scope.
+The investment thesis is to scale Saudi-built technology already operating
+live products into a unified enterprise procurement and supply-chain platform
+through integrations, partnerships and measurable growth milestones.
+Supplier management, RFQ, contracts, analytics and AI capabilities are
+presented as enterprise platform scope; detailed availability, integrations
+and requirements are confirmed in the live demo and contract scope.
 
 NewsBoy and CP appear as concise operating proof, while KSAR has a dedicated
 stage for its commercial live release. The NewsBoy section shows the top of

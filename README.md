@@ -74,13 +74,12 @@ brief expressly denies university issuance, approval, sponsorship,
 endorsement or partnership unless the center publishes an official
 announcement.
 
-No customer counts, uptime percentages or market-share claims are published.
-Earlier `sbay.sa` figures describe independent freelance activity evidenced
-only by scattered invoices and transfers, so they are excluded from every
-investor-facing surface. Procurement modules are presented as enterprise platform
-scope, and detailed availability is confirmed through the live demo and
-contract. AI capabilities are framed as decision support rather than
-guaranteed automation.
+The investor-facing narrative centers on operating products, an enterprise
+platform scope and a measurable institutional-expansion thesis. Public
+evidence is linked directly from the page; detailed module availability,
+integrations and requirements are confirmed through the live demo and
+contract. AI capabilities are framed as accountable decision support rather
+than guaranteed automation.
 
 This repository does not contain model weights, training data, tokenizers,
 expert maps, routing thresholds, private topology, credentials, private patent

@@ -25,6 +25,15 @@ assert.doesNotMatch(html, /(?:the\s+)?CPOLY\s+freeze\s+(?:has\s+been\s+)?resolve
 assert.doesNotMatch(html, /\d[\d,]*\s*\+?\s*(?:عميل|عملاء)/u);
 assert.doesNotMatch(html, /\b24\s*\/\s*7\b/u);
 assert.doesNotMatch(html, /(?:market share|حصة سوقية)[^<]{0,40}\d/iu);
+assert.match(html, /أطروحة الاستثمار/u);
+assert.match(html, /Investment thesis/u);
+assert.match(html, /رتّب اجتماعًا استثماريًا/u);
+assert.match(html, /Schedule an Investor Meeting/u);
+assert.match(html, /محطات نمو قابلة للقياس/u);
+assert.doesNotMatch(
+  html,
+  /عمل حر|فواتير وتحويلات|freelance work|scattered invoices/iu
+);
 assert.match(html, /NewsBoy/u);
 assert.match(html, /DeepFest 2026/u);
 assert.match(html, /no general MTEB superiority claim/u);
@@ -104,7 +113,13 @@ const cacheControl = page.headers.get("cache-control");
 assert.match(cacheControl || "", /(?:^|,)\s*no-transform(?:,|$)/u);
 
 const embeddedReader = await fetch(`${baseUrl}/newsboy-reader`, {
-  redirect: "error"
+  redirect: "error",
+  headers: {
+    Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Sec-Fetch-Dest": "iframe",
+    "Sec-Fetch-Mode": "navigate",
+    "Sec-Fetch-Site": "same-origin"
+  }
 });
 assert.equal(embeddedReader.status, 200, "the live NewsBoy reader must load");
 assert.equal(
@@ -150,8 +165,12 @@ assert.equal(pressKit.schema, "sbay.press-kit.v2");
 assert.equal(pressKit.tradeName.arabic, "منصة تموين");
 assert.equal(pressKit.tradeName.english, "SBAY");
 assert.equal(pressKit.publisher, "SBAY");
-assert.equal(pressKit.publicSignals.customerCountsPublished, false);
-assert.equal(pressKit.publicSignals.marketShareClaimed, false);
+assert.equal(
+  pressKit.publicSignals.basis,
+  "Directly verifiable public operating evidence"
+);
+assert.equal(pressKit.positioning.investmentStage, "Pre-seed");
+assert.match(pressKit.positioning.investmentThesis, /measurable growth/u);
 assert.equal(pressKit.claims.generalMtebSuperiority, false);
 assert.equal(pressKit.claims.officialEventPartnership, false);
 assert.equal(pressKit.claims.ksarSaudiPhysicalHosting, false);

@@ -622,12 +622,24 @@ footer strong { color: var(--text); font-size: 1.1rem; }
 .public-signals strong {
   font: 800 clamp(1.1rem, 2.4vw, 1.55rem) Consolas, monospace;
 }
-.public-source-note {
-  margin: .65rem 0 0;
-  color: var(--muted);
-  font-size: .72rem;
+.investment-thesis {
+  margin: .8rem 0 0;
+  padding: .9rem 1rem;
+  color: var(--text);
+  border-inline-start: 3px solid var(--mint);
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: linear-gradient(90deg, rgba(95, 240, 187, .1), rgba(88, 221, 255, .035));
+  font-size: .83rem;
+  line-height: 1.75;
 }
-.public-source-note a { color: var(--cyan); text-decoration: none; }
+.investment-thesis strong {
+  display: block;
+  margin-bottom: .12rem;
+  color: var(--mint);
+  font-size: .72rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
 .wide-heading { max-width: 960px; }
 .problem-grid,
 .platform-grid,

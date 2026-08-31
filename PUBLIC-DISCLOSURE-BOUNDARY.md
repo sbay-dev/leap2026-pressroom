@@ -100,11 +100,9 @@ investors and journalists is exactly such a surface. No figure ships without a
 recorded way for a reader to check it.
 ## Material prohibited from this repository
 
-- Customer counts, satisfied-customer figures, market-share claims, uptime
-  percentages, and support-availability promises. Earlier `sbay.sa` figures
-  describe independent freelance activity, evidenced only by scattered
-  invoices and transfers. They are not audited institutional traction and
-  must never appear on an investor-facing surface.
+- Unregistered customer, market-share, uptime, or support-availability figures.
+  Quantified traction may appear only when current evidence is bound to the
+  release and the numeric-claim gate records its basis and source.
 - Any headline figure that is not registered in `docs/press-kit.json` under
   `numericClaims.entries` with a basis and a source. See the rule below.
 - Model weights, checkpoints, ONNX payloads, tokenizer or vocabulary files.
