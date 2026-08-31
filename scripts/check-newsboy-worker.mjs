@@ -25,9 +25,18 @@ globalThis.fetch = async input => {
     });
   }
   if (url.pathname === "/fonts/fonts.css") {
-    return new Response("@font-face{font-family:test;src:url(test.woff2)}", {
+    return new Response(
+      "@font-face{font-family:test;src:url('/fonts/test.woff2')}",
+      {
+        status: 200,
+        headers: { "Content-Type": "text/css; charset=utf-8" }
+      }
+    );
+  }
+  if (url.pathname === "/fonts/test.woff2") {
+    return new Response(new Uint8Array([0x77, 0x4f, 0x46, 0x32]), {
       status: 200,
-      headers: { "Content-Type": "text/css; charset=utf-8" }
+      headers: { "Content-Type": "font/woff2" }
     });
   }
   throw new Error(`Unexpected upstream fetch: ${url.href}`);
@@ -86,8 +95,36 @@ try {
   );
   assert.equal(font.status, 200);
   assert.match(font.headers.get("content-type") || "", /text\/css/u);
-  assert.match(await font.text(), /@font-face/u);
+  assert.equal(font.headers.get("access-control-allow-origin"), "*");
+  assert.equal(
+    font.headers.get("cross-origin-resource-policy"),
+    "cross-origin"
+  );
+  const fontCss = await font.text();
+  assert.match(fontCss, /@font-face/u);
+  assert.match(
+    fontCss,
+    /src:url\('\/newsboy-assets\/fonts\/test\.woff2'\)/u
+  );
+  assert.doesNotMatch(fontCss, /url\(['"]?\/fonts\//u);
   assert.ok(calls.includes("https://newsboy.sbay.sa/fonts/fonts.css"));
+
+  const fontBinary = await worker.fetch(
+    new Request("https://leap2026.sbay.sa/newsboy-assets/fonts/test.woff2"),
+    env
+  );
+  assert.equal(fontBinary.status, 200);
+  assert.equal(fontBinary.headers.get("content-type"), "font/woff2");
+  assert.equal(fontBinary.headers.get("access-control-allow-origin"), "*");
+  assert.equal(
+    fontBinary.headers.get("cross-origin-resource-policy"),
+    "cross-origin"
+  );
+  assert.deepEqual(
+    [...new Uint8Array(await fontBinary.arrayBuffer())],
+    [0x77, 0x4f, 0x46, 0x32]
+  );
+  assert.ok(calls.includes("https://newsboy.sbay.sa/fonts/test.woff2"));
 
   const method = await worker.fetch(
     new Request("https://leap2026.sbay.sa/newsboy-reader", {

@@ -1,8 +1,8 @@
 {
   "schema": "sbay.leap2026.public-release.v1",
   "auditId": "SBAY-LEAP-DEEPFEST-20260831T043818Z",
-  "releaseId": "leap2026-pressroom-2.7.2",
+  "releaseId": "leap2026-pressroom-2.7.3",
   "classification": "public-non-enabling-press-material",
   "fileCount": 71,
-  "releaseRoot": "ccdc0c829e30d78e0282106884400a56e1b3edbb822526ce9e09927a59e6937b"
+  "releaseRoot": "326cb102b277cd512abca3a0e8708787b817cd1011929b9c2312e8b68ad7a8af"
 }

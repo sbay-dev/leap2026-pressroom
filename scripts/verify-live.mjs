@@ -147,6 +147,63 @@ assert.match(
 );
 assert.doesNotMatch(embeddedHtml, /<script\b/iu);
 
+const embeddedFontCssResponse = await fetch(
+  `${baseUrl}/newsboy-assets/fonts/fonts.css?v=20260816-advanced-archive-r4`,
+  {
+    redirect: "error",
+    headers: {
+      Accept: "text/css,*/*;q=0.1",
+      Origin: "null",
+      "Sec-Fetch-Dest": "style",
+      "Sec-Fetch-Mode": "no-cors",
+      "Sec-Fetch-Site": "same-origin"
+    }
+  }
+);
+assert.equal(
+  embeddedFontCssResponse.status,
+  200,
+  "the embedded NewsBoy font stylesheet must load"
+);
+assert.equal(
+  embeddedFontCssResponse.headers.get("access-control-allow-origin"),
+  "*"
+);
+assert.equal(
+  embeddedFontCssResponse.headers.get("cross-origin-resource-policy"),
+  "cross-origin"
+);
+const embeddedFontCss = await embeddedFontCssResponse.text();
+assert.match(
+  embeddedFontCss,
+  /url\(['"]?\/newsboy-assets\/fonts\/Amiri-Regular-400\.ttf/iu
+);
+assert.doesNotMatch(embeddedFontCss, /url\(['"]?\/fonts\//iu);
+
+const embeddedFont = await fetch(
+  `${baseUrl}/newsboy-assets/fonts/Amiri-Regular-400.ttf`,
+  {
+    redirect: "error",
+    headers: {
+      Accept: "font/ttf,*/*;q=0.1",
+      Origin: "null",
+      "Sec-Fetch-Dest": "font",
+      "Sec-Fetch-Mode": "cors",
+      "Sec-Fetch-Site": "same-origin"
+    }
+  }
+);
+assert.equal(embeddedFont.status, 200, "an embedded NewsBoy font must load");
+assert.equal(embeddedFont.headers.get("access-control-allow-origin"), "*");
+assert.equal(
+  embeddedFont.headers.get("cross-origin-resource-policy"),
+  "cross-origin"
+);
+assert.match(
+  embeddedFont.headers.get("content-type") || "",
+  /(?:font\/|application\/octet-stream)/iu
+);
+
 const directNewsboy = await fetch(
   "https://newsboy.sbay.sa/coverage/leap-2026",
   { redirect: "error" }

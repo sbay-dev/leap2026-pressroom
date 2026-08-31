@@ -2,10 +2,10 @@
   "schema": "sbay.leap2026.public-release.v1",
   "auditId": "SBAY-LEAP-DEEPFEST-20260831T043818Z",
   "capturedAtUtc": "2026-08-31T04:38:18.532Z",
-  "releaseId": "leap2026-pressroom-2.7.2",
+  "releaseId": "leap2026-pressroom-2.7.3",
   "classification": "public-non-enabling-press-material",
   "fileCount": 71,
-  "releaseRoot": "ccdc0c829e30d78e0282106884400a56e1b3edbb822526ce9e09927a59e6937b",
+  "releaseRoot": "326cb102b277cd512abca3a0e8708787b817cd1011929b9c2312e8b68ad7a8af",
   "files": [
     {
       "path": ".gitattributes",
@@ -180,7 +180,7 @@
     {
       "path": "docs/trace-evidence.json",
       "bytes": 6192,
-      "sha256": "10be041107ba723b1d4cfaa1290b7c18baf514bba2bff0f5404d7274ee700b6b"
+      "sha256": "40946f857b98600dfa7a82629311bb9814338f7c8a57c73af78793c0eb6d41d3"
     },
     {
       "path": "ESPRESSO-OUTREACH.md",
@@ -250,12 +250,12 @@
     {
       "path": "package-lock.json",
       "bytes": 49900,
-      "sha256": "56ab1a8ca7980393d3948988d8d7cf4b21a27862d555a707853ddbbf62ae954f"
+      "sha256": "618f6ced6a64f85cfc89f9243a149d87d2f9d97ffd02d8ee059c205e40f4fd8d"
     },
     {
       "path": "package.json",
       "bytes": 1315,
-      "sha256": "cb3d4f59621201de4eddd31a38158c60ed478631f33a9383944c9a469cf2f7cf"
+      "sha256": "942743f7c70bd082c173a84c2bf278bb338d33d06561be58a16383cdcb08d2cb"
     },
     {
       "path": "PNU-MEDIA-CENTER-BRIEF.md",
@@ -314,8 +314,8 @@
     },
     {
       "path": "scripts/check-newsboy-worker.mjs",
-      "bytes": 3798,
-      "sha256": "5fee19493e9641e361826c2d93b97afeb1505928d63ea4befe2c3c26ae4a024e"
+      "bytes": 4964,
+      "sha256": "90d62ec4ce349a288542260c1180b9b6933b385256963c9d3bf09f52659ce71c"
     },
     {
       "path": "scripts/check-public-boundary.mjs",
@@ -329,8 +329,8 @@
     },
     {
       "path": "scripts/verify-live.mjs",
-      "bytes": 15542,
-      "sha256": "f3f0e0407587c0176b0e1ffe72ed0dba5386436e76c14e87a63be88bce9df277"
+      "bytes": 17084,
+      "sha256": "4a6efbb7dcae6369c3c19934960d9c2652f441a912567e1726a8cf72e4f354b7"
     },
     {
       "path": "scripts/verify-wasm.mjs",
@@ -354,8 +354,8 @@
     },
     {
       "path": "worker.js",
-      "bytes": 6889,
-      "sha256": "285fdd9f08e83e8614c6b81f7896a917e497b031340de7efc9401f39fe6d2f54"
+      "bytes": 7272,
+      "sha256": "b05a30bbdff25351bf33cc8dc9b57333acc35e2b70fac46a625fd610eecc93a0"
     },
     {
       "path": "wrangler.toml",

@@ -79,6 +79,13 @@ function transformAnchor(attributes) {
   return `<a${next}>`;
 }
 
+export function transformNewsboyFontCss(css) {
+  return css.replace(
+    /url\(\s*(["']?)\/fonts\//giu,
+    (_match, quote) => `url(${quote}${FONT_PROXY_PREFIX}`
+  );
+}
+
 export function transformNewsboyHtml(html) {
   let transformed = html
     .replace(/<script\b[^>]*>[\s\S]*?<\/script\s*>/giu, "")
@@ -179,14 +186,21 @@ async function fetchNewsboyFont(request, url) {
     return new Response("Bad Gateway", { status: 502 });
   }
 
+  const contentType =
+    upstream.headers.get("content-type") || "application/octet-stream";
   const headers = new Headers({
+    "Access-Control-Allow-Origin": "*",
     "Cache-Control": "public, max-age=86400, immutable, no-transform",
-    "Content-Type":
-      upstream.headers.get("content-type") || "application/octet-stream",
-    "Cross-Origin-Resource-Policy": "same-origin",
+    "Content-Type": contentType,
+    "Cross-Origin-Resource-Policy": "cross-origin",
     "X-Content-Type-Options": "nosniff"
   });
-  return new Response(request.method === "HEAD" ? null : upstream.body, {
+  const body = request.method === "HEAD"
+    ? null
+    : contentType.toLowerCase().includes("text/css")
+      ? transformNewsboyFontCss(await upstream.text())
+      : upstream.body;
+  return new Response(body, {
     status: 200,
     headers
   });
