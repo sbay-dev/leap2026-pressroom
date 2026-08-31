@@ -102,6 +102,14 @@ assert.match(index, /Independent participation/iu);
 assert.match(index, /no general MTEB superiority claim/iu);
 assert.match(index, /not an official LEAP or DeepFest page/iu);
 
+const headers = await readFile(path.join(root, "docs", "_headers"), "utf8");
+assert.match(
+  headers,
+  /Cache-Control: public, max-age=0, must-revalidate, no-transform/u
+);
+assert.match(headers, /script-src 'self' 'wasm-unsafe-eval'/u);
+assert.doesNotMatch(headers, /(?:^|\s)'unsafe-eval'(?:\s|;|$)/u);
+
 for (const asset of [
   "newsboy-classic-hero.png",
   "newsboy-classic-full.png",

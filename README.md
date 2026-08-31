@@ -9,9 +9,11 @@ Live targets:
 - Repository mirror: `https://sbay-dev.github.io/leap2026-pressroom/`
 
 The custom domain is served through Cloudflare and applies the checked-in
-security headers. GitHub Pages does not support repository-defined response
-headers, so the mirror uses GitHub's default headers and is not the canonical
-security boundary.
+security headers. Its `no-transform` cache directive prevents edge analytics
+injection, while the CSP grants only the narrow WebAssembly compilation
+capability required by the public equality proof. GitHub Pages does not support
+repository-defined response headers, so the mirror uses GitHub's default
+headers and is not the canonical security boundary.
 
 The site presents public-safe material for:
 

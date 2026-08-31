@@ -11,6 +11,10 @@ assert.match(html, /SBAY-LEAP-DEEPFEST-20260831T020340Z/u);
 assert.match(html, /NewsBoy/u);
 assert.match(html, /DeepFest 2026/u);
 assert.match(html, /no general MTEB superiority claim/u);
+assert.doesNotMatch(html, /cloudflareinsights|beacon\.min\.js/iu);
+
+const cacheControl = page.headers.get("cache-control");
+assert.match(cacheControl || "", /(?:^|,)\s*no-transform(?:,|$)/u);
 
 const kit = await fetch(`${baseUrl}/press-kit.json`);
 assert.equal(kit.status, 200);
@@ -31,6 +35,8 @@ const csp = page.headers.get("content-security-policy");
 if (csp) {
   assert.match(csp, /default-src 'self'/u);
   assert.match(csp, /frame-ancestors 'none'/u);
+  assert.match(csp, /script-src 'self' 'wasm-unsafe-eval'/u);
+  assert.doesNotMatch(csp, /(?:^|\s)'unsafe-eval'(?:\s|;|$)/u);
 }
 
 console.log(JSON.stringify({
@@ -38,5 +44,7 @@ console.log(JSON.stringify({
   baseUrl,
   auditId: pressKit.auditId,
   wasmBytes: bytes.length,
-  contentSecurityPolicy: Boolean(csp)
+  contentSecurityPolicy: Boolean(csp),
+  noTransform: true,
+  analyticsInjection: false
 }));

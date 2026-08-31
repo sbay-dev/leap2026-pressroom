@@ -5,7 +5,7 @@
   "releaseId": "leap2026-pressroom-1.0.0",
   "classification": "public-non-enabling-press-material",
   "fileCount": 41,
-  "releaseRoot": "51cf235b24e8f30ce2f7b9aaeb3b9b117a23fa7e835dd60b22aa2f8c8f4ddc18",
+  "releaseRoot": "f71991ead8c9d79cddf6ecf86b559324100c20e3caddd4f87980926b8d991b56",
   "files": [
     {
       "path": ".gitattributes",
@@ -39,8 +39,8 @@
     },
     {
       "path": "docs/_headers",
-      "bytes": 804,
-      "sha256": "e16c5e48f25f9dbfc89b8ffcf993731cfa1a3e652c0833e6ae0b003363a2fe70"
+      "bytes": 768,
+      "sha256": "90d4413d52c2553570d5093c5c8992beab890ac4a41083feeed640cb138d5348"
     },
     {
       "path": "docs/.nojekyll",
@@ -164,8 +164,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1554,
-      "sha256": "be69111e6d18fbcb6d792f6433faa73138edf3fb2388e7c1713058e2b98b81fb"
+      "bytes": 1735,
+      "sha256": "50f0f205c372cd4eb7dab94875b5bae6d9775ef97e205dfd14c384e57875fd1a"
     },
     {
       "path": "scripts/build-release-manifest.mjs",
@@ -179,8 +179,8 @@
     },
     {
       "path": "scripts/check-public-boundary.mjs",
-      "bytes": 3582,
-      "sha256": "d6a42481de1692521cfbc1a1b09e2460cecd7799899abee57d5a587c93fe4a5d"
+      "bytes": 3887,
+      "sha256": "c933b5e436e6a59db219dd319243914cd4018ab179f11c3402a6f7eea55e4780"
     },
     {
       "path": "scripts/compile-wasm.ps1",
@@ -189,8 +189,8 @@
     },
     {
       "path": "scripts/verify-live.mjs",
-      "bytes": 1495,
-      "sha256": "39ff8aa84a6e4b1550b5d318a77afaabe9a3ba85d892be19d89590873be58d48"
+      "bytes": 1863,
+      "sha256": "2c611340ca2978d0daa3e9fa36685210ef530870025e38078cb0eb3f9ff194c0"
     },
     {
       "path": "scripts/verify-wasm.mjs",
