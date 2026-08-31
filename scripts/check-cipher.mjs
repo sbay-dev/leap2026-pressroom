@@ -8,7 +8,7 @@
  */
 import { chromium } from "playwright-core";
 import { createServer } from "node:http";
-import { createReadStream, existsSync, mkdirSync, statSync } from "node:fs";
+import { createReadStream, existsSync, mkdirSync, readFileSync, statSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -33,6 +33,12 @@ const TYPES = {
   ".webmanifest": "application/manifest+json"
 };
 
+const CSP = readFileSync(path.join(docs, "_headers"), "utf8")
+  .split(/\r?\n/u)
+  .find(line => line.trim().startsWith("Content-Security-Policy:"))
+  .split("Content-Security-Policy:")[1]
+  .trim();
+
 const server = createServer((request, response) => {
   const requested = decodeURIComponent((request.url || "/").split("?")[0]);
   let file = path.join(docs, requested);
@@ -40,7 +46,9 @@ const server = createServer((request, response) => {
     file = path.join(docs, "index.html");
   }
   response.writeHead(200, {
-    "Content-Type": TYPES[path.extname(file)] || "application/octet-stream"
+    "Content-Type": TYPES[path.extname(file)] || "application/octet-stream",
+    // Mirrors the deployed worker policy so a blocked inline script fails here.
+    "Content-Security-Policy": CSP
   });
   createReadStream(file).pipe(response);
 });
@@ -173,6 +181,39 @@ for (const language of ["ar", "en"]) {
 }
 await reduced.close();
 
+const annexPage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+annexPage.on("console", message => {
+  if (message.type() === "error") {
+    report.consoleErrors.push(`annex: ${message.text()}`);
+  }
+});
+annexPage.on("pageerror", error => {
+  report.pageErrors.push(`annex: ${error.message}`);
+});
+await annexPage.goto(`${origin}annex-intelligence.html`, { waitUntil: "networkidle" });
+await annexPage.waitForTimeout(2200);
+report.annex = await annexPage.evaluate(() => {
+  const canvas = document.getElementById("annex-cipher");
+  const image = document.querySelector(".annex-figure img");
+  return {
+    backend: canvas?.dataset.backend ?? null,
+    frames: canvas?.dataset.frames ?? null,
+    instances: canvas?.dataset.instances ?? null,
+    manuscriptWidth: image?.naturalWidth ?? 0,
+    overflow: document.documentElement.scrollWidth
+      - document.documentElement.clientWidth
+  };
+});
+await annexPage.locator("[data-language]").click();
+await annexPage.waitForTimeout(500);
+report.annex.languageToggle = await annexPage.evaluate(() =>
+  `${document.documentElement.lang}/${document.documentElement.dir}`);
+await annexPage.screenshot({
+  path: path.join(outDir, "annex.png"),
+  clip: { x: 0, y: 0, width: 1280, height: 900 }
+});
+await annexPage.close();
+
 await browser.close();
 await new Promise(resolve => server.close(resolve));
 
@@ -195,6 +236,18 @@ for (const language of ["ar", "en"]) {
   if (report.reducedMotion[`overflow_${language}`] > 0) {
     failures.push(`${language}: horizontal overflow`);
   }
+}
+if (!report.annex.backend) {
+  failures.push("annex cipher did not mount under the production CSP");
+}
+if (report.annex.manuscriptWidth < 1) {
+  failures.push("annex manuscript image did not load");
+}
+if (report.annex.overflow > 0) {
+  failures.push(`annex: horizontal overflow ${report.annex.overflow}px`);
+}
+if (report.annex.languageToggle !== "en/ltr") {
+  failures.push(`annex language toggle did not switch: ${report.annex.languageToggle}`);
 }
 if (failures.length) {
   console.error("FAILED:\n" + failures.join("\n"));

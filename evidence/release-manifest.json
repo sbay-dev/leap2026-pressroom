@@ -2,10 +2,10 @@
   "schema": "sbay.leap2026.public-release.v1",
   "auditId": "SBAY-LEAP-DEEPFEST-20260831T043818Z",
   "capturedAtUtc": "2026-08-31T04:38:18.532Z",
-  "releaseId": "leap2026-pressroom-2.5.0",
+  "releaseId": "leap2026-pressroom-2.5.1",
   "classification": "public-non-enabling-press-material",
-  "fileCount": 60,
-  "releaseRoot": "8c737ed235300f41bec690ba23ca723971491f97a3e457bd41a7bbb6ffbc2ace",
+  "fileCount": 61,
+  "releaseRoot": "489e74417d70782256ed4da43d1fe9b41fb3bc35cda1dba853b2a76f608d95b9",
   "files": [
     {
       "path": ".gitattributes",
@@ -59,8 +59,13 @@
     },
     {
       "path": "docs/annex-intelligence.html",
-      "bytes": 18123,
-      "sha256": "e6465fa263e541e6f91ae3171ef9944fc1857a48dfd34468d4d129f70d73cd00"
+      "bytes": 17594,
+      "sha256": "fb40744bf1be618261110005c2aa88a23dc4d8fa4229a09989a3abb77d3be0db"
+    },
+    {
+      "path": "docs/annex.js",
+      "bytes": 505,
+      "sha256": "e3090b902f2834a2d3fe09bde1253772c5ef3117e8135af7076e6d95cdf533e7"
     },
     {
       "path": "docs/app.js",
@@ -220,12 +225,12 @@
     {
       "path": "package-lock.json",
       "bytes": 49900,
-      "sha256": "1c5f9aba67c7798721cb1daaa6356ae0edebd8ae7211bdf6f82b0506a2b58865"
+      "sha256": "27ab77206182b3bc491b390c86ff4a0360c3666471bd36bcb653f6b67879a49e"
     },
     {
       "path": "package.json",
       "bytes": 909,
-      "sha256": "e0dbcd653335854a040a31e26e2ed156dd41511769a371b789e21729c859eccd"
+      "sha256": "b02afb5dc1562b9cbcb95c4924aa73440994e1c0d78ab0dc440fb24d16ad792e"
     },
     {
       "path": "PNU-MEDIA-CENTER-BRIEF.md",
@@ -264,13 +269,13 @@
     },
     {
       "path": "scripts/check-cipher.mjs",
-      "bytes": 6958,
-      "sha256": "7b603401f04475f6e4951f7ea577c2ef852d3540db374838e7a86e92fc516b40"
+      "bytes": 9023,
+      "sha256": "3698ef1973e40267533456bb3cd29d48534636ede7252d0ac2f7fe159383965d"
     },
     {
       "path": "scripts/check-public-boundary.mjs",
-      "bytes": 19484,
-      "sha256": "dedd4763b3294805079d5f617c07673a60e785b0661502cdfb60ba5b23da74a5"
+      "bytes": 19781,
+      "sha256": "7a36085ff43edc5a81f105d0e963ee59627f19b5decf1d035e2871b4aa01de46"
     },
     {
       "path": "scripts/compile-wasm.ps1",

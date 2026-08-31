@@ -370,6 +370,7 @@ for (const asset of [
 }
 
 const cipher = await readFile(path.join(root, "docs", "adg-cipher.js"), "utf8");
+await stat(path.join(root, "docs", "annex.js"));
 const annex = await readFile(path.join(root, "docs", "annex-intelligence.html"), "utf8");
 assert.match(cipher, /const LOOP_SECONDS = 5/u);
 assert.match(cipher, /createCanvasPainter/u, "a non-WebGPU fallback painter is mandatory");
@@ -411,6 +412,9 @@ assert.match(annex, /taha-rasm-birmingham\.png/u, "the authorised manuscript emb
 assert.match(annex, /Mingana Islamic Arabic 1572a/u, "the manuscript attribution is mandatory");
 assert.match(annex, /Public domain via Wikimedia Commons/u, "the licence statement is mandatory");
 assert.match(annex, /codePoint &amp; 0xFF/u, "the annex must publish the derivation");
+// Content Security Policy allows no inline script: the annex must load a module file.
+assert.equal(/<script(?![^>]*\ssrc=)/u.test(annex), false, "no inline script in the annex");
+assert.match(annex, /<script type="module" src="\.\/annex\.js">/u);
 for (const figure of ["84", "23", "184", "85"]) {
   assert.ok(annex.includes(figure), `missing derived figure ${figure} in the annex`);
 }
