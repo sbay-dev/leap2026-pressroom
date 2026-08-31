@@ -30,6 +30,7 @@ const TYPES = {
   ".wasm": "application/wasm",
   ".svg": "image/svg+xml",
   ".png": "image/png",
+  ".webm": "video/webm",
   ".webmanifest": "application/manifest+json"
 };
 
@@ -105,11 +106,23 @@ for (const view of [
       gpuValidation: canvas?.dataset.gpuValidation ?? null,
       instances: canvas?.dataset.instances ?? null,
       analyzer: canvas?.dataset.analyzer ?? null,
+      analyserCalls: canvas?.dataset.analyserCalls ?? null,
+      verticesPerFrame: canvas?.dataset.verticesPerFrame ?? null,
+      instanceBufferBytes: canvas?.dataset.instanceBufferBytes ?? null,
       analyzerError: canvas?.dataset.analyzerError ?? null,
       traceMode: canvas?.dataset.traceMode ?? null,
       voidReturn: canvas?.dataset.voidReturn ?? null,
       voidMemoryWrites: canvas?.dataset.voidMemoryWrites ?? null,
       facts,
+      stateLabels: [...document.querySelectorAll("[data-cipher-state]")]
+        .map(node => node.textContent.replace(/\s+/gu, " ").trim()),
+      granularity: document.querySelector(".cipher-precision")?.textContent
+        .replace(/\s+/gu, " ").trim() ?? "",
+      visibleHeroNoteLinks: [...document.querySelectorAll(".cipher-note a")]
+        .filter(node => getComputedStyle(node).display !== "none")
+        .map(node => node.textContent.replace(/\s+/gu, " ").trim()),
+      hiddenTranscript: document.getElementById("cipher-transcript")?.textContent
+        .replace(/\s+/gu, " ").trim() ?? "",
       traceStages: [],
       overflow: document.documentElement.scrollWidth
         - document.documentElement.clientWidth
@@ -158,6 +171,28 @@ for (const view of [
       zoom: network?.dataset.zoom ?? null,
       maximumZoom: network?.dataset.maximumZoom ?? null
     };
+  });
+
+  await page.locator(".newsboy-paper-break").scrollIntoViewIfNeeded();
+  await page.waitForTimeout(500);
+  report.views[`${view.name}-paper`] = await page.evaluate(() => {
+    const section = document.querySelector(".newsboy-paper-break");
+    const image = section?.querySelector("img");
+    const links = [...(section?.querySelectorAll("a") ?? [])];
+    return {
+      imageWidth: image?.naturalWidth ?? 0,
+      articleLinks: links.filter(link =>
+        link.href.includes("coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412")
+      ).length,
+      heading: section?.querySelector("h3")?.textContent
+        .replace(/\s+/gu, " ").trim() ?? "",
+      overflow: section
+        ? Math.max(0, section.scrollWidth - section.clientWidth)
+        : null
+    };
+  });
+  await page.locator(".newsboy-paper-break").screenshot({
+    path: path.join(outDir, `${view.name}-newsboy-paper.png`)
   });
   await page.close();
 }
@@ -225,6 +260,7 @@ await annexPage.waitForTimeout(2200);
 report.annex = await annexPage.evaluate(() => {
   const canvas = document.getElementById("annex-cipher");
   const image = document.querySelector(".annex-figure img");
+  const video = document.querySelector(".trace-video-card video");
   return {
     backend: canvas?.dataset.backend ?? null,
     frames: canvas?.dataset.frames ?? null,
@@ -234,8 +270,33 @@ report.annex = await annexPage.evaluate(() => {
     voidReturn: canvas?.dataset.voidReturn ?? null,
     voidMemoryWrites: canvas?.dataset.voidMemoryWrites ?? null,
     manuscriptWidth: image?.naturalWidth ?? 0,
+    traceCards: document.querySelectorAll(".trace-kanban > article").length,
+    traceVideoSource: video?.querySelector("source")?.getAttribute("src") ?? null,
+    traceVideoPoster: video?.getAttribute("poster") ?? null,
+    traceEvidenceLink: document.querySelector(
+      'a[href="./trace-evidence.json"]'
+    )?.getAttribute("href") ?? null,
     overflow: document.documentElement.scrollWidth
       - document.documentElement.clientWidth
+  };
+});
+report.annexVideo = await annexPage.evaluate(async () => {
+  const video = document.querySelector(".trace-video-card video");
+  if (!video) return { error: "missing video" };
+  video.preload = "metadata";
+  video.load();
+  if (video.readyState < HTMLMediaElement.HAVE_METADATA) {
+    await new Promise((resolve, reject) => {
+      video.addEventListener("loadedmetadata", resolve, { once: true });
+      video.addEventListener("error", () => reject(
+        new Error(video.error?.message || "video metadata failed")
+      ), { once: true });
+    });
+  }
+  return {
+    duration: video.duration,
+    width: video.videoWidth,
+    height: video.videoHeight
   };
 });
 await annexPage.locator("[data-language]").click();
@@ -247,6 +308,40 @@ await annexPage.screenshot({
   clip: { x: 0, y: 0, width: 1280, height: 900 }
 });
 await annexPage.close();
+
+const annexMobilePage = await browser.newPage({
+  viewport: { width: 390, height: 844 },
+  reducedMotion: "reduce"
+});
+annexMobilePage.on("console", message => {
+  if (message.type() === "error") {
+    report.consoleErrors.push(`annex-mobile: ${message.text()}`);
+  }
+});
+annexMobilePage.on("pageerror", error => {
+  report.pageErrors.push(`annex-mobile: ${error.message}`);
+});
+await annexMobilePage.goto(`${origin}annex-intelligence.html`, {
+  waitUntil: "networkidle"
+});
+await annexMobilePage.locator('[aria-labelledby="trace-board-heading"]')
+  .scrollIntoViewIfNeeded();
+await annexMobilePage.waitForTimeout(500);
+report.annexMobile = await annexMobilePage.evaluate(() => {
+  const board = document.querySelector(".trace-kanban");
+  const video = document.querySelector(".trace-video-card video");
+  return {
+    traceCards: board?.children.length ?? 0,
+    columns: board ? getComputedStyle(board).gridTemplateColumns : "",
+    videoWidth: video?.getBoundingClientRect().width ?? 0,
+    videoContainerWidth: video?.parentElement?.getBoundingClientRect().width ?? 0,
+    overflow: document.documentElement.scrollWidth
+      - document.documentElement.clientWidth
+  };
+});
+await annexMobilePage.locator('[aria-labelledby="trace-board-heading"]')
+  .screenshot({ path: path.join(outDir, "annex-mobile-trace.png") });
+await annexMobilePage.close();
 
 const fallbackPage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
 await fallbackPage.addInitScript(() => {
@@ -272,9 +367,7 @@ report.canvas2d = await fallbackPage.evaluate(() => {
     backend: canvas?.dataset.backend ?? null,
     analyzer: canvas?.dataset.analyzer ?? null,
     traceMode: canvas?.dataset.traceMode ?? null,
-    fallbackNoteVisible: getComputedStyle(
-      document.querySelector(".cipher-runtime-fallback")
-    ).display !== "none",
+    ariaLabel: canvas?.getAttribute("aria-label") ?? "",
     overflow: document.documentElement.scrollWidth
       - document.documentElement.clientWidth
   };
@@ -316,6 +409,17 @@ if (report.annex.manuscriptWidth < 1) {
 if (report.annex.overflow > 0) {
   failures.push(`annex: horizontal overflow ${report.annex.overflow}px`);
 }
+if (Math.abs(report.annexVideo.duration - 5) > 0.05
+  || report.annexVideo.width !== 1184
+  || report.annexVideo.height !== 518) {
+  failures.push(`annex: invalid trace video metadata ${JSON.stringify(report.annexVideo)}`);
+}
+if (report.annexMobile.traceCards !== 5
+  || report.annexMobile.columns.split(" ").length !== 1
+  || report.annexMobile.videoWidth > report.annexMobile.videoContainerWidth
+  || report.annexMobile.overflow > 0) {
+  failures.push("annex mobile trace board is not a single responsive column");
+}
 if (report.annex.languageToggle !== "en/ltr") {
   failures.push(`annex language toggle did not switch: ${report.annex.languageToggle}`);
 }
@@ -339,6 +443,39 @@ for (const view of ["desktop", "mobile"]) {
   if (Number(result.frames || 0) < 1) {
     failures.push(`${view}: no animation frame was painted`);
   }
+  if (result.analyserCalls !== "207"
+    || result.verticesPerFrame !== "4518"
+    || result.instanceBufferBytes !== "48192") {
+    failures.push(`${view}: published compute metadata does not match the scene`);
+  }
+  if (result.visibleHeroNoteLinks.length !== 1
+    || !result.visibleHeroNoteLinks[0].includes("الملحق التقني")) {
+    failures.push(`${view}: the hero footer must expose only the annex link`);
+  }
+  if (!result.granularity.includes("بت واحد")
+    || !result.hiddenTranscript.includes("ليست تسجيلًا لدورات معالج مادي")
+    || !result.hiddenTranscript.includes("ليس نسبة دقة لنموذج ذكاء اصطناعي")
+    || !result.hiddenTranscript.includes("335 بتلة")) {
+    failures.push(`${view}: scene meaning or hidden transcript is incomplete`);
+  }
+  for (const phrase of [
+    "قراءة الأوكتتات",
+    "فكّ البتات",
+    "التفتّح",
+    "الهدوء",
+    "trace_void() → () · ΔMEM = 0"
+  ]) {
+    if (!result.stateLabels.some(label => label.includes(phrase))) {
+      failures.push(`${view}: missing scene state ${phrase}`);
+    }
+  }
+  const paper = report.views[`${view}-paper`];
+  if (paper.imageWidth < 1
+    || paper.articleLinks < 1
+    || !paper.heading.includes("وزير الاتصالات")
+    || paper.overflow > 0) {
+    failures.push(`${view}: NewsBoy paper section failed its image, link, or overflow gate`);
+  }
 }
 for (const stage of ["fetch", "decode", "execute", "quiet", "void"]) {
   if (!report.views.desktop.traceStages.includes(stage)) {
@@ -354,10 +491,16 @@ if (report.annex.analyzer !== "wasm-i32"
   || report.annex.voidMemoryWrites !== "0") {
   failures.push("annex: WebAssembly void contract not active");
 }
+if (report.annex.traceCards !== 5
+  || report.annex.traceVideoSource !== "./assets/press/octet-bloom-trace-v270.webm"
+  || report.annex.traceVideoPoster !== "./assets/press/octet-bloom-trace-v270-poster.png"
+  || report.annex.traceEvidenceLink !== "./trace-evidence.json") {
+  failures.push("annex: trace video or five-card evidence board is incomplete");
+}
 if (report.canvas2d.backend !== "canvas2d"
   || report.canvas2d.analyzer !== "wasm-i32"
   || report.canvas2d.traceMode !== "precomputed-replay"
-  || report.canvas2d.fallbackNoteVisible
+  || report.canvas2d.ariaLabel.includes("WebAssembly is unavailable")
   || report.canvas2d.overflow > 0) {
   failures.push("Canvas2D fallback does not match the disclosed trace contract");
 }

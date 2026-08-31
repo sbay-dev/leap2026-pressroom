@@ -37,11 +37,25 @@ assert.match(html, /مركز إعلام جامعة الأميرة نورة بن�
 assert.match(html, /does not mean the material is issued, approved, sponsored or endorsed by the university/iu);
 assert.match(html, /https:\/\/newsboy\.sbay\.sa\/#m-citations-section/u);
 assert.match(html, /https:\/\/newsboy\.sbay\.sa\/#m-archive-section/u);
+assert.match(
+  html,
+  /https:\/\/newsboy\.sbay\.sa\/coverage\/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412/u
+);
+assert.match(html, /newsboy-leap5-paper\.png/u);
+assert.match(html, /class="newsboy-paper-break"/u);
 assert.match(html, /newsboy-cultural-edition\.png/u);
 assert.match(html, /newsboy-classic-editorial\.png/u);
 assert.match(html, /id="adg-cipher"[^>]*data-loop-seconds="5"/u);
 assert.match(html, /class="cipher-note"/u);
-assert.match(html, /href="\.\/annex-intelligence"/u);
+assert.match(
+  html,
+  /<p class="cipher-note">\s*<a href="\.\/annex-intelligence"><span class="ar">الملحق التقني ↗<\/span><span class="en">Technical annex ↗<\/span><\/a>\s*<\/p>/u
+);
+assert.match(html, /id="cipher-transcript" class="cipher-transcript visually-hidden"/u);
+assert.match(html, /حبيبة التمثيل المرئية: بت واحد/u);
+assert.match(html, /184 CALLS · flag_bit/u);
+assert.match(html, /85 BLOOMS · 335 PETALS/u);
+assert.doesNotMatch(html, /octet-bloom-trace-v270\.webm/u);
 assert.match(html, /<code>void<\/code>/u);
 assert.match(html, /deterministic replay/u);
 assert.match(html, /not a recording of physical processor cycles/u);
@@ -61,6 +75,10 @@ assert.match(annexHtml, /taha-rasm-birmingham\.png/u);
 assert.match(annexHtml, /flag_bit/u);
 assert.match(annexHtml, /flag_popcount/u);
 assert.match(annexHtml, /trace_void/u);
+assert.match(annexHtml, /id="trace-board-heading"/u);
+assert.match(annexHtml, /octet-bloom-trace-v270\.webm/u);
+assert.match(annexHtml, /trace-evidence\.json/u);
+assert.match(annexHtml, /ليست نسبة دقة لنموذج ذكاء اصطناعي/u);
 assert.match(annexHtml, /not a measurement or recording of physical processor stages/u);
 assert.match(annexHtml, /does not generally mean that a function cannot write memory/u);
 assert.doesNotMatch(annexHtml, /faithful port/iu);
@@ -111,6 +129,10 @@ const newsBoy = pressKit.operatingProof.find(item => item.name === "NewsBoy");
 assert.ok(newsBoy);
 assert.equal(newsBoy.citationsUrl, "https://newsboy.sbay.sa/#m-citations-section");
 assert.equal(newsBoy.archiveUrl, "https://newsboy.sbay.sa/#m-archive-section");
+assert.equal(
+  newsBoy.leap5PaperUrl,
+  "https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412"
+);
 const ksar = pressKit.operatingProof.find(item => item.name === "Ksar");
 assert.ok(ksar);
 assert.equal(ksar.release, "2.1.0-leap2026");
@@ -131,6 +153,10 @@ assert.equal(ksar.verifiedContracts.failed, 0);
 
 for (const [asset, expectedSha256] of [
   [
+    "newsboy-leap5-paper.png",
+    "effd3269f640b3885763703b248712fe91b2fd660a4ce798f11ab65176052d2c"
+  ],
+  [
     "newsboy-cultural-edition.png",
     "a42f7aef65acc12194f6561ab1861d468f703ecea426ef56cc59d1f28dcf0de5"
   ],
@@ -150,6 +176,37 @@ for (const [asset, expectedSha256] of [
   assert.equal(
     createHash("sha256").update(imageBytes).digest("hex"),
     expectedSha256
+  );
+}
+
+const expectedTraceEvidence = JSON.parse(await readFile(
+  new URL("../docs/trace-evidence.json", import.meta.url),
+  "utf8"
+));
+const traceEvidenceResponse = await fetch(`${baseUrl}/trace-evidence.json`);
+assert.equal(traceEvidenceResponse.status, 200);
+const traceEvidence = await traceEvidenceResponse.json();
+assert.deepEqual(traceEvidence, expectedTraceEvidence);
+assert.equal(traceEvidence.interpretation.visibleGrain, "one bit");
+assert.equal(traceEvidence.interpretation.aiAccuracyMetricClaimed, false);
+assert.equal(traceEvidence.compute.analyzerCallsPerMount, 207);
+assert.equal(traceEvidence.compute.verticesPerFrame, 4518);
+assert.equal(traceEvidence.video.phaseSamples, 25);
+assert.equal(traceEvidence.video.codec, "VP8");
+assert.equal(traceEvidence.video.repeatsPerSample, 6);
+assert.equal(traceEvidence.video.capture.screenRecordingUsed, false);
+for (const media of [traceEvidence.video, traceEvidence.video.poster]) {
+  const response = await fetch(`${baseUrl}/${media.path.replace(/^docs\//u, "")}`);
+  assert.equal(response.status, 200);
+  assert.match(
+    response.headers.get("content-type") || "",
+    media.path.endsWith(".webm") ? /video\/webm/iu : /image\/png/iu
+  );
+  const mediaBytes = Buffer.from(await response.arrayBuffer());
+  assert.equal(mediaBytes.length, media.bytes);
+  assert.equal(
+    createHash("sha256").update(mediaBytes).digest("hex"),
+    media.sha256
   );
 }
 

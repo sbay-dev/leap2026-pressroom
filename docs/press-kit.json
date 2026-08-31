@@ -66,11 +66,13 @@
       "url": "https://newsboy.sbay.sa/",
       "citationsUrl": "https://newsboy.sbay.sa/#m-citations-section",
       "archiveUrl": "https://newsboy.sbay.sa/#m-archive-section",
+      "leap5PaperUrl": "https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412",
       "featuredMedia": [
+        "assets/press/newsboy-leap5-paper.png",
         "assets/press/newsboy-cultural-edition.png",
         "assets/press/newsboy-classic-editorial.png"
       ],
-      "summary": "Rights-aware Arabic daily news with public source citations and a navigable site archive."
+      "summary": "Rights-aware Arabic daily news with public source citations, a navigable site archive and a semantic LEAP5 paper reader."
     },
     {
       "name": "Ksar",
@@ -156,6 +158,7 @@
   "media": [
     "assets/press/adg-adjudication-platform.png",
     "assets/press/newsboy-cultural-edition.png",
+    "assets/press/newsboy-leap5-paper.png",
     "assets/press/newsboy-classic-editorial.png",
     "assets/press/newsboy-classic-hero.png",
     "assets/press/newsboy-classic-full.png",

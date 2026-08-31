@@ -155,6 +155,19 @@ export function buildScene(analyzer = JS_ANALYZER) {
   const totalUtf8 = RASM.words.reduce((sum, word) => sum + word.utf8, 0)
     + (RASM.words.length - 1);
   const transportBits = units.length * 8;
+  const setBits = units.reduce((sum, unit) => sum + unit.petals, 0);
+  const petalInstances = units.reduce(
+    (sum, unit) => sum + unit.petals * unit.petals,
+    0
+  );
+  const instances = (units.length + 1) + 9
+    + units.length
+    + transportBits
+    + setBits
+    + petalInstances
+    + setBits
+    + RASM.words.length
+    + 3;
 
   return {
     units,
@@ -167,7 +180,19 @@ export function buildScene(analyzer = JS_ANALYZER) {
     analyser: analyzer.kind,
     traceMode: "precomputed-replay",
     voidReturn: analyzer.voidReturn,
-    voidMemoryWrites: analyzer.voidMemoryWrites
+    voidMemoryWrites: analyzer.voidMemoryWrites,
+    compute: {
+      flagBitCalls: transportBits,
+      flagPopcountCalls: units.length,
+      analyserCalls: transportBits + units.length,
+      setBits,
+      petalInstances,
+      instances,
+      verticesPerFrame: instances * 6,
+      instanceBufferBytes: instances * FLOATS_PER_INSTANCE * 4,
+      uniformBytesPerFrame: 16,
+      maxBackingArea: MAX_BACKING_AREA
+    }
   };
 }
 
@@ -187,8 +212,9 @@ function layout(scene) {
   const stepX = (halfWidth * 2) / columns;
   const columnX = index => halfWidth - stepX * (index + 0.5);
 
-  const latticeTop = -0.52;
-  const latticeBottom = 0.42;
+  // Reserve the top band for the human-readable phase without covering bytes.
+  const latticeTop = -0.40;
+  const latticeBottom = 0.46;
   const stepY = (latticeBottom - latticeTop) / rows;
   const latticeCenter = (latticeTop + latticeBottom) / 2;
 
@@ -959,6 +985,11 @@ export async function mountAdgCipher(canvas, providedWasmExports = null) {
 
   const scene = buildScene(analyzer);
   const items = layout(scene);
+  if (items.length !== scene.compute.instances) {
+    throw new Error(
+      `Trace instance mismatch: ${items.length} != ${scene.compute.instances}`
+    );
+  }
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const stageRoot = canvas.closest(".cipher-stage");
 
@@ -974,21 +1005,24 @@ export async function mountAdgCipher(canvas, providedWasmExports = null) {
   canvas.dataset.traceMode = scene.traceMode;
   canvas.dataset.voidReturn = analyzer.voidReturn;
   canvas.dataset.voidMemoryWrites = String(analyzer.voidMemoryWrites);
+  canvas.dataset.analyserCalls = String(scene.compute.analyserCalls);
+  canvas.dataset.verticesPerFrame = String(scene.compute.verticesPerFrame);
+  canvas.dataset.instanceBufferBytes = String(scene.compute.instanceBufferBytes);
   if (stageRoot) stageRoot.dataset.analyzer = analyzer.kind;
 
   if (reduceMotion) {
     canvas.setAttribute(
       "aria-label",
       analyzer.kind === "wasm-i32"
-        ? "Static reduced-motion frame of the WebAssembly-derived set-bit bloom. Animation is disabled; the verified trace_void contract is documented in the technical annex."
-        : "Static reduced-motion fallback of the published flag pattern. WebAssembly is unavailable, so no trace_void memory claim is presented."
+        ? "Static reduced-motion frame at a one-bit visible representation grain. Animation is disabled; the verified WebAssembly-derived set-bit and trace_void contracts are documented in the technical annex. One bit describes the display, not AI accuracy."
+        : "Static reduced-motion fallback at a one-bit visible representation grain. WebAssembly is unavailable, so no trace_void memory claim is presented. One bit describes the display, not AI accuracy."
     );
   } else {
     canvas.setAttribute(
       "aria-label",
       analyzer.kind === "wasm-i32"
-        ? "A deterministic five second replay: published flag octets are read, WebAssembly-derived bits bloom, the scene settles, then trace_void runs without changing WebAssembly linear memory or returning a value."
-        : "A five second local fallback replay of the published flag pattern. WebAssembly is unavailable, so no trace_void memory claim is presented."
+        ? "A deterministic five second replay at a one-bit visible representation grain: published flag octets are read, WebAssembly-derived bits bloom, the scene settles, then trace_void runs without changing WebAssembly linear memory or returning a value. One bit describes the display, not AI accuracy."
+        : "A five second local fallback replay at a one-bit visible representation grain. WebAssembly is unavailable, so no trace_void memory claim is presented. One bit describes the display, not AI accuracy."
     );
   }
 
@@ -1063,6 +1097,14 @@ export async function mountAdgCipher(canvas, providedWasmExports = null) {
     if (frame) cancelAnimationFrame(frame);
     frame = 0;
   }
+
+  canvas.addEventListener("sbay:trace-frame", event => {
+    const requested = Number(event.detail);
+    if (!Number.isFinite(requested)) return;
+    stop();
+    resize();
+    paint(Math.min(0.999999, Math.max(0, requested)));
+  });
 
   if (reduceMotion) {
     resize();

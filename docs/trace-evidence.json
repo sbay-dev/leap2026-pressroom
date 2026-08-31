@@ -1,0 +1,221 @@
+{
+  "schema": "sbay.leap2026.octet-bloom-trace.v1",
+  "release": "2.7.0",
+  "reference": "20:13",
+  "interpretation": {
+    "visibleGrain": "one bit",
+    "deterministic": true,
+    "aiAccuracyMetricClaimed": false,
+    "nativeAssemblyTraceClaimed": false,
+    "privateArabicAnalyzerPublished": false,
+    "statement": "Atomic refers to the visible one-bit grain, not to a measured AI accuracy score."
+  },
+  "timeline": [
+    {
+      "id": "fetch",
+      "seconds": [
+        0,
+        0.9
+      ],
+      "arabic": "قراءة الأوكتتات",
+      "english": "Read octets",
+      "humanMeaning": "The 23 published derived octets enter unchanged.",
+      "callContract": "RASM[index] -> i32",
+      "compute": {
+        "octets": 23
+      },
+      "files": [
+        "docs/adg-cipher.js"
+      ]
+    },
+    {
+      "id": "decode",
+      "seconds": [
+        0.9,
+        1.7
+      ],
+      "arabic": "فكّ البتات",
+      "english": "Decode bits",
+      "humanMeaning": "Each octet is tested at all eight bit positions.",
+      "callContract": "flag_bit(i32 flag, i32 bit) -> i32",
+      "compute": {
+        "callsPerMount": 184,
+        "bitPositions": 184
+      },
+      "files": [
+        "wasm/evidence_match.rs",
+        "docs/evidence-match.wasm"
+      ]
+    },
+    {
+      "id": "execute",
+      "seconds": [
+        1.7,
+        3.5
+      ],
+      "arabic": "التفتّح",
+      "english": "Bloom",
+      "humanMeaning": "A set bit blooms; a zero bit remains still.",
+      "callContract": "flag_popcount(i32 flag) -> i32",
+      "compute": {
+        "callsPerMount": 23,
+        "setBitBlooms": 85,
+        "petalInstances": 335
+      },
+      "files": [
+        "wasm/evidence_match.rs",
+        "docs/adg-cipher.js"
+      ]
+    },
+    {
+      "id": "quiet",
+      "seconds": [
+        3.5,
+        4.1
+      ],
+      "arabic": "الهدوء",
+      "english": "Quiet",
+      "humanMeaning": "Transient bloom energy reaches zero while the evidence lattice remains.",
+      "callContract": "WGSL phase envelope -> transient energy 0",
+      "compute": {
+        "transientKinds": [
+          "BIT",
+          "PETAL",
+          "GLOW"
+        ]
+      },
+      "files": [
+        "docs/adg-cipher.js"
+      ]
+    },
+    {
+      "id": "void",
+      "seconds": [
+        4.1,
+        4.8
+      ],
+      "arabic": "void",
+      "english": "void",
+      "humanMeaning": "This specific no-argument function returns no value and leaves Wasm linear memory unchanged.",
+      "callContract": "trace_void() -> ()",
+      "compute": {
+        "returnValues": 0,
+        "linearMemoryWritesObserved": 0
+      },
+      "files": [
+        "wasm/evidence_match.rs",
+        "scripts/verify-wasm.mjs"
+      ]
+    },
+    {
+      "id": "reset",
+      "seconds": [
+        4.8,
+        5
+      ],
+      "arabic": "إعادة حتمية",
+      "english": "Deterministic reset",
+      "humanMeaning": "The stable lattice meets the first frame without a blank cut.",
+      "callContract": "phase 1 -> phase 0",
+      "compute": {
+        "loopSeconds": 5
+      },
+      "files": [
+        "docs/adg-cipher.js",
+        "scripts/check-cipher.mjs"
+      ]
+    }
+  ],
+  "compute": {
+    "wasmBinaryBytes": 196,
+    "wasmLinearMemoryBytes": 65536,
+    "analyzerCallsPerMount": 207,
+    "sceneInstances": 753,
+    "drawCallsPerFrame": 1,
+    "verticesPerFrame": 4518,
+    "instanceBufferBytes": 48192,
+    "uniformBytesPerFrame": 16,
+    "maximumBackingPixels": 1000000,
+    "renderer": "WebGPU where available; Canvas2D fallback"
+  },
+  "stackBoundary": {
+    "documented": "Public function signatures and JavaScript-visible input/output contracts.",
+    "notClaimed": "Native CPU registers, native instruction timing, or a captured hardware stack trace."
+  },
+  "video": {
+    "path": "docs/assets/press/octet-bloom-trace-v270.webm",
+    "bytes": 160512,
+    "sha256": "07d5e603593430830a82c2b0cbf86716c9c5f21c12a14d4a997caacf584eb49a",
+    "durationSeconds": 5,
+    "codec": "VP8",
+    "frames": 150,
+    "framesPerSecond": 30,
+    "phaseSamples": 25,
+    "repeatsPerSample": 6,
+    "width": 1184,
+    "height": 518,
+    "capture": {
+      "sceneRenderer": "Canvas2D verified fallback",
+      "compositionLayer": "Canvas2D labels over the same explicitly addressed scene phase",
+      "livePrimaryRenderer": "WebGPU where available",
+      "screenRecordingUsed": false
+    },
+    "poster": {
+      "path": "docs/assets/press/octet-bloom-trace-v270-poster.png",
+      "bytes": 214391,
+      "sha256": "907a80e343762ec70402c26114dff6cd913299c500c6da5c9978c8ee08de60c7"
+    }
+  },
+  "sourceFiles": [
+    {
+      "path": "docs/adg-cipher.js",
+      "bytes": 37038,
+      "sha256": "d407c083784ff54045229273a2b4d7dc610b284f2f2fc93199bf35db4d999774"
+    },
+    {
+      "path": "docs/annex-intelligence.html",
+      "bytes": 31300,
+      "sha256": "1803aaf1d08659ff876ec0ee17f94ac7d7dd55c225eb6e2b0c0266041763d573"
+    },
+    {
+      "path": "docs/index.html",
+      "bytes": 65397,
+      "sha256": "781a895117f86a9d397f40f546ca01917621a085abc8ce7341b6a25a78a48956"
+    },
+    {
+      "path": "docs/styles.css",
+      "bytes": 49500,
+      "sha256": "09628cdcecd971d3f5dc8c2f0592e4a8c18ad0701b5b728e5b819dbeebfbde03"
+    },
+    {
+      "path": "wasm/evidence_match.rs",
+      "bytes": 570,
+      "sha256": "ea9ac32efdcd95be9db1288ac246925237dedb55a246ae9003a7a1472254a11f"
+    },
+    {
+      "path": "docs/evidence-match.wasm",
+      "bytes": 196,
+      "sha256": "12a0d127025807c523d85a030ce5d7f860643b4aac6ea1d0c14564c5360772b6"
+    },
+    {
+      "path": "scripts/build-trace-evidence.mjs",
+      "bytes": 6599,
+      "sha256": "8657eb3da238a68ff2684d9b6d92d49df0899a510ba774fa6f2a81e15eccd789"
+    },
+    {
+      "path": "scripts/capture-trace-video.mjs",
+      "bytes": 11121,
+      "sha256": "6998d96743e18aa37528b54e77777d960420d952bfeebe5b4bf3d8c98c430587"
+    },
+    {
+      "path": "scripts/check-cipher.mjs",
+      "bytes": 20025,
+      "sha256": "d0924908b9d06996cd282eef741b69c88f348bb54cd0aeee7abb74d1574e3b77"
+    },
+    {
+      "path": "scripts/verify-wasm.mjs",
+      "bytes": 2253,
+      "sha256": "9125275c6faeb148ae378d411f25597b650b0ab8cb235a9f7f5cc1217cbafe64"
+    }
+  ]
+}

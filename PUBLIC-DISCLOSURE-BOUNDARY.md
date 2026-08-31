@@ -40,6 +40,19 @@ Audit ID: `SBAY-LEAP-DEEPFEST-20260831T043818Z`
   followed by the live `trace_void` call.
   `IF`, `ID`, `EX`, `MEM` and `WB` are explanatory visual labels, not measured
   hardware pipeline stages.
+- A one-bit visible representation grain. This is a statement about the
+  smallest visual unit in the scene, not an AI accuracy, confidence, benchmark
+  or inference-quality score.
+- A deterministic VP8 WebM with 150 encoded frames at 30 frames per second,
+  built from 25 explicitly addressed phase samples drawn by the verified
+  Canvas2D fallback from the same scene model and held for six frames each.
+  WebGPU remains the primary live renderer where available. A public trace
+  board binds each phrase to the implementing file, public call contract and
+  recomputable compute amount.
+- The existing semantic NewsBoy LEAP5 paper reader, linked as a normal public
+  HTML document with a static pressroom preview. Its native links, scrolling,
+  print stylesheet and reduced-motion rule are reused without introducing a
+  simulated page-turning reader.
 - The functional category of QdrantServer: a private .NET provider host for
   data, runtime, health, and administrative integrations.
 - The public name `منصّة تحكيم اللغة العربية`, its live URL, public release
@@ -98,6 +111,8 @@ recorded way for a reader to check it.
   physical-processor trace, that the public WebAssembly module contains the
   private Arabic analyser, or that the `void` type generally proves absence of
   memory side effects.
+- Any interpretation of the one-bit visual grain as an AI accuracy,
+  confidence, benchmark, model-quality or hardware-resolution figure.
 - Private patent claims, claim charts, inventor records, filing documents, or
   unpublished enablement detail.
 - Keys, tokens, certificates, connection strings, internal hostnames, identity

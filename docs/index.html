@@ -100,8 +100,40 @@
       <div class="hero-visual">
         <figure class="cipher-stage">
           <div class="cipher-frame">
-            <canvas id="adg-cipher" width="960" height="420" role="img" data-loop-seconds="5"
+            <canvas id="adg-cipher" width="960" height="420" role="img" data-loop-seconds="5" aria-describedby="cipher-transcript"
               aria-label="A five second visual trace of the published flag-octet pattern. Runtime verification details are provided after the visual module loads."></canvas>
+            <div class="cipher-precision" aria-hidden="true">
+              <span class="ar">حبيبة التمثيل المرئية: بت واحد</span>
+              <span class="en">Visible representation grain: one bit</span>
+              <code>DETERMINISTIC</code>
+            </div>
+            <div class="cipher-state-deck" aria-hidden="true">
+              <div data-cipher-state="fetch">
+                <b><span class="ar">قراءة الأوكتتات</span><span class="en">Read octets</span></b>
+                <span class="ar">القيم المنشورة تدخل كما هي</span><span class="en">Published values enter unchanged</span>
+                <code>23 OCTETS · RASM[0…22]</code>
+              </div>
+              <div data-cipher-state="decode">
+                <b><span class="ar">فكّ البتات</span><span class="en">Decode bits</span></b>
+                <span class="ar">كل أوكتت ينفتح إلى ثمانية مواضع</span><span class="en">Each octet opens into eight positions</span>
+                <code>184 CALLS · flag_bit</code>
+              </div>
+              <div data-cipher-state="execute">
+                <b><span class="ar">التفتّح</span><span class="en">Bloom</span></b>
+                <span class="ar">البت المضاء يزهر، والصفر يبقى ساكنًا</span><span class="en">A set bit blooms; zero stays still</span>
+                <code>85 BLOOMS · 335 PETALS</code>
+              </div>
+              <div data-cipher-state="quiet">
+                <b><span class="ar">الهدوء</span><span class="en">Quiet</span></b>
+                <span class="ar">تختفي العناصر المؤقتة وتبقى الشبكة</span><span class="en">Transient elements leave; the lattice remains</span>
+                <code>TRANSIENT ENERGY → 0</code>
+              </div>
+              <div data-cipher-state="void">
+                <b><code>void</code></b>
+                <span class="ar">لا قيمة عائدة، وذاكرة WASM لا تتغيّر</span><span class="en">No return value; Wasm memory is unchanged</span>
+                <code>trace_void() → () · ΔMEM = 0</code>
+              </div>
+            </div>
             <div class="cipher-lane" aria-hidden="true">
               <span data-cipher-step="fetch">IF</span>
               <span data-cipher-step="decode">ID</span>
@@ -115,16 +147,19 @@
               <span class="en">Wasm memory unchanged · no return value</span>
             </p>
           </div>
-          <figcaption class="visual-caption">
+          <figcaption id="cipher-transcript" class="cipher-transcript visually-hidden">
             <span class="ar">قراءة الأوكتتات ← فكّ البتات ← التفتّح ← الهدوء ← <code>void</code></span>
             <span class="en">Octet read → bit decode → bloom → quiet → <code>void</code></span>
+            <span class="ar">تقرأ الدورة 23 أوكتتًا، وتفك 184 موضع بت، وتمثل 85 بتًا مضاءً في 335 بتلة، ثم تخفض العناصر العابرة إلى الصفر قبل استدعاء <code>trace_void</code> بلا قيمة عائدة وبلا تغير في ذاكرة WebAssembly.</span>
+            <span class="en">The cycle reads 23 octets, decodes 184 bit positions, represents 85 set bits as 335 petals, then reduces transient elements to zero before calling <code>trace_void</code> with no return value and no WebAssembly memory change.</span>
+            <span class="ar">إعادة عرض حتمية لنتائج عمليات بتّية تحسبها وحدة WebAssembly صغيرة مسبقًا على الأوكتتات المشتقة المنشورة؛ وليست تسجيلًا لدورات معالج مادي.</span>
+            <span class="en">A deterministic replay of bit-operation results precomputed by a small WebAssembly module over the published derived octets; not a recording of physical processor cycles.</span>
+            <span class="ar">أصغر حبيبة مرئية في التمثيل بت واحد؛ وهذا وصف للعرض وليس نسبة دقة لنموذج ذكاء اصطناعي.</span>
+            <span class="en">The smallest visible representation grain is one bit; this describes the display and is not an AI-model accuracy score.</span>
           </figcaption>
         </figure>
         <p class="cipher-note">
-          <span class="ar cipher-runtime-wasm">إعادة عرض حتمية لنتائج عمليات بتّية تحسبها وحدة WebAssembly صغيرة مسبقًا على الأوكتتات المشتقة المنشورة؛ وليست تسجيلًا لدورات معالج مادي. المنهج والحدود في <a href="./annex-intelligence">الملحق التقني ↗</a>.</span>
-          <span class="en cipher-runtime-wasm">A deterministic replay of bit-operation results precomputed by a small WebAssembly module over the published derived octets; not a recording of physical processor cycles. Method and limits are in the <a href="./annex-intelligence">technical annex ↗</a>.</span>
-          <span class="ar cipher-runtime-fallback">تعذّر تشغيل وحدة WebAssembly في هذا العميل؛ لذلك يُعرض نمط مرجعي بالعمليات البتّية المحلية من دون إظهار دعوى الذاكرة الخاصة بـ<code>trace_void</code>. التفاصيل في <a href="./annex-intelligence">الملحق التقني ↗</a>.</span>
-          <span class="en cipher-runtime-fallback">WebAssembly is unavailable in this client, so a local bit-operation reference is shown without presenting the <code>trace_void</code> memory claim. Details are in the <a href="./annex-intelligence">technical annex ↗</a>.</span>
+          <a href="./annex-intelligence"><span class="ar">الملحق التقني ↗</span><span class="en">Technical annex ↗</span></a>
         </p>
       </div>    </section>
 
@@ -404,6 +439,7 @@
             <p><span class="ar">صحافة عربية يومية تجمع العرض الحديث، الإحالات إلى المصادر، وأرشيف الموقع ضمن حدود واضحة لحقوق المحتوى.</span><span class="en">Arabic daily news combining a modern reading surface, source citations and the site archive with explicit content-rights boundaries.</span></p>
             <div class="proof-links">
               <a class="text-link" href="https://newsboy.sbay.sa/" rel="noopener"><span class="ar">الموقع</span><span class="en">Site</span> ↗</a>
+              <a class="text-link" href="https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412" rel="noopener"><span class="ar">عدد LEAP5 الورقي</span><span class="en">LEAP5 print edition</span> ↗</a>
               <a class="text-link" href="https://newsboy.sbay.sa/#m-citations-section" rel="noopener"><span class="ar">الإحالات والمصادر</span><span class="en">Citations &amp; Sources</span> ↗</a>
               <a class="text-link" href="https://newsboy.sbay.sa/#m-archive-section" rel="noopener"><span class="ar">أرشيف الموقع</span><span class="en">Site Archive</span> ↗</a>
             </div>
@@ -418,6 +454,35 @@
             <a class="text-link" href="https://cp.sbay.sa/" rel="noopener">cp.sbay.sa ↗</a>
           </article>
         </div>
+        <article class="newsboy-paper-break" aria-labelledby="newsboy-leap5-heading">
+          <i class="newsboy-paper-fold" aria-hidden="true"></i>
+          <header class="newsboy-paper-mast">
+            <div class="newsboy-paper-edition">
+              <span><span class="ar">طبعة اليوم</span><span class="en">Today's edition</span></span>
+              <span><span class="ar">31 أغسطس 2026</span><span class="en">31 August 2026</span></span>
+              <span><span class="ar">توزيع رقمي</span><span class="en">Digital distribution</span></span>
+            </div>
+            <p class="newsboy-paper-name"><span class="ar">صَبِيّ الجرايد</span><span class="en">NEWSBOY</span></p>
+            <p><span class="ar">الصحيفة العربية اليومية · عدد تغطية LEAP وDeepFest 2026</span><span class="en">Arabic daily newspaper · LEAP and DeepFest 2026 coverage edition</span></p>
+          </header>
+          <div class="newsboy-paper-lead">
+            <div>
+              <p class="newsboy-paper-desk"><span class="ar">LEAP5 · التقنية الكبرى · التغطية المالية</span><span class="en">LEAP5 · Big Tech · Financial coverage</span></p>
+              <h3 id="newsboy-leap5-heading"><span class="ar">وزير الاتصالات يفتتح «ليب 26» ويعلن سلسلة من الصفقات التقنية في السعودية</span><span class="en">The communications minister opens LEAP 26 and announces a series of technology deals in Saudi Arabia</span></h3>
+              <p><span class="ar">تصفح العدد في قارئ NewsBoy الورقي الأصلي. المادة منسوبة داخل العدد إلى ناشرها، ويربط القارئ نصها المتاح بالمصدر الأصلي وحدود إعادة العرض.</span><span class="en">Browse the edition in NewsBoy's original paper reader. The item is attributed to its publisher and linked to its original source with explicit republication boundaries.</span></p>
+              <a class="newsboy-paper-action" href="https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412" rel="noopener">
+                <span class="ar">افتح عدد LEAP5 الورقي</span><span class="en">Open the LEAP5 paper edition</span> ↗
+              </a>
+            </div>
+            <a class="newsboy-paper-preview" href="https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412" rel="noopener" aria-label="Open the NewsBoy LEAP5 paper reader">
+              <img src="./assets/press/newsboy-leap5-paper.png" alt="The accessible NewsBoy LEAP5 paper reader positioned at the cited communications-minister article" width="1600" height="1000" loading="lazy">
+            </a>
+          </div>
+          <footer>
+            <span class="ar">قارئ HTML دلالي · قابل للطباعة · يدعم لوحة المفاتيح وتقليل الحركة</span>
+            <span class="en">Semantic HTML reader · printable · keyboard and reduced-motion friendly</span>
+          </footer>
+        </article>
         <div class="press-media-strip newsboy-media-strip">
           <button class="media-frame newsboy-long-shot" type="button" data-lightbox="./assets/press/newsboy-classic-editorial.png">
             <img src="./assets/press/newsboy-classic-editorial.png" alt="Full classic NewsBoy Arabic editorial page" width="2400" height="6744" loading="lazy">

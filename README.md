@@ -33,6 +33,13 @@ when available and Canvas2D otherwise: octet read, bit decode, bloom, quiet,
 then a live `trace_void` call. The processor-stage labels are explanatory, not
 a recording of physical CPU cycles. Release checks prove that this specific
 void function returns no value and leaves WebAssembly linear memory unchanged.
+The scene's “one bit” precision statement describes its smallest visible
+representation grain, not model accuracy. A deterministic five-second VP8
+replay uses the verified Canvas2D fallback to draw 25 explicitly addressed
+samples from the same scene model and hold them across 150 encoded frames;
+WebGPU remains the primary live renderer where available. A five-card board
+in the technical annex binds every human-readable phase to its implementing
+file, public call contract and recomputable compute amount.
 
 The KSAR stage presents one bounded proposition: watch the product, negotiate
 with the direct seller, and move toward an agreement in one live session. It
@@ -42,7 +49,10 @@ cross-device acceptance, sales or audience performance, raw IR broadcasting,
 or correction of the reported CPOLY freeze.
 
 NewsBoy is represented by its supplied classic editorial and modern culture
-edition captures. Its proof card links directly to the public citations and
+edition captures, plus the semantic LEAP5 paper reader already published at
+`newsboy.sbay.sa`. The pressroom uses a static front-page preview and native
+link to that reader rather than recreating it with a page-turning JavaScript
+library. Its proof card also links directly to the public citations and
 sources section and the public site archive.
 
 The pressroom also includes the public **ADG Arabic Adjudication Platform** as
@@ -85,6 +95,9 @@ pages only:
 ```powershell
 npm run capture
 npm run capture:adjudication
+npm run capture:newsboy-leap
+npm run capture:trace
+npm run trace:evidence
 npm run manifest
 ```
 

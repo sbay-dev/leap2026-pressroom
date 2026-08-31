@@ -1,0 +1,28 @@
+{
+  "schema": "sbay.leap2026.newsboy-paper.v1",
+  "sourceUrl": "https://newsboy.sbay.sa/coverage/leap-2026",
+  "targetUrl": "https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412",
+  "httpStatus": 200,
+  "screenshot": {
+    "path": "docs/assets/press/newsboy-leap5-paper.png",
+    "view": "target-article",
+    "bytes": 526392,
+    "sha256": "effd3269f640b3885763703b248712fe91b2fd660a4ce798f11ab65176052d2c",
+    "width": 1600,
+    "height": 1000
+  },
+  "accessibility": {
+    "semanticMainPaper": true,
+    "language": "ar",
+    "direction": "rtl",
+    "printable": true,
+    "reducedMotionRule": true,
+    "keyboardNavigation": "Native links and browser scrolling; no custom reader script."
+  },
+  "content": {
+    "pageTitle": "عدد تغطية ليب وديبفست 2026 — NewsBoy",
+    "articleCount": 12,
+    "targetFound": true,
+    "targetHeading": "وزير الاتصالات يفتتح «ليب 26» ويعلن سلسلة من الصفقات التقنية في السعودية"
+  }
+}

@@ -253,10 +253,33 @@ const newsBoy = pressKit.operatingProof.find(item => item.name === "NewsBoy");
 assert.ok(newsBoy);
 assert.equal(newsBoy.citationsUrl, "https://newsboy.sbay.sa/#m-citations-section");
 assert.equal(newsBoy.archiveUrl, "https://newsboy.sbay.sa/#m-archive-section");
+assert.equal(
+  newsBoy.leap5PaperUrl,
+  "https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412"
+);
 assert.deepEqual(newsBoy.featuredMedia, [
+  "assets/press/newsboy-leap5-paper.png",
   "assets/press/newsboy-cultural-edition.png",
   "assets/press/newsboy-classic-editorial.png"
 ]);
+const newsBoyLeap5Evidence = JSON.parse(await readFile(
+  path.join(root, "evidence", "newsboy-leap5-evidence.json"),
+  "utf8"
+));
+assert.equal(newsBoyLeap5Evidence.httpStatus, 200);
+assert.equal(newsBoyLeap5Evidence.content.targetFound, true);
+assert.equal(newsBoyLeap5Evidence.accessibility.semanticMainPaper, true);
+assert.equal(newsBoyLeap5Evidence.accessibility.printable, true);
+assert.equal(newsBoyLeap5Evidence.accessibility.reducedMotionRule, true);
+assert.equal(newsBoyLeap5Evidence.screenshot.view, "target-article");
+const newsBoyLeap5Image = await readFile(
+  path.join(root, newsBoyLeap5Evidence.screenshot.path)
+);
+assert.equal(newsBoyLeap5Image.length, newsBoyLeap5Evidence.screenshot.bytes);
+assert.equal(
+  createHash("sha256").update(newsBoyLeap5Image).digest("hex"),
+  newsBoyLeap5Evidence.screenshot.sha256
+);
 const ksar = pressKit.operatingProof.find(item => item.name === "Ksar");
 assert.ok(ksar);
 assert.equal(ksar.release, "2.1.0-leap2026");
@@ -361,13 +384,16 @@ for (const asset of [
   "newsboy-classic-hero.png",
   "newsboy-classic-full.png",
   "newsboy-classic-mobile.png",
+  "newsboy-leap5-paper.png",
   "ksar-market.png",
   "cp-dashboard.png",
   "taha-rasm-birmingham.png",
+  "octet-bloom-trace-v270-poster.png",
   "og-card.png"
 ]) {
   await stat(path.join(root, "docs", "assets", "press", asset));
 }
+await stat(path.join(root, "docs", "assets", "press", "octet-bloom-trace-v270.webm"));
 
 const cipher = await readFile(path.join(root, "docs", "adg-cipher.js"), "utf8");
 await stat(path.join(root, "docs", "annex.js"));
@@ -412,8 +438,33 @@ assert.match(index, /deterministic replay/u);
 assert.match(index, /ليست تسجيلًا لدورات معالج مادي/u);
 assert.match(index, /not a recording of physical processor cycles/u);
 assert.match(index, /Wasm memory unchanged · no return value/u);
-assert.match(index, /cipher-runtime-fallback/u);
-assert.match(index, /WebAssembly is unavailable in this client/u);
+assert.match(index, /id="cipher-transcript" class="cipher-transcript visually-hidden"/u);
+assert.match(index, /حبيبة التمثيل المرئية: بت واحد/u);
+assert.match(index, /Visible representation grain: one bit/u);
+assert.match(index, /وهذا وصف للعرض وليس نسبة دقة لنموذج ذكاء اصطناعي/u);
+assert.match(index, /تقرأ الدورة 23 أوكتتًا، وتفك 184 موضع بت، وتمثل 85 بتًا مضاءً في 335 بتلة/u);
+for (const phrase of [
+  "قراءة الأوكتتات",
+  "فكّ البتات",
+  "التفتّح",
+  "الهدوء",
+  "trace_void() → () · ΔMEM = 0"
+]) {
+  assert.ok(index.includes(phrase), `missing scene phrase: ${phrase}`);
+}
+assert.match(
+  index,
+  /<p class="cipher-note">\s*<a href="\.\/annex-intelligence"><span class="ar">الملحق التقني ↗<\/span><span class="en">Technical annex ↗<\/span><\/a>\s*<\/p>/u,
+  "only the technical-annex link may remain visibly below the hero trace"
+);
+assert.match(index, /class="newsboy-paper-break"/u);
+assert.match(index, /عدد LEAP5 الورقي/u);
+assert.match(index, /newsboy-leap5-paper\.png/u);
+assert.match(
+  index,
+  /https:\/\/newsboy\.sbay\.sa\/coverage\/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412/u
+);
+assert.doesNotMatch(index, /octet-bloom-trace-v270\.webm/u);
 
 // The hero names the route; all interpretation and limitations stay here.
 for (const label of ["IF", "ID", "EX", "MEM", "WB", "void"]) {
@@ -433,6 +484,12 @@ assert.match(annex, /void<\/code> لا يعني عمومًا/u);
 assert.match(annex, /does not generally mean that a function cannot write memory/u);
 assert.match(annex, /https:\/\/sbay-dev\.github\.io\/sarmadAi\//u);
 assert.doesNotMatch(annex, /نقلٌ أمين|faithful port/iu);
+assert.match(annex, /id="trace-board-heading"/u);
+assert.match(annex, /class="trace-kanban"/u);
+assert.match(annex, /octet-bloom-trace-v270\.webm/u);
+assert.match(annex, /<video controls muted playsinline preload="none"/u);
+assert.match(annex, /trace-evidence\.json/u);
+assert.match(annex, /ليست نسبة دقة لنموذج ذكاء اصطناعي/u);
 // Content Security Policy allows no inline script: the annex must load a module file.
 assert.equal(/<script(?![^>]*\ssrc=)/u.test(annex), false, "no inline script in the annex");
 assert.match(annex, /<script type="module" src="\.\/annex\.js">/u);
@@ -459,6 +516,9 @@ assert.match(cipher, /voidMemoryWrites/u);
 assert.match(cipher, /stageForPhase/u);
 assert.match(cipher, /traceMode: "precomputed-replay"/u);
 assert.match(cipher, /stageRoot\.dataset\.analyzer = analyzer\.kind/u);
+assert.match(cipher, /analyserCalls/u);
+assert.match(cipher, /verticesPerFrame/u);
+assert.match(cipher, /instanceBufferBytes/u);
 assert.doesNotMatch(cipher, /faithful port/iu);
 assert.match(wasmSource, /fn flag_bit/u);
 assert.match(wasmSource, /fn flag_popcount/u);
@@ -471,6 +531,72 @@ for (const [pattern, label] of [
   [/routingThreshold|expertWeight|availabilityMask/iu, "protected routing internals"]
 ]) {
   assert.equal(pattern.test(annex), false, `${label} in docs/annex-intelligence.html`);
+}
+
+const traceEvidence = JSON.parse(await readFile(
+  path.join(root, "docs", "trace-evidence.json"),
+  "utf8"
+));
+const packageMetadata = JSON.parse(await readFile(
+  path.join(root, "package.json"),
+  "utf8"
+));
+assert.equal(traceEvidence.schema, "sbay.leap2026.octet-bloom-trace.v1");
+assert.equal(traceEvidence.release, packageMetadata.version);
+assert.equal(traceEvidence.interpretation.visibleGrain, "one bit");
+assert.equal(traceEvidence.interpretation.aiAccuracyMetricClaimed, false);
+assert.equal(traceEvidence.interpretation.nativeAssemblyTraceClaimed, false);
+assert.equal(traceEvidence.compute.analyzerCallsPerMount, 207);
+assert.equal(traceEvidence.compute.sceneInstances, 753);
+assert.equal(traceEvidence.compute.drawCallsPerFrame, 1);
+assert.equal(traceEvidence.compute.verticesPerFrame, 4518);
+assert.equal(traceEvidence.compute.instanceBufferBytes, 48192);
+assert.equal(traceEvidence.video.durationSeconds, 5);
+assert.equal(traceEvidence.video.codec, "VP8");
+assert.equal(traceEvidence.video.frames, 150);
+assert.equal(traceEvidence.video.framesPerSecond, 30);
+assert.equal(traceEvidence.video.phaseSamples, 25);
+assert.equal(traceEvidence.video.repeatsPerSample, 6);
+assert.equal(traceEvidence.video.capture.sceneRenderer, "Canvas2D verified fallback");
+assert.equal(traceEvidence.video.capture.livePrimaryRenderer, "WebGPU where available");
+assert.equal(traceEvidence.video.capture.screenRecordingUsed, false);
+for (const media of [traceEvidence.video, traceEvidence.video.poster]) {
+  const bytes = await readFile(path.join(root, media.path));
+  assert.equal(bytes.length, media.bytes);
+  assert.equal(
+    createHash("sha256").update(bytes).digest("hex"),
+    media.sha256
+  );
+}
+assert.deepEqual(
+  traceEvidence.sourceFiles.map(file => file.path).sort(),
+  [
+    "docs/adg-cipher.js",
+    "docs/annex-intelligence.html",
+    "docs/evidence-match.wasm",
+    "docs/index.html",
+    "docs/styles.css",
+    "scripts/build-trace-evidence.mjs",
+    "scripts/capture-trace-video.mjs",
+    "scripts/check-cipher.mjs",
+    "scripts/verify-wasm.mjs",
+    "wasm/evidence_match.rs"
+  ].sort()
+);
+for (const source of traceEvidence.sourceFiles) {
+  const sourceBytes = await readFile(path.join(root, source.path));
+  const bytes = path.extname(source.path).toLowerCase() === ".wasm"
+    ? sourceBytes
+    : Buffer.from(
+        sourceBytes.toString("utf8").replace(/\r\n?/gu, "\n"),
+        "utf8"
+      );
+  assert.equal(bytes.length, source.bytes);
+  assert.equal(
+    createHash("sha256").update(bytes).digest("hex"),
+    source.sha256,
+    `stale trace evidence for ${source.path}`
+  );
 }
 
 console.log(JSON.stringify({

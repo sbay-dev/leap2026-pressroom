@@ -13,7 +13,7 @@ const ignoredFiles = new Set([
   "evidence/release-manifest.json",
   "docs/release.json"
 ]);
-const binaryExtensions = new Set([".png", ".wasm"]);
+const binaryExtensions = new Set([".png", ".wasm", ".webm"]);
 
 async function collect(directory, prefix = "") {
   const files = [];

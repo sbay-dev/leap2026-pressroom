@@ -183,8 +183,20 @@
       </ul>
       <figure class="cipher-stage annex-stage">
         <div class="cipher-frame">
-          <canvas id="annex-cipher" width="960" height="420" role="img" data-loop-seconds="5"
+          <canvas id="annex-cipher" width="960" height="420" role="img" data-loop-seconds="5" aria-describedby="annex-cipher-transcript"
             aria-label="The same five second visual trace as on the main page. Runtime verification details are provided after the visual module loads."></canvas>
+          <div class="cipher-precision" aria-hidden="true">
+            <span class="ar">حبيبة التمثيل المرئية: بت واحد</span>
+            <span class="en">Visible representation grain: one bit</span>
+            <code>DETERMINISTIC</code>
+          </div>
+          <div class="cipher-state-deck" aria-hidden="true">
+            <div data-cipher-state="fetch"><b><span class="ar">قراءة الأوكتتات</span><span class="en">Read octets</span></b><code>23 OCTETS · RASM[0…22]</code></div>
+            <div data-cipher-state="decode"><b><span class="ar">فكّ البتات</span><span class="en">Decode bits</span></b><code>184 CALLS · flag_bit</code></div>
+            <div data-cipher-state="execute"><b><span class="ar">التفتّح</span><span class="en">Bloom</span></b><code>85 BLOOMS · 335 PETALS</code></div>
+            <div data-cipher-state="quiet"><b><span class="ar">الهدوء</span><span class="en">Quiet</span></b><code>TRANSIENT ENERGY → 0</code></div>
+            <div data-cipher-state="void"><b><code>void</code></b><code>trace_void() → () · ΔMEM = 0</code></div>
+          </div>
           <div class="cipher-lane" aria-hidden="true">
             <span data-cipher-step="fetch">IF</span>
             <span data-cipher-step="decode">ID</span>
@@ -198,7 +210,7 @@
             <span class="en">Wasm memory unchanged · no return value</span>
           </p>
         </div>
-        <figcaption class="visual-caption">
+        <figcaption id="annex-cipher-transcript" class="visual-caption">
           <span class="ar">قراءة حتمية، فكّ بتات، تفتّح، هدوء، ثم استدعاء <code>trace_void</code></span>
           <span class="en">Deterministic read, bit decode, bloom, quiet, then a <code>trace_void</code> call</span>
         </figcaption>
@@ -219,9 +231,95 @@
       </div>
     </section>
 
+    <section class="section-shell" aria-labelledby="trace-board-heading">
+      <div class="section-heading wide-heading">
+        <p class="section-kicker">06 / TRACE BOARD</p>
+        <h2 id="trace-board-heading">
+          <span class="ar">كل عبارة مرتبطة بدليلها</span>
+          <span class="en">Every phrase is bound to its evidence</span>
+        </h2>
+        <p class="ar">المقصود بالدقة الذرية هنا هو أن أصغر حبيبة مرئية هي <b>بت واحد</b>؛ وليست نسبة دقة لنموذج ذكاء اصطناعي. تسجل اللوحة ما يراه الإنسان، والملف الذي ينفذه، وعقد الاستدعاء العام، ومقدار الحوسبة القابل لإعادة الحساب.</p>
+        <p class="en">Atomic precision here means that the smallest visible grain is <b>one bit</b>; it is not an AI-model accuracy score. The board records what a person sees, the implementing file, the public call contract and the recomputable compute amount.</p>
+      </div>
+
+      <figure class="trace-video-card">
+        <p id="trace-video-summary" class="visually-hidden">
+          <span class="ar">قراءة 23 أوكتتًا، ثم فك 184 موضع بت، ثم تفتّح 85 بتًا مضاءً في 335 بتلة، ثم وصول العناصر العابرة إلى الصفر، ثم استدعاء trace_void بلا قيمة عائدة وبلا تغير في ذاكرة WebAssembly.</span>
+          <span class="en">Read 23 octets, decode 184 bit positions, bloom 85 set bits as 335 petals, settle transient elements to zero, then call trace_void with no return value and no WebAssembly memory change.</span>
+        </p>
+        <video controls muted playsinline preload="none" poster="./assets/press/octet-bloom-trace-v270-poster.png"
+          aria-describedby="trace-video-caption trace-video-summary">
+          <source src="./assets/press/octet-bloom-trace-v270.webm" type="video/webm">
+          <a href="./assets/press/octet-bloom-trace-v270.webm"><span class="ar">نزّل فيديو التتبّع</span><span class="en">Download the trace video</span></a>
+        </video>
+        <figcaption id="trace-video-caption">
+          <span class="ar">فيديو صامت مدته خمس ثوانٍ و150 إطارًا مشفرًا بمعدل 30 إطارًا في الثانية. تُرسم 25 عينة طور حقيقية بمصيّر Canvas2D الاحتياطي الموثق من نموذج المشهد نفسه، وتُكرر كل عينة ستة إطارات؛ بينما يبقى WebGPU المصيّر الحي الأساسي حيث يتوفر.</span>
+          <span class="en">A silent five-second video with 150 encoded frames at 30 frames per second. Twenty-five true phase samples are drawn by the verified Canvas2D fallback from the same scene model and held for six frames each; WebGPU remains the primary live renderer where available.</span>
+        </figcaption>
+      </figure>
+
+      <div class="trace-kanban" role="list" aria-label="Octet bloom trace evidence board">
+        <article role="listitem">
+          <p class="trace-status">01 · SOURCE LOCKED</p>
+          <h3><span class="ar">قراءة الأوكتتات</span><span class="en">Read octets</span></h3>
+          <p><span class="ar">تدخل 23 قيمة مشتقة منشورة كما هي، من دون إعادة تفسير.</span><span class="en">Twenty-three published derived values enter unchanged.</span></p>
+          <dl>
+            <dt><span class="ar">الملف</span><span class="en">File</span></dt><dd><a href="https://github.com/sbay-dev/leap2026-pressroom/blob/main/docs/adg-cipher.js" rel="noopener"><code>docs/adg-cipher.js</code></a></dd>
+            <dt><span class="ar">العقد</span><span class="en">Contract</span></dt><dd><code>RASM[index] → i32</code></dd>
+            <dt><span class="ar">الحوسبة</span><span class="en">Compute</span></dt><dd><code>23 octets</code></dd>
+          </dl>
+        </article>
+        <article role="listitem">
+          <p class="trace-status">02 · ANALYSER VERIFIED</p>
+          <h3><span class="ar">فكّ البتات</span><span class="en">Decode bits</span></h3>
+          <p><span class="ar">يُفحص كل أوكتت في مواضعه الثمانية؛ الناتج صفر أو واحد.</span><span class="en">Every octet is tested at its eight positions; the result is zero or one.</span></p>
+          <dl>
+            <dt><span class="ar">الملف</span><span class="en">File</span></dt><dd><a href="https://github.com/sbay-dev/leap2026-pressroom/blob/main/wasm/evidence_match.rs" rel="noopener"><code>wasm/evidence_match.rs</code></a></dd>
+            <dt><span class="ar">عقد المكدس العام</span><span class="en">Public stack contract</span></dt><dd><code>flag_bit(i32,i32) → i32</code></dd>
+            <dt><span class="ar">الحوسبة</span><span class="en">Compute</span></dt><dd><code>184 calls</code></dd>
+          </dl>
+        </article>
+        <article role="listitem">
+          <p class="trace-status">03 · RENDER LIVE</p>
+          <h3><span class="ar">التفتّح</span><span class="en">Bloom</span></h3>
+          <p><span class="ar">البت المضاء وحده يزهر؛ وعدد البتلات يساوي عدد البتات المضاءة في أوكتته.</span><span class="en">Only a set bit blooms; its petals equal the set-bit count of its octet.</span></p>
+          <dl>
+            <dt><span class="ar">الملفات</span><span class="en">Files</span></dt><dd><a href="https://github.com/sbay-dev/leap2026-pressroom/blob/main/docs/adg-cipher.js" rel="noopener"><code>docs/adg-cipher.js · WGSL</code></a> · <a href="https://github.com/sbay-dev/leap2026-pressroom/blob/main/wasm/evidence_match.rs" rel="noopener"><code>wasm/evidence_match.rs</code></a></dd>
+            <dt><span class="ar">العقد</span><span class="en">Contract</span></dt><dd><code>flag_popcount(i32) → i32</code></dd>
+            <dt><span class="ar">الحوسبة</span><span class="en">Compute</span></dt><dd><code>85 blooms · 335 petals</code></dd>
+          </dl>
+        </article>
+        <article role="listitem">
+          <p class="trace-status">04 · TRANSIENT CLEAR</p>
+          <h3><span class="ar">الهدوء</span><span class="en">Quiet</span></h3>
+          <p><span class="ar">تصل طاقة العناصر العابرة إلى الصفر وتبقى شبكة الدليل.</span><span class="en">Transient energy reaches zero while the evidence lattice remains.</span></p>
+          <dl>
+            <dt><span class="ar">الملف</span><span class="en">File</span></dt><dd><a href="https://github.com/sbay-dev/leap2026-pressroom/blob/main/docs/adg-cipher.js" rel="noopener"><code>docs/adg-cipher.js</code></a></dd>
+            <dt><span class="ar">العقد</span><span class="en">Contract</span></dt><dd><code>phase envelope → 0</code></dd>
+            <dt><span class="ar">الحوسبة</span><span class="en">Compute</span></dt><dd><code>1 draw · 4,518 vertices/frame</code></dd>
+          </dl>
+        </article>
+        <article role="listitem">
+          <p class="trace-status">05 · VOID VERIFIED</p>
+          <h3><code>void</code></h3>
+          <p><span class="ar">الدالة المحددة لا تعيد قيمة، والذاكرة الخطية لا تتغير في اختبار ما قبل الاستدعاء وما بعده.</span><span class="en">This specific function returns no value, and linear memory is unchanged in the before-and-after test.</span></p>
+          <dl>
+            <dt><span class="ar">الملفات</span><span class="en">Files</span></dt><dd><a href="https://github.com/sbay-dev/leap2026-pressroom/blob/main/wasm/evidence_match.rs" rel="noopener"><code>wasm/evidence_match.rs</code></a> · <a href="https://github.com/sbay-dev/leap2026-pressroom/blob/main/scripts/verify-wasm.mjs" rel="noopener"><code>scripts/verify-wasm.mjs</code></a></dd>
+            <dt><span class="ar">عقد المكدس العام</span><span class="en">Public stack contract</span></dt><dd><code>trace_void() → ()</code></dd>
+            <dt><span class="ar">الحوسبة</span><span class="en">Compute</span></dt><dd><code>Δ memory = 0 · return = none</code></dd>
+          </dl>
+        </article>
+      </div>
+      <p class="annex-note trace-evidence-link">
+        <a href="./trace-evidence.json"><span class="ar">سجل التتبّع والحوسبة بصيغة JSON</span><span class="en">Trace and compute record as JSON</span> ↗</a>
+        <span class="ar">عقود الاستدعاء أعلاه ليست سجلًا لمكدس معالج مادي.</span>
+        <span class="en">The call contracts above are not a captured physical-processor stack.</span>
+      </p>
+    </section>
+
     <section class="section-shell" aria-labelledby="boundary-heading">
       <div class="section-heading wide-heading">
-        <p class="section-kicker">06 / BOUNDARY</p>
+        <p class="section-kicker">07 / BOUNDARY</p>
         <h2 id="boundary-heading">
           <span class="ar">حدّ الإفصاح</span>
           <span class="en">Disclosure boundary</span>
