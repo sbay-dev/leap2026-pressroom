@@ -1,0 +1,70 @@
+{
+  "schema": "sbay.adjudication.public-positioning-snapshot.v1",
+  "auditId": "SBAY-LEAP-DEEPFEST-20260831T043818Z",
+  "capturedAtUtc": "2026-08-31T04:38:18.532Z",
+  "publicPage": {
+    "url": "https://adg.sbay.sa/",
+    "httpStatus": 200,
+    "title": "منصّة تحكيم اللغة العربية | ADG",
+    "responseBytes": 55573,
+    "responseSha256": "d52069ce7636359078cef72e091fa833b68e430c39bd6e9df1fc5842936742ed",
+    "note": "The live response hash is a timestamped observation and may change with public edge output."
+  },
+  "source": {
+    "repository": "sbay-dev/ADG-Lang",
+    "visibility": "public",
+    "release": "15.3.6",
+    "commit": "7ce615a2012f791cd51125e2366419ba45677e7d",
+    "landingPageGitBlob": "c952be6b5409049eb081b7646dc35cda0359b80f",
+    "landingPageBytes": 53608,
+    "landingPageSha256": "38e8d17e346b70cbd7992388fc85ec69b9e5bcaaac2df054e887053fb1bf1dab",
+    "releaseManifest": "tools/msa-adjudication-workbench/release/portal-15.3.6.json",
+    "codeQlRun": "https://github.com/sbay-dev/ADG-Lang/actions/runs/33293672494"
+  },
+  "pressImage": {
+    "path": "docs/assets/press/adg-adjudication-platform.png",
+    "sha256": "d7c94087e368e1e7a35029ef09004997bc0b774a7b0b2960da3ea14329062c62",
+    "captureMode": "fresh unauthenticated browser context",
+    "containsIdentityOrDraftData": false
+  },
+  "publishedPilotFacts": {
+    "readySamples": 2,
+    "arabicSentences": 16,
+    "linguisticUnits": 112,
+    "estimatedMinutes": "15-25",
+    "finalParserReadinessJudgment": false
+  },
+  "publicProtocol": {
+    "arabicFirst": true,
+    "requiresGitHubJsonOrCommandLineKnowledge": false,
+    "independentBlindAnnotation": true,
+    "parserPredictionsHiddenUntilIndependentReview": true,
+    "thirdAdjudicatorForDisagreements": true,
+    "conciseLinguisticRationaleRequired": true,
+    "reviewerIdentityPublishedWithGitHubEvidence": false
+  },
+  "observedOperationalBoundary": {
+    "configStatus": 200,
+    "submissionEnabled": true,
+    "accountEnabled": true,
+    "emailVerificationEnabled": true,
+    "anonymousAccountStatus": 401,
+    "anonymousTasksStatus": 401,
+    "humanLoginOrEmailDeliveryCompletionClaimed": false
+  },
+  "claimBoundary": {
+    "researchAdjudicationUseCase": true,
+    "finalArabicCorrectionService": false,
+    "finalParserReadinessClaim": false,
+    "privateInfrastructurePublished": false,
+    "participantIdentityPublished": false
+  },
+  "universityMediaChannel": {
+    "institution": "Princess Nourah bint Abdulrahman University",
+    "status": "Media brief prepared for submission to the university media center",
+    "issuedByUniversity": false,
+    "approvedByUniversity": false,
+    "sponsoredByUniversity": false,
+    "partnershipClaim": false
+  }
+}

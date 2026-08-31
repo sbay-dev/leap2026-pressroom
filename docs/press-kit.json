@@ -1,6 +1,6 @@
 {
   "schema": "sbay.press-kit.v2",
-  "auditId": "SBAY-LEAP-DEEPFEST-20260831T020340Z",
+  "auditId": "SBAY-LEAP-DEEPFEST-20260831T043818Z",
   "title": "منصة تموين sbay — Intelligent Procurement & Supply Infrastructure",
   "publisher": "منصة تموين sbay",
   "tradeName": {
@@ -62,9 +62,42 @@
       "url": "https://cp.sbay.sa/"
     }
   ],
+  "adjudication": {
+    "nameAr": "منصّة تحكيم اللغة العربية",
+    "nameEn": "ADG Arabic Adjudication Platform",
+    "url": "https://adg.sbay.sa/",
+    "repository": "https://github.com/sbay-dev/ADG-Lang/tree/main/tools/msa-adjudication-workbench",
+    "status": "Live research adjudication platform; not a final correction service or final parser-readiness judgment.",
+    "publicRelease": "15.3.6",
+    "sourceCommit": "7ce615a2012f791cd51125e2366419ba45677e7d",
+    "publicPilot": {
+      "readySamples": 2,
+      "arabicSentences": 16,
+      "linguisticUnits": 112,
+      "estimatedMinutes": "15-25"
+    },
+    "protocol": [
+      "Independent blind annotation",
+      "Parser predictions hidden until independent review is complete",
+      "Third adjudicator resolves disagreements with a concise linguistic rationale",
+      "Reviewer identity separated from public linguistic evidence"
+    ],
+    "mediaCenter": {
+      "institution": "Princess Nourah bint Abdulrahman University",
+      "status": "Brief prepared for submission to the university media center",
+      "issuedByUniversity": false,
+      "approvedByUniversity": false,
+      "sponsoredByUniversity": false,
+      "universityPartnershipClaim": false
+    }
+  },
   "claims": {
     "generalMtebSuperiority": false,
     "officialEventPartnership": false,
+    "officialUniversityPartnership": false,
+    "universityEndorsement": false,
+    "finalArabicCorrectionService": false,
+    "humanLoginCompletionClaimed": false,
     "guaranteedCostSaving": false,
     "guaranteedDemandForecast": false,
     "allModulesGenerallyAvailable": false,
@@ -72,6 +105,7 @@
     "containsPrivatePatentEnablement": false
   },
   "media": [
+    "assets/press/adg-adjudication-platform.png",
     "assets/press/newsboy-classic-hero.png",
     "assets/press/newsboy-classic-full.png",
     "assets/press/newsboy-classic-mobile.png",

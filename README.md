@@ -24,6 +24,18 @@ The primary positioning is an enterprise AI procurement and supply platform.
 Ksar, NewsBoy, CP, Sarmad, CNS and QdrantServer appear only as bounded operating
 or technical evidence.
 
+The pressroom also includes the public **ADG Arabic Adjudication Platform** as
+a separate institutional research announcement. Its two-sample public pilot
+uses blind independent annotation, a third adjudicator for disagreements and
+an explicit identity/evidence separation boundary. It is not presented as a
+final Arabic correction service or final parser-readiness judgment.
+
+A bilingual media brief is prepared in `PNU-MEDIA-CENTER-BRIEF.md` for
+submission to Princess Nourah bint Abdulrahman University’s media center. The
+brief expressly denies university issuance, approval, sponsorship,
+endorsement or partnership unless the center publishes an official
+announcement.
+
 Public figures (`25+`, `500+`, `99.9%`, `24/7`) are tied to a captured
 `sbay.sa` source. Procurement modules are presented as enterprise platform
 scope, and detailed availability is confirmed through the live demo and
@@ -44,6 +56,7 @@ pages only:
 
 ```powershell
 npm run capture
+npm run capture:adjudication
 npm run manifest
 ```
 

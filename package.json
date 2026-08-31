@@ -1,11 +1,12 @@
 {
   "name": "sbay-leap2026-pressroom",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node scripts/check-public-boundary.mjs && node scripts/verify-wasm.mjs && node --check docs/app.js && node --check scripts/capture-media.mjs && node --check scripts/build-release-manifest.mjs && node --check scripts/verify-live.mjs",
+    "check": "node scripts/check-public-boundary.mjs && node scripts/verify-wasm.mjs && node --check docs/app.js && node --check scripts/capture-media.mjs && node --check scripts/capture-adjudication.mjs && node --check scripts/build-release-manifest.mjs && node --check scripts/verify-live.mjs",
     "capture": "node scripts/capture-media.mjs",
+    "capture:adjudication": "node scripts/capture-adjudication.mjs",
     "capture:og": "node scripts/capture-media.mjs --og-only",
     "manifest": "node scripts/build-release-manifest.mjs",
     "verify:live": "node scripts/verify-live.mjs"

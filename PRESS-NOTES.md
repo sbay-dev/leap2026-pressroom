@@ -30,6 +30,21 @@ Published for event week: 31 August–3 September 2026, Riyadh.
 هذه مشاركة مستقلة وليست إعلانًا عن رعاية أو شراكة رسمية مع LEAP أو DeepFest
 أو الجهات المنظمة.
 
+### منصّة تحكيم اللغة العربية
+
+تتضمن غرفة الصحافة كذلك إعلانًا مستقلاً عن **منصّة تحكيم اللغة العربية
+ADG**: بيئة عربية لمعلمي اللغة وخبرائها تسجل الحكم النحوي والإعرابي بصورة
+مستقلة قبل كشف مخرجات المحلل. تعرض التجربة العامة عينتين، و16 جملة، و112
+وحدة لغوية، مع مدة أولية تقديرية تبلغ 15–25 دقيقة.
+
+يعتمد المسار على تحكيم مُعمّى للدورين A وB، ثم محكّم ثالث لمواضع الخلاف مع
+مبرر لغوي موجز. وتُفصل هوية المشارك عن الأدلة اللغوية العامة. المنصّة تجربة
+بحثية حية وليست خدمة تصحيح نهائية أو حكمًا نهائيًا على جاهزية المحلل.
+
+أُعد موجز منفصل للتقديم إلى مركز إعلام جامعة الأميرة نورة بنت عبدالرحمن.
+هذا يحدد قناة التقديم المقصودة فقط، ولا يعني أن المادة صادرة عن الجامعة أو
+معتمدة أو مدعومة أو بالشراكة معها ما لم ينشر المركز إعلانًا رسميًا.
+
 ## English
 
 **SBAY Tamween** presents its vision for intelligent procurement and supply
@@ -61,6 +76,27 @@ release.
 This is independent participation, not a statement of official sponsorship or
 partnership with LEAP, DeepFest or their organizers.
 
+### ADG Arabic Adjudication Platform
+
+The pressroom also carries a separate announcement for the **ADG Arabic
+Adjudication Platform**: an Arabic-first environment in which teachers and
+language experts record independent grammatical and iʿrab judgments before
+parser output is revealed. The public pilot contains two ready samples, 16
+Arabic sentences and 112 linguistic units, with an estimated initial
+completion time of 15–25 minutes.
+
+The protocol uses blind A/B annotation and a third adjudicator for
+disagreements, supported by a concise linguistic rationale. Reviewer identity
+is separated from public linguistic evidence. This is a live research
+adjudication use case, not a final correction service or a final
+parser-readiness judgment.
+
+A separate brief is prepared for submission to Princess Nourah bint
+Abdulrahman University’s media center. This identifies the intended submission
+channel only and does not imply university issuance, approval, sponsorship,
+endorsement or partnership unless the center publishes an official
+announcement.
+
 ## Verified links
 
 - منصة تموين sbay: `https://sbay.sa/`
@@ -69,5 +105,7 @@ partnership with LEAP, DeepFest or their organizers.
 - Ksar: `https://ksar.store/`
 - CP: `https://cp.sbay.sa/`
 - Sarmad public evidence: `https://sbay-dev.github.io/sarmadAi/`
+- منصّة تحكيم اللغة العربية: `https://adg.sbay.sa/`
+- University media-center submission brief: `PNU-MEDIA-CENTER-BRIEF.md`
 - LEAP official information: `https://onegiantleap.com/about-us/key-information`
 - DeepFest official site: `https://deepfest.com/`

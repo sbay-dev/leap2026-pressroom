@@ -1,11 +1,11 @@
 {
   "schema": "sbay.leap2026.public-release.v1",
-  "auditId": "SBAY-LEAP-DEEPFEST-20260831T020340Z",
-  "capturedAtUtc": "2026-08-31T02:03:40Z",
-  "releaseId": "leap2026-pressroom-2.0.0",
+  "auditId": "SBAY-LEAP-DEEPFEST-20260831T043818Z",
+  "capturedAtUtc": "2026-08-31T04:38:18.532Z",
+  "releaseId": "leap2026-pressroom-2.1.0",
   "classification": "public-non-enabling-press-material",
-  "fileCount": 45,
-  "releaseRoot": "b40750ac533676f0268acfb5e64984776c3ce30f526d58ea45875e771f63398f",
+  "fileCount": 49,
+  "releaseRoot": "1f51bb5b13562db2427a01fcb0f835cb380db41872608bcead02a22418969f60",
   "files": [
     {
       "path": ".gitattributes",
@@ -58,6 +58,11 @@
       "sha256": "e68160b9705c1d84a0406436b64d2ac0552080c2d31a82d0ec8d37da936d0a27"
     },
     {
+      "path": "docs/assets/press/adg-adjudication-platform.png",
+      "bytes": 307657,
+      "sha256": "d7c94087e368e1e7a35029ef09004997bc0b774a7b0b2960da3ea14329062c62"
+    },
+    {
       "path": "docs/assets/press/cp-dashboard.png",
       "bytes": 1854912,
       "sha256": "771a927391e581f7bbe70ecfe436f50f074fdd149c511107c71eda8423e8fb54"
@@ -99,8 +104,8 @@
     },
     {
       "path": "docs/index.html",
-      "bytes": 40300,
-      "sha256": "bafb3905d91861e7a07466808877278f189e192d4395d80aebd438e00758621a"
+      "bytes": 47111,
+      "sha256": "3ebffa89dc0222cf76df15ebe66cc907efe0cb1e2cc8e6a9ccb5427b11aae9a8"
     },
     {
       "path": "docs/manifest.webmanifest",
@@ -109,8 +114,8 @@
     },
     {
       "path": "docs/press-kit.json",
-      "bytes": 2490,
-      "sha256": "12d23b1a72b51b2483d3eeddb39cb7514acddc9d1615152e5a6d5e39b5180eaa"
+      "bytes": 3959,
+      "sha256": "4b25a31d65b636ea626802fc72ef176b8fb49a2e1d12207800c63430819b753b"
     },
     {
       "path": "docs/robots.txt",
@@ -124,13 +129,18 @@
     },
     {
       "path": "docs/styles.css",
-      "bytes": 22769,
-      "sha256": "072d041c8d2b179ee9ee191bfd9c0fea7a6d434f7cf593286fb7661e70d373ec"
+      "bytes": 25862,
+      "sha256": "4409d7803f53ac026617b1e20caabc175470088b9ec9589b9a7f3e776eff2d75"
     },
     {
       "path": "ESPRESSO-OUTREACH.md",
-      "bytes": 2742,
-      "sha256": "7550f8ab29dbc646b73350cdfb11faa4f8eb1058b83f5289bc937c4cbc6183e9"
+      "bytes": 5268,
+      "sha256": "78dd4e86a8450515dafe81e60c125defe29c9a01a2fa0d325a9315659de4d7b9"
+    },
+    {
+      "path": "evidence/adjudication-positioning-snapshot-20260831T043818Z.json",
+      "bytes": 2724,
+      "sha256": "f18bd64ea659b3e5eea9447b903f0127b2e76a8d9754aa4b3ed14308e3554bc1"
     },
     {
       "path": "evidence/archive/ESPRESSO-OUTREACH-KSAR-20260831.md",
@@ -149,8 +159,8 @@
     },
     {
       "path": "evidence/source-snapshot.json",
-      "bytes": 3307,
-      "sha256": "032a6cd16ab047842d95f9cdf591b78763fccd73acfac628914c13be707dfff4"
+      "bytes": 3949,
+      "sha256": "dda0f01fc668dde120e72259c150178167f3ed3e7a67bb6e47f13eb828993820"
     },
     {
       "path": "evidence/tamween-positioning-snapshot-20260831T040937Z.json",
@@ -159,38 +169,48 @@
     },
     {
       "path": "MEDIA-LICENSE.md",
-      "bytes": 939,
-      "sha256": "409401987be46c3f31a772911a025382a595fb9c4b40994bcbd2010a1e2c6c99"
+      "bytes": 1051,
+      "sha256": "ae47d50d401f5d56b1a2c83375329d6f4d857e109e9fc98dd6d64cfddd468d49"
     },
     {
       "path": "package-lock.json",
       "bytes": 49900,
-      "sha256": "ef38c13cae697f672e837d7922d8837b0bd60d699e890efdefb129e13ac17c66"
+      "sha256": "e903f10b4ed7b0eff410a7039e9e8fab54f626f20271bf5cb2aa5f6842c17bf3"
     },
     {
       "path": "package.json",
-      "bytes": 715,
-      "sha256": "a88eba3e00d01121f65cb5f1468dbda00de7af32855c463ae1ff6f447c24b3cf"
+      "bytes": 833,
+      "sha256": "bdfc6919213aa7f717cfd57960b5edaff59e84f2078ff9c67c48a6083062aa68"
+    },
+    {
+      "path": "PNU-MEDIA-CENTER-BRIEF.md",
+      "bytes": 7773,
+      "sha256": "bc27e8b8b1d7abd284e0e08545c9da957968073046b6c2c153d74331e3bf5a9b"
     },
     {
       "path": "PRESS-NOTES.md",
-      "bytes": 4075,
-      "sha256": "bb878bd7b1880d10d297873fef17a8cbba6c42b245fdede396dff0af4eb2bc4d"
+      "bytes": 6602,
+      "sha256": "61b51c87418821fbbd88a7782897eb14d2c222e427ceb82220b53a1ef46ff524"
     },
     {
       "path": "PUBLIC-DISCLOSURE-BOUNDARY.md",
-      "bytes": 3327,
-      "sha256": "beaad9a24f1d09bd9cf60c47866577d0c23deeef9437cdd87e4ceb589e7ae3c5"
+      "bytes": 5398,
+      "sha256": "1b6791e342690bb9c3710733ad7cd6ea9ff543e836de83a55f97bf711cf4b465"
     },
     {
       "path": "README.md",
-      "bytes": 1976,
-      "sha256": "9f2d6270530bea69ebb62e460905c46b49053c82b8972cadea334619ad2d5a61"
+      "bytes": 2682,
+      "sha256": "c67f7a0b5f374a61721c7069c7b0e750826b2461d144ea90779de12a3e13d8cd"
     },
     {
       "path": "scripts/build-release-manifest.mjs",
       "bytes": 2843,
       "sha256": "686f28bc223da02c6755ca5b2a33cef1ae132b1e5e308ae28284424ac6a50917"
+    },
+    {
+      "path": "scripts/capture-adjudication.mjs",
+      "bytes": 2084,
+      "sha256": "31119c549ecfcb1181d35e714b0926905cb84afe182bc49cf8e21c92356c7a3c"
     },
     {
       "path": "scripts/capture-media.mjs",
@@ -199,8 +219,8 @@
     },
     {
       "path": "scripts/check-public-boundary.mjs",
-      "bytes": 5541,
-      "sha256": "40fc95693049eb7efb166d72195ed94139ff2522989cced8a1c5aaee34c2d450"
+      "bytes": 7819,
+      "sha256": "186a89070f231dd70fcef5bf2e1d2391a0eeca2a7b4e08642892eb6450be3a7a"
     },
     {
       "path": "scripts/compile-wasm.ps1",
@@ -209,8 +229,8 @@
     },
     {
       "path": "scripts/verify-live.mjs",
-      "bytes": 2706,
-      "sha256": "dd45472b43fe0bede304082ff4337a73c1194d2fa3ce8efda150cc7ac583a556"
+      "bytes": 4102,
+      "sha256": "292098f01f8b3a82b7d43a4112a30599609165b51cc542ed61693e39a0fea0ad"
     },
     {
       "path": "scripts/verify-wasm.mjs",

@@ -106,6 +106,13 @@ assert.match(index, /platform scope/iu);
 assert.match(index, /Independent participation/iu);
 assert.match(index, /no general MTEB superiority claim/iu);
 assert.match(index, /not an official LEAP or DeepFest page/iu);
+assert.match(index, /منصّة تحكيم اللغة العربية/u);
+assert.match(index, /ADG Arabic Adjudication Platform/u);
+assert.match(index, /https:\/\/adg\.sbay\.sa\//u);
+assert.match(index, /112/u);
+assert.match(index, /not a final correction service/iu);
+assert.match(index, /مركز إعلام جامعة الأميرة نورة بنت عبدالرحمن/u);
+assert.match(index, /does not mean the material is issued, approved, sponsored or endorsed by the university/iu);
 assert.doesNotMatch(index, /آلاف المنتجات|موردون معتمدون|من أيام إلى دقائق/u);
 assert.match(index, /without presenting a guaranteed forecast/iu);
 assert.match(index, /without a guaranteed savings claim/iu);
@@ -115,7 +122,8 @@ const narrativeSections = [
   'id="platform"',
   'id="intelligence"',
   'id="outcomes"',
-  'id="vision"'
+  'id="vision"',
+  'id="adjudication"'
 ];
 let previousSection = -1;
 for (const section of narrativeSections) {
@@ -132,6 +140,18 @@ assert.equal(positioningEvidence.tradeName.arabic, "منصة تموين sbay");
 assert.equal(positioningEvidence.publicSource.observedSignals.publishedCustomers, "500+");
 assert.equal(positioningEvidence.claimTreatment.costOutcome.includes("no guaranteed"), true);
 
+const adjudicationEvidence = JSON.parse(await readFile(
+  path.join(root, "evidence", "adjudication-positioning-snapshot-20260831T043818Z.json"),
+  "utf8"
+));
+assert.equal(adjudicationEvidence.publicPage.httpStatus, 200);
+assert.equal(adjudicationEvidence.source.release, "15.3.6");
+assert.equal(adjudicationEvidence.publishedPilotFacts.readySamples, 2);
+assert.equal(adjudicationEvidence.publishedPilotFacts.arabicSentences, 16);
+assert.equal(adjudicationEvidence.publishedPilotFacts.linguisticUnits, 112);
+assert.equal(adjudicationEvidence.claimBoundary.finalArabicCorrectionService, false);
+assert.equal(adjudicationEvidence.universityMediaChannel.issuedByUniversity, false);
+
 const pressKit = JSON.parse(await readFile(
   path.join(root, "docs", "press-kit.json"),
   "utf8"
@@ -141,6 +161,23 @@ assert.equal(pressKit.tradeName.arabic, "منصة تموين sbay");
 assert.equal(pressKit.claims.guaranteedCostSaving, false);
 assert.equal(pressKit.claims.guaranteedDemandForecast, false);
 assert.equal(pressKit.claims.allModulesGenerallyAvailable, false);
+assert.equal(pressKit.adjudication.publicRelease, "15.3.6");
+assert.equal(pressKit.adjudication.publicPilot.readySamples, 2);
+assert.equal(pressKit.adjudication.publicPilot.arabicSentences, 16);
+assert.equal(pressKit.adjudication.publicPilot.linguisticUnits, 112);
+assert.equal(pressKit.adjudication.mediaCenter.issuedByUniversity, false);
+assert.equal(pressKit.claims.officialUniversityPartnership, false);
+assert.equal(pressKit.claims.universityEndorsement, false);
+assert.equal(pressKit.claims.finalArabicCorrectionService, false);
+assert.equal(pressKit.claims.humanLoginCompletionClaimed, false);
+
+const universityBrief = await readFile(
+  path.join(root, "PNU-MEDIA-CENTER-BRIEF.md"),
+  "utf8"
+);
+assert.match(universityBrief, /مادة إعلامية معدّة للتقديم إلى مركز إعلام جامعة الأميرة\s+نورة بنت عبدالرحمن/u);
+assert.match(universityBrief, /ليست صادرة عن الجامعة/u);
+assert.match(universityBrief, /not issued, approved, sponsored or endorsed\s+by the university/iu);
 
 const headers = await readFile(path.join(root, "docs", "_headers"), "utf8");
 assert.match(
@@ -151,6 +188,7 @@ assert.match(headers, /script-src 'self' 'wasm-unsafe-eval'/u);
 assert.doesNotMatch(headers, /(?:^|\s)'unsafe-eval'(?:\s|;|$)/u);
 
 for (const asset of [
+  "adg-adjudication-platform.png",
   "newsboy-classic-hero.png",
   "newsboy-classic-full.png",
   "newsboy-classic-mobile.png",

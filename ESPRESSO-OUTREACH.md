@@ -45,6 +45,53 @@ reverse-engineerable trade secrets.
 
 Link: `https://leap2026.sbay.sa/`
 
+## Princess Nourah University media-center submission
+
+### Arabic subject options
+
+1. منصّة تحكيم اللغة العربية تفتح تجربة بحثية لمعلمي العربية وخبرائها
+2. تحكيم بشري مُعمّى لقياس المحلل النحوي العربي قبل كشف توقعاته
+3. ADG توثق الحكم النحوي والإعرابي المستقل عبر تجربة عربية موجهة
+
+### Arabic short pitch
+
+أتاحت منصة تموين sbay عبر مشروع `ADG-Lang` العام منصّة تحكيم عربية لمعلمي
+اللغة وخبرائها. يسجل المحكّم حكمه النحوي والإعرابي قبل رؤية أي مخرجات آلية،
+ثم يحسم محكّم ثالث مواضع الخلاف بمبرر لغوي موجز.
+
+تتضمن العينة العامة عينتين، و16 جملة عربية، و112 وحدة لغوية، بمدة تقديرية
+15–25 دقيقة. المنصّة تجربة بحثية حية لقياس وضوح التحكيم وسلامة البروتوكول؛
+وليست خدمة تصحيح نهائية أو حكمًا نهائيًا على جاهزية المحلل.
+
+الرابط: `https://adg.sbay.sa/`
+
+موجز التقديم الكامل: `PNU-MEDIA-CENTER-BRIEF.md`
+
+### English short pitch
+
+SBAY Tamween has made the public ADG Arabic Adjudication Platform available
+for Arabic teachers and language experts. Reviewers record independent
+grammatical and iʿrab judgments before any parser output is revealed, while a
+third adjudicator resolves disagreements with a concise linguistic rationale.
+
+The public pilot contains two ready samples, 16 Arabic sentences and 112
+linguistic units, with an estimated completion time of 15–25 minutes. It is a
+live research adjudication use case, not a final correction service or final
+parser-readiness judgment.
+
+Link: `https://adg.sbay.sa/`
+
+### University channel boundary
+
+هذه المادة معدّة للتقديم إلى مركز إعلام جامعة الأميرة نورة بنت عبدالرحمن.
+لا تعني الإشارة صدورها عن الجامعة أو اعتمادها أو رعايتها أو الشراكة معها ما
+لم ينشر المركز إعلانًا رسميًا.
+
+This material is prepared for submission to Princess Nourah bint Abdulrahman
+University’s media center. It does not imply university issuance, approval,
+sponsorship, endorsement or partnership unless the center publishes an
+official announcement.
+
 ## Required footer
 
 منصة تموين sbay مشاركة مستقلة. هذه المادة ليست صادرة عن LEAP أو DeepFest أو

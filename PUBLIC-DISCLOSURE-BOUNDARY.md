@@ -1,6 +1,6 @@
 # Public Disclosure Boundary
 
-Audit ID: `SBAY-LEAP-DEEPFEST-20260831T020340Z`
+Audit ID: `SBAY-LEAP-DEEPFEST-20260831T043818Z`
 
 ## Public material allowed
 
@@ -25,6 +25,21 @@ Audit ID: `SBAY-LEAP-DEEPFEST-20260831T020340Z`
   implementation.
 - The functional category of QdrantServer: a private .NET provider host for
   data, runtime, health, and administrative integrations.
+- The public name `منصّة تحكيم اللغة العربية`, its live URL, public release
+  `15.3.6`, public repository commit, and a signed-out public screenshot.
+- Published pilot facts: two ready samples, 16 Arabic sentences, 112
+  linguistic units, and an estimated 15–25 minute initial experience.
+- The public protocol boundary: independent blind A/B annotation, parser
+  predictions hidden until independent review is complete, a third
+  adjudicator for disagreements, and a concise linguistic rationale.
+- The privacy statement that reviewer identity is separated from public
+  linguistic evidence and is not published with GitHub evidence.
+- The bounded status: a live research adjudication use case, not a final
+  Arabic correction service or a final parser-readiness judgment.
+- The fact that a media brief is prepared for submission to Princess Nourah
+  bint Abdulrahman University’s media center, provided the same statement
+  denies university issuance, approval, sponsorship, endorsement and
+  partnership until an official university publication exists.
 
 ## Material prohibited from this repository
 
@@ -46,6 +61,17 @@ Audit ID: `SBAY-LEAP-DEEPFEST-20260831T020340Z`
   guaranteed document extraction, or guaranteed demand forecasts.
 - An uncited market-size, revenue, valuation, or total-addressable-market
   number.
+- Participant names, email addresses, credentials, session identifiers,
+  drafts, annotations, adjudication decisions, private packets, parser
+  predictions, or unreleased linguistic evidence.
+- Adjudication storage topology, key custody, internal bindings, database
+  structure, provider account identifiers, or operational secrets.
+- Claims that the adjudication pilot is a final Arabic correction service,
+  proves unrestricted parser readiness, or completes human login/email-code
+  verification without direct evidence.
+- Princess Nourah bint Abdulrahman University logos or claims that the
+  university issues, owns, operates, validates, approves, sponsors, endorses
+  or partners in the platform without documented institutional authorization.
 
 ## Patent-aware publication rule
 
@@ -61,3 +87,8 @@ classification. Filing decisions remain with the owner and qualified counsel.
 respective owners. “SBAY”, “NewsBoy”, “Ksar”, “Sarmad”, and related marks are
 used as SBAY portfolio identifiers. The page describes independent
 participation during event week and must not imply an organizer relationship.
+
+Princess Nourah bint Abdulrahman University is named only as the intended
+media-center submission channel. Its name must not be used to imply an
+institutional relationship unless the university publishes or authorizes that
+relationship.

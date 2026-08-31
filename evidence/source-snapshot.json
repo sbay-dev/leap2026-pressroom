@@ -1,7 +1,7 @@
 {
   "schema": "sbay.leap2026.public-source-snapshot.v1",
-  "auditId": "SBAY-LEAP-DEEPFEST-20260831T020340Z",
-  "capturedAtUtc": "2026-08-31T02:03:40Z",
+  "auditId": "SBAY-LEAP-DEEPFEST-20260831T043818Z",
+  "capturedAtUtc": "2026-08-31T04:38:18.532Z",
   "eventContext": {
     "leap": {
       "dates": "2026-08-31/2026-09-03",
@@ -41,6 +41,14 @@
       "url": "https://cp.sbay.sa/",
       "bytes": 21673,
       "sha256": "7ddd8c2948991def7ed64df1dfb0e888fc385aedf844a7d9979efdde2fe8ad28"
+    },
+    {
+      "id": "adg-arabic-adjudication",
+      "url": "https://adg.sbay.sa/",
+      "bytes": 55573,
+      "sha256": "d52069ce7636359078cef72e091fa833b68e430c39bd6e9df1fc5842936742ed",
+      "publicRelease": "15.3.6",
+      "sourceCommit": "7ce615a2012f791cd51125e2366419ba45677e7d"
     }
   ],
   "repositoryAnchors": [
@@ -71,6 +79,18 @@
       "commit": "98af029434d59cff253ace0acaaee12e8e69b257",
       "tree": "a5cb74dcd3077812b09faf3b27a62b8a4e54052f",
       "publishedFields": ["release identity", "public deployment URL", "bounded outcome"]
+    },
+    {
+      "repository": "sbay-dev/ADG-Lang",
+      "visibility": "public",
+      "commit": "7ce615a2012f791cd51125e2366419ba45677e7d",
+      "publishedFields": [
+        "public adjudication interface",
+        "public pilot counts",
+        "blind adjudication protocol",
+        "privacy boundary",
+        "release manifest"
+      ]
     }
   ],
   "modelClaimBoundary": {
