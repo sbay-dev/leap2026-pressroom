@@ -4,8 +4,8 @@
   "capturedAtUtc": "2026-08-31T04:38:18.532Z",
   "releaseId": "leap2026-pressroom-2.4.0",
   "classification": "public-non-enabling-press-material",
-  "fileCount": 56,
-  "releaseRoot": "f592223ca321958fcf826c59305e09f7ffd78fdc8f42c050219bc8e8566181d5",
+  "fileCount": 58,
+  "releaseRoot": "9c10a1cbdd315a3feeb0ab25af2482989c49caedba0fa99ea3d522b00ecbffab",
   "files": [
     {
       "path": ".gitattributes",
@@ -53,9 +53,14 @@
       "sha256": "0363bfb2919522e19af32a5a5a594a05dead837cfba4b27da8e86be5fdba1969"
     },
     {
+      "path": "docs/adg-cipher.js",
+      "bytes": 27258,
+      "sha256": "976118d4116a2d61e6b931f10b5475cc8b95da7e8a5193ed0811681aab54e752"
+    },
+    {
       "path": "docs/app.js",
-      "bytes": 7783,
-      "sha256": "1bc76d2f2e14c19ea5acdafaed0ad105ccc355eddd698a9b5417e9d7a9354704"
+      "bytes": 13521,
+      "sha256": "56642652ddb4f86160730e3c75ed73b7fbc55b65e4a379039f23b85d7cef5c70"
     },
     {
       "path": "docs/assets/press/adg-adjudication-platform.png",
@@ -99,8 +104,8 @@
     },
     {
       "path": "docs/assets/press/og-card.png",
-      "bytes": 221509,
-      "sha256": "ea6cd940a30367c0f026a719c14bde7133bbab78609fc49484d5fd4ba153780e"
+      "bytes": 387292,
+      "sha256": "ce9489c05acbc410ab16dfd36bcee5de84c909f3e02fc8ae6d5661698d847b98"
     },
     {
       "path": "docs/assets/sbay-cube.svg",
@@ -114,8 +119,8 @@
     },
     {
       "path": "docs/index.html",
-      "bytes": 54309,
-      "sha256": "014de536d4356dcaaa36367e5b5592db39d214e805d7dbf3a4020ac7e1c807ca"
+      "bytes": 56918,
+      "sha256": "8b4a88a747d9ac5fc0aa3f590f0f0265de0b100917512659c5d6da5ddd8c0816"
     },
     {
       "path": "docs/manifest.webmanifest",
@@ -139,8 +144,8 @@
     },
     {
       "path": "docs/styles.css",
-      "bytes": 29022,
-      "sha256": "03638ed98a3ad1ab5820a82a8a8039366ee141f1bc0982bf447bcb945d134c00"
+      "bytes": 37161,
+      "sha256": "f5728354b17d551d64f5a30a8085c09b689c3d8f2ed336e14f1e0f84788ac89b"
     },
     {
       "path": "ESPRESSO-OUTREACH.md",
@@ -209,8 +214,8 @@
     },
     {
       "path": "package.json",
-      "bytes": 833,
-      "sha256": "e9964236022a545f43e72468bd64c543ea6e94d73b8a87442a706a5a93a38b60"
+      "bytes": 909,
+      "sha256": "4b5f073025e3df8b98640ddba542bba536e695114636a221d092381d7b2b093f"
     },
     {
       "path": "PNU-MEDIA-CENTER-BRIEF.md",
@@ -248,9 +253,14 @@
       "sha256": "684e2ef49eac8029ef5570fc0e719c6ad011a2cb14653452c04a9fa51bf97661"
     },
     {
+      "path": "scripts/check-cipher.mjs",
+      "bytes": 6958,
+      "sha256": "7b603401f04475f6e4951f7ea577c2ef852d3540db374838e7a86e92fc516b40"
+    },
+    {
       "path": "scripts/check-public-boundary.mjs",
-      "bytes": 13490,
-      "sha256": "6fd7c50f24e71445cb68a9e33233ebab17dd1e8cdb07ad3e7b8b2603faf554ca"
+      "bytes": 15039,
+      "sha256": "bb55134e1ccd0f756ad37b67d4920917b807a2e22b39bb8763782b5147094e1f"
     },
     {
       "path": "scripts/compile-wasm.ps1",
@@ -259,8 +269,8 @@
     },
     {
       "path": "scripts/verify-live.mjs",
-      "bytes": 7971,
-      "sha256": "6e4007d021fe5378318e97bf08368c809a10eb32e1ca91faa0ae59955a661f1f"
+      "bytes": 8218,
+      "sha256": "06ae5461d2d687cd72aebf6fd339b9d3234e49a7517a7ae832f6766cf4dddf54"
     },
     {
       "path": "scripts/verify-wasm.mjs",

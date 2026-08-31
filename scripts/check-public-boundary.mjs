@@ -286,8 +286,16 @@ assert.equal(brandCorrection.rules.combineArabicAndEnglishNames, false);
 assert.equal(brandCorrection.rules.transliterateBrandNames, false);
 
 const app = await readFile(path.join(root, "docs", "app.js"), "utf8");
-assert.match(app, /\{ name: "SBAY", color:/u);
+assert.match(app, /\{ name: "SBAY", centerBrand: true, color:/u);
 assert.doesNotMatch(app, /\{ name: "TAMWEEN", color:/u);
+assert.match(app, /fillText\("تموين"/u);
+assert.match(app, /fillText\(\s*"منصة"/u);
+assert.match(app, /smallSize = largeSize \* \.58/u);
+assert.match(app, /fibonacciZoomLevels = \[1, 2, 3, 5, 8\]/u);
+assert.match(app, /nearestFibonacciZoom/u);
+assert.match(app, /event\.touches\.length === 2/u);
+assert.match(app, /touchDistance\(event\.touches\)/u);
+assert.match(app, /frameMaximumZoom/u);
 
 const headers = await readFile(path.join(root, "docs", "_headers"), "utf8");
 assert.match(
@@ -309,6 +317,26 @@ for (const asset of [
   "og-card.png"
 ]) {
   await stat(path.join(root, "docs", "assets", "press", asset));
+}
+
+const cipher = await readFile(path.join(root, "docs", "adg-cipher.js"), "utf8");
+assert.match(cipher, /codePointAt\(0\) & 0xff/u, "flag bits must be derived from public Unicode scalars");
+assert.match(cipher, /const LOOP_SECONDS = 5/u);
+assert.match(cipher, /createCanvasPainter/u, "a non-WebGPU fallback painter is mandatory");
+for (const [pattern, label] of [
+  [/RasmMaskHex|RasmRecordHex/iu, "proprietary rasm mask table"],
+  [/0x8003|0x0817/u, "proprietary rasm mask value"],
+  [/routingThreshold|expertWeight|availabilityMask/iu, "protected routing internals"]
+]) {
+  assert.equal(pattern.test(cipher), false, `${label} in docs/adg-cipher.js`);
+  assert.equal(pattern.test(index), false, `${label} in docs/index.html`);
+}
+assert.match(index, /id="adg-cipher"/u);
+assert.match(index, /data-loop-seconds="5"/u);
+assert.match(index, /20:13/u, "the hero must cite its public verse reference");
+assert.match(index, /class="cipher-note"/u, "the disclosure note must stay on the page");
+for (const label of ["IF", "ID", "EX", "MEM", "WB", "void"]) {
+  assert.ok(index.includes(`>${label}<`), `missing pipeline label ${label}`);
 }
 
 console.log(JSON.stringify({
