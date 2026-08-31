@@ -92,7 +92,7 @@ const canvas = document.getElementById("product-space");
 const context = canvas?.getContext("2d");
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const nodes = [
-  { name: "TAMWEEN", color: "#5ff0bb", x: 0, y: 0, z: .15, size: 1.45 },
+  { name: "SBAY", color: "#5ff0bb", x: 0, y: 0, z: .15, size: 1.45 },
   { name: "BUYER", color: "#58ddff", x: -1.45, y: -.65, z: .65, size: 1.05 },
   { name: "SUPPLIER", color: "#f4c767", x: 1.4, y: -.55, z: .8, size: 1.05 },
   { name: "FACTORY", color: "#ff7b9d", x: -1.05, y: 1.2, z: -.6, size: .95 },

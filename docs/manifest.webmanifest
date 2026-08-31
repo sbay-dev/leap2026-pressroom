@@ -1,6 +1,6 @@
 {
-  "name": "منصة تموين sbay — LEAP + DeepFest 2026",
-  "short_name": "منصة تموين sbay",
+  "name": "منصة تموين — LEAP + DeepFest 2026",
+  "short_name": "منصة تموين",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#040815",

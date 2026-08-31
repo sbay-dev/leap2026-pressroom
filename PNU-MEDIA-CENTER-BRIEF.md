@@ -5,7 +5,7 @@
 شراكة معها ما لم ينشر المركز إعلانًا رسميًا.
 
 **تاريخ الإعداد:** 31 أغسطس 2026  
-**الجهة المعدّة:** منصة تموين sbay  
+**الجهة المعدّة:** منصة تموين
 **الرابط العام:** `https://adg.sbay.sa/`  
 **المستودع العام:** `https://github.com/sbay-dev/ADG-Lang`
 
@@ -20,7 +20,7 @@
 
 ## الخبر المختصر
 
-أتاحت منصة تموين sbay، عبر مشروع `ADG-Lang` العام، تجربة منصّة تحكيم اللغة
+أتاحت منصة تموين، عبر مشروع `ADG-Lang` العام، تجربة منصّة تحكيم اللغة
 العربية لمعلمي العربية وخبرائها. تعرض المنصّة النص العربي في مسار إرشادي
 واضح، وتطلب من المحكّم تسجيل حكمه النحوي والإعرابي بصورة مستقلة قبل رؤية أي
 مخرجات آلية.
@@ -108,7 +108,7 @@
 **Suggested headline:** ADG opens an Arabic adjudication research experience
 for Arabic teachers and language experts.
 
-SBAY Tamween has made the public ADG Arabic Adjudication Platform available as
+SBAY has made the public ADG Arabic Adjudication Platform available as
 an Arabic-first research workflow. Reviewers record independent grammatical
 and iʿrab judgments before seeing any parser output. The published pilot
 contains two ready samples, 16 Arabic sentences and 112 linguistic units, with

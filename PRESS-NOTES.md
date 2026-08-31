@@ -1,15 +1,15 @@
-# Press Notes — منصة تموين sbay at LEAP + DeepFest 2026
+# Press Notes — منصة تموين at LEAP + DeepFest 2026
 
 Published for event week: 31 August–3 September 2026, Riyadh.
 
 ## Arabic
 
-تقدم **منصة تموين sbay** رؤيتها للبنية الذكية للمشتريات وسلاسل الإمداد:
+تقدم **منصة تموين** رؤيتها للبنية الذكية للمشتريات وسلاسل الإمداد:
 منصة سعودية موحدة تربط إدارة الطلبات والموردين والعروض والعقود والتنفيذ في
 تجربة مؤسسية واحدة.
 
 تنطلق الرؤية من مشكلة عملية: ما زالت دورات شراء كثيرة موزعة بين الرسائل
-والجداول والإجراءات اليدوية. تعمل منصة تموين sbay على توحيد هذه الدورة،
+والجداول والإجراءات اليدوية. تعمل منصة تموين على توحيد هذه الدورة،
 وتصميم طبقة ذكاء تساعد على تنظيم بيانات الطلبات والعروض، مطابقة الموردين،
 تحسين المقارنة، ودعم التخطيط والقرار البشري.
 
@@ -47,12 +47,12 @@ ADG**: بيئة عربية لمعلمي اللغة وخبرائها تسجل ا�
 
 ## English
 
-**SBAY Tamween** presents its vision for intelligent procurement and supply
+**SBAY** presents its vision for intelligent procurement and supply
 chain infrastructure: a unified Saudi platform connecting purchase requests,
 suppliers, quotations, contracts and execution in one enterprise experience.
 
 The vision starts with a practical problem: procurement cycles are often
-distributed across messages, spreadsheets and manual procedures. SBAY Tamween
+distributed across messages, spreadsheets and manual procedures. SBAY
 is working to unify that lifecycle and build an intelligence layer that can
 structure request and quotation data, improve supplier comparison and support
 planning and accountable human decisions.
@@ -99,7 +99,7 @@ announcement.
 
 ## Verified links
 
-- منصة تموين sbay: `https://sbay.sa/`
+- منصة تموين: `https://sbay.sa/`
 - Pressroom: `https://leap2026.sbay.sa/`
 - NewsBoy: `https://newsboy.sbay.sa/`
 - NewsBoy citations and sources:

@@ -47,6 +47,8 @@ const textExtensions = new Set([
 ]);
 const forbiddenPatterns = [
   [/®/u, "unverified registered-trademark symbol"],
+  [/\bSBAY\s+Tamween\b/iu, "noncanonical English brand name"],
+  [/منصة تموين\s+sbay\b/iu, "noncanonical Arabic brand name"],
   [/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/u, "private key"],
   [/\bgh[pousr]_[A-Za-z0-9]{20,}\b/u, "GitHub token"],
   [/\bAKIA[0-9A-Z]{16}\b/u, "AWS access key"],
@@ -99,8 +101,10 @@ const index = await readFile(path.join(root, "docs", "index.html"), "utf8");
 assert.doesNotMatch(index, /<script[^>]+src=["']https?:/iu);
 assert.doesNotMatch(index, /<link[^>]+href=["']https?:[^"']+\.(?:css|woff2?)/iu);
 assert.doesNotMatch(index, /<form\b/iu);
-assert.match(index, /منصة تموين <bdi lang="en">sbay<\/bdi>/u);
-assert.match(index, /SBAY Tamween/u);
+assert.match(index, /<span class="ar">منصة تموين<\/span>/u);
+assert.match(index, /<span class="en">SBAY<\/span>/u);
+assert.doesNotMatch(index, /SBAY\s+Tamween/iu);
+assert.doesNotMatch(index, /منصة تموين\s*<bdi[^>]*>sbay<\/bdi>/iu);
 assert.match(index, /25\+/u);
 assert.match(index, /500\+/u);
 assert.match(index, /platform scope/iu);
@@ -141,7 +145,8 @@ const positioningEvidence = JSON.parse(await readFile(
   path.join(root, "evidence", "tamween-positioning-snapshot-20260831T040937Z.json"),
   "utf8"
 ));
-assert.equal(positioningEvidence.tradeName.arabic, "منصة تموين sbay");
+assert.equal(positioningEvidence.tradeName.arabic, "منصة تموين");
+assert.equal(positioningEvidence.tradeName.englishPresentation, "SBAY");
 assert.equal(positioningEvidence.publicSource.observedSignals.publishedCustomers, "500+");
 assert.equal(positioningEvidence.claimTreatment.costOutcome.includes("no guaranteed"), true);
 
@@ -162,7 +167,9 @@ const pressKit = JSON.parse(await readFile(
   "utf8"
 ));
 assert.equal(pressKit.schema, "sbay.press-kit.v2");
-assert.equal(pressKit.tradeName.arabic, "منصة تموين sbay");
+assert.equal(pressKit.tradeName.arabic, "منصة تموين");
+assert.equal(pressKit.tradeName.english, "SBAY");
+assert.equal(pressKit.publisher, "SBAY");
 assert.equal(pressKit.claims.guaranteedCostSaving, false);
 assert.equal(pressKit.claims.guaranteedDemandForecast, false);
 assert.equal(pressKit.claims.allModulesGenerallyAvailable, false);
@@ -208,6 +215,19 @@ const universityBrief = await readFile(
 assert.match(universityBrief, /مادة إعلامية معدّة للتقديم إلى مركز إعلام جامعة الأميرة\s+نورة بنت عبدالرحمن/u);
 assert.match(universityBrief, /ليست صادرة عن الجامعة/u);
 assert.match(universityBrief, /not issued, approved, sponsored or endorsed\s+by the university/iu);
+
+const brandCorrection = JSON.parse(await readFile(
+  path.join(root, "evidence", "brand-name-correction-20260831T060552Z.json"),
+  "utf8"
+));
+assert.equal(brandCorrection.canonical.arabic, "منصة تموين");
+assert.equal(brandCorrection.canonical.english, "SBAY");
+assert.equal(brandCorrection.rules.combineArabicAndEnglishNames, false);
+assert.equal(brandCorrection.rules.transliterateBrandNames, false);
+
+const app = await readFile(path.join(root, "docs", "app.js"), "utf8");
+assert.match(app, /\{ name: "SBAY", color:/u);
+assert.doesNotMatch(app, /\{ name: "TAMWEEN", color:/u);
 
 const headers = await readFile(path.join(root, "docs", "_headers"), "utf8");
 assert.match(

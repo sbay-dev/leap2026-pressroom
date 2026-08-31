@@ -1,7 +1,7 @@
-# منصة تموين sbay — LEAP + DeepFest 2026
+# منصة تموين — LEAP + DeepFest 2026
 
-Independent, bilingual enterprise platform brief presenting **منصة تموين
-sbay / SBAY Tamween** during LEAP and DeepFest 2026 in Riyadh,
+Independent, bilingual enterprise platform brief presenting **منصة تموين /
+SBAY** during LEAP and DeepFest 2026 in Riyadh,
 31 August–3 September 2026.
 
 Live targets:
@@ -20,7 +20,8 @@ The narrative follows:
 
 `Problem → Platform → Intelligence → Outcomes → Vision`
 
-The primary positioning is an enterprise AI procurement and supply platform.
+The primary positioning is SBAY as an enterprise AI procurement and supply
+platform.
 Ksar, NewsBoy, CP, Sarmad, CNS and QdrantServer appear only as bounded operating
 or technical evidence.
 

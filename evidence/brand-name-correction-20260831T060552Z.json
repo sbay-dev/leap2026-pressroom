@@ -1,0 +1,24 @@
+{
+  "schema": "sbay.brand-name-owner-correction.v1",
+  "recordedAtUtc": "2026-08-31T06:05:52.182Z",
+  "canonical": {
+    "arabic": "منصة تموين",
+    "english": "SBAY"
+  },
+  "rules": {
+    "combineArabicAndEnglishNames": false,
+    "transliterateBrandNames": false,
+    "appendLatinSuffixToArabicName": false,
+    "appendArabicTransliterationToEnglishName": false
+  },
+  "scope": [
+    "Rendered website copy",
+    "Metadata and social cards",
+    "Press notes and outreach copy",
+    "Media-center brief",
+    "Machine-readable press kit",
+    "Canvas labels",
+    "Automated publication gates"
+  ],
+  "source": "Direct owner correction in the current working session."
+}

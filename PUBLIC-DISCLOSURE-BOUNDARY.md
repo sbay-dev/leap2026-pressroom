@@ -4,8 +4,8 @@ Audit ID: `SBAY-LEAP-DEEPFEST-20260831T043818Z`
 
 ## Public material allowed
 
-- The registered trade name, written exactly as `منصة تموين sbay` in Arabic
-  and with `sbay` kept in Latin characters.
+- The registered trade name, written exactly as `منصة تموين` in Arabic and
+  `SBAY` in English. The two names must not be combined or transliterated.
 - Public `sbay.sa` signals captured by URL, byte length, and SHA-256:
   `25+` digital services and products, `500+` customers, `99.9%` published
   uptime, and `24/7` published support.

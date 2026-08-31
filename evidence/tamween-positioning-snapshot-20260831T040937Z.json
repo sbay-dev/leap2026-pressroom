@@ -3,11 +3,12 @@
   "capturedAtUtc": "2026-08-31T04:09:37.925Z",
   "auditId": "SBAY-LEAP-DEEPFEST-20260831T020340Z",
   "tradeName": {
-    "arabic": "منصة تموين sbay",
-    "englishPresentation": "SBAY Tamween",
+    "arabic": "منصة تموين",
+    "englishPresentation": "SBAY",
     "registrationStatus": "owner-attested",
     "registryNumberPublished": false,
-    "brandRule": "Keep sbay in Latin characters; do not transliterate it into Arabic."
+    "brandRule": "Use منصة تموين in Arabic and SBAY in English; do not combine or transliterate the names.",
+    "ownerCorrectionAtUtc": "2026-08-31T06:05:52.182Z"
   },
   "publicSource": {
     "url": "https://sbay.sa/",

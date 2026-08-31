@@ -4,18 +4,18 @@ Use the canonical link: `https://leap2026.sbay.sa/`
 
 ## Arabic subject options
 
-1. منصة تموين sbay تعرض البنية الذكية للمشتريات في LEAP وDeepFest 2026
-2. من الطلب إلى التوريد: رؤية منصة تموين sbay للمشتريات المدعومة بالذكاء
+1. منصة تموين تعرض البنية الذكية للمشتريات في LEAP وDeepFest 2026
+2. من الطلب إلى التوريد: رؤية منصة تموين للمشتريات المدعومة بالذكاء
 3. منصة سعودية تربط المشتري والمورد والمصنع في دورة شراء واحدة
 
 ## Arabic short pitch
 
-خلال أسبوع LEAP وDeepFest 2026 في الرياض، تقدم **منصة تموين sbay** رؤيتها
+خلال أسبوع LEAP وDeepFest 2026 في الرياض، تقدم **منصة تموين** رؤيتها
 للبنية الذكية للمشتريات وسلاسل الإمداد. تنطلق الصفحة من مشكلة تشتت الطلبات
 والعروض والموافقات، ثم تعرض منصة موحدة لإدارة دورة الشراء، وطبقة ذكاء لدعم
 مطابقة الموردين وتحليل المستندات والتوصيات وفهم أنماط الطلب.
 
-تنشر الصفحة مؤشرات منصة تموين sbay العامة، وتعرض كسار وصبي الجرائد وCP
+تنشر الصفحة مؤشرات منصة تموين العامة، وتعرض كسار وصبي الجرائد وCP
 كدليل تشغيل مختصر، مع حدود إفصاح تستبعد الأوزان وبيانات التدريب والأسرار
 القابلة للهندسة العكسية.
 
@@ -25,13 +25,13 @@ Use the canonical link: `https://leap2026.sbay.sa/`
 
 ## English subject options
 
-1. SBAY Tamween presents intelligent procurement infrastructure at LEAP and DeepFest 2026
-2. From Procurement to Fulfillment: SBAY Tamween's enterprise AI vision
+1. SBAY presents intelligent procurement infrastructure at LEAP and DeepFest 2026
+2. From Procurement to Fulfillment: SBAY's enterprise AI vision
 3. A Saudi platform connecting buyers, suppliers and factories in one procurement lifecycle
 
 ## English short pitch
 
-During LEAP and DeepFest 2026 week in Riyadh, **SBAY Tamween** presents its
+During LEAP and DeepFest 2026 week in Riyadh, **SBAY** presents its
 vision for intelligent procurement and supply chain infrastructure. The page
 starts with fragmented requests, quotations and approvals, then shows a
 unified enterprise platform and an intelligence direction for supplier
@@ -67,7 +67,7 @@ Link: `https://leap2026.sbay.sa/`
 
 ### Arabic short pitch
 
-أتاحت منصة تموين sbay عبر مشروع `ADG-Lang` العام منصّة تحكيم عربية لمعلمي
+أتاحت منصة تموين عبر مشروع `ADG-Lang` العام منصّة تحكيم عربية لمعلمي
 اللغة وخبرائها. يسجل المحكّم حكمه النحوي والإعرابي قبل رؤية أي مخرجات آلية،
 ثم يحسم محكّم ثالث مواضع الخلاف بمبرر لغوي موجز.
 
@@ -81,7 +81,7 @@ Link: `https://leap2026.sbay.sa/`
 
 ### English short pitch
 
-SBAY Tamween has made the public ADG Arabic Adjudication Platform available
+SBAY has made the public ADG Arabic Adjudication Platform available
 for Arabic teachers and language experts. Reviewers record independent
 grammatical and iʿrab judgments before any parser output is revealed, while a
 third adjudicator resolves disagreements with a concise linguistic rationale.
@@ -106,8 +106,8 @@ official announcement.
 
 ## Required footer
 
-منصة تموين sbay مشاركة مستقلة. هذه المادة ليست صادرة عن LEAP أو DeepFest أو
+منصة تموين مشاركة مستقلة. هذه المادة ليست صادرة عن LEAP أو DeepFest أو
 الجهات المنظمة ولا تتضمن رعاية أو تأييدًا منها.
 
-SBAY Tamween is an independent participant. This material is not issued,
+SBAY is an independent participant. This material is not issued,
 sponsored or endorsed by LEAP, DeepFest or their organizers.

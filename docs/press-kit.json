@@ -1,11 +1,11 @@
 {
   "schema": "sbay.press-kit.v2",
   "auditId": "SBAY-LEAP-DEEPFEST-20260831T043818Z",
-  "title": "منصة تموين sbay — Intelligent Procurement & Supply Infrastructure",
-  "publisher": "منصة تموين sbay",
+  "title": "SBAY — Intelligent Procurement & Supply Infrastructure",
+  "publisher": "SBAY",
   "tradeName": {
-    "arabic": "منصة تموين sbay",
-    "english": "SBAY Tamween",
+    "arabic": "منصة تموين",
+    "english": "SBAY",
     "status": "registered — owner attestation",
     "registryDetailsPublished": false
   },
