@@ -1521,6 +1521,21 @@ footer strong { color: var(--text); font-size: 1.1rem; }
   background: var(--md-sys-color-surface-container-lowest);
   box-shadow: var(--md-sys-elevation-2);
 }
+
+.annex-credit {
+  margin: 0;
+  padding: 0.85rem 1.15rem;
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: var(--md-sys-color-on-surface-variant);
+  background: var(--md-sys-color-surface-container-high);
+  border-block-end: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.annex-credit a {
+  color: var(--md-sys-color-primary);
+  text-underline-offset: 0.22em;
+}
 .annex-figure img { display: block; width: 100%; height: auto; }
 .annex-figure figcaption {
   padding: 14px 18px 16px;

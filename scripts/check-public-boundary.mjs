@@ -415,6 +415,19 @@ assert.match(annex, /codePoint &amp; 0xFF/u, "the annex must publish the derivat
 // Content Security Policy allows no inline script: the annex must load a module file.
 assert.equal(/<script(?![^>]*\ssrc=)/u.test(annex), false, "no inline script in the annex");
 assert.match(annex, /<script type="module" src="\.\/annex\.js">/u);
+
+// The manuscript witness is public domain; the Commons credit must stay with it
+// and must sit above the image, not after it.
+const commonsFile =
+  "https://commons.wikimedia.org/wiki/File:Birmingham_Quran_manuscript_full.jpg";
+assert.ok(annex.includes(commonsFile), "the annex must link the Commons source file");
+assert.match(annex, /Public domain, via Wikimedia Commons/u);
+assert.match(annex, /عامة الملكية، عبر ويكيميديا كومنز/u);
+assert.match(annex, /Mingana Islamic Arabic 1572a/u);
+const creditIndex = annex.indexOf("annex-credit");
+const manuscriptIndex = annex.indexOf("taha-rasm-birmingham.png");
+assert.ok(creditIndex > -1 && manuscriptIndex > creditIndex,
+  "the Wikimedia credit must precede the manuscript image");
 for (const figure of ["84", "23", "184", "85"]) {
   assert.ok(annex.includes(figure), `missing derived figure ${figure} in the annex`);
 }
