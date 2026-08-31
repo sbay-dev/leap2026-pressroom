@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>كسار · SBAY at LEAP + DeepFest 2026</title>
+  <meta name="description" content="غرفة صحافة مستقلة من SBAY لأسبوع LEAP وDeepFest 2026: صبي الجرائد، كسار، سرمد، CNS وتجربة سحابية صغيرة الأثر.">
+  <meta name="theme-color" content="#040815">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://leap2026.sbay.sa/">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/sbay-cube.svg" type="image/svg+xml">
+  <link rel="preload" href="./evidence-match.wasm" as="fetch" type="application/wasm" crossorigin>
+  <link rel="stylesheet" href="./styles.css">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="كسار · SBAY at LEAP + DeepFest 2026">
+  <meta property="og:description" content="منتجات حقيقية، حوسبة صغيرة الأثر، وأدلة عامة منزوعة الأسرار.">
+  <meta property="og:url" content="https://leap2026.sbay.sa/">
+  <meta property="og:image" content="https://leap2026.sbay.sa/assets/press/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="lang-ar">
+  <a class="skip-link" href="#main">
+    <span class="ar">انتقل إلى المحتوى</span>
+    <span class="en">Skip to content</span>
+  </a>
+
+  <header class="site-header" data-header>
+    <a class="brand" href="#top" aria-label="SBAY">
+      <img src="./assets/sbay-cube.svg" alt="" width="34" height="34">
+      <span>SBAY<small>PRESSROOM</small></span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="#flagships"><span class="ar">المنتجات</span><span class="en">Products</span></a>
+      <a href="#evidence"><span class="ar">الأدلة</span><span class="en">Evidence</span></a>
+      <a href="#press"><span class="ar">الصحافة</span><span class="en">Press</span></a>
+    </nav>
+    <button class="lang-toggle" type="button" data-language aria-label="Switch language">
+      <span class="ar">EN</span><span class="en">العربية</span>
+    </button>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="eyebrow">
+          <span class="status-dot"></span>
+          <span class="ar">مشاركة مستقلة · الرياض · ٣١ أغسطس–٣ سبتمبر ٢٠٢٦</span>
+          <span class="en">Independent participation · Riyadh · 31 Aug–3 Sep 2026</span>
+        </p>
+        <p class="event-line">LEAP 2026 × DeepFest 2026</p>
+        <h1>
+          <span class="ar">كسار</span>
+          <span class="en">KSAR</span>
+          <small>
+            <span class="ar">منتجات حقيقية. أثر حوسبي أصغر. دليل أوضح.</span>
+            <span class="en">Real products. Smaller compute. Clearer evidence.</span>
+          </small>
+        </h1>
+        <p class="hero-lead">
+          <span class="ar">موجز صحفي واستثماري من SBAY يجمع صبي الجرائد وكسار وسرمد ضمن تجربة تشغيل سحابية اقتصادية، مع حدود إفصاح تمنع الأوزان والبيانات والأسرار القابلة للهندسة العكسية.</span>
+          <span class="en">An SBAY press and investment brief connecting NewsBoy, Ksar and Sarmad through a small-footprint cloud experiment, with a disclosure boundary that excludes weights, data and reverse-engineerable secrets.</span>
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#flagships">
+            <span class="ar">شاهد المنتجات</span><span class="en">Meet the products</span>
+          </a>
+          <a class="button secondary" href="./press-kit.json" download>
+            <span class="ar">بيانات الحزمة الصحفية</span><span class="en">Press-kit data</span>
+          </a>
+        </div>
+        <div class="proof-strip" role="list" aria-label="Release facts">
+          <div role="listitem"><strong>2</strong><span class="ar">منتجان رئيسيان</span><span class="en">flagships</span></div>
+          <div role="listitem"><strong>0</strong><span class="ar">متعقبات إعلانية</span><span class="en">ad trackers</span></div>
+          <div role="listitem"><strong>WASM</strong><span class="ar">برهان محمول بسيط</span><span class="en">portable proof</span></div>
+          <div role="listitem"><strong>SHA-256</strong><span class="ar">سجل مصادر</span><span class="en">source record</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <canvas id="product-space" width="720" height="720" aria-label="Interactive three-dimensional product map"></canvas>
+        <div class="visual-caption">
+          <span class="ar">اسحب لتدوير فضاء المنتجات</span>
+          <span class="en">Drag to rotate the product space</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="event-context section-shell" aria-labelledby="event-heading">
+      <div>
+        <p class="section-kicker">EVENT WEEK</p>
+        <h2 id="event-heading"><span class="ar">من الرياض إلى صحافة التقنية</span><span class="en">From Riyadh to the technology press</span></h2>
+      </div>
+      <div class="event-copy">
+        <p class="ar">يُقام LEAP وDeepFest في مركز الرياض للمعارض والمؤتمرات بملهم خلال الفترة نفسها. تعرض SBAY هذه الصفحة كموجز مستقل لمنتجاتها وليست موقعًا رسميًا أو شريكًا أو راعيًا للحدثين.</p>
+        <p class="en">LEAP and DeepFest run together at the Riyadh Exhibition & Convention Centre in Malham. SBAY publishes this page as an independent portfolio brief; it is not an official event site, partner or sponsor.</p>
+        <div class="source-links">
+          <a href="https://onegiantleap.com/about-us/key-information" rel="noopener">LEAP official information ↗</a>
+          <a href="https://deepfest.com/" rel="noopener">DeepFest official site ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell" id="flagships" aria-labelledby="flagships-heading">
+      <div class="section-heading">
+        <p class="section-kicker">FLAGSHIP PRODUCTS</p>
+        <h2 id="flagships-heading"><span class="ar">منتجان يصلان إلى المستخدم قبل الخطاب</span><span class="en">Products that reach users before the pitch</span></h2>
+        <p><span class="ar">روابط حية وواجهات عامة، بلا نموذج تجريبي مصطنع للمؤتمر.</span><span class="en">Live links and public interfaces, not conference-only mockups.</span></p>
+      </div>
+
+      <article class="flagship newsboy-card">
+        <div class="product-copy">
+          <p class="product-index">01 / NEWSBOY</p>
+          <h3><span class="ar">صَبِيّ الجرايد</span><span class="en">NewsBoy</span></h3>
+          <p class="product-tagline"><span class="ar">اكتشاف أخبار عربية يحترم حقوق المادة وحدود التغطية.</span><span class="en">Arabic news discovery that respects content rights and coverage boundaries.</span></p>
+          <ul>
+            <li><span class="ar">واجهة حديثة وأخرى كلاسيكية مستلهمة من الصحيفة.</span><span class="en">Modern and newspaper-inspired classic views.</span></li>
+            <li><span class="ar">الإصدار العام المرصود: 4.3.0 (r47-professional).</span><span class="en">Observed public release: 4.3.0 (r47-professional).</span></li>
+            <li><span class="ar">لا يعرض النص أو الصورة الكاملة دون ملكية أو إذن أو ترخيص صريح.</span><span class="en">Full text or imagery is shown only with ownership, permission or explicit licensing.</span></li>
+          </ul>
+          <a class="text-link" href="https://newsboy.sbay.sa/" rel="noopener"><span class="ar">افتح صبي الجرائد</span><span class="en">Open NewsBoy</span> ↗</a>
+        </div>
+        <button class="media-frame tall" type="button" data-lightbox="./assets/press/newsboy-classic-hero.png">
+          <img src="./assets/press/newsboy-classic-hero.png" alt="NewsBoy classic Arabic newspaper interface" width="1600" height="1000">
+          <span><span class="ar">عرض صحفي كلاسيكي · لقطة سطح مكتب</span><span class="en">Classic press view · desktop capture</span></span>
+        </button>
+      </article>
+
+      <div class="gallery-grid">
+        <button class="media-frame" type="button" data-lightbox="./assets/press/newsboy-classic-full.png">
+          <img src="./assets/press/newsboy-classic-full.png" alt="Full NewsBoy classic public page" loading="lazy">
+          <span><span class="ar">الصفحة الكلاسيكية الكاملة</span><span class="en">Full classic page</span></span>
+        </button>
+        <button class="media-frame mobile-shot" type="button" data-lightbox="./assets/press/newsboy-classic-mobile.png">
+          <img src="./assets/press/newsboy-classic-mobile.png" alt="NewsBoy classic mobile interface" loading="lazy">
+          <span><span class="ar">الوضع الكلاسيكي على الهاتف</span><span class="en">Classic mobile view</span></span>
+        </button>
+      </div>
+
+      <article class="flagship reverse">
+        <div class="product-copy">
+          <p class="product-index">02 / KSAR</p>
+          <h3><span class="ar">كسار</span><span class="en">Ksar</span></h3>
+          <p class="product-tagline"><span class="ar">تجربة تجارة وسوق مباشر تجمع العضويات والتبادل والحراج في واجهة واحدة.</span><span class="en">A commerce and live-market experience connecting membership, exchange and listings in one interface.</span></p>
+          <ul>
+            <li><span class="ar">واجهة عربية أولًا مع التاريخ الهجري والميلادي.</span><span class="en">Arabic-first interface with Hijri and Gregorian dates.</span></li>
+            <li><span class="ar">تفضيلات العرض تحفظ محليًا في المتصفح.</span><span class="en">Display preferences remain local to the browser.</span></li>
+            <li><span class="ar">عنوان تشويقي لمنتج قابل للنمو، لا وعدًا ماليًا.</span><span class="en">A growth-ready product teaser, not a financial promise.</span></li>
+          </ul>
+          <a class="text-link" href="https://ksar.store/" rel="noopener"><span class="ar">افتح كسار</span><span class="en">Open Ksar</span> ↗</a>
+        </div>
+        <button class="media-frame tall" type="button" data-lightbox="./assets/press/ksar-market.png">
+          <img src="./assets/press/ksar-market.png" alt="Ksar Arabic commerce interface" width="1600" height="1000" loading="lazy">
+          <span><span class="ar">واجهة كسار العامة</span><span class="en">Ksar public interface</span></span>
+        </button>
+      </article>
+    </section>
+
+    <section class="dark-band" id="evidence" aria-labelledby="evidence-heading">
+      <div class="section-shell">
+        <div class="section-heading">
+          <p class="section-kicker">MEASURED, NOT MAGICAL</p>
+          <h2 id="evidence-heading"><span class="ar">ما الذي نستطيع قوله علنًا؟</span><span class="en">What can we say publicly?</span></h2>
+          <p><span class="ar">حقائق منشورة وحدود صريحة لما لم ننشره.</span><span class="en">Published facts, with explicit limits on what remains private.</span></p>
+        </div>
+
+        <div class="evidence-layout">
+          <div class="metric-wall">
+            <div><strong>21.7M</strong><span class="ar">معامل في صفحة سرمد العامة v2</span><span class="en">parameters on the public Sarmad v2 page</span></div>
+            <div><strong>83 MB</strong><span class="ar">الحجم العام المعلن</span><span class="en">published model size</span></div>
+            <div><strong>12D</strong><span class="ar">فضاء CNS العام الموصوف</span><span class="en">publicly described CNS space</span></div>
+            <div><strong>768D</strong><span class="ar">واجهة التضمين المنشورة</span><span class="en">published embedding interface</span></div>
+          </div>
+          <div class="evidence-note">
+            <h3><span class="ar">نتائج التضمين: الحد العلمي</span><span class="en">Embedding results: the scientific boundary</span></h3>
+            <p class="ar">Universal v3 مجمّد كاعتماد محلي مرشح للإصدار. أظهر مكاسب خاصة بالمهمة في XQuAD وTatoeba وخسارة في Sadeem. لذلك لا ندعي تفوقًا عامًا على MTEB.</p>
+            <p class="en">Universal v3 is frozen as a bounded local release-candidate dependency. It showed task-specific wins on XQuAD and Tatoeba and a loss on Sadeem. We therefore make no general MTEB superiority claim.</p>
+            <div class="boundary-box">
+              <strong><span class="ar">غير منشور</span><span class="en">Not published</span></strong>
+              <p><span class="ar">الأوزان، بيانات التدريب، المصنف، خرائط الخبراء، الحدود، المفاتيح، المصدر الخاص، وتفاصيل المطالبات البرائية.</span><span class="en">Weights, training data, tokenizer, expert maps, thresholds, keys, private source and unpublished patent enablement.</span></p>
+            </div>
+            <a class="text-link" href="https://sbay-dev.github.io/sarmadAi/" rel="noopener"><span class="ar">صفحة سرمد العامة الأصلية</span><span class="en">Original public Sarmad page</span> ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell wasm-section" aria-labelledby="wasm-heading">
+      <div class="wasm-copy">
+        <p class="section-kicker">MINIMUM PORTABLE FUNCTION</p>
+        <h2 id="wasm-heading"><span class="ar">الدالة الأبسط، لا النموذج السري</span><span class="en">The smallest function, not the private model</span></h2>
+        <p class="ar">ملف WebAssembly صغير ينفّذ مطابقة عددين صحيحين فقط. الغرض إثبات قابلية الحزم المحمولة والتحقق الحتمي؛ لا يحتوي تمثيلات أو استدلالًا أو معرفة من CNS.</p>
+        <p class="en">A tiny WebAssembly file compares two integers. It demonstrates portable packaging and deterministic verification; it contains no CNS representations, inference or knowledge.</p>
+        <code>evidence_match(expected, observed) → 0 | 1</code>
+      </div>
+      <div class="wasm-lab">
+        <label><span class="ar">القيمة المتوقعة</span><span class="en">Expected value</span><input type="number" value="42" data-expected></label>
+        <label><span class="ar">القيمة المرصودة</span><span class="en">Observed value</span><input type="number" value="42" data-observed></label>
+        <button class="button primary" type="button" data-match><span class="ar">تحقق عبر WASM</span><span class="en">Verify in WASM</span></button>
+        <output data-match-result><span class="ar">جارٍ تحميل الوحدة…</span><span class="en">Loading module…</span></output>
+      </div>
+    </section>
+
+    <section class="section-shell cloud-section" aria-labelledby="cloud-heading">
+      <button class="media-frame" type="button" data-lightbox="./assets/press/cp-dashboard.png">
+        <img src="./assets/press/cp-dashboard.png" alt="SBAY CP public cloud operations dashboard" width="1600" height="1000" loading="lazy">
+        <span>cp.sbay.sa · public operations view</span>
+      </button>
+      <div>
+        <p class="section-kicker">ECONOMIC CLOUD EXPERIMENT</p>
+        <h2 id="cloud-heading"><span class="ar">تجربة ذرية للتشغيل صغير الأثر</span><span class="en">An atomic small-footprint operations experiment</span></h2>
+        <p class="ar">تعرض `cp.sbay.sa` واجهة تشغيل عامة للمواقع والتطبيقات والتخزين. نقدمها كتجربة هندسية تدعم المنتجين، لا كادعاء بتكلفة مضمونة أو مقارنة مستقلة مع مزود آخر.</p>
+        <p class="en">`cp.sbay.sa` exposes a public operations view for sites, applications and storage. We present it as an engineering experiment supporting the products, not as a guaranteed cost claim or an independently certified provider comparison.</p>
+        <p class="private-note"><strong>QdrantServer:</strong> <span class="ar">مضيف .NET خاص لموفري البيانات والتشغيل والصحة والإدارة. يبقى المصدر خاصًا، ولا تنشر الصفحة إلا هذا الوصف الوظيفي.</span><span class="en">a private .NET host for data, runtime, health and administration providers. Its source stays private; only this functional category is published.</span></p>
+        <a class="text-link" href="https://cp.sbay.sa/" rel="noopener"><span class="ar">افتح لوحة CP العامة</span><span class="en">Open the public CP view</span> ↗</a>
+      </div>
+    </section>
+
+    <section class="dark-band" id="press" aria-labelledby="press-heading">
+      <div class="section-shell press-layout">
+        <div>
+          <p class="section-kicker">PRESS + INVESTMENT</p>
+          <h2 id="press-heading"><span class="ar">مادة صحفية قابلة للفحص</span><span class="en">Press material built for scrutiny</span></h2>
+          <p class="ar">يمكن للصحفيين استخدام الصور المخصصة وفق إذن الاستخدام التحريري. كل ادعاء تقني في هذه الصفحة إما رابط عام أو حقيقة ذات حد معلن، وكل ما قد يكشف أسرارًا تجارية مستبعد.</p>
+          <p class="en">Journalists may use the designated images under the editorial media permission. Every technical statement here is either a public link or a bounded fact; material that could disclose trade secrets is excluded.</p>
+        </div>
+        <div class="press-actions">
+          <a class="button primary" href="https://github.com/sbay-dev/leap2026-pressroom" rel="noopener"><span class="ar">المستودع العام</span><span class="en">Public repository</span> ↗</a>
+          <a class="button secondary" href="https://github.com/sbay-dev/leap2026-pressroom/blob/main/PRESS-NOTES.md" rel="noopener"><span class="ar">النص الصحفي</span><span class="en">Press notes</span> ↗</a>
+          <a class="button secondary" href="https://github.com/sbay-dev/leap2026-pressroom/blob/main/MEDIA-LICENSE.md" rel="noopener"><span class="ar">إذن الصور</span><span class="en">Media permission</span> ↗</a>
+        </div>
+        <div class="licensing-card">
+          <p class="product-index">BRAND LICENSING</p>
+          <h3><span class="ar">من جودة المنتج إلى ترخيص العلامة</span><span class="en">From product quality to brand licensing</span></h3>
+          <p class="ar">SBAY تعرض محفظة خدمات تقنية في سياق الفئة 42. أي ترخيص للعلامة أو شراكة تشغيلية يخضع للعناية الواجبة، والتحقق من السجل الرسمي، واتفاق مكتوب.</p>
+          <p class="en">SBAY presents a technology-services portfolio in a Class 42 context. Any trademark licence or operating partnership is subject to due diligence, official registry confirmation and a written agreement.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell transparency" aria-labelledby="transparency-heading">
+      <div class="section-heading">
+        <p class="section-kicker">TRANSPARENCY</p>
+        <h2 id="transparency-heading"><span class="ar">الجدة تُوثّق، والسر يبقى سرًا</span><span class="en">Evidence is documented; secrets stay secret</span></h2>
+      </div>
+      <div class="transparency-grid">
+        <div><strong><span class="ar">سجل مصدر</span><span class="en">Source record</span></strong><p><span class="ar">بصمات SHA-256 للصفحات العامة ومعرّفات commits دون نسخ المصدر الخاص.</span><span class="en">SHA-256 hashes of public pages and commit identifiers without copying private source.</span></p></div>
+        <div><strong><span class="ar">بوابة إفصاح</span><span class="en">Disclosure gate</span></strong><p><span class="ar">تفشل آليًا عند وجود مفاتيح أو نماذج أو أرشيفات أو عبارات تمكين محظورة.</span><span class="en">Fails automatically on keys, model payloads, archives or prohibited enabling language.</span></p></div>
+        <div><strong><span class="ar">ادعاء محدود</span><span class="en">Bounded claims</span></strong><p><span class="ar">لا شراكة رسمية، لا تفوق MTEB عام، لا عائد استثماري مضمون.</span><span class="en">No official partnership, no general MTEB superiority, no guaranteed investment return.</span></p></div>
+        <div><strong><span class="ar">خصوصية افتراضية</span><span class="en">Privacy by default</span></strong><p><span class="ar">لا تحليلات، لا ملفات تعريف ارتباط، ولا نماذج تجمع بيانات داخل الصفحة.</span><span class="en">No analytics, cookies or data-collection forms on this page.</span></p></div>
+      </div>
+      <p class="audit-id">SBAY-LEAP-DEEPFEST-20260831T020340Z</p>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>SBAY</strong>
+      <span><span class="ar">غرفة صحافة مستقلة · الرياض 2026</span><span class="en">Independent pressroom · Riyadh 2026</span></span>
+    </div>
+    <p><span class="ar">ليست هذه صفحة رسمية لـLEAP أو DeepFest ولا تتضمن تأييدًا من منظميهما.</span><span class="en">This is not an official LEAP or DeepFest page and carries no organizer endorsement.</span></p>
+  </footer>
+
+  <dialog class="lightbox" data-dialog>
+    <button type="button" data-close aria-label="Close">×</button>
+    <img data-dialog-image alt="">
+  </dialog>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

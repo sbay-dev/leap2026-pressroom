@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://leap2026.sbay.sa/sitemap.xml

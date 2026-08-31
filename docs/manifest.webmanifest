@@ -1,0 +1,16 @@
+{
+  "name": "SBAY LEAP + DeepFest 2026 Pressroom",
+  "short_name": "SBAY Pressroom",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#040815",
+  "theme_color": "#040815",
+  "icons": [
+    {
+      "src": "./assets/sbay-cube.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

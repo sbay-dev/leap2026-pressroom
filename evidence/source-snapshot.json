@@ -1,0 +1,100 @@
+{
+  "schema": "sbay.leap2026.public-source-snapshot.v1",
+  "auditId": "SBAY-LEAP-DEEPFEST-20260831T020340Z",
+  "capturedAtUtc": "2026-08-31T02:03:40Z",
+  "eventContext": {
+    "leap": {
+      "dates": "2026-08-31/2026-09-03",
+      "venue": "Riyadh Exhibition & Convention Centre, Malham",
+      "organizer": "Tahaluf",
+      "source": "https://onegiantleap.com/about-us/key-information"
+    },
+    "deepFest": {
+      "dates": "2026-08-31/2026-09-03",
+      "relationship": "Co-located with LEAP",
+      "source": "https://deepfest.com/"
+    },
+    "sbayPosition": "Independent participant; no organizer affiliation claimed."
+  },
+  "publicSurfaces": [
+    {
+      "id": "sarmad-public-page",
+      "url": "https://sbay-dev.github.io/sarmadAi/",
+      "bytes": 107187,
+      "sha256": "f0ba9cbf6ed8ca31c16e496e065ea8c5baf81170a860aaf9080093b5d3811e92"
+    },
+    {
+      "id": "newsboy",
+      "url": "https://newsboy.sbay.sa/",
+      "bytes": 43788,
+      "sha256": "88b0e568d2104b6efd568d1f5e2259d3bfaf2c5ed9c491484810850900041ecb",
+      "publicRelease": "4.3.0 (r47-professional)"
+    },
+    {
+      "id": "ksar",
+      "url": "https://ksar.store/",
+      "bytes": 89141,
+      "sha256": "e4a4133ece7c74e2851002a10a0e8c6f88c4147cef1ebb8a7f0c82223ea884c5"
+    },
+    {
+      "id": "cp",
+      "url": "https://cp.sbay.sa/",
+      "bytes": 21673,
+      "sha256": "7ddd8c2948991def7ed64df1dfb0e888fc385aedf844a7d9979efdde2fe8ad28"
+    }
+  ],
+  "repositoryAnchors": [
+    {
+      "repository": "sbay-dev/sarmadAi",
+      "visibility": "public",
+      "commit": "879b286b5d1f70185638571be60c33f923f6fa14",
+      "tree": "83a8afccdb315b0bb5dfa6564fab853184cae5e4",
+      "publishedFields": ["public page", "public documentation", "public source"]
+    },
+    {
+      "repository": "sbay-dev/QdrantServer",
+      "visibility": "private",
+      "commit": "04a03328249792bee1ad68f9e1d86aa3bc75dc90",
+      "tree": "59505b54964f04bcb279d5b42e332f52715146cc",
+      "publishedFields": ["repository name", "visibility", "functional category"]
+    },
+    {
+      "repository": "sbay-dev/CNS-v00-07-001-official-docs",
+      "visibility": "private",
+      "commit": "aa1d006e949389d82290ced067b842f3f1c1c436",
+      "tree": "46785c0d6e5583d0da4b685abcb932879011fed6",
+      "publishedFields": ["release name", "data-free boundary"]
+    },
+    {
+      "repository": "sbay-dev/cpoly-video-mesh-reproducibility",
+      "visibility": "private",
+      "commit": "98af029434d59cff253ace0acaaee12e8e69b257",
+      "tree": "a5cb74dcd3077812b09faf3b27a62b8a4e54052f",
+      "publishedFields": ["release identity", "public deployment URL", "bounded outcome"]
+    }
+  ],
+  "modelClaimBoundary": {
+    "sarmadV2PublicFacts": {
+      "parameters": "21.7M",
+      "modelSize": "83 MB",
+      "semanticSpace": "12D",
+      "embeddingInterface": "768D"
+    },
+    "universalV3": {
+      "status": "bounded local release-candidate dependency",
+      "mtebSummary": {
+        "taskSpecificWins": ["XQuAD", "Tatoeba"],
+        "taskSpecificLosses": ["Sadeem"],
+        "generalSuperiorityClaim": false
+      }
+    },
+    "zeroReleaseV7": {
+      "release": "v00-07-001",
+      "dataFree": true,
+      "containsWeights": false,
+      "containsTokenizer": false,
+      "containsCorpus": false,
+      "containsOnnxModel": false
+    }
+  }
+}

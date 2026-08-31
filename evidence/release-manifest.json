@@ -1,0 +1,216 @@
+{
+  "schema": "sbay.leap2026.public-release.v1",
+  "auditId": "SBAY-LEAP-DEEPFEST-20260831T020340Z",
+  "capturedAtUtc": "2026-08-31T02:03:40Z",
+  "releaseId": "leap2026-pressroom-1.0.0",
+  "classification": "public-non-enabling-press-material",
+  "fileCount": 41,
+  "releaseRoot": "45160b923fdf7c6c65408e80a33fdbebaa8e5e989fa14c460d27b483308573f1",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 65,
+      "sha256": "883a0be0430ec836fe5f2b8594b6e58130720729ff76e29aa6e7a1c268d856b7"
+    },
+    {
+      "path": ".github/dependabot.yml",
+      "bytes": 203,
+      "sha256": "fb2a78bd75a2f7a177364369ac8eea6960728d284d64f30165b8cf3ac49ca659"
+    },
+    {
+      "path": ".github/workflows/codeql.yml",
+      "bytes": 566,
+      "sha256": "2dccf338ddd8442cf66b8c9c5c295cc76c144b9cae3cf42063dc31fae5be4500"
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "bytes": 1069,
+      "sha256": "f65ca8d36136c1577970b30483912c714bfedb27b782c8c758b6e4c07559fa6b"
+    },
+    {
+      "path": ".github/workflows/public-boundary.yml",
+      "bytes": 560,
+      "sha256": "f8d59abc63dcb187f74f3032722fd1f5992c5d10608ba5a236580d406efff67f"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 62,
+      "sha256": "d589494e4801c5412b9059e8f598b624066e88f9b3bf558be083e0a4273f1e90"
+    },
+    {
+      "path": "docs/_headers",
+      "bytes": 820,
+      "sha256": "706a9556ccc608c3d0867b8e0474dca088ef0e2edca16d16fc8fc5fb77e62afc"
+    },
+    {
+      "path": "docs/.nojekyll",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/404.html",
+      "bytes": 497,
+      "sha256": "eb19c4e68d306aed06de42479bd202707d36af86e3c3c34640ebfa7f3c8e588f"
+    },
+    {
+      "path": "docs/app.js",
+      "bytes": 7921,
+      "sha256": "f28eca6084bd2702731817f5cad5379b73b85a43642bf7f211d1e90093de84f0"
+    },
+    {
+      "path": "docs/assets/press/cp-dashboard.png",
+      "bytes": 1854912,
+      "sha256": "771a927391e581f7bbe70ecfe436f50f074fdd149c511107c71eda8423e8fb54"
+    },
+    {
+      "path": "docs/assets/press/ksar-market.png",
+      "bytes": 1117957,
+      "sha256": "21d9ee380b74695e4cb76bc26e4a7fe4048bdf99d3315e63ea15912cb71ef7b3"
+    },
+    {
+      "path": "docs/assets/press/newsboy-classic-full.png",
+      "bytes": 2638233,
+      "sha256": "c109fa447e6c8ac97b2c5f7ebd64c76e972688e10d85b1b7823e36f1ef5c8a2a"
+    },
+    {
+      "path": "docs/assets/press/newsboy-classic-hero.png",
+      "bytes": 1834280,
+      "sha256": "97dc13da080327a9301f2bc89c87077780badea6bb1e359a90f0e39b4bd68e65"
+    },
+    {
+      "path": "docs/assets/press/newsboy-classic-mobile.png",
+      "bytes": 305455,
+      "sha256": "5d115facd315742f2e139d147ce4ed1967dc99f15f698bd1526125e7220b0f8c"
+    },
+    {
+      "path": "docs/assets/press/og-card.png",
+      "bytes": 268114,
+      "sha256": "794bb56ef839343535e6ef51866c44d8a9268d11cf3772ba2ad31e02ab816c58"
+    },
+    {
+      "path": "docs/assets/sbay-cube.svg",
+      "bytes": 533,
+      "sha256": "fad70025766019b4d7b68dc8d026eaaa63314aabeaf86dc8eefc9a83b4fada40"
+    },
+    {
+      "path": "docs/evidence-match.wasm",
+      "bytes": 114,
+      "sha256": "5e9e5d44601f47d7af3e40a190826ed98225cc360c00ba29eeb2283207a38413"
+    },
+    {
+      "path": "docs/index.html",
+      "bytes": 23194,
+      "sha256": "0922006157e352baf0e786a7dc0d5dee15327cd7bb1c151c57c9f304f07ac11e"
+    },
+    {
+      "path": "docs/manifest.webmanifest",
+      "bytes": 365,
+      "sha256": "acaf452b5a222e71c1950e4f3209eb1875deb51b02d9ebfd9c1af8c3aa6862a0"
+    },
+    {
+      "path": "docs/press-kit.json",
+      "bytes": 1314,
+      "sha256": "1475f1a6f270613290321bc2e85b938375f9579bda6813b5ee3af171194befc0"
+    },
+    {
+      "path": "docs/robots.txt",
+      "bytes": 74,
+      "sha256": "d133908ff010f1f7d7de0ed94ab7ba3e3065435f4b8bc0a47b02b5f54704ed9f"
+    },
+    {
+      "path": "docs/sitemap.xml",
+      "bytes": 276,
+      "sha256": "613c201e45c956985e745722c34a5213e1d3219b60ee08e32a088f57ee37479a"
+    },
+    {
+      "path": "docs/styles.css",
+      "bytes": 13525,
+      "sha256": "b1ffaa1ef01c87ba06ed9ade38a95856e8678f4da34e8152da3b318acad11167"
+    },
+    {
+      "path": "ESPRESSO-OUTREACH.md",
+      "bytes": 2205,
+      "sha256": "127cffb3201cfbf0fcfd0d1cd2fefbdd039c10c39c1b4953f58b243d080aa9f0"
+    },
+    {
+      "path": "evidence/source-snapshot.json",
+      "bytes": 3407,
+      "sha256": "3ba9557912afe0aa2464c83d8c8554a2fb865eb584e0b6169d75151fbddca01c"
+    },
+    {
+      "path": "MEDIA-LICENSE.md",
+      "bytes": 959,
+      "sha256": "046fdeb3be20cec0ef03ec6bab6733a2bc3e4241dcdee6cf18e09e7bfc763e79"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 51456,
+      "sha256": "2456faf25b399a81c6c7c7d5b6e35e2e4187b92163c15ee9b5ee78ad70fe390d"
+    },
+    {
+      "path": "package.json",
+      "bytes": 672,
+      "sha256": "e54fbb0f5f451e6f6ec65de5778041d367faa9f5a9e7ef64f501aee67a2fcdd4"
+    },
+    {
+      "path": "PRESS-NOTES.md",
+      "bytes": 2672,
+      "sha256": "ff210e300611a1b7a2050dbda2b21acd066a4d14809ece7e8f23b643c91b8924"
+    },
+    {
+      "path": "PUBLIC-DISCLOSURE-BOUNDARY.md",
+      "bytes": 2404,
+      "sha256": "c141651151fa4a1943be1656ff70a2bf4051be4b5e1fe36c4b2f5fee07f6d669"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1597,
+      "sha256": "9ad6dcb9dacc53c066f85cfc155950a82819ae7d0790d42fd17b604394c6518c"
+    },
+    {
+      "path": "scripts/build-release-manifest.mjs",
+      "bytes": 2521,
+      "sha256": "bb456a64bcf131d40469dfba42bffb392f552c1229b22cb8172d5456f3accc24"
+    },
+    {
+      "path": "scripts/capture-media.mjs",
+      "bytes": 5687,
+      "sha256": "5282337f57b4bb6ca05ee406bd0232033aa952bcefc6d7b859f98571de93faa9"
+    },
+    {
+      "path": "scripts/check-public-boundary.mjs",
+      "bytes": 3702,
+      "sha256": "95601930c956e7f114d09ad9af32e46e65a9ff8ab89888aaf3a5cd3722ddc395"
+    },
+    {
+      "path": "scripts/compile-wasm.ps1",
+      "bytes": 1058,
+      "sha256": "54f7a310b9696516f57d069833f0e62d9caf9f89b469804c805c51c9bbd8a67a"
+    },
+    {
+      "path": "scripts/verify-live.mjs",
+      "bytes": 1537,
+      "sha256": "2020b8feb63b00363d4e329878fd76c6a749682e4cef4da8049ed8b5dcaed432"
+    },
+    {
+      "path": "scripts/verify-wasm.mjs",
+      "bytes": 1358,
+      "sha256": "abaddd94d91f6ac0b16a61a18b1d94949f3920a176de702ad310a790cec29922"
+    },
+    {
+      "path": "SECURITY.md",
+      "bytes": 730,
+      "sha256": "c2d87bdc648c290c2cbe96c8ebe5fd9a2052277c578557400a58a81bf78d9e77"
+    },
+    {
+      "path": "wasm/evidence_match.rs",
+      "bytes": 244,
+      "sha256": "f74d41c0a222dd6ac6f60379d7d4b1fc81c3fb00b94aa6cc46e046eaa2ab8de1"
+    },
+    {
+      "path": "wrangler.toml",
+      "bytes": 293,
+      "sha256": "6790a82599e71ab481ef18745046200b1053b44d7d5c42aaa1d3ac8ae7bfb968"
+    }
+  ]
+}

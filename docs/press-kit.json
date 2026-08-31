@@ -1,0 +1,47 @@
+{
+  "schema": "sbay.press-kit.v1",
+  "auditId": "SBAY-LEAP-DEEPFEST-20260831T020340Z",
+  "title": "KSAR — SBAY at LEAP + DeepFest 2026",
+  "publisher": "SBAY",
+  "position": "Independent participant",
+  "eventDates": "2026-08-31/2026-09-03",
+  "canonicalUrl": "https://leap2026.sbay.sa/",
+  "products": [
+    {
+      "name": "NewsBoy",
+      "nameAr": "صبي الجرائد",
+      "url": "https://newsboy.sbay.sa/",
+      "summary": "Rights-aware Arabic news discovery."
+    },
+    {
+      "name": "Ksar",
+      "nameAr": "كسار",
+      "url": "https://ksar.store/",
+      "summary": "Arabic-first commerce and live-market experience."
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "name": "Sarmad",
+      "url": "https://sbay-dev.github.io/sarmadAi/"
+    },
+    {
+      "name": "CP",
+      "url": "https://cp.sbay.sa/"
+    }
+  ],
+  "claims": {
+    "generalMtebSuperiority": false,
+    "officialEventPartnership": false,
+    "guaranteedCostSaving": false,
+    "containsModelArtifacts": false
+  },
+  "media": [
+    "assets/press/newsboy-classic-hero.png",
+    "assets/press/newsboy-classic-full.png",
+    "assets/press/newsboy-classic-mobile.png",
+    "assets/press/ksar-market.png",
+    "assets/press/cp-dashboard.png",
+    "assets/press/og-card.png"
+  ]
+}

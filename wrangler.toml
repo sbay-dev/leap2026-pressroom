@@ -1,0 +1,13 @@
+name = "sbay-leap2026-pressroom"
+compatibility_date = "2026-08-31"
+workers_dev = false
+preview_urls = false
+
+routes = [
+  { pattern = "leap2026.sbay.sa", custom_domain = true }
+]
+
+[assets]
+directory = "./docs"
+not_found_handling = "404-page"
+html_handling = "auto-trailing-slash"

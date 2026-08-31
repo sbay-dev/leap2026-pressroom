@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="SBAY cube">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#58ddff"/>
+      <stop offset="1" stop-color="#5ff0bb"/>
+    </linearGradient>
+  </defs>
+  <path d="M48 6 84 26v44L48 90 12 70V26Z" fill="#071226" stroke="url(#g)" stroke-width="5"/>
+  <path d="m12 26 36 21 36-21M48 47v43" fill="none" stroke="url(#g)" stroke-width="4"/>
+  <circle cx="48" cy="47" r="7" fill="#f4c767"/>
+</svg>
