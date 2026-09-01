@@ -212,8 +212,10 @@
       "citationsUrl": "https://newsboy.sbay.sa/#m-citations-section",
       "archiveUrl": "https://newsboy.sbay.sa/#m-archive-section",
       "liveCoverageUrl": "https://newsboy.sbay.sa/coverage/leap-2026",
-      "embeddedReaderUrl": "https://leap2026.sbay.sa/newsboy-reader",
-      "embeddedReaderBoundary": "Read-only same-origin reader for the fixed NewsBoy coverage route. The Worker validates the current source page, fetches the fixed public edition-record API, and renders an accessible script-free view of the attributed titles, summaries, sections, dates, and source links. The preview does not scroll or receive focus; its primary action expands to a full viewport, and closing reloads the live record at the top and restores the original card position and focus. Incomplete upstream HTML or edition data fails visibly instead of serving a stale edition.",
+      "embeddedReaderUrl": "https://newsboy.sbay.sa/coverage/leap-2026",
+      "embeddedReaderBoundary": "Native NewsBoy page embedded directly rather than reconstructed. NewsBoy permits only itself or HTTPS subdomains of sbay.sa as frame ancestors; the pressroom permits only the exact NewsBoy frame origin and applies an explicit sandbox for scripts, same-origin requests, forms and user-initiated popups. The compact preview is non-interactive, expands the same source page to the viewport, and restores the original page position and focus when closed.",
+      "retainedFallbackReaderUrl": "https://leap2026.sbay.sa/newsboy-reader",
+      "retainedFallbackPrimary": false,
       "featuredArticleUrl": "https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412",
       "leap5PaperUrl": "https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412",
       "featuredMedia": [

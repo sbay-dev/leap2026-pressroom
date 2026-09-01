@@ -137,8 +137,14 @@ assert.match(index, /does not mean the material is issued, approved, sponsored o
 assert.match(index, /https:\/\/newsboy\.sbay\.sa\/#m-citations-section/u);
 assert.match(index, /https:\/\/newsboy\.sbay\.sa\/#m-archive-section/u);
 assert.match(index, /https:\/\/newsboy\.sbay\.sa\/coverage\/leap-2026/u);
-assert.match(index, /src="\/newsboy-reader"/u);
-assert.match(index, /data-src="\/newsboy-reader"/u);
+assert.match(
+  index,
+  /src="https:\/\/newsboy\.sbay\.sa\/coverage\/leap-2026"/u
+);
+assert.match(
+  index,
+  /data-src="https:\/\/newsboy\.sbay\.sa\/coverage\/leap-2026"/u
+);
 assert.match(index, /data-newsboy-open/u);
 assert.match(
   index,
@@ -148,12 +154,17 @@ assert.match(index, /data-newsboy-close hidden/u);
 assert.match(index, /scrolling="no"/u);
 assert.match(
   index,
-  /sandbox="allow-popups allow-popups-to-escape-sandbox"/u
+  /sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"/u
 );
 assert.doesNotMatch(
   index,
-  /<iframe[^>]+src="https:\/\/newsboy\.sbay\.sa/iu
+  /<iframe[^>]+src="\/newsboy-reader/iu
 );
+assert.match(index, /نظرة سريعة أولًا، والعدد الكامل بنقرة واحدة/u);
+assert.match(index, /تصفّح أحدث عدد/u);
+assert.match(index, /زيارة المصدر الأصلي/u);
+assert.doesNotMatch(index, /معاينة غير قابلة للتمرير/u);
+assert.doesNotMatch(index, /نافذة العدد الحي · معاينة ساكنة/u);
 assert.doesNotMatch(
   index,
   /coverage\/leap-2026#article-/u
@@ -892,10 +903,18 @@ assert.equal(
 );
 assert.equal(
   newsBoy.embeddedReaderUrl,
+  "https://newsboy.sbay.sa/coverage/leap-2026"
+);
+assert.match(newsBoy.embeddedReaderBoundary, /Native NewsBoy page embedded directly/u);
+assert.equal(
+  newsBoy.retainedFallbackReaderUrl,
   "https://leap2026.sbay.sa/newsboy-reader"
 );
-assert.match(newsBoy.embeddedReaderBoundary, /Read-only same-origin reader/u);
-assert.match(newsBoy.embeddedReaderBoundary, /edition-record API/u);
+assert.equal(newsBoy.retainedFallbackPrimary, false);
+assert.match(
+  newsBoy.embeddedReaderBoundary,
+  /HTTPS subdomains of sbay\.sa as frame ancestors/u
+);
 assert.equal(
   newsBoy.featuredArticleUrl,
   "https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412"
@@ -1029,7 +1048,7 @@ assert.match(
   /Cache-Control: public, max-age=0, must-revalidate, no-transform/u
 );
 assert.match(headers, /script-src 'self' 'wasm-unsafe-eval'/u);
-assert.match(headers, /frame-src 'self'/u);
+assert.match(headers, /frame-src 'self' https:\/\/newsboy\.sbay\.sa/u);
 assert.doesNotMatch(headers, /(?:^|\s)'unsafe-eval'(?:\s|;|$)/u);
 
 const worker = await readFile(path.join(root, "worker.js"), "utf8");
@@ -1154,14 +1173,18 @@ const newsboySectionHtml = index.slice(
   newsboySectionStart,
   newsboySectionEnd
 );
-assert.match(index, /أعلى العدد أولًا، والتصفح الكامل عند الطلب/u);
-assert.match(index, /لا تلتقط المعاينة التمرير أو لوحة المفاتيح/u);
-assert.match(index, /عند النقر يفتح القارئ بملء الشاشة/u);
-assert.match(index, /The edition masthead first, full browsing on demand/u);
-assert.match(index, /clicking opens the reader full screen/u);
-assert.match(index, /closing returns to the same card position/u);
-assert.match(index, /scrolling is enabled only in full-screen mode/u);
-assert.match(index, /src="\/newsboy-reader"/u);
+assert.match(index, /نظرة سريعة أولًا، والعدد الكامل بنقرة واحدة/u);
+assert.match(index, /اطّلع على أحدث عدد من تغطية LEAP وDeepFest/u);
+assert.match(index, /تصفّح أحدث عدد/u);
+assert.match(index, /A quick look first, the full edition in one click/u);
+assert.match(index, /Browse the latest edition/u);
+assert.match(index, /Visit the original source/u);
+assert.match(
+  index,
+  /src="https:\/\/newsboy\.sbay\.sa\/coverage\/leap-2026"/u
+);
+assert.doesNotMatch(index, /لا تلتقط المعاينة التمرير أو لوحة المفاتيح/u);
+assert.doesNotMatch(index, /scrolling is enabled only in full-screen mode/u);
 assert.doesNotMatch(newsboySectionHtml, /طبعة اليوم|Today's edition/u);
 assert.doesNotMatch(
   newsboySectionHtml,

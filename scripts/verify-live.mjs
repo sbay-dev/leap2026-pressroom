@@ -1,7 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
-import { isCompleteNewsboyEdition } from "../worker.js";
 
 const baseUrl = String(
   process.env.PRESSROOM_URL || "https://leap2026.sbay.sa"
@@ -51,15 +50,24 @@ assert.match(
   html,
   /https:\/\/newsboy\.sbay\.sa\/coverage\/leap-2026/u
 );
-assert.match(html, /src="\/newsboy-reader"/u);
-assert.match(html, /scrolling="no"/u);
-assert.match(html, /clicking opens the reader full screen/u);
-assert.match(html, /closing returns to the same card position/u);
-assert.match(html, /scrolling is enabled only in full-screen mode/u);
 assert.match(
   html,
-  /sandbox="allow-popups allow-popups-to-escape-sandbox"/u
+  /src="https:\/\/newsboy\.sbay\.sa\/coverage\/leap-2026"/u
 );
+assert.match(
+  html,
+  /data-src="https:\/\/newsboy\.sbay\.sa\/coverage\/leap-2026"/u
+);
+assert.match(html, /scrolling="no"/u);
+assert.match(html, /A quick look first, the full edition in one click/u);
+assert.match(html, /Browse the latest edition/u);
+assert.match(html, /Visit the original source/u);
+assert.match(
+  html,
+  /sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"/u
+);
+assert.doesNotMatch(html, /src="\/newsboy-reader"/u);
+assert.doesNotMatch(html, /Non-scrollable preview/u);
 assert.doesNotMatch(html, /coverage\/leap-2026#article-/u);
 assert.doesNotMatch(html, /newsboy-leap5-paper\.png/u);
 assert.match(html, /class="newsboy-paper-break"/u);
@@ -151,66 +159,10 @@ assert.ok(html.indexOf('id="adjudication"') < html.indexOf('id="proof"'));
 
 const cacheControl = page.headers.get("cache-control");
 assert.match(cacheControl || "", /(?:^|,)\s*no-transform(?:,|$)/u);
-
-const embeddedReader = await fetch(`${baseUrl}/newsboy-reader`, {
-  redirect: "error",
-  headers: {
-    Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "Sec-Fetch-Dest": "iframe",
-    "Sec-Fetch-Mode": "navigate",
-    "Sec-Fetch-Site": "same-origin"
-  }
-});
-assert.equal(embeddedReader.status, 200, "the live NewsBoy reader must load");
-assert.equal(
-  embeddedReader.headers.get("x-sbay-newsboy-source"),
-  "https://newsboy.sbay.sa/coverage/leap-2026"
-);
-assert.equal(
-  embeddedReader.headers.get("x-sbay-newsboy-upstream-status"),
-  "200"
-);
 assert.match(
-  embeddedReader.headers.get("content-security-policy") || "",
-  /frame-ancestors 'self'/u
+  page.headers.get("content-security-policy") || "",
+  /frame-src 'self' https:\/\/newsboy\.sbay\.sa/u
 );
-assert.match(
-  embeddedReader.headers.get("content-security-policy") || "",
-  /script-src 'none'/u
-);
-assert.equal(embeddedReader.headers.get("x-frame-options"), "SAMEORIGIN");
-const embeddedHtml = await embeddedReader.text();
-assert.equal(
-  isCompleteNewsboyEdition(embeddedHtml),
-  true,
-  "the embedded NewsBoy response must match a supported complete edition"
-);
-if (/data-newsboy-relay="edition-api"/u.test(embeddedHtml)) {
-  assert.equal(
-    embeddedReader.headers.get("x-sbay-newsboy-edition-source"),
-    "https://newsboy.sbay.sa/api/coverage/events/leap-2026/edition"
-  );
-  assert.match(
-    embeddedReader.headers.get("x-sbay-newsboy-article-count") || "",
-    /^[1-9]\d*$/u
-  );
-  assert.match(embeddedHtml, /عناوين وملخصات منسوبة إلى مصادرها/u);
-  assert.match(embeddedHtml, /class="story-grid"/u);
-} else {
-  assert.match(
-    embeddedHtml,
-    /<base href="https:\/\/newsboy\.sbay\.sa\/">/u
-  );
-  assert.match(
-    embeddedHtml,
-    /href="https:\/\/leap2026\.sbay\.sa\/newsboy-assets\/fonts\/fonts\.css/iu
-  );
-  assert.doesNotMatch(
-    embeddedHtml,
-    /href="https:\/\/newsboy\.sbay\.sa\/newsboy-assets\/fonts\//iu
-  );
-}
-assert.doesNotMatch(embeddedHtml, /<script\b/iu);
 
 async function verifyPublishedFile(relativePath) {
   const response = await fetch(`${baseUrl}/${relativePath}`, {
@@ -268,63 +220,6 @@ assert.match(
   /Preserved Cepha concept template, not a model measurement/u
 );
 
-const embeddedFontCssResponse = await fetch(
-  `${baseUrl}/newsboy-assets/fonts/fonts.css?v=20260816-advanced-archive-r4`,
-  {
-    redirect: "error",
-    headers: {
-      Accept: "text/css,*/*;q=0.1",
-      Origin: "null",
-      "Sec-Fetch-Dest": "style",
-      "Sec-Fetch-Mode": "no-cors",
-      "Sec-Fetch-Site": "same-origin"
-    }
-  }
-);
-assert.equal(
-  embeddedFontCssResponse.status,
-  200,
-  "the embedded NewsBoy font stylesheet must load"
-);
-assert.equal(
-  embeddedFontCssResponse.headers.get("access-control-allow-origin"),
-  "*"
-);
-assert.equal(
-  embeddedFontCssResponse.headers.get("cross-origin-resource-policy"),
-  "cross-origin"
-);
-const embeddedFontCss = await embeddedFontCssResponse.text();
-assert.match(
-  embeddedFontCss,
-  /url\(['"]?\/newsboy-assets\/fonts\/Amiri-Regular-400\.ttf/iu
-);
-assert.doesNotMatch(embeddedFontCss, /url\(['"]?\/fonts\//iu);
-
-const embeddedFont = await fetch(
-  `${baseUrl}/newsboy-assets/fonts/Amiri-Regular-400.ttf`,
-  {
-    redirect: "error",
-    headers: {
-      Accept: "font/ttf,*/*;q=0.1",
-      Origin: "null",
-      "Sec-Fetch-Dest": "font",
-      "Sec-Fetch-Mode": "cors",
-      "Sec-Fetch-Site": "same-origin"
-    }
-  }
-);
-assert.equal(embeddedFont.status, 200, "an embedded NewsBoy font must load");
-assert.equal(embeddedFont.headers.get("access-control-allow-origin"), "*");
-assert.equal(
-  embeddedFont.headers.get("cross-origin-resource-policy"),
-  "cross-origin"
-);
-assert.match(
-  embeddedFont.headers.get("content-type") || "",
-  /^(?:font\/|application\/(?:octet-stream|x-font-ttf|font-sfnt))/iu
-);
-
 const directNewsboy = await fetch(
   "https://newsboy.sbay.sa/coverage/leap-2026",
   { redirect: "error" }
@@ -332,8 +227,9 @@ const directNewsboy = await fetch(
 assert.equal(directNewsboy.status, 200);
 assert.match(
   directNewsboy.headers.get("content-security-policy") || "",
-  /frame-ancestors 'none'/u
+  /frame-ancestors 'self' https:\/\/\*\.sbay\.sa/u
 );
+assert.equal(directNewsboy.headers.get("x-frame-options"), null);
 
 const kit = await fetch(`${baseUrl}/press-kit.json`);
 assert.equal(kit.status, 200);
@@ -396,9 +292,14 @@ assert.equal(
 );
 assert.equal(
   newsBoy.embeddedReaderUrl,
+  "https://newsboy.sbay.sa/coverage/leap-2026"
+);
+assert.match(newsBoy.embeddedReaderBoundary, /Native NewsBoy page embedded directly/u);
+assert.equal(
+  newsBoy.retainedFallbackReaderUrl,
   `${baseUrl}/newsboy-reader`
 );
-assert.match(newsBoy.embeddedReaderBoundary, /fails visibly/u);
+assert.equal(newsBoy.retainedFallbackPrimary, false);
 assert.equal(
   newsBoy.featuredArticleUrl,
   "https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412"

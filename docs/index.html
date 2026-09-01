@@ -794,58 +794,54 @@
           <i class="newsboy-paper-fold" aria-hidden="true"></i>
           <header class="newsboy-paper-mast">
             <div class="newsboy-paper-edition">
-              <span><span class="ar">قارئ حي</span><span class="en">Live reader</span></span>
+              <span><span class="ar">أحدث عدد</span><span class="en">Latest edition</span></span>
               <span>LEAP × DeepFest</span>
-              <span><span class="ar">من مصدر NewsBoy</span><span class="en">From NewsBoy</span></span>
+              <span><span class="ar">من مصادره الأصلية</span><span class="en">From original sources</span></span>
             </div>
             <p class="newsboy-paper-name"><span class="ar">صَبِيّ الجرايد</span><span class="en">NEWSBOY</span></p>
-            <p><span class="ar">العدد يتحدث من المصدر؛ لا لقطة ثابتة ولا عنوان مجمّد</span><span class="en">The edition updates from its source — not a frozen capture or headline</span></p>
+            <p><span class="ar">تغطية متجددة من مصادرها، في عدد واحد سهل التصفح</span><span class="en">Continuously updated coverage from its sources, in one easy-to-browse edition</span></p>
           </header>
           <div class="newsboy-paper-lead">
             <div>
-              <p class="newsboy-paper-desk"><span class="ar">نافذة العدد الحي · معاينة ساكنة</span><span class="en">Live edition window · still preview</span></p>
-              <h3 id="newsboy-live-heading"><span class="ar">أعلى العدد أولًا، والتصفح الكامل عند الطلب</span><span class="en">The edition masthead first, full browsing on demand</span></h3>
-              <p><span class="ar">تعرض البطاقة أعلى أحدث عدد منشور في مسار تغطية LEAP وDeepFest من NewsBoy. لا تلتقط المعاينة التمرير أو لوحة المفاتيح؛ وعند النقر يفتح القارئ بملء الشاشة، ثم يعيدك الإغلاق إلى موضع البطاقة نفسه. يبقى زر مستقل لفتح المصدر الرسمي.</span><span class="en">The card shows the top of the latest edition published in NewsBoy's LEAP and DeepFest coverage route. The preview captures neither scrolling nor keyboard focus; clicking opens the reader full screen, and closing returns to the same card position. A separate button keeps the canonical source available.</span></p>
+              <p class="newsboy-paper-desk"><span class="ar">معاينة أحدث عدد</span><span class="en">Latest edition preview</span></p>
+              <h3 id="newsboy-live-heading"><span class="ar">نظرة سريعة أولًا، والعدد الكامل بنقرة واحدة</span><span class="en">A quick look first, the full edition in one click</span></h3>
+              <p><span class="ar">اطّلع على أحدث عدد من تغطية LEAP وDeepFest، واستعرض أبرز الأخبار والملخصات في مكان واحد. افتح العدد كاملًا للتصفح، أو انتقل مباشرة إلى المصدر الأصلي.</span><span class="en">See the latest LEAP and DeepFest edition and browse its leading stories and summaries in one place. Open the full edition, or go directly to the original source.</span></p>
               <a class="newsboy-paper-action" href="https://newsboy.sbay.sa/coverage/leap-2026" target="_blank" rel="noopener noreferrer">
-                <span class="ar">افتح المصدر في نافذة مستقلة</span><span class="en">Open the source separately</span> ↗
+                <span class="ar">زيارة المصدر الأصلي</span><span class="en">Visit the original source</span> ↗
               </a>
             </div>
             <div class="newsboy-reader-slot">
-              <div class="newsboy-reader-shell" data-newsboy-reader data-expanded="false" data-mode="preview" role="group" aria-label="NewsBoy live edition preview">
+              <div class="newsboy-reader-shell" data-newsboy-reader data-expanded="false" data-mode="preview" role="group" aria-label="NewsBoy latest edition preview">
                 <iframe
                   id="newsboy-live-frame"
                   class="newsboy-reader-frame"
-                  src="/newsboy-reader"
+                  src="https://newsboy.sbay.sa/coverage/leap-2026"
                   data-newsboy-frame
-                  data-src="/newsboy-reader"
+                  data-src="https://newsboy.sbay.sa/coverage/leap-2026"
                   title="NewsBoy live LEAP and DeepFest edition"
                   loading="lazy"
                   scrolling="no"
                   tabindex="-1"
                   aria-hidden="true"
-                  sandbox="allow-popups allow-popups-to-escape-sandbox"
+                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
                   referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 <a class="newsboy-reader-open" href="https://newsboy.sbay.sa/coverage/leap-2026" target="_blank" rel="noopener noreferrer" data-newsboy-open aria-expanded="false">
                   <span class="newsboy-reader-open-label">
-                    <b><span class="ar">تصفّح العدد بملء الشاشة</span><span class="en">Browse the edition full screen</span></b>
-                    <small><span class="ar">الإغلاق يعيدك إلى البطاقة نفسها</span><span class="en">Close to return to this card</span></small>
+                    <b><span class="ar">تصفّح أحدث عدد</span><span class="en">Browse the latest edition</span></b>
+                    <small><span class="ar">انقر لفتح العدد كاملًا</span><span class="en">Open the complete edition</span></small>
                   </span>
                 </a>
                 <button class="newsboy-reader-close" type="button" data-newsboy-close hidden>
                   <span aria-hidden="true">×</span>
-                  <span class="ar">إغلاق والعودة للقسم</span>
-                  <span class="en">Close and return to section</span>
+                  <span class="ar">العودة إلى الصفحة</span>
+                  <span class="en">Return to the page</span>
                 </button>
-                <p class="newsboy-reader-status" aria-hidden="true">
-                  <span class="ar">معاينة غير قابلة للتمرير</span>
-                  <span class="en">Non-scrollable preview</span>
-                </p>
               </div>
             </div>
           </div>
           <footer>
-            <span class="ar">يبني إطار العرض نسخة قراءة ساكنة قابلة للوصول من سجل العدد الحي في NewsBoy دون حفظها كلقطة قديمة؛ يصبح التمرير متاحًا داخل وضع ملء الشاشة فقط، وتفتح روابط المواد مصادرها في نافذة مستقلة.</span>
-            <span class="en">The display frame builds an accessible static reading view from NewsBoy's live edition record without preserving it as a stale capture; scrolling is enabled only in full-screen mode, and article links open their sources separately.</span>
+            <span class="ar">تُعرض العناوين والملخصات منسوبة إلى مصادرها الأصلية، ولا تمثل تحققًا مستقلًا من كل مادة.</span>
+            <span class="en">Headlines and summaries remain attributed to their original sources and do not represent independent verification of every item.</span>
           </footer>
         </article>
         <div class="press-media-strip newsboy-media-strip">

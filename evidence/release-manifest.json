@@ -2,10 +2,10 @@
   "schema": "sbay.leap2026.public-release.v1",
   "auditId": "SBAY-LEAP-DEEPFEST-20260831T043818Z",
   "capturedAtUtc": "2026-08-31T04:38:18.532Z",
-  "releaseId": "leap2026-pressroom-2.10.1",
+  "releaseId": "leap2026-pressroom-2.11.0",
   "classification": "public-non-enabling-press-material",
   "fileCount": 93,
-  "releaseRoot": "59404ff896dfdbf9c015e0537cc41fa75e2520f5432e1dde0a806972ba8f9fdd",
+  "releaseRoot": "9b28ffa9a8c49b528f012e94b085d025f4268b0263e29e145a194f4b8120142d",
   "files": [
     {
       "path": ".gitattributes",
@@ -79,8 +79,8 @@
     },
     {
       "path": "docs/_headers",
-      "bytes": 786,
-      "sha256": "4e82a45f9d14c5cfe87ff48c6a5fb0fda09f7252b96301eef585a5056244dc34"
+      "bytes": 810,
+      "sha256": "26a565f82f0532152e80f54af6e1b344cb5d70f93583b43ae01a50a6e7c48399"
     },
     {
       "path": "docs/.nojekyll",
@@ -109,8 +109,8 @@
     },
     {
       "path": "docs/app.js",
-      "bytes": 17914,
-      "sha256": "7d5c44d959b6901d022a7b54e12fc7b0cb7d54839375c58719c573a51e0ee2a9"
+      "bytes": 17918,
+      "sha256": "366de8caddbde063b3fb0612fb502d495d666415f9c0a4ab5a17f690801d976d"
     },
     {
       "path": "docs/assets/evidence/cns-cultural-newsboy-a3-20260819.json",
@@ -239,8 +239,8 @@
     },
     {
       "path": "docs/index.html",
-      "bytes": 95532,
-      "sha256": "ad028e98094fbc8f6e6e3311f625960f101a2d71684e17d60d7f8d464bc2f217"
+      "bytes": 94749,
+      "sha256": "c1bef0b110cb986b611cdc9f4bbe5960859daf50011321c1a4a26a00293d2d14"
     },
     {
       "path": "docs/k-space.js",
@@ -259,8 +259,8 @@
     },
     {
       "path": "docs/press-kit.json",
-      "bytes": 22018,
-      "sha256": "50bf82c76d8cb58ae168ff07f5178352b6458ca78f086d33a15269c542846d60"
+      "bytes": 22035,
+      "sha256": "7667707d2b0119c4b790f6e11a61dfadbde685b47679e138b08dac45a365850d"
     },
     {
       "path": "docs/robots.txt",
@@ -280,7 +280,7 @@
     {
       "path": "docs/trace-evidence.json",
       "bytes": 6193,
-      "sha256": "baf8cf011da572f20e8979e0cc14b7fec01c0716c5e59dfcbd474c900158b39e"
+      "sha256": "07f7c5d74f82479fc92d55be45a93bb9b2fb7ec93645857fb57d457fe06327ba"
     },
     {
       "path": "ESPRESSO-OUTREACH.md",
@@ -350,12 +350,12 @@
     {
       "path": "package-lock.json",
       "bytes": 49902,
-      "sha256": "037cd6719ed2fa0bc8394dffca8f09b68ba2d0bf4e9fa077feb4e0c1d5b5b51e"
+      "sha256": "f18fdcffd453112f61befc65c042f02f9f4f4db47ce390497f114e92f39c86c9"
     },
     {
       "path": "package.json",
       "bytes": 1733,
-      "sha256": "53d2ca243d85e8b958820f1b613dd962d085bad534ab093b5b0e9b472a9e8a10"
+      "sha256": "4d3223637c724a7c20c9992698cd6636ad947bca79e254da99977b95c115bf95"
     },
     {
       "path": "PNU-MEDIA-CENTER-BRIEF.md",
@@ -369,13 +369,13 @@
     },
     {
       "path": "PUBLIC-DISCLOSURE-BOUNDARY.md",
-      "bytes": 17136,
-      "sha256": "0675f54ff3daa49449c4d05b333d600da588c442a6323a6908caf1c39f9d2dd5"
+      "bytes": 17145,
+      "sha256": "6e6d44fa13e76caad1b8256c18d164d35247e91b6c3012f49b56bbe7cedf235b"
     },
     {
       "path": "README.md",
-      "bytes": 9602,
-      "sha256": "03c637dc857d82404699e63dce694e18c3c26de4a0fc0fbdf5f98cfba2cce189"
+      "bytes": 9567,
+      "sha256": "10dcf4e83713cd26953197b567e0fa59ebd8c097affd33c3720972fbc1836697"
     },
     {
       "path": "scripts/build-k-space-public.mjs",
@@ -429,8 +429,8 @@
     },
     {
       "path": "scripts/check-public-boundary.mjs",
-      "bytes": 55641,
-      "sha256": "1f966704b9c9997f0ce21d6dc65d877a566fb183ab8fb4b159a808e2503e0740"
+      "bytes": 56445,
+      "sha256": "232cdbcea9514c68ff692e5b6dd3da6dd1cca6d370153fc3aa4a17dd11e9bfda"
     },
     {
       "path": "scripts/compile-wasm.ps1",
@@ -439,8 +439,8 @@
     },
     {
       "path": "scripts/verify-live.mjs",
-      "bytes": 23054,
-      "sha256": "1acb4e2af26dc40a58cea6e69052d5c521fde9d7c4dda6e26ff5b82389069d92"
+      "bytes": 20163,
+      "sha256": "bbf8ff66b7cd6f29b58e4903c2bdcb3bdd4ae533fd060370a71104976fd00d13"
     },
     {
       "path": "scripts/verify-wasm.mjs",

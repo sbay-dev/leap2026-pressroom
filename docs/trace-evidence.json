@@ -1,6 +1,6 @@
 {
   "schema": "sbay.leap2026.octet-bloom-trace.v1",
-  "release": "2.10.1",
+  "release": "2.11.0",
   "reference": "20:13",
   "interpretation": {
     "visibleGrain": "one bit",
@@ -179,8 +179,8 @@
     },
     {
       "path": "docs/index.html",
-      "bytes": 95532,
-      "sha256": "ad028e98094fbc8f6e6e3311f625960f101a2d71684e17d60d7f8d464bc2f217"
+      "bytes": 94749,
+      "sha256": "c1bef0b110cb986b611cdc9f4bbe5960859daf50011321c1a4a26a00293d2d14"
     },
     {
       "path": "docs/styles.css",

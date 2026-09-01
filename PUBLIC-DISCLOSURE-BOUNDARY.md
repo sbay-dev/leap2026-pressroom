@@ -119,19 +119,19 @@ Audit ID: `SBAY-LEAP-DEEPFEST-20260831T043818Z`
   WebGPU remains the primary live renderer where available. A public trace
   board binds each phrase to the implementing file, public call contract and
   recomputable compute amount.
-- The NewsBoy LEAP and DeepFest preview remains behind a fixed same-origin,
-  read-only display boundary. The preview cannot scroll or receive keyboard
-  focus. Its primary action expands the same sanitized relay to a full-viewport
-  reader; closing reloads the live route at the top and returns focus and scroll
-  position to the original card. A separate action opens the canonical NewsBoy
-  coverage URL. For the modern layout, the Worker validates the fixed coverage
-  page and renders an accessible script-free view from the fixed public edition
-  API; titles, summaries, sections, dates, and source links remain attributed to
-  that live record. The legacy layout strips scripts and uses only the restricted
-  NewsBoy font proxy. Incomplete HTML or edition data fails visibly rather than
-  presenting a stale capture. NewsBoy retains its global `frame-ancestors
-  'none'` policy, and no general proxy or simulated page-turning library is
-  introduced.
+- The NewsBoy LEAP and DeepFest preview embeds the original
+  `https://newsboy.sbay.sa/coverage/leap-2026` page rather than a reconstructed
+  reader. NewsBoy permits framing only by itself or HTTPS subdomains of
+  `sbay.sa` through `frame-ancestors 'self' https://*.sbay.sa`; the public
+  Worker omits `X-Frame-Options` because it cannot express that allowlist. The
+  pressroom CSP restricts the frame to the exact NewsBoy origin, and the iframe
+  sandbox permits only the scripts, same-origin requests, forms and
+  user-initiated popups required by the native reader. The compact preview does
+  not accept interaction; its primary action expands the same source page to the
+  viewport, and closing reloads it at the top while restoring the original page
+  position and focus. The old same-origin `/newsboy-reader` relay remains an
+  inactive compatibility fallback, not the published reader path. The separate
+  NewsBoy administrator surface remains non-embeddable.
 - The functional category of QdrantServer: a private .NET provider host for
   data, runtime, health, and administrative integrations.
 - The public name `منصّة تحكيم اللغة العربية`, its live URL, public release

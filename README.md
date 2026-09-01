@@ -109,22 +109,22 @@ cross-device acceptance, sales or audience performance, raw IR broadcasting,
 or correction of the reported CPOLY freeze.
 
 NewsBoy is represented by its supplied classic editorial and modern culture
-edition captures plus a live semantic LEAP and DeepFest preview. The still
-preview cannot scroll or receive keyboard focus; its primary action expands the
-same sanitized relay to a full-viewport reader. Closing reloads the live route
-at the top and restores the original card position and focus. A separate action
-opens the canonical NewsBoy coverage route at
-`https://newsboy.sbay.sa/coverage/leap-2026`.
+edition captures plus its native LEAP and DeepFest page embedded directly from
+`https://newsboy.sbay.sa/coverage/leap-2026`. The compact preview is
+non-interactive; its primary action expands the same original page to a
+full-viewport reader. Closing reloads the route at the top and restores the
+original card position and focus. A separate action opens the canonical source
+in a new tab.
 
-The iframe uses the same-origin `/newsboy-reader` boundary in `worker.js`.
-That boundary validates only the fixed NewsBoy coverage route, then fetches the
-fixed public edition-record API and renders an accessible, script-free reading
-view of its attributed titles, summaries, sections, dates, and source links.
-The legacy paper layout remains supported through script removal and the
-restricted `/fonts/` proxy. Incomplete source HTML or edition data fails
-visibly, and no saved capture is served as the latest issue. NewsBoy itself
-retains `frame-ancestors 'none'`; the pressroom does not weaken its global
-embedding policy or expose a general-purpose proxy.
+NewsBoy permits framing only by itself or HTTPS subdomains of `sbay.sa` through
+`frame-ancestors 'self' https://*.sbay.sa`; its public Worker omits
+`X-Frame-Options` because that header cannot express the scoped allowlist. The
+pressroom CSP permits only the exact `https://newsboy.sbay.sa` frame origin, and
+the iframe keeps scripts, same-origin application requests, forms and
+user-initiated popups inside an explicit sandbox. The former same-origin
+`/newsboy-reader` relay remains available as an inactive compatibility fallback
+but is no longer the published reader path. The separate NewsBoy administrator
+surface remains non-embeddable.
 
 The pressroom also includes the public **ADG Arabic Adjudication Platform** as
 a separate institutional research announcement. Its two-sample public pilot

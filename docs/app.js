@@ -65,14 +65,14 @@ function setNewsboyReaderState(expanded, mode) {
     newsboyReader.setAttribute("aria-modal", "true");
     newsboyReader.setAttribute(
       "aria-label",
-      "NewsBoy live edition full-screen reader"
+      "NewsBoy latest edition full-screen reader"
     );
   } else {
     newsboyReader.setAttribute("role", "group");
     newsboyReader.removeAttribute("aria-modal");
     newsboyReader.setAttribute(
       "aria-label",
-      "NewsBoy live edition preview"
+      "NewsBoy latest edition preview"
     );
   }
 }
