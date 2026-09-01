@@ -2,3 +2,5 @@
 *.png binary
 *.wasm binary
 *.woff2 binary
+cepha-templates/k-space-concept-v1/source/docs/k-space.js binary -eol
+cepha-templates/k-space-concept-v1/source/scripts/build-k-space-public.snapshot.mjs binary -eol

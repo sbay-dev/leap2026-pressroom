@@ -5,12 +5,12 @@
   "releaseId": "leap2026-pressroom-2.9.0",
   "classification": "public-non-enabling-press-material",
   "fileCount": 92,
-  "releaseRoot": "a93e6b160234eed74eb5361377d210aca948ed442964969c67d43762c17ad3ae",
+  "releaseRoot": "96542b4e6313078fa95c59db67f8cd32336890d5b7b121fb29c328fa133f6c44",
   "files": [
     {
       "path": ".gitattributes",
-      "bytes": 61,
-      "sha256": "7795f2f4876c6c727a029b3ed3e12dca5e63c117a8989340d683a48a926a6f24"
+      "bytes": 227,
+      "sha256": "211bf1e1ae8f3fd52667620db1db7acbf59451ab339bfd418b21c970edec5f29"
     },
     {
       "path": ".github/dependabot.yml",
