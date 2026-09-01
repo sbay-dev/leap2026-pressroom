@@ -164,6 +164,27 @@ assert.match(index, /newsboy-classic-editorial\.png/u);
 assert.doesNotMatch(index, /آلاف المنتجات|موردون معتمدون|من أيام إلى دقائق/u);
 assert.match(index, /without presenting a guaranteed forecast/iu);
 assert.match(index, /without a guaranteed savings claim/iu);
+assert.match(index, /id="top" aria-labelledby="manuscript-opening-heading"/u);
+assert.match(index, /من كلام الله نبدأ/u);
+assert.match(index, /We begin with the Qur'an/u);
+assert.match(index, /taha-rasm-birmingham\.png/u);
+assert.match(index, /Mingana Islamic Arabic 1572a/u);
+assert.match(index, /لم تُستخدم الصورة مدخلًا للتعرّف البصري أو لاستخراج النص/u);
+assert.match(index, /the image was not used for OCR or text extraction/u);
+assert.match(index, /5\/5/u);
+assert.match(index, /4\/4/u);
+assert.match(
+  index,
+  /assets\/evidence\/quran-20-13-raw-abstract-equivalence-public\.json/u
+);
+assert.ok(
+  index.indexOf('id="top"') < index.indexOf('id="presentation"'),
+  "the manuscript witness must precede the platform presentation"
+);
+assert.ok(
+  index.indexOf('id="presentation"') < index.indexOf('id="problem"'),
+  "the platform presentation must precede the problem narrative"
+);
 
 const narrativeSections = [
   'id="problem"',
@@ -301,6 +322,55 @@ assert.equal(pressKit.claims.ksarUniversalCrossDeviceAcceptance, false);
 assert.equal(pressKit.claims.ksarCpolyFreezeResolved, false);
 assert.equal(pressKit.claims.ksarSalesMetricsClaimed, false);
 assert.equal(pressKit.claims.ksarAudienceMetricsClaimed, false);
+assert.equal(pressKit.claims.quranRasmManuscriptWasMachineInput, false);
+assert.equal(pressKit.claims.quranRasmOcrClaim, false);
+assert.equal(pressKit.claims.quranRasmAloneRecoversGrammar, false);
+assert.equal(pressKit.claims.quranRasmIndependentSyntaxGold, false);
+assert.equal(pressKit.claims.quranRasmQuranWideGeneralization, false);
+assert.equal(pressKit.claims.quranRasmNeuralModelCapability, false);
+
+const quranRasmEvidence = JSON.parse(await readFile(
+  path.join(
+    root,
+    "docs",
+    "assets",
+    "evidence",
+    "quran-20-13-raw-abstract-equivalence-public.json"
+  ),
+  "utf8"
+));
+assert.equal(
+  quranRasmEvidence.schema,
+  "sbay.quran-20-13.raw-abstract-equivalence-public.v1"
+);
+assert.equal(quranRasmEvidence.status, "VERIFIED_VERTICAL_SLICE");
+assert.equal(quranRasmEvidence.theorem.id, "T(20:13,E)");
+assert.equal(quranRasmEvidence.manuscriptWitness.machineInput, false);
+assert.equal(quranRasmEvidence.manuscriptWitness.ocrClaimed, false);
+assert.equal(quranRasmEvidence.representation.exactSourceEnvelopeRetained, true);
+assert.equal(
+  quranRasmEvidence.representation.combiningMarksRemovedOnlyFromRasmProjection,
+  true
+);
+assert.equal(quranRasmEvidence.measuredResult.rawWordBlocks, 5);
+assert.equal(quranRasmEvidence.measuredResult.exactSlotMappings, 5);
+assert.equal(quranRasmEvidence.measuredResult.localRelations, 4);
+assert.equal(quranRasmEvidence.measuredResult.matchedLocalRelations, 4);
+assert.equal(quranRasmEvidence.measuredResult.canonicalSignatureMatched, true);
+assert.equal(quranRasmEvidence.claimBoundary.quranWideGeneralization, false);
+assert.equal(quranRasmEvidence.claimBoundary.rasmAloneRecoversGrammar, false);
+assert.equal(quranRasmEvidence.claimBoundary.independentSyntaxGold, false);
+assert.equal(quranRasmEvidence.claimBoundary.neuralTrainingClaim, false);
+assert.equal(
+  pressKit.quranRasm.publicEvidence,
+  "https://leap2026.sbay.sa/assets/evidence/quran-20-13-raw-abstract-equivalence-public.json"
+);
+assert.equal(
+  pressKit.quranRasm.sourceProofSha256,
+  "918213b976facba45e8796fbe24590cff7ab0ddb17fd0f6cfda0c88301b35849"
+);
+assert.equal(pressKit.quranRasm.boundedResult.exactSlotMappings, "5/5");
+assert.equal(pressKit.quranRasm.boundedResult.matchedLocalRelations, "4/4");
 
 const modelGraphPath = path.join(
   root,
@@ -1080,6 +1150,12 @@ assert.match(annex, /20:13/u, "the annex must cite its public verse reference");
 assert.match(annex, /taha-rasm-birmingham\.png/u, "the authorised manuscript embedding must stay");
 assert.match(annex, /Mingana Islamic Arabic 1572a/u, "the manuscript attribution is mandatory");
 assert.match(annex, /Public domain via Wikimedia Commons/u, "the licence statement is mandatory");
+assert.match(annex, /ما الذي تطابق فعلًا؟/u);
+assert.match(annex, /What actually matched\?/u);
+assert.match(
+  annex,
+  /quran-20-13-raw-abstract-equivalence-public\.json/u
+);
 assert.match(annex, /codePoint &amp; 0xFF/u, "the annex must publish the derivation");
 assert.match(annex, /flag_bit/u);
 assert.match(annex, /flag_popcount/u);

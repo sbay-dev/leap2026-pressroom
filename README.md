@@ -18,7 +18,19 @@ it does not contain the private Arabic analyser. GitHub Pages does not support
 repository-defined response headers, so the mirror uses GitHub's default
 headers and is not the canonical security boundary.
 
-The narrative follows:
+The narrative now opens with the public-domain Birmingham Quran manuscript as
+a historical witness, before any commercial or technical presentation. The
+opening summarizes the bounded Quran 20:13 raw-to-abstract result: the exact
+naturally written source remains preserved, combining marks are removed only
+from the rasm projection, five of five word blocks match five abstract slots,
+and four of four local typed relations are preserved under pinned
+location-bound morphology evidence. The manuscript image itself was not used
+for OCR or text extraction. The result is not independent syntax gold, blind
+grammar recovery, a model capability, or Quran-wide generalization. Its
+public-safe record is
+`docs/assets/evidence/quran-20-13-raw-abstract-equivalence-public.json`.
+
+The subsequent platform narrative follows:
 
 `Problem → Platform → Intelligence → Outcomes → Vision`
 

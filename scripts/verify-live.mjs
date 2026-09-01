@@ -65,6 +65,18 @@ assert.doesNotMatch(html, /newsboy-leap5-paper\.png/u);
 assert.match(html, /class="newsboy-paper-break"/u);
 assert.match(html, /newsboy-cultural-edition\.png/u);
 assert.match(html, /newsboy-classic-editorial\.png/u);
+assert.match(html, /id="top" aria-labelledby="manuscript-opening-heading"/u);
+assert.match(html, /من كلام الله نبدأ/u);
+assert.match(html, /We begin with the Qur'an/u);
+assert.match(html, /taha-rasm-birmingham\.png/u);
+assert.match(html, /Mingana Islamic Arabic 1572a/u);
+assert.match(html, /the image was not used for OCR or text extraction/u);
+assert.match(
+  html,
+  /assets\/evidence\/quran-20-13-raw-abstract-equivalence-public\.json/u
+);
+assert.ok(html.indexOf('id="top"') < html.indexOf('id="presentation"'));
+assert.ok(html.indexOf('id="presentation"') < html.indexOf('id="problem"'));
 assert.match(html, /id="adg-cipher"[^>]*data-loop-seconds="5"/u);
 assert.match(html, /class="cipher-note"/u);
 assert.match(
@@ -105,6 +117,23 @@ assert.doesNotMatch(annexHtml, /faithful port/iu);
 assert.doesNotMatch(annexHtml, /RasmMaskHex|RasmRecordHex/iu);
 const manuscript = await fetch(`${baseUrl}/assets/press/taha-rasm-birmingham.png`, { method: "GET" });
 assert.equal(manuscript.status, 200, "the manuscript witness must be published");
+const quranRasmEvidenceResponse = await fetch(
+  `${baseUrl}/assets/evidence/quran-20-13-raw-abstract-equivalence-public.json`
+);
+assert.equal(quranRasmEvidenceResponse.status, 200);
+const quranRasmEvidence = await quranRasmEvidenceResponse.json();
+assert.equal(
+  quranRasmEvidence.schema,
+  "sbay.quran-20-13.raw-abstract-equivalence-public.v1"
+);
+assert.equal(quranRasmEvidence.status, "VERIFIED_VERTICAL_SLICE");
+assert.equal(quranRasmEvidence.manuscriptWitness.machineInput, false);
+assert.equal(quranRasmEvidence.manuscriptWitness.ocrClaimed, false);
+assert.equal(quranRasmEvidence.measuredResult.exactSlotMappings, 5);
+assert.equal(quranRasmEvidence.measuredResult.matchedLocalRelations, 4);
+assert.equal(quranRasmEvidence.measuredResult.canonicalSignatureMatched, true);
+assert.equal(quranRasmEvidence.claimBoundary.quranWideGeneralization, false);
+assert.equal(quranRasmEvidence.claimBoundary.independentSyntaxGold, false);
 assert.ok(html.indexOf('id="problem"') < html.indexOf('id="platform"'));
 assert.ok(html.indexOf('id="platform"') < html.indexOf('id="intelligence"'));
 assert.ok(html.indexOf('id="intelligence"') < html.indexOf('id="outcomes"'));
@@ -307,6 +336,15 @@ assert.equal(pressKit.schema, "sbay.press-kit.v2");
 assert.equal(pressKit.tradeName.arabic, "منصة تموين");
 assert.equal(pressKit.tradeName.english, "SBAY");
 assert.equal(pressKit.publisher, "SBAY");
+assert.equal(
+  pressKit.quranRasm.publicEvidence,
+  "https://leap2026.sbay.sa/assets/evidence/quran-20-13-raw-abstract-equivalence-public.json"
+);
+assert.equal(pressKit.quranRasm.boundedResult.exactSlotMappings, "5/5");
+assert.equal(pressKit.quranRasm.boundedResult.matchedLocalRelations, "4/4");
+assert.equal(pressKit.claims.quranRasmManuscriptWasMachineInput, false);
+assert.equal(pressKit.claims.quranRasmOcrClaim, false);
+assert.equal(pressKit.claims.quranRasmQuranWideGeneralization, false);
 assert.equal(
   pressKit.publicSignals.basis,
   "Directly verifiable public operating evidence"

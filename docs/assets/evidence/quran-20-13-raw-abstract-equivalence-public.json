@@ -1,0 +1,76 @@
+{
+  "schema": "sbay.quran-20-13.raw-abstract-equivalence-public.v1",
+  "recordedDate": "2026-08-19",
+  "classification": "bounded-deterministic-tool-proof",
+  "status": "VERIFIED_VERTICAL_SLICE",
+  "theorem": {
+    "id": "T(20:13,E)",
+    "textualReference": "Quran 20:13",
+    "statement": "Under pinned, location-bound morphology evidence E, an independently built raw word-block system projects to a typed graph structurally equivalent to the sealed five-slot graph.",
+    "conditionalOnPinnedEvidence": true
+  },
+  "sourceDocuments": [
+    {
+      "logicalName": "QURAN_20_13_RAW_ABSTRACT_EQUIVALENCE_PROOF_20260819.md",
+      "bytes": 11512,
+      "sha256": "918213b976facba45e8796fbe24590cff7ab0ddb17fd0f6cfda0c88301b35849"
+    },
+    {
+      "logicalName": "QURANIC_RASM_GRAMMAR_EVIDENCE_MANIFEST_20260819.json",
+      "bytes": 13654,
+      "sha256": "3f96423d205fc2446e9d22f106796574ad327c8e30111727e86f475e5b0a604b"
+    }
+  ],
+  "manuscriptWitness": {
+    "name": "Birmingham Quran manuscript",
+    "catalogueId": "Mingana Islamic Arabic 1572a",
+    "holdingInstitution": "Cadbury Research Library, University of Birmingham",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Birmingham_Quran_manuscript_full.jpg",
+    "rights": "Public domain via Wikimedia Commons",
+    "role": "Historical visual witness only",
+    "machineInput": false,
+    "ocrClaimed": false
+  },
+  "representation": {
+    "input": "Exact naturally written, vocalized Arabic sample",
+    "exactSourceEnvelopeRetained": true,
+    "combiningMarksRemovedOnlyFromRasmProjection": true,
+    "rawBuilderIndependentOfFrozenPattern": true
+  },
+  "measuredResult": {
+    "exactSourceByteCoverage": true,
+    "innerUtf8Bytes": 84,
+    "rawWordBlocks": 5,
+    "consumedWordBlocks": 5,
+    "abstractSlots": 5,
+    "exactSlotMappings": 5,
+    "localRelations": 4,
+    "matchedLocalRelations": 4,
+    "contextLinkPreserved": true,
+    "graphConnected": true,
+    "graphAcyclic": true,
+    "oneHeadPerDependent": true,
+    "canonicalSignatureMatched": true,
+    "comparisonStatus": "AcceptedExact",
+    "deterministicFiles": 15,
+    "deterministicFilesByteIdenticalAcrossCurrentAndTwoReplays": true
+  },
+  "falsifiability": {
+    "connectorMutationRejected": true,
+    "objectBindingMutationRejected": true,
+    "wordDropMutationRejected": true,
+    "diacriticOnlyMutation": "AcceptedCompatible_not_exact"
+  },
+  "claimBoundary": {
+    "quranWideGeneralization": false,
+    "rasmAloneRecoversDotsOrVowels": false,
+    "rasmAloneRecoversGrammar": false,
+    "blindGrammarRecovery": false,
+    "independentSyntaxGold": false,
+    "heldOutAccuracyMetric": false,
+    "neuralTrainingClaim": false,
+    "cnsModelCapabilityClaim": false,
+    "expertCouncilAdopted": false,
+    "publicationReadyResearchClaim": false
+  }
+}

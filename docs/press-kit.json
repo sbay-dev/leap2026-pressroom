@@ -50,6 +50,8 @@
       { "value": "48710171", "basis": "public-link", "source": "https://leap2026.sbay.sa/assets/evidence/cns-model-graph-public.json", "note": "Stored initializer element count across all dtypes." },
       { "value": "128", "basis": "public-link", "source": "https://leap2026.sbay.sa/assets/evidence/cns-model-graph-public.json", "note": "Fixed sequence length declared by the trained ONNX input interface." },
       { "value": "6", "basis": "recomputable", "source": "https://leap2026.sbay.sa/assets/evidence/cns-model-graph-public.json", "note": "Public-safe engineering block array length." },
+      { "value": "5/5", "basis": "public-link", "source": "https://leap2026.sbay.sa/assets/evidence/quran-20-13-raw-abstract-equivalence-public.json", "note": "All five raw word blocks matched the five sealed abstract slots under pinned location-bound morphology evidence." },
+      { "value": "4/4", "basis": "public-link", "source": "https://leap2026.sbay.sa/assets/evidence/quran-20-13-raw-abstract-equivalence-public.json", "note": "All four sealed local typed relations were preserved in the bounded Quran 20:13 vertical slice." },
       { "value": "10,800", "basis": "declared", "source": "authenticated CNSEmbedding record 0ebf9988 plus byte-identical local report", "note": "Owned whole-corpus article count; source document identity verified, workload not rerun." },
       { "value": "2,053,810", "basis": "declared", "source": "authenticated CNSEmbedding record 0ebf9988 plus byte-identical local report", "note": "Paired non-padding R9 token count; source document identity verified, workload not rerun." },
       { "value": "0.780556", "basis": "declared", "source": "authenticated CNSEmbedding record 0ebf9988 plus byte-identical local report", "note": "R9+A3 whole-corpus descriptive accuracy; not independent holdout and not rerun by the pressroom." },
@@ -77,6 +79,34 @@
     "Smart procurement recommendations",
     "Predictive demand insights"
   ],
+  "quranRasm": {
+    "title": "Birmingham Quran manuscript opening and bounded Quran 20:13 raw-to-abstract equivalence",
+    "publicEvidence": "https://leap2026.sbay.sa/assets/evidence/quran-20-13-raw-abstract-equivalence-public.json",
+    "sourceProofSha256": "918213b976facba45e8796fbe24590cff7ab0ddb17fd0f6cfda0c88301b35849",
+    "sourceEvidenceManifestSha256": "3f96423d205fc2446e9d22f106796574ad327c8e30111727e86f475e5b0a604b",
+    "manuscript": {
+      "catalogueId": "Mingana Islamic Arabic 1572a",
+      "holdingInstitution": "Cadbury Research Library, University of Birmingham",
+      "imageSource": "https://commons.wikimedia.org/wiki/File:Birmingham_Quran_manuscript_full.jpg",
+      "rights": "Public domain via Wikimedia Commons",
+      "historicalWitnessOnly": true,
+      "machineInput": false,
+      "ocrClaimed": false
+    },
+    "boundedResult": {
+      "textualReference": "Quran 20:13",
+      "exactSourceRetained": true,
+      "combiningMarksRemovedOnlyFromRasmProjection": true,
+      "exactSlotMappings": "5/5",
+      "matchedLocalRelations": "4/4",
+      "contextLinkPreserved": true,
+      "connected": true,
+      "acyclic": true,
+      "canonicalSignatureMatched": true
+    },
+    "classification": "Verified deterministic vertical slice; candidate Tool research; not Expert Council adopted.",
+    "claimBoundary": "The result is conditional on pinned morphology evidence for one sample. It is not OCR, neural training, independent syntax gold, blind grammar recovery, rasm-only restoration, or Quran-wide generalization."
+  },
   "kSpace": {
     "publicArtifact": "https://leap2026.sbay.sa/assets/evidence/cns-model-graph-public.json",
     "integrityArtifact": "https://leap2026.sbay.sa/assets/evidence/cns-model-graph-public.integrity.json",
@@ -279,7 +309,13 @@
     "culturalProductionActivation": false,
     "culturalMeasuredGpuPowerDraw": false,
     "culturalCurrentMarketPriceClaim": false,
-    "culturalProfitabilityClaim": false
+    "culturalProfitabilityClaim": false,
+    "quranRasmManuscriptWasMachineInput": false,
+    "quranRasmOcrClaim": false,
+    "quranRasmAloneRecoversGrammar": false,
+    "quranRasmIndependentSyntaxGold": false,
+    "quranRasmQuranWideGeneralization": false,
+    "quranRasmNeuralModelCapability": false
   },
   "media": [
     "assets/press/adg-adjudication-platform.png",
@@ -291,6 +327,7 @@
     "assets/press/newsboy-classic-mobile.png",
     "assets/press/ksar-market.png",
     "assets/press/cp-dashboard.png",
+    "assets/press/taha-rasm-birmingham.png",
     "assets/press/og-card.png"
   ]
 }

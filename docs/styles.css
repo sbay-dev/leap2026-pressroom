@@ -160,6 +160,171 @@ nav a:hover { color: var(--cyan); }
   cursor: pointer;
 }
 
+.manuscript-opening {
+  min-height: 100svh;
+  padding: clamp(7rem, 11vw, 9rem) max(1.2rem, calc((100vw - var(--max)) / 2)) clamp(3.5rem, 7vw, 5.5rem);
+  display: grid;
+  grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
+  grid-template-areas:
+    "copy witness"
+    "evidence evidence"
+    "boundary boundary";
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-content: center;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(244, 199, 103, .24);
+  background:
+    radial-gradient(circle at 82% 16%, rgba(244, 199, 103, .16), transparent 31rem),
+    radial-gradient(circle at 8% 76%, rgba(88, 221, 255, .08), transparent 28rem),
+    linear-gradient(180deg, rgba(4, 8, 21, .08), rgba(4, 8, 21, .94)),
+    #060811;
+}
+.manuscript-opening::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .28;
+  background-image:
+    linear-gradient(rgba(244, 199, 103, .05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 199, 103, .05) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, #000, transparent 92%);
+}
+.manuscript-opening-copy {
+  grid-area: copy;
+  align-self: center;
+  max-width: 640px;
+}
+.manuscript-kicker {
+  margin: 0 0 .9rem;
+  color: var(--gold);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+.manuscript-opening h1 {
+  margin: 0 0 1.25rem;
+  max-width: 680px;
+  font-size: clamp(3.3rem, 7.4vw, 7rem);
+  line-height: .96;
+  letter-spacing: -.06em;
+  background: linear-gradient(125deg, #fff8df, var(--gold) 55%, #fff);
+  color: transparent;
+  background-clip: text;
+}
+.manuscript-lead {
+  margin: 0;
+  color: #d7e1e9;
+  font-size: clamp(1.02rem, 1.65vw, 1.22rem);
+  line-height: 1.95;
+}
+.manuscript-result {
+  margin: 1.25rem 0 0;
+  padding: .9rem 1rem;
+  border-inline-start: 3px solid var(--gold);
+  border-radius: var(--md-sys-shape-corner-medium);
+  color: var(--muted);
+  background: rgba(244, 199, 103, .055);
+  font-size: .92rem;
+  line-height: 1.9;
+}
+.manuscript-actions {
+  margin-top: 1.35rem;
+  display: flex;
+  gap: .8rem;
+  flex-wrap: wrap;
+}
+.manuscript-actions .primary {
+  color: #271b00;
+  background: linear-gradient(130deg, #f4c767, #ffe6a8);
+  box-shadow: 0 12px 40px rgba(244, 199, 103, .18);
+}
+.manuscript-witness {
+  grid-area: witness;
+  margin: 0;
+  align-self: center;
+  overflow: hidden;
+  border: 1px solid rgba(244, 199, 103, .28);
+  border-radius: clamp(18px, 3vw, 30px);
+  background: #17130d;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .38);
+}
+.manuscript-credit {
+  margin: 0;
+  padding: .72rem 1rem;
+  color: #c8b992;
+  background: rgba(17, 14, 9, .94);
+  border-bottom: 1px solid rgba(244, 199, 103, .18);
+  font-size: .7rem;
+  line-height: 1.65;
+}
+.manuscript-credit a {
+  color: #ffe3a0;
+  text-underline-offset: .2em;
+}
+.manuscript-witness img {
+  display: block;
+  width: 100%;
+  height: clamp(250px, 31vw, 440px);
+  object-fit: cover;
+  object-position: center;
+  background: #d7c49f;
+  filter: sepia(.1) saturate(.86) contrast(1.04);
+}
+.manuscript-witness figcaption {
+  padding: .9rem 1.05rem 1rem;
+  color: #c9c5b8;
+  border-top: 1px solid rgba(244, 199, 103, .18);
+  font-size: .78rem;
+  line-height: 1.75;
+}
+.manuscript-witness figcaption b { color: #fff0c7; }
+.manuscript-evidence {
+  grid-area: evidence;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .8rem;
+}
+.manuscript-evidence > div {
+  min-height: 104px;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgba(244, 199, 103, .18);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(244, 199, 103, .08), rgba(13, 29, 54, .56));
+}
+.manuscript-evidence strong {
+  color: var(--gold);
+  font: 800 clamp(1.55rem, 3vw, 2.35rem) Consolas, monospace;
+  line-height: 1.15;
+}
+.manuscript-evidence strong span {
+  color: inherit;
+  font: inherit;
+}
+.manuscript-evidence > div > span {
+  margin-top: .3rem;
+  color: var(--muted);
+  font-size: .78rem;
+}
+.manuscript-boundary {
+  grid-area: boundary;
+  margin: 0;
+  color: #aebdca;
+  font-size: .8rem;
+  line-height: 1.8;
+}
+.manuscript-boundary a {
+  color: var(--gold);
+  font-weight: 700;
+  text-decoration: none;
+}
+
 .hero {
   min-height: 100vh;
   padding: 8rem max(1.2rem, calc((100vw - var(--max)) / 2)) 5rem;
@@ -209,7 +374,7 @@ nav a:hover { color: var(--cyan); }
   direction: ltr;
   text-align: start;
 }
-.hero h1 {
+.hero .tamween-title {
   margin: .25rem 0 1.2rem;
   font-size: clamp(4.8rem, 12vw, 9.5rem);
   line-height: .86;
@@ -218,7 +383,7 @@ nav a:hover { color: var(--cyan); }
   color: transparent;
   background-clip: text;
 }
-.hero h1 small {
+.hero .tamween-title small {
   display: block;
   margin-top: 1.5rem;
   color: var(--text);
@@ -1866,6 +2031,20 @@ body.newsboy-reader-open .site-header {
 
 @media (max-width: 900px) {
   nav { display: none; }
+  .manuscript-opening {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "witness"
+      "copy"
+      "evidence"
+      "boundary";
+    padding-top: 6.8rem;
+    text-align: center;
+  }
+  .manuscript-opening-copy { margin: 0 auto; }
+  .manuscript-actions { justify-content: center; }
+  .manuscript-credit,
+  .manuscript-witness figcaption { text-align: start; }
   .hero,
   .flagship,
   .flagship.reverse,
@@ -1915,8 +2094,13 @@ body.newsboy-reader-open .site-header {
 @media (max-width: 560px) {
   .site-header { height: 66px; }
   .brand small { display: none; }
+  .manuscript-opening { padding-top: 5.8rem; }
+  .manuscript-opening h1 { font-size: clamp(3rem, 15vw, 4.7rem); }
+  .manuscript-actions .button { width: 100%; }
+  .manuscript-witness img { height: 230px; }
+  .manuscript-evidence { grid-template-columns: 1fr; }
   .hero { min-height: auto; }
-  .hero h1 { font-size: clamp(4rem, 25vw, 7rem); }
+  .hero .tamween-title { font-size: clamp(4rem, 25vw, 7rem); }
   .hero-actions .button,
   .press-actions .button { width: 100%; }
   .metric-wall,

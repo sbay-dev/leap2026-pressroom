@@ -8,6 +8,24 @@ Audit ID: `SBAY-LEAP-DEEPFEST-20260831T043818Z`
   `SBAY` in English. The two names must not be combined or transliterated.
 - Verifiable signals only: live product URLs anyone can open, the public
   evidence cited on the page, and the declared pre-seed stage.
+- The Birmingham Quran manuscript crop as the first visual witness on the
+  homepage, with its `Mingana Islamic Arabic 1572a` attribution, holding
+  institution, Wikimedia Commons source, and public-domain statement kept
+  directly beside the image. The manuscript image is historical context only;
+  it was not a machine input, OCR surface, or source of extracted text.
+- The bounded Quran 20:13 raw-to-abstract vertical-slice result recorded on
+  2026-08-19: exact natural-Arabic source retention, removal of combining
+  marks only from the rasm projection, `5/5` raw-word-block to abstract-slot
+  mappings, `4/4` local typed relations preserved, preserved context,
+  connected acyclic topology, and a matching canonical structural signature.
+  This result is conditional on pinned location-bound morphology evidence and
+  remains candidate deterministic Tool research, not Expert Council-adopted
+  publication evidence.
+- The Quran 20:13 result must not be described as OCR, neural training, a CNS
+  model capability, independent syntax gold, blind grammar discovery,
+  rasm-only restoration of dots or vocalization, held-out accuracy, or
+  Quran-wide generalization. The manuscript witness and the computed textual
+  sample must remain explicitly distinct.
 - Procurement modules presented as enterprise platform scope, with detailed
   availability explicitly deferred to the live demo and contract.
 - AI supplier matching, document analysis, recommendations, and demand
