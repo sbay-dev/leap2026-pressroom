@@ -29,6 +29,12 @@ for OCR or text extraction. The result is not independent syntax gold, blind
 grammar recovery, a model capability, or Quran-wide generalization. Its
 public-safe record is
 `docs/assets/evidence/quran-20-13-raw-abstract-equivalence-public.json`.
+The same opening links this research context to the live
+`https://adg.sbay.sa/` adjudication platform and invites linguists and
+researchers to participate during the LEAP announcement. Parser predictions
+remain hidden until independent review is complete, and the invitation is
+explicitly not presented as prior adoption or independent adjudication of the
+Quran 20:13 proof.
 
 The subsequent platform narrative follows:
 

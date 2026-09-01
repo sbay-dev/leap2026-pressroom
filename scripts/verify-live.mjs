@@ -75,6 +75,13 @@ assert.match(
   html,
   /assets\/evidence\/quran-20-13-raw-abstract-equivalence-public\.json/u
 );
+assert.match(html, /من الشاهد إلى التحكيم البشري/u);
+assert.match(html, /From the witness to human adjudication/u);
+assert.match(html, /href="https:\/\/adg\.sbay\.sa\/"/u);
+assert.match(html, /شارك في التحكيم الآن/u);
+assert.match(html, /Join adjudication now/u);
+assert.match(html, /parser predictions remain hidden until independent review is complete/iu);
+assert.match(html, /Participation is an invitation to verify, not prior adoption of this proof/u);
 assert.ok(html.indexOf('id="top"') < html.indexOf('id="presentation"'));
 assert.ok(html.indexOf('id="presentation"') < html.indexOf('id="problem"'));
 assert.match(html, /id="adg-cipher"[^>]*data-loop-seconds="5"/u);
@@ -342,9 +349,18 @@ assert.equal(
 );
 assert.equal(pressKit.quranRasm.boundedResult.exactSlotMappings, "5/5");
 assert.equal(pressKit.quranRasm.boundedResult.matchedLocalRelations, "4/4");
+assert.equal(
+  pressKit.quranRasm.adjudicationInvitation.url,
+  "https://adg.sbay.sa/"
+);
+assert.equal(
+  pressKit.quranRasm.adjudicationInvitation.participationImpliesProofAdoption,
+  false
+);
 assert.equal(pressKit.claims.quranRasmManuscriptWasMachineInput, false);
 assert.equal(pressKit.claims.quranRasmOcrClaim, false);
 assert.equal(pressKit.claims.quranRasmQuranWideGeneralization, false);
+assert.equal(pressKit.claims.quranRasmAlreadyIndependentlyAdjudicated, false);
 assert.equal(
   pressKit.publicSignals.basis,
   "Directly verifiable public operating evidence"

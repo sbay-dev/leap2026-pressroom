@@ -105,7 +105,15 @@
       "canonicalSignatureMatched": true
     },
     "classification": "Verified deterministic vertical slice; candidate Tool research; not Expert Council adopted.",
-    "claimBoundary": "The result is conditional on pinned morphology evidence for one sample. It is not OCR, neural training, independent syntax gold, blind grammar recovery, rasm-only restoration, or Quran-wide generalization."
+    "claimBoundary": "The result is conditional on pinned morphology evidence for one sample. It is not OCR, neural training, independent syntax gold, blind grammar recovery, rasm-only restoration, or Quran-wide generalization.",
+    "adjudicationInvitation": {
+      "context": "LEAP 2026 invitation to independent human review",
+      "platform": "ADG Arabic Adjudication Platform",
+      "url": "https://adg.sbay.sa/",
+      "parserPredictionsHiddenUntilIndependentReviewComplete": true,
+      "participationImpliesProofAdoption": false,
+      "proofAlreadyIndependentlyAdjudicated": false
+    }
   },
   "kSpace": {
     "publicArtifact": "https://leap2026.sbay.sa/assets/evidence/cns-model-graph-public.json",
@@ -315,7 +323,8 @@
     "quranRasmAloneRecoversGrammar": false,
     "quranRasmIndependentSyntaxGold": false,
     "quranRasmQuranWideGeneralization": false,
-    "quranRasmNeuralModelCapability": false
+    "quranRasmNeuralModelCapability": false,
+    "quranRasmAlreadyIndependentlyAdjudicated": false
   },
   "media": [
     "assets/press/adg-adjudication-platform.png",

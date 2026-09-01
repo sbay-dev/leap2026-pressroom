@@ -26,6 +26,13 @@ Audit ID: `SBAY-LEAP-DEEPFEST-20260831T043818Z`
   rasm-only restoration of dots or vocalization, held-out accuracy, or
   Quran-wide generalization. The manuscript witness and the computed textual
   sample must remain explicitly distinct.
+- The manuscript opening may invite linguists and researchers to the existing
+  public ADG Arabic Adjudication Platform as part of the LEAP 2026
+  announcement. The invitation must retain the blind-review boundary: parser
+  predictions stay hidden until independent review is complete. It must also
+  say that participation is an invitation to verify and does not mean the
+  Quran 20:13 proof has already received independent syntax-gold adjudication
+  or Expert Council adoption.
 - Procurement modules presented as enterprise platform scope, with detailed
   availability explicitly deferred to the live demo and contract.
 - AI supplier matching, document analysis, recommendations, and demand

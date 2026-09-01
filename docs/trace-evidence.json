@@ -1,6 +1,6 @@
 {
   "schema": "sbay.leap2026.octet-bloom-trace.v1",
-  "release": "2.10.0",
+  "release": "2.10.1",
   "reference": "20:13",
   "interpretation": {
     "visibleGrain": "one bit",
@@ -179,13 +179,13 @@
     },
     {
       "path": "docs/index.html",
-      "bytes": 93205,
-      "sha256": "113aa107ed0083f92c06888237080e5c87f6d15074a3243d7d99687be03c2b9a"
+      "bytes": 95532,
+      "sha256": "ad028e98094fbc8f6e6e3311f625960f101a2d71684e17d60d7f8d464bc2f217"
     },
     {
       "path": "docs/styles.css",
-      "bytes": 68575,
-      "sha256": "4a15dfcbcf12fc52d1e2a8fac6dee74421bf1895b0594c729dc78af96970b2c2"
+      "bytes": 70333,
+      "sha256": "5f2a1bbed94544da96b1e0dfc19af0986db1fd197fac51cfa32cb7e21453c95e"
     },
     {
       "path": "wasm/evidence_match.rs",

@@ -177,6 +177,15 @@ assert.match(
   index,
   /assets\/evidence\/quran-20-13-raw-abstract-equivalence-public\.json/u
 );
+assert.match(index, /من الشاهد إلى التحكيم البشري/u);
+assert.match(index, /From the witness to human adjudication/u);
+assert.match(index, /href="https:\/\/adg\.sbay\.sa\/"/u);
+assert.match(index, /شارك في التحكيم الآن/u);
+assert.match(index, /Join adjudication now/u);
+assert.match(index, /تبقى توقعات المحلل مخفية حتى تكتمل المراجعة المستقلة/u);
+assert.match(index, /parser predictions remain hidden until independent review is complete/iu);
+assert.match(index, /المشاركة دعوة للتحقق، وليست اعتمادًا مسبقًا لهذا البرهان/u);
+assert.match(index, /Participation is an invitation to verify, not prior adoption of this proof/u);
 assert.ok(
   index.indexOf('id="top"') < index.indexOf('id="presentation"'),
   "the manuscript witness must precede the platform presentation"
@@ -328,6 +337,7 @@ assert.equal(pressKit.claims.quranRasmAloneRecoversGrammar, false);
 assert.equal(pressKit.claims.quranRasmIndependentSyntaxGold, false);
 assert.equal(pressKit.claims.quranRasmQuranWideGeneralization, false);
 assert.equal(pressKit.claims.quranRasmNeuralModelCapability, false);
+assert.equal(pressKit.claims.quranRasmAlreadyIndependentlyAdjudicated, false);
 
 const quranRasmEvidence = JSON.parse(await readFile(
   path.join(
@@ -371,6 +381,23 @@ assert.equal(
 );
 assert.equal(pressKit.quranRasm.boundedResult.exactSlotMappings, "5/5");
 assert.equal(pressKit.quranRasm.boundedResult.matchedLocalRelations, "4/4");
+assert.equal(
+  pressKit.quranRasm.adjudicationInvitation.url,
+  "https://adg.sbay.sa/"
+);
+assert.equal(
+  pressKit.quranRasm.adjudicationInvitation
+    .parserPredictionsHiddenUntilIndependentReviewComplete,
+  true
+);
+assert.equal(
+  pressKit.quranRasm.adjudicationInvitation.participationImpliesProofAdoption,
+  false
+);
+assert.equal(
+  pressKit.quranRasm.adjudicationInvitation.proofAlreadyIndependentlyAdjudicated,
+  false
+);
 
 const modelGraphPath = path.join(
   root,
