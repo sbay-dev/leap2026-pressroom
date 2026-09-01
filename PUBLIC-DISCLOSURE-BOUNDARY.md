@@ -26,6 +26,51 @@ Audit ID: `SBAY-LEAP-DEEPFEST-20260831T043818Z`
 - Facts already published at `sbay-dev.github.io/sarmadAi`.
 - A bounded embedding result summary: task-specific wins on XQuAD and Tatoeba,
   a loss on Sadeem, and no claim of general MTEB superiority.
+- Values declared from the authenticated CNS Cultural NewsBoy A3 computed-cost
+  ledger pinned at CNSEmbedding commit
+  `0ebf9988eff77078ea61e99d500092e10cd8baef`. An unauthenticated verification
+  request returned HTTP 404, so the repository record must not be described as
+  a publicly accessible independent source. The pressroom publishes a bounded
+  disclosure copy. Local copies of the human report and token-accounting rules
+  matched the repository Git blob identities byte-for-byte; this verifies
+  document identity, not an independent workload replay. Permitted values
+  include the exact owned-corpus article/token counts,
+  Frozen-R9 and R9+A3 descriptive classification metrics and deltas, applied
+  corrections/regressions, protected-vector identity result, measured
+  throughput, per-million-token GPU/CPU time coefficients, memory peaks, and
+  the conservative GPU-energy upper bound.
+- Cultural A3 whole-corpus quality must be labelled descriptive because the
+  corpus includes training, development, and calibration rows. Independent
+  fresh-holdout evidence remains the quality authority. Candidate and
+  production activation remain disabled.
+- The RTX A1000 energy figures may be described only as upper bounds derived
+  from the enforced 50 W power limit because `power.draw` was unavailable.
+  The internal 0.55 USD/GPU-hour example is a declared scenario, not a current
+  market quote, and is omitted from headline investor claims.
+- The trained-only CNS V33 engineering-graph identity:
+  `cns-native-v33-newsboy-768-research`,
+  `V33_NEWSBOY_EMBEDDING_RELEASE_20260823`, model SHA-256
+  `8847832167ec643c66461ef8c6b7182b48286821d0fd20fd600414bf51f5dfef`,
+  and canonical value-independent structural SHA-256
+  `51740c50a975b5c510f1685a939abd26fe9ef6ea0ba65fc10b6c59fffb9c67f1`.
+- The public-safe engineering projection may publish exact aggregate counts
+  for graph inputs and outputs, operator types, operator nodes, directed tensor
+  edges, initializers, stored initializer elements, topological depth, grouped
+  renderer blocks, per-depth block populations, internal block-edge totals,
+  and cross-block edge totals. It may also publish the declared compute-count
+  convention and operator counts while leaving total MAC/FLOP unavailable.
+- A continuously redrawn Canvas2D topological-depth view with pointer,
+  keyboard, zoom, block selection, reduced-motion, and browser-side SHA-256
+  and count verification. Every point represents one authentic ONNX operator
+  at its measured topological depth. Vertical lanes, within-cell jitter, and
+  the gold scan line are display mechanics; the Z axis is unused and the scan
+  line is not inference execution.
+- A preserved Cepha conceptual fallback at `/cepha-k-space-concept/`, provided
+  it remains `noindex`, identifies itself visibly as non-evidentiary, uses only
+  the bounded deterministic sample contract, and points back to the measured
+  engineering graph as the authoritative source for scientific claims. This
+  route preserves presentation capability; it does not replace unavailable
+  evidence.
 - Repository visibility, commit identifiers, file hashes, and release roots
   that do not reveal private content.
 - A deliberately small WebAssembly evidence module: equality, bit extraction,
@@ -49,14 +94,19 @@ Audit ID: `SBAY-LEAP-DEEPFEST-20260831T043818Z`
   WebGPU remains the primary live renderer where available. A public trace
   board binds each phrase to the implementing file, public call contract and
   recomputable compute amount.
-- The existing semantic NewsBoy LEAP and DeepFest paper reader, relayed through
-  a fixed same-origin read-only display boundary. The preview cannot scroll or
-  receive keyboard focus; a deliberate click opens a viewport-filling reader.
-  Closing reloads the source at the top and restores the pressroom section.
-  The relay strips scripts, opens article links separately, proxies only the
-  NewsBoy font family, and fails visibly rather than presenting a stale capture.
-  NewsBoy retains its global `frame-ancestors 'none'` policy, and no general
-  proxy or simulated page-turning library is introduced.
+- The NewsBoy LEAP and DeepFest preview remains behind a fixed same-origin,
+  read-only display boundary. The preview cannot scroll or receive keyboard
+  focus. Its primary action expands the same sanitized relay to a full-viewport
+  reader; closing reloads the live route at the top and returns focus and scroll
+  position to the original card. A separate action opens the canonical NewsBoy
+  coverage URL. For the modern layout, the Worker validates the fixed coverage
+  page and renders an accessible script-free view from the fixed public edition
+  API; titles, summaries, sections, dates, and source links remain attributed to
+  that live record. The legacy layout strips scripts and uses only the restricted
+  NewsBoy font proxy. Incomplete HTML or edition data fails visibly rather than
+  presenting a stale capture. NewsBoy retains its global `frame-ancestors
+  'none'` policy, and no general proxy or simulated page-turning library is
+  introduced.
 - The functional category of QdrantServer: a private .NET provider host for
   data, runtime, health, and administrative integrations.
 - The public name `منصّة تحكيم اللغة العربية`, its live URL, public release
@@ -107,8 +157,25 @@ recorded way for a reader to check it.
   `numericClaims.entries` with a basis and a source. See the rule below.
 - Model weights, checkpoints, ONNX payloads, tokenizer or vocabulary files.
 - Corpora, evaluation rows, private prompts, labels, or expert assignments.
-- Proprietary routing rules, thresholds, masks, graph topology, or training
-  recipes.
+- Raw vectors, activations, model weights, initializer values, initializer
+  names or content hashes, internal node names, internal tensor names, exact
+  node-to-node wiring, learned expert maps, or any other enabling graph detail.
+- Claims that the trained-only V33 graph establishes an authentic zero
+  checkpoint, zero-versus-trained graph equality, tensor displacement,
+  training-effect metrics, Neural Persistence, representation-topology change,
+  or curvature. The local zero-named v1 epoch-1 candidate is not an authentic
+  architecture-matched step-0 checkpoint.
+- Claims that the visual saddle proves a Riemannian manifold, geodesic path,
+  negative curvature, hyperbolic structure, or neural tree-likeness.
+- Presenting the preserved Cepha conceptual fallback, its sample nodes, or its
+  visual depth as an authentic checkpoint, trained-model capture, engineering
+  graph, activation measurement, or before/after-training comparison.
+- Claims that live browser animation is live model inference, a production
+  database stream, eBPF/kernel tracing, storage flush, disk persistence, or
+  physical first-touch.
+- Proprietary routing rules, thresholds, masks, exact graph topology, or
+  training recipes. The public block/depth projection and aggregate edge
+  counts do not authorize publishing exact wiring.
 - Any claim that the public bloom is an instrumented native-assembly or
   physical-processor trace, that the public WebAssembly module contains the
   private Arabic analyser, or that the `void` type generally proves absence of
@@ -123,6 +190,12 @@ recorded way for a reader to check it.
   exhibition status, or organizer approval.
 - Claims of general model superiority, production readiness beyond the named
   live products, guaranteed cost savings, or guaranteed investment return.
+- Presenting Cultural NewsBoy A3 whole-corpus metrics as independent-holdout
+  quality, unrestricted model quality, production authorization, or an enabled
+  production classifier.
+- Presenting the Cultural A3 energy upper bound as measured GPU power draw, or
+  presenting its measured resource coefficients as a current market price,
+  production invoice, or general profitability proof.
 - Unsupported counts of products, suppliers, factories, requests, contracts,
   or transactions.
 - Claims that KSAR room, viewer, rating, or seeded catalog figures are real

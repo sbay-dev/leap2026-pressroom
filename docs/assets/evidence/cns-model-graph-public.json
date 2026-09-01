@@ -1,0 +1,2168 @@
+{
+  "schema": "sbay.cns-model-engineering-graph-public.v1",
+  "status": "TRAINED_ONLY_PUBLIC_ENGINEERING_GRAPH_VERIFIED",
+  "sourceAudit": {
+    "schema": "sarmadai.cepha.onnx_engineering_graph_audit.v1",
+    "sha256": "47dadb8b9a44ab90b6248950418fb2f660fa5d526761aab17dbda72a2bb22190",
+    "replaySha256": "47dadb8b9a44ab90b6248950418fb2f660fa5d526761aab17dbda72a2bb22190",
+    "deterministicReplayMatched": true
+  },
+  "model": {
+    "id": "cns-native-v33-newsboy-768-research",
+    "release": "V33_NEWSBOY_EMBEDDING_RELEASE_20260823",
+    "fileName": "cns_native_v33_newsboy_768.onnx",
+    "byteLength": 131518935,
+    "sha256": "8847832167ec643c66461ef8c6b7182b48286821d0fd20fd600414bf51f5dfef",
+    "checker": "PASS",
+    "shapeInference": "PASS",
+    "claimBoundary": "Authentic trained-model engineering graph only. This artifact does not establish a matching zero checkpoint, architecture equality, or a training-effect metric."
+  },
+  "graph": {
+    "irVersion": 10,
+    "opsets": [
+      {
+        "domain": "ai.onnx",
+        "version": 18
+      }
+    ],
+    "inputs": [
+      {
+        "name": "input_ids",
+        "dtype": "INT64",
+        "shape": [
+          "batch",
+          128
+        ]
+      },
+      {
+        "name": "attention_mask",
+        "dtype": "FLOAT",
+        "shape": [
+          "batch",
+          128
+        ]
+      },
+      {
+        "name": "word_feature_ids",
+        "dtype": "INT64",
+        "shape": [
+          "batch",
+          128
+        ]
+      },
+      {
+        "name": "role_ids",
+        "dtype": "INT64",
+        "shape": [
+          "batch"
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "name": "sentence_embedding",
+        "dtype": "FLOAT",
+        "shape": [
+          "batch",
+          768
+        ]
+      }
+    ],
+    "nodeCount": 1953,
+    "operatorCounts": {
+      "Abs": 1,
+      "Add": 188,
+      "And": 1,
+      "Cast": 13,
+      "Clip": 15,
+      "Concat": 84,
+      "Conv": 24,
+      "Div": 20,
+      "Equal": 9,
+      "Expand": 23,
+      "Gather": 74,
+      "GatherND": 2,
+      "Gemm": 8,
+      "GreaterOrEqual": 2,
+      "LayerNormalization": 34,
+      "MatMul": 310,
+      "Max": 1,
+      "Mul": 409,
+      "Not": 1,
+      "Or": 1,
+      "Pad": 80,
+      "Pow": 1,
+      "ReduceL2": 6,
+      "ReduceSum": 26,
+      "Reshape": 1,
+      "Shape": 2,
+      "Sigmoid": 103,
+      "Slice": 144,
+      "Softmax": 76,
+      "Sub": 133,
+      "TopK": 4,
+      "Transpose": 32,
+      "Unsqueeze": 117,
+      "Where": 8
+    },
+    "directedNodeTensorEdges": 2933,
+    "graphOutputEdges": 1,
+    "externalInputEdges": {
+      "graph_input_to_node": 27,
+      "initializer_to_node": 1511
+    },
+    "maximumTopologicalDepth": 143
+  },
+  "publicLayout": {
+    "contract": "aggregate-topological-depth-lanes-v1",
+    "nodeRepresentation": "One anonymous rendered point per authentic ONNX operator, counted by exact topological depth and renderer block.",
+    "edgeRepresentation": "Only aggregate cross-block and internal tensor-edge counts are published; exact node-to-node wiring is withheld.",
+    "zAxis": "unused",
+    "blocks": [
+      {
+        "id": "anchor",
+        "nameAr": "مرساة التمثيل",
+        "nameEn": "Representation anchor",
+        "color": "#58ddff",
+        "nodeCount": 11,
+        "depthRange": [
+          0,
+          101
+        ],
+        "operatorCounts": {
+          "Add": 3,
+          "Gather": 4,
+          "GatherND": 1,
+          "Gemm": 1,
+          "LayerNormalization": 2
+        },
+        "initializerCount": 14,
+        "initializerElements": 17786305,
+        "internalTensorEdges": 0,
+        "incomingCrossBlockEdges": 8,
+        "outgoingCrossBlockEdges": 13,
+        "graphInputEdges": 2,
+        "initializerInputEdges": 15,
+        "lane": 0
+      },
+      {
+        "id": "anchor-transition-0",
+        "nameAr": "انتقال المرساة 0",
+        "nameEn": "Anchor transition 0",
+        "color": "#5ff0bb",
+        "nodeCount": 90,
+        "depthRange": [
+          0,
+          54
+        ],
+        "operatorCounts": {
+          "Add": 42,
+          "Conv": 6,
+          "Gather": 16,
+          "LayerNormalization": 8,
+          "MatMul": 16,
+          "Transpose": 2
+        },
+        "initializerCount": 42,
+        "initializerElements": 500168,
+        "internalTensorEdges": 5,
+        "incomingCrossBlockEdges": 83,
+        "outgoingCrossBlockEdges": 274,
+        "graphInputEdges": 0,
+        "initializerInputEdges": 104,
+        "lane": 1
+      },
+      {
+        "id": "anchor-transition-1",
+        "nameAr": "انتقال المرساة 1",
+        "nameEn": "Anchor transition 1",
+        "color": "#f4c767",
+        "nodeCount": 156,
+        "depthRange": [
+          0,
+          90
+        ],
+        "operatorCounts": {
+          "Add": 42,
+          "Conv": 6,
+          "Gather": 16,
+          "LayerNormalization": 6,
+          "MatMul": 84,
+          "Transpose": 2
+        },
+        "initializerCount": 43,
+        "initializerElements": 606326,
+        "internalTensorEdges": 20,
+        "incomingCrossBlockEdges": 134,
+        "outgoingCrossBlockEdges": 201,
+        "graphInputEdges": 0,
+        "initializerInputEdges": 168,
+        "lane": 2
+      },
+      {
+        "id": "base",
+        "nameAr": "النواة الأساسية",
+        "nameEn": "Base core",
+        "color": "#ff7b9d",
+        "nodeCount": 198,
+        "depthRange": [
+          0,
+          112
+        ],
+        "operatorCounts": {
+          "Add": 87,
+          "Conv": 12,
+          "Gather": 36,
+          "Gemm": 5,
+          "LayerNormalization": 18,
+          "MatMul": 36,
+          "Transpose": 4
+        },
+        "initializerCount": 110,
+        "initializerElements": 21003602,
+        "internalTensorEdges": 12,
+        "incomingCrossBlockEdges": 179,
+        "outgoingCrossBlockEdges": 445,
+        "graphInputEdges": 2,
+        "initializerInputEdges": 233,
+        "lane": 3
+      },
+      {
+        "id": "model-head",
+        "nameAr": "رأس النموذج",
+        "nameEn": "Model head",
+        "color": "#b28cff",
+        "nodeCount": 4,
+        "depthRange": [
+          0,
+          8
+        ],
+        "operatorCounts": {
+          "Gather": 2,
+          "Gemm": 2
+        },
+        "initializerCount": 4,
+        "initializerElements": 3031200,
+        "internalTensorEdges": 0,
+        "incomingCrossBlockEdges": 3,
+        "outgoingCrossBlockEdges": 4,
+        "graphInputEdges": 1,
+        "initializerInputEdges": 4,
+        "lane": 4
+      },
+      {
+        "id": "exporter-scaffolding",
+        "nameAr": "عمليات التصدير البنيوية",
+        "nameEn": "Exporter scaffolding",
+        "color": "#8595a8",
+        "nodeCount": 1494,
+        "depthRange": [
+          0,
+          143
+        ],
+        "operatorCounts": {
+          "Abs": 1,
+          "Add": 14,
+          "And": 1,
+          "Cast": 13,
+          "Clip": 15,
+          "Concat": 84,
+          "Div": 20,
+          "Equal": 9,
+          "Expand": 23,
+          "GatherND": 1,
+          "GreaterOrEqual": 2,
+          "MatMul": 174,
+          "Max": 1,
+          "Mul": 409,
+          "Not": 1,
+          "Or": 1,
+          "Pad": 80,
+          "Pow": 1,
+          "ReduceL2": 6,
+          "ReduceSum": 26,
+          "Reshape": 1,
+          "Shape": 2,
+          "Sigmoid": 103,
+          "Slice": 144,
+          "Softmax": 76,
+          "Sub": 133,
+          "TopK": 4,
+          "Transpose": 24,
+          "Unsqueeze": 117,
+          "Where": 8
+        },
+        "initializerCount": 0,
+        "initializerElements": 0,
+        "internalTensorEdges": 1601,
+        "incomingCrossBlockEdges": 888,
+        "outgoingCrossBlockEdges": 358,
+        "graphInputEdges": 22,
+        "initializerInputEdges": 987,
+        "lane": 5
+      }
+    ],
+    "blockEdges": [
+      {
+        "sourceBlock": "anchor",
+        "targetBlock": "exporter-scaffolding",
+        "count": 13
+      },
+      {
+        "sourceBlock": "anchor-transition-0",
+        "targetBlock": "exporter-scaffolding",
+        "count": 274
+      },
+      {
+        "sourceBlock": "anchor-transition-1",
+        "targetBlock": "anchor-transition-0",
+        "count": 17
+      },
+      {
+        "sourceBlock": "anchor-transition-1",
+        "targetBlock": "base",
+        "count": 32
+      },
+      {
+        "sourceBlock": "anchor-transition-1",
+        "targetBlock": "exporter-scaffolding",
+        "count": 152
+      },
+      {
+        "sourceBlock": "base",
+        "targetBlock": "exporter-scaffolding",
+        "count": 445
+      },
+      {
+        "sourceBlock": "exporter-scaffolding",
+        "targetBlock": "anchor",
+        "count": 8
+      },
+      {
+        "sourceBlock": "exporter-scaffolding",
+        "targetBlock": "anchor-transition-0",
+        "count": 66
+      },
+      {
+        "sourceBlock": "exporter-scaffolding",
+        "targetBlock": "anchor-transition-1",
+        "count": 134
+      },
+      {
+        "sourceBlock": "exporter-scaffolding",
+        "targetBlock": "base",
+        "count": 147
+      },
+      {
+        "sourceBlock": "exporter-scaffolding",
+        "targetBlock": "model-head",
+        "count": 3
+      },
+      {
+        "sourceBlock": "model-head",
+        "targetBlock": "exporter-scaffolding",
+        "count": 4
+      }
+    ],
+    "depthLayers": [
+      {
+        "depth": 0,
+        "nodeCount": 36,
+        "blocks": {
+          "anchor": 3,
+          "anchor-transition-0": 2,
+          "anchor-transition-1": 2,
+          "base": 7,
+          "model-head": 1,
+          "exporter-scaffolding": 21
+        }
+      },
+      {
+        "depth": 1,
+        "nodeCount": 27,
+        "blocks": {
+          "anchor": 1,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 26
+        }
+      },
+      {
+        "depth": 2,
+        "nodeCount": 37,
+        "blocks": {
+          "anchor": 1,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 1,
+          "model-head": 0,
+          "exporter-scaffolding": 35
+        }
+      },
+      {
+        "depth": 3,
+        "nodeCount": 69,
+        "blocks": {
+          "anchor": 1,
+          "anchor-transition-0": 16,
+          "anchor-transition-1": 16,
+          "base": 33,
+          "model-head": 1,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 4,
+        "nodeCount": 5,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 5
+        }
+      },
+      {
+        "depth": 5,
+        "nodeCount": 8,
+        "blocks": {
+          "anchor": 1,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 1,
+          "model-head": 0,
+          "exporter-scaffolding": 6
+        }
+      },
+      {
+        "depth": 6,
+        "nodeCount": 5,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 5
+        }
+      },
+      {
+        "depth": 7,
+        "nodeCount": 5,
+        "blocks": {
+          "anchor": 1,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 1,
+          "model-head": 0,
+          "exporter-scaffolding": 3
+        }
+      },
+      {
+        "depth": 8,
+        "nodeCount": 5,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 2,
+          "exporter-scaffolding": 3
+        }
+      },
+      {
+        "depth": 9,
+        "nodeCount": 3,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 3
+        }
+      },
+      {
+        "depth": 10,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 11,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 12,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 13,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 14,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 1,
+          "anchor-transition-1": 0,
+          "base": 1,
+          "model-head": 0,
+          "exporter-scaffolding": 0
+        }
+      },
+      {
+        "depth": 15,
+        "nodeCount": 15,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 5,
+          "anchor-transition-1": 0,
+          "base": 6,
+          "model-head": 0,
+          "exporter-scaffolding": 4
+        }
+      },
+      {
+        "depth": 16,
+        "nodeCount": 46,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 2,
+          "anchor-transition-1": 0,
+          "base": 2,
+          "model-head": 0,
+          "exporter-scaffolding": 42
+        }
+      },
+      {
+        "depth": 17,
+        "nodeCount": 46,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 5,
+          "anchor-transition-1": 0,
+          "base": 5,
+          "model-head": 0,
+          "exporter-scaffolding": 36
+        }
+      },
+      {
+        "depth": 18,
+        "nodeCount": 78,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 2,
+          "base": 2,
+          "model-head": 0,
+          "exporter-scaffolding": 74
+        }
+      },
+      {
+        "depth": 19,
+        "nodeCount": 44,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 44
+        }
+      },
+      {
+        "depth": 20,
+        "nodeCount": 44,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 3,
+          "anchor-transition-1": 0,
+          "base": 3,
+          "model-head": 0,
+          "exporter-scaffolding": 38
+        }
+      },
+      {
+        "depth": 21,
+        "nodeCount": 44,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 18,
+          "anchor-transition-1": 0,
+          "base": 18,
+          "model-head": 0,
+          "exporter-scaffolding": 8
+        }
+      },
+      {
+        "depth": 22,
+        "nodeCount": 44,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 1,
+          "anchor-transition-1": 0,
+          "base": 1,
+          "model-head": 0,
+          "exporter-scaffolding": 42
+        }
+      },
+      {
+        "depth": 23,
+        "nodeCount": 42,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 42
+        }
+      },
+      {
+        "depth": 24,
+        "nodeCount": 36,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 36
+        }
+      },
+      {
+        "depth": 25,
+        "nodeCount": 36,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 16,
+          "anchor-transition-1": 0,
+          "base": 16,
+          "model-head": 0,
+          "exporter-scaffolding": 4
+        }
+      },
+      {
+        "depth": 26,
+        "nodeCount": 36,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 1,
+          "anchor-transition-1": 0,
+          "base": 1,
+          "model-head": 0,
+          "exporter-scaffolding": 34
+        }
+      },
+      {
+        "depth": 27,
+        "nodeCount": 68,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 32,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 36
+        }
+      },
+      {
+        "depth": 28,
+        "nodeCount": 66,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 16,
+          "anchor-transition-1": 0,
+          "base": 16,
+          "model-head": 0,
+          "exporter-scaffolding": 34
+        }
+      },
+      {
+        "depth": 29,
+        "nodeCount": 34,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 34
+        }
+      },
+      {
+        "depth": 30,
+        "nodeCount": 34,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 34
+        }
+      },
+      {
+        "depth": 31,
+        "nodeCount": 34,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 34
+        }
+      },
+      {
+        "depth": 32,
+        "nodeCount": 34,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 34
+        }
+      },
+      {
+        "depth": 33,
+        "nodeCount": 4,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 4
+        }
+      },
+      {
+        "depth": 34,
+        "nodeCount": 4,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 4
+        }
+      },
+      {
+        "depth": 35,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 36,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 37,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 1,
+          "anchor-transition-1": 0,
+          "base": 1,
+          "model-head": 0,
+          "exporter-scaffolding": 0
+        }
+      },
+      {
+        "depth": 38,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 39,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 40,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 41,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 42,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 43,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 44,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 45,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 46,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 47,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 1,
+          "anchor-transition-1": 0,
+          "base": 1,
+          "model-head": 0,
+          "exporter-scaffolding": 0
+        }
+      },
+      {
+        "depth": 48,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 49,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 50,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 51,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 1,
+          "anchor-transition-1": 0,
+          "base": 1,
+          "model-head": 0,
+          "exporter-scaffolding": 0
+        }
+      },
+      {
+        "depth": 52,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 53,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 1,
+          "base": 1,
+          "model-head": 0,
+          "exporter-scaffolding": 0
+        }
+      },
+      {
+        "depth": 54,
+        "nodeCount": 15,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 1,
+          "anchor-transition-1": 4,
+          "base": 6,
+          "model-head": 0,
+          "exporter-scaffolding": 4
+        }
+      },
+      {
+        "depth": 55,
+        "nodeCount": 46,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 2,
+          "base": 2,
+          "model-head": 0,
+          "exporter-scaffolding": 42
+        }
+      },
+      {
+        "depth": 56,
+        "nodeCount": 46,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 5,
+          "base": 5,
+          "model-head": 0,
+          "exporter-scaffolding": 36
+        }
+      },
+      {
+        "depth": 57,
+        "nodeCount": 78,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 2,
+          "base": 2,
+          "model-head": 0,
+          "exporter-scaffolding": 74
+        }
+      },
+      {
+        "depth": 58,
+        "nodeCount": 44,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 44
+        }
+      },
+      {
+        "depth": 59,
+        "nodeCount": 44,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 3,
+          "base": 3,
+          "model-head": 0,
+          "exporter-scaffolding": 38
+        }
+      },
+      {
+        "depth": 60,
+        "nodeCount": 44,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 18,
+          "base": 18,
+          "model-head": 0,
+          "exporter-scaffolding": 8
+        }
+      },
+      {
+        "depth": 61,
+        "nodeCount": 44,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 1,
+          "base": 1,
+          "model-head": 0,
+          "exporter-scaffolding": 42
+        }
+      },
+      {
+        "depth": 62,
+        "nodeCount": 42,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 42
+        }
+      },
+      {
+        "depth": 63,
+        "nodeCount": 36,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 36
+        }
+      },
+      {
+        "depth": 64,
+        "nodeCount": 36,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 16,
+          "base": 16,
+          "model-head": 0,
+          "exporter-scaffolding": 4
+        }
+      },
+      {
+        "depth": 65,
+        "nodeCount": 36,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 1,
+          "base": 1,
+          "model-head": 0,
+          "exporter-scaffolding": 34
+        }
+      },
+      {
+        "depth": 66,
+        "nodeCount": 68,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 32,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 36
+        }
+      },
+      {
+        "depth": 67,
+        "nodeCount": 66,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 16,
+          "base": 16,
+          "model-head": 0,
+          "exporter-scaffolding": 34
+        }
+      },
+      {
+        "depth": 68,
+        "nodeCount": 34,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 34
+        }
+      },
+      {
+        "depth": 69,
+        "nodeCount": 34,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 34
+        }
+      },
+      {
+        "depth": 70,
+        "nodeCount": 34,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 34
+        }
+      },
+      {
+        "depth": 71,
+        "nodeCount": 34,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 34
+        }
+      },
+      {
+        "depth": 72,
+        "nodeCount": 4,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 4
+        }
+      },
+      {
+        "depth": 73,
+        "nodeCount": 4,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 4
+        }
+      },
+      {
+        "depth": 74,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 75,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 76,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 1,
+          "base": 1,
+          "model-head": 0,
+          "exporter-scaffolding": 0
+        }
+      },
+      {
+        "depth": 77,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 78,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 79,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 80,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 81,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 82,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 83,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 84,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 85,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 86,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 1,
+          "base": 1,
+          "model-head": 0,
+          "exporter-scaffolding": 0
+        }
+      },
+      {
+        "depth": 87,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 88,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 89,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 90,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 1,
+          "base": 1,
+          "model-head": 0,
+          "exporter-scaffolding": 0
+        }
+      },
+      {
+        "depth": 91,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 92,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 1,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 1,
+          "model-head": 0,
+          "exporter-scaffolding": 0
+        }
+      },
+      {
+        "depth": 93,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 94,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 95,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 1,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 1,
+          "model-head": 0,
+          "exporter-scaffolding": 0
+        }
+      },
+      {
+        "depth": 96,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 97,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 98,
+        "nodeCount": 4,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 4
+        }
+      },
+      {
+        "depth": 99,
+        "nodeCount": 4,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 4
+        }
+      },
+      {
+        "depth": 100,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 101,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 1,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 1,
+          "model-head": 0,
+          "exporter-scaffolding": 0
+        }
+      },
+      {
+        "depth": 102,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 103,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 104,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 105,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 106,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 107,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 108,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 109,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 2,
+          "model-head": 0,
+          "exporter-scaffolding": 0
+        }
+      },
+      {
+        "depth": 110,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 111,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 112,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 2,
+          "model-head": 0,
+          "exporter-scaffolding": 0
+        }
+      },
+      {
+        "depth": 113,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 114,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 115,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 116,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 117,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 118,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 119,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 120,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 121,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 122,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 123,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 124,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 125,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 126,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 127,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 128,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 129,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 130,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 131,
+        "nodeCount": 5,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 5
+        }
+      },
+      {
+        "depth": 132,
+        "nodeCount": 6,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 6
+        }
+      },
+      {
+        "depth": 133,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 134,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 135,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 136,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 137,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 138,
+        "nodeCount": 2,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 2
+        }
+      },
+      {
+        "depth": 139,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 140,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 141,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 142,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      },
+      {
+        "depth": 143,
+        "nodeCount": 1,
+        "blocks": {
+          "anchor": 0,
+          "anchor-transition-0": 0,
+          "anchor-transition-1": 0,
+          "base": 0,
+          "model-head": 0,
+          "exporter-scaffolding": 1
+        }
+      }
+    ]
+  },
+  "initializers": {
+    "count": 351,
+    "storedElementCount": 48710171,
+    "storedElementsByDtype": {
+      "BOOL": 12,
+      "FLOAT": 14652737,
+      "FLOAT16": 33556992,
+      "INT32": 500096,
+      "INT64": 334
+    },
+    "trainableParameterCount": {
+      "status": "unavailable_from_onnx_ir",
+      "basis": "ONNX initializers do not encode trainability."
+    },
+    "claimBoundary": "Initializer names, hashes, shapes, and values are withheld from this public projection."
+  },
+  "canonicalStructure": {
+    "contract": "onnx-struct-v2-no-initializer-values",
+    "serialization": "canonical compact JSON UTF-8 with sorted object keys; initializer payloads excluded",
+    "serializationByteLength": 409489,
+    "sha256": "51740c50a975b5c510f1685a939abd26fe9ef6ea0ba65fc10b6c59fffb9c67f1"
+  },
+  "computeEstimate": {
+    "status": "convention_declared_model_total_not_computed",
+    "convention": {
+      "mac": "one multiply-accumulate",
+      "flopsPerMac": 2,
+      "elementwise": "one operation per output element unless otherwise stated",
+      "nonlinear": "reported as evaluations unless backend kernel cost is explicitly modeled",
+      "dynamicDimensions": "remain symbolic in batch B; sequence length is fixed by input shape at 128",
+      "moe": "active compute requires authentic routing/top-k execution semantics and is not inferred from 3D layout"
+    },
+    "estimableOperatorCounts": {
+      "MatMul": 310,
+      "Gemm": 8,
+      "Conv": 24,
+      "Add": 188,
+      "Mul": 409,
+      "Div": 20,
+      "Sub": 133,
+      "Softmax": 76,
+      "Sigmoid": 103
+    },
+    "totalMacFlopFormula": "unavailable_without_complete_per-node inferred-shape and routing audit"
+  },
+  "comparisonAvailability": {
+    "authenticZeroCheckpoint": "unavailable",
+    "zeroVsTrainedArchitectureComparison": "not_computed",
+    "trainingEffectMetrics": "not_computed",
+    "neuralPersistence": "not_computed"
+  },
+  "unavailableClaims": [
+    "Authentic zero-versus-trained comparison",
+    "Architecture equality or isomorphism between zero and trained",
+    "Training-effect tensor deltas",
+    "Neural Persistence or delta Neural Persistence",
+    "Representation-topology change",
+    "Riemannian or sectional curvature",
+    "Live model inference"
+  ],
+  "publicSafety": {
+    "rawInitializerValuesPublished": false,
+    "initializerIdentitiesPublished": false,
+    "rawVectorsPublished": false,
+    "activationsPublished": false,
+    "exactNodeNamesPublished": false,
+    "exactTensorNamesPublishedBeyondInterface": false,
+    "exactNodeConnectionsPublished": false,
+    "absoluteSourcePathPublished": false
+  }
+}

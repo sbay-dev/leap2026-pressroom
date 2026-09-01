@@ -42,7 +42,26 @@
       { "value": "21.7M", "basis": "public-link", "source": "https://sbay-dev.github.io/sarmadAi/" },
       { "value": "83 MB", "basis": "public-link", "source": "https://sbay-dev.github.io/sarmadAi/" },
       { "value": "12D", "basis": "public-link", "source": "https://sbay-dev.github.io/sarmadAi/" },
-      { "value": "768D", "basis": "public-link", "source": "https://sbay-dev.github.io/sarmadAi/" }
+      { "value": "768D", "basis": "public-link", "source": "https://sbay-dev.github.io/sarmadAi/" },
+      { "value": "1953", "basis": "public-link", "source": "https://leap2026.sbay.sa/assets/evidence/cns-model-graph-public.json", "note": "Authentic trained V33 ONNX operator count." },
+      { "value": "2933", "basis": "public-link", "source": "https://leap2026.sbay.sa/assets/evidence/cns-model-graph-public.json", "note": "Directed node-to-node tensor-edge count in the private audit, published as aggregate totals only." },
+      { "value": "143", "basis": "public-link", "source": "https://leap2026.sbay.sa/assets/evidence/cns-model-graph-public.json", "note": "Maximum topological depth of the authentic trained ONNX graph." },
+      { "value": "351", "basis": "public-link", "source": "https://leap2026.sbay.sa/assets/evidence/cns-model-graph-public.json", "note": "Stored ONNX initializer count; trainability is not inferred." },
+      { "value": "48710171", "basis": "public-link", "source": "https://leap2026.sbay.sa/assets/evidence/cns-model-graph-public.json", "note": "Stored initializer element count across all dtypes." },
+      { "value": "128", "basis": "public-link", "source": "https://leap2026.sbay.sa/assets/evidence/cns-model-graph-public.json", "note": "Fixed sequence length declared by the trained ONNX input interface." },
+      { "value": "6", "basis": "recomputable", "source": "https://leap2026.sbay.sa/assets/evidence/cns-model-graph-public.json", "note": "Public-safe engineering block array length." },
+      { "value": "10,800", "basis": "declared", "source": "authenticated CNSEmbedding record 0ebf9988 plus byte-identical local report", "note": "Owned whole-corpus article count; source document identity verified, workload not rerun." },
+      { "value": "2,053,810", "basis": "declared", "source": "authenticated CNSEmbedding record 0ebf9988 plus byte-identical local report", "note": "Paired non-padding R9 token count; source document identity verified, workload not rerun." },
+      { "value": "0.780556", "basis": "declared", "source": "authenticated CNSEmbedding record 0ebf9988 plus byte-identical local report", "note": "R9+A3 whole-corpus descriptive accuracy; not independent holdout and not rerun by the pressroom." },
+      { "value": "0.942788", "basis": "declared", "source": "authenticated CNSEmbedding record 0ebf9988 plus byte-identical local report", "note": "R9+A3 whole-corpus descriptive focus macro-F1; not independent holdout and not rerun by the pressroom." },
+      { "value": "99.729%", "basis": "declared", "source": "authenticated CNSEmbedding record 0ebf9988 plus byte-identical local report", "note": "Precision of the 1,109 applied changes; source document identity verified." },
+      { "value": "4,667,230", "basis": "declared", "source": "authenticated CNSEmbedding record 0ebf9988 plus byte-identical local report", "note": "Prepared R9+A3+policy throughput in tokens per second; workload not rerun by the pressroom." },
+      { "value": "83,931", "basis": "declared", "source": "authenticated CNSEmbedding record 0ebf9988 plus byte-identical local report", "note": "Raw text to prediction throughput in tokens per second; workload not rerun by the pressroom." },
+      { "value": "11.914540", "basis": "declared", "source": "authenticated CNSEmbedding record 0ebf9988 plus byte-identical local report", "note": "Raw text to prediction microseconds per token; workload not rerun by the pressroom." },
+      { "value": "161.063 MiB", "basis": "declared", "source": "authenticated CNSEmbedding record 0ebf9988 plus byte-identical local report", "note": "Rounded PyTorch peak allocation; workload not rerun by the pressroom." },
+      { "value": "0.0000595166 GPU-h / 1M", "basis": "declared", "source": "authenticated CNSEmbedding record 0ebf9988 plus byte-identical local report", "note": "Reported staged GPU hours per million paired tokens; workload not rerun by the pressroom." },
+      { "value": "0.00306426 core-h / 1M", "basis": "declared", "source": "authenticated CNSEmbedding record 0ebf9988 plus byte-identical local report", "note": "Reported CPU core-hours per million paired tokens; workload not rerun by the pressroom." },
+      { "value": "≤ 0.00000297583 kWh / 1M", "basis": "declared", "source": "authenticated CNSEmbedding record 0ebf9988 plus byte-identical local report", "note": "Reported conservative staged GPU energy upper bound from the enforced 50W limit; not measured power draw." }
     ]
   },  "platformScope": [
     "Purchase request management",
@@ -58,6 +77,95 @@
     "Smart procurement recommendations",
     "Predictive demand insights"
   ],
+  "kSpace": {
+    "publicArtifact": "https://leap2026.sbay.sa/assets/evidence/cns-model-graph-public.json",
+    "integrityArtifact": "https://leap2026.sbay.sa/assets/evidence/cns-model-graph-public.integrity.json",
+    "renderer": "Interactive browser Canvas2D aggregate topological-depth graph",
+    "model": {
+      "id": "cns-native-v33-newsboy-768-research",
+      "release": "V33_NEWSBOY_EMBEDDING_RELEASE_20260823",
+      "fileName": "cns_native_v33_newsboy_768.onnx",
+      "sha256": "8847832167ec643c66461ef8c6b7182b48286821d0fd20fd600414bf51f5dfef",
+      "canonicalStructureSha256": "51740c50a975b5c510f1685a939abd26fe9ef6ea0ba65fc10b6c59fffb9c67f1",
+      "auditStatus": "trained-only verified ONNX engineering graph"
+    },
+    "liveBoundary": "Live means the browser redraws and interacts with the measured public projection. It does not mean live model inference, production database streaming, or a physical processor trace.",
+    "layoutBoundary": "Horizontal position is authentic topological depth and each anonymous point corresponds to one authentic ONNX operator. Vertical lanes and jitter are deterministic display layout; the Z axis is unused.",
+    "disclosureBoundary": "The public projection publishes aggregate block/depth/operator and edge counts. Exact node and tensor names, exact wiring, initializer identities and hashes, weights, vectors, and activations remain withheld.",
+    "comparisonBoundary": "No authentic architecture-matched zero checkpoint is available. Zero-versus-trained comparison, training-effect metrics, and Neural Persistence are not computed.",
+    "computeBoundary": "Operator counts and the compute convention are published, but a total MAC/FLOP figure is unavailable without complete per-node shape handling and verified MoE routing semantics.",
+    "conceptFallback": "https://leap2026.sbay.sa/cepha-k-space-concept/",
+    "unavailableClaims": [
+      "Authentic architecture-matched zero checkpoint",
+      "Zero-versus-trained architecture comparison",
+      "Training-effect tensor metrics",
+      "Neural Persistence or delta Neural Persistence",
+      "Representation-topology change",
+      "Riemannian or sectional curvature",
+      "Live model inference"
+    ]
+  },
+  "culturalCns": {
+    "name": "CNS Cultural NewsBoy A3",
+    "status": "DOCUMENTED_COMPUTED_COSTS",
+    "measuredAt": "2026-08-19",
+    "sourceCommit": "0ebf9988eff77078ea61e99d500092e10cd8baef",
+    "publicationBasis": "declared from authenticated repository record",
+    "sourceVisibility": "authenticated access required; unauthenticated fetch returned 404",
+    "recordByteIdentityVerified": true,
+    "workloadIndependentlyRerunByPressroom": false,
+    "localReportSha256": "ec8c377023749655404d02372f5681478e7cca9e542d8ac0be8e5cd6591e9b6b",
+    "tokenAccountingRulesSha256": "767e71f032da2dd52211ef813f9c0f3b82ae9f362e197b9d44f0cc50e7e8a364",
+    "tokenAccountingStandard": {
+      "billingUnit": "1M paired title/full non-padding R9 model-input tokens",
+      "nonPaddingModelInputs": true,
+      "rawPreprocessingDisclosedSeparately": true,
+      "gpuCpuMemoryAndPowerSeparated": true,
+      "unavailablePowerTelemetryUsesUpperBound": true,
+      "wholeCorpusQualityDescriptive": true,
+      "productionActivationRequiresSeparateGate": true
+    },
+    "humanReport": "https://github.com/sbay-dev/CNSEmbedding/blob/0ebf9988eff77078ea61e99d500092e10cd8baef/docs/cns_embedding/calculated_costs/CNS_CULTURAL_NEWSBOY_A3_20260819.md",
+    "machineRecord": "https://github.com/sbay-dev/CNSEmbedding/blob/0ebf9988eff77078ea61e99d500092e10cd8baef/docs/cns_embedding/calculated_costs/CNS_CULTURAL_NEWSBOY_A3_20260819.json",
+    "localDisclosureRecord": "https://leap2026.sbay.sa/assets/evidence/cns-cultural-newsboy-a3-20260819.json",
+    "scope": {
+      "articles": 10800,
+      "pairedNonPaddingR9Tokens": 2053810,
+      "rawFeatureSidecarMismatches": 0
+    },
+    "classification": {
+      "wholeCorpusDescriptive": true,
+      "r9PlusA3Accuracy": 0.7805555555555556,
+      "accuracyDelta": 0.10240740740740739,
+      "r9PlusA3FocusMacroF1": 0.9427878001428764,
+      "focusMacroF1Delta": 0.16752492464937996,
+      "corrections": 1106,
+      "regressions": 0,
+      "changePrecision": 0.9972948602344455,
+      "protectedDeskPredictionVectorsByteIdentical": true
+    },
+    "throughputTokensPerSecond": {
+      "preparedR9A3Policy": 4667230.240299575,
+      "rawTextToPrediction": 83931.06374559269
+    },
+    "measuredCostPerMillionPairedTokens": {
+      "stagedGpuHours": 0.00005951662195262689,
+      "cpuCoreHours": 0.003064257539781079,
+      "rawPipelineWallSeconds": 11.914539806514856
+    },
+    "energy": {
+      "stagedGpuKwhUpperBound": 0.0000029758310976313445,
+      "basis": "Enforced 50W power limit; power.draw unavailable",
+      "measuredPowerDraw": false
+    },
+    "boundaries": {
+      "independentFreshHoldoutRemainsQualityAuthority": true,
+      "candidateActivationEnabled": false,
+      "productionActivationEnabled": false,
+      "marketPriceClaim": false,
+      "profitabilityClaim": false
+    }
+  },
   "operatingProof": [
     {
       "name": "NewsBoy",
@@ -67,7 +175,7 @@
       "archiveUrl": "https://newsboy.sbay.sa/#m-archive-section",
       "liveCoverageUrl": "https://newsboy.sbay.sa/coverage/leap-2026",
       "embeddedReaderUrl": "https://leap2026.sbay.sa/newsboy-reader",
-      "embeddedReaderBoundary": "Read-only same-origin relay of the live NewsBoy HTML route. Scripts are removed, article links open separately, and an incomplete upstream response fails visibly instead of serving a stale edition.",
+      "embeddedReaderBoundary": "Read-only same-origin reader for the fixed NewsBoy coverage route. The Worker validates the current source page, fetches the fixed public edition-record API, and renders an accessible script-free view of the attributed titles, summaries, sections, dates, and source links. The preview does not scroll or receive focus; its primary action expands to a full viewport, and closing reloads the live record at the top and restores the original card position and focus. Incomplete upstream HTML or edition data fails visibly instead of serving a stale edition.",
       "featuredArticleUrl": "https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412",
       "leap5PaperUrl": "https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412",
       "featuredMedia": [
@@ -156,7 +264,22 @@
     "guaranteedDemandForecast": false,
     "allModulesGenerallyAvailable": false,
     "containsModelArtifacts": false,
-    "containsPrivatePatentEnablement": false
+    "containsPrivatePatentEnablement": false,
+    "kSpaceOriginalEmbeddingCoordinates": false,
+    "kSpaceNegativeCurvatureMeasured": false,
+    "kSpaceHardwareFirstTouch": false,
+    "kSpaceLiveInference": false,
+    "kSpaceTrainedV7VectorDisclosure": false,
+    "kSpaceAuthenticZeroCheckpointAvailable": false,
+    "kSpaceZeroVsTrainedComparison": false,
+    "kSpaceTrainingEffectMeasured": false,
+    "kSpaceNeuralPersistenceComputed": false,
+    "kSpaceExactNodeTopologyPublished": false,
+    "culturalWholeCorpusIndependentHoldoutClaim": false,
+    "culturalProductionActivation": false,
+    "culturalMeasuredGpuPowerDraw": false,
+    "culturalCurrentMarketPriceClaim": false,
+    "culturalProfitabilityClaim": false
   },
   "media": [
     "assets/press/adg-adjudication-platform.png",

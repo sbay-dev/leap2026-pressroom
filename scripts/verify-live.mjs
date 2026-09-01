@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
+import { isCompleteNewsboyEdition } from "../worker.js";
 
 const baseUrl = String(
   process.env.PRESSROOM_URL || "https://leap2026.sbay.sa"
@@ -52,6 +53,9 @@ assert.match(
 );
 assert.match(html, /src="\/newsboy-reader"/u);
 assert.match(html, /scrolling="no"/u);
+assert.match(html, /clicking opens the reader full screen/u);
+assert.match(html, /closing returns to the same card position/u);
+assert.match(html, /scrolling is enabled only in full-screen mode/u);
 assert.match(
   html,
   /sandbox="allow-popups allow-popups-to-escape-sandbox"/u
@@ -140,20 +144,93 @@ assert.match(
 );
 assert.equal(embeddedReader.headers.get("x-frame-options"), "SAMEORIGIN");
 const embeddedHtml = await embeddedReader.text();
-assert.match(embeddedHtml, /<main\b[^>]*class=["'][^"']*\bpaper\b/iu);
-assert.match(
-  embeddedHtml,
-  /<base href="https:\/\/newsboy\.sbay\.sa\/">/u
+assert.equal(
+  isCompleteNewsboyEdition(embeddedHtml),
+  true,
+  "the embedded NewsBoy response must match a supported complete edition"
 );
-assert.match(
-  embeddedHtml,
-  /href="https:\/\/leap2026\.sbay\.sa\/newsboy-assets\/fonts\/fonts\.css/iu
-);
-assert.doesNotMatch(
-  embeddedHtml,
-  /href="https:\/\/newsboy\.sbay\.sa\/newsboy-assets\/fonts\//iu
-);
+if (/data-newsboy-relay="edition-api"/u.test(embeddedHtml)) {
+  assert.equal(
+    embeddedReader.headers.get("x-sbay-newsboy-edition-source"),
+    "https://newsboy.sbay.sa/api/coverage/events/leap-2026/edition"
+  );
+  assert.match(
+    embeddedReader.headers.get("x-sbay-newsboy-article-count") || "",
+    /^[1-9]\d*$/u
+  );
+  assert.match(embeddedHtml, /عناوين وملخصات منسوبة إلى مصادرها/u);
+  assert.match(embeddedHtml, /class="story-grid"/u);
+} else {
+  assert.match(
+    embeddedHtml,
+    /<base href="https:\/\/newsboy\.sbay\.sa\/">/u
+  );
+  assert.match(
+    embeddedHtml,
+    /href="https:\/\/leap2026\.sbay\.sa\/newsboy-assets\/fonts\/fonts\.css/iu
+  );
+  assert.doesNotMatch(
+    embeddedHtml,
+    /href="https:\/\/newsboy\.sbay\.sa\/newsboy-assets\/fonts\//iu
+  );
+}
 assert.doesNotMatch(embeddedHtml, /<script\b/iu);
+
+async function verifyPublishedFile(relativePath) {
+  const response = await fetch(`${baseUrl}/${relativePath}`, {
+    redirect: "error"
+  });
+  assert.equal(response.status, 200, `${relativePath} must be published`);
+  const published = Buffer.from(await response.arrayBuffer());
+  const local = await readFile(new URL(`../docs/${relativePath}`, import.meta.url));
+  assert.equal(
+    createHash("sha256").update(published).digest("hex"),
+    createHash("sha256").update(local).digest("hex"),
+    `${relativePath} must match the local release byte-for-byte`
+  );
+  return published;
+}
+
+const graphBytes = await verifyPublishedFile(
+  "assets/evidence/cns-model-graph-public.json"
+);
+const graphIntegrityBytes = await verifyPublishedFile(
+  "assets/evidence/cns-model-graph-public.integrity.json"
+);
+const culturalBytes = await verifyPublishedFile(
+  "assets/evidence/cns-cultural-newsboy-a3-20260819.json"
+);
+const graph = JSON.parse(graphBytes.toString("utf8"));
+const graphIntegrity = JSON.parse(graphIntegrityBytes.toString("utf8"));
+const cultural = JSON.parse(culturalBytes.toString("utf8"));
+assert.equal(graph.graph.nodeCount, 1953);
+assert.equal(graph.graph.maximumTopologicalDepth, 143);
+assert.equal(graph.publicLayout.blocks.length, 6);
+assert.equal(
+  createHash("sha256").update(graphBytes).digest("hex"),
+  graphIntegrity.artifact.sha256
+);
+assert.equal(cultural.source.sourceRecordByteIdentityVerified, true);
+assert.equal(cultural.source.workloadIndependentlyRerunByPressroom, false);
+assert.equal(cultural.input.pairedNonPaddingR9TokenCount, 2053810);
+assert.equal(
+  cultural.tokenAccountingStandard.billingUnit,
+  "1M paired title/full non-padding R9 model-input tokens"
+);
+
+const cepha = await fetch(`${baseUrl}/cepha-k-space-concept/`, {
+  redirect: "error"
+});
+assert.equal(cepha.status, 200, "the preserved Cepha fallback must load");
+const cephaHtml = await cepha.text();
+assert.match(
+  cephaHtml,
+  /<meta name="robots" content="noindex,nofollow,noarchive">/u
+);
+assert.match(
+  cephaHtml,
+  /Preserved Cepha concept template, not a model measurement/u
+);
 
 const embeddedFontCssResponse = await fetch(
   `${baseUrl}/newsboy-assets/fonts/fonts.css?v=20260816-advanced-archive-r4`,

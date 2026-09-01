@@ -121,6 +121,11 @@ assert.match(index, /does not claim (?:physical Saudi|Saudi physical) hosting/iu
 assert.match(index, /platform scope/iu);
 assert.match(index, /Independent participation/iu);
 assert.match(index, /no general MTEB superiority claim/iu);
+assert.match(index, /data-model-graph/u);
+assert.match(index, /The authentic engineering graph of the trained model/u);
+assert.match(index, /Every point corresponds to an authentic operator/u);
+assert.match(index, /There is no imagined surface, unmeasured protrusion, or raw weight disclosure/u);
+assert.match(index, /src="\.\/model-graph\.js"/u);
 assert.match(index, /not an official LEAP or DeepFest page/iu);
 assert.match(index, /منصّة تحكيم اللغة العربية/u);
 assert.match(index, /ADG Arabic Adjudication Platform/u);
@@ -135,6 +140,10 @@ assert.match(index, /https:\/\/newsboy\.sbay\.sa\/coverage\/leap-2026/u);
 assert.match(index, /src="\/newsboy-reader"/u);
 assert.match(index, /data-src="\/newsboy-reader"/u);
 assert.match(index, /data-newsboy-open/u);
+assert.match(
+  index,
+  /<a class="newsboy-reader-open" href="https:\/\/newsboy\.sbay\.sa\/coverage\/leap-2026" target="_blank" rel="noopener noreferrer" data-newsboy-open aria-expanded="false">/u
+);
 assert.match(index, /data-newsboy-close hidden/u);
 assert.match(index, /scrolling="no"/u);
 assert.match(
@@ -271,12 +280,511 @@ assert.equal(pressKit.claims.officialUniversityPartnership, false);
 assert.equal(pressKit.claims.universityEndorsement, false);
 assert.equal(pressKit.claims.finalArabicCorrectionService, false);
 assert.equal(pressKit.claims.humanLoginCompletionClaimed, false);
+assert.equal(pressKit.claims.kSpaceOriginalEmbeddingCoordinates, false);
+assert.equal(pressKit.claims.kSpaceNegativeCurvatureMeasured, false);
+assert.equal(pressKit.claims.kSpaceHardwareFirstTouch, false);
+assert.equal(pressKit.claims.kSpaceLiveInference, false);
+assert.equal(pressKit.claims.kSpaceTrainedV7VectorDisclosure, false);
+assert.equal(pressKit.claims.kSpaceAuthenticZeroCheckpointAvailable, false);
+assert.equal(pressKit.claims.kSpaceZeroVsTrainedComparison, false);
+assert.equal(pressKit.claims.kSpaceTrainingEffectMeasured, false);
+assert.equal(pressKit.claims.kSpaceNeuralPersistenceComputed, false);
+assert.equal(pressKit.claims.kSpaceExactNodeTopologyPublished, false);
+assert.equal(pressKit.claims.culturalWholeCorpusIndependentHoldoutClaim, false);
+assert.equal(pressKit.claims.culturalProductionActivation, false);
+assert.equal(pressKit.claims.culturalMeasuredGpuPowerDraw, false);
+assert.equal(pressKit.claims.culturalCurrentMarketPriceClaim, false);
+assert.equal(pressKit.claims.culturalProfitabilityClaim, false);
 assert.equal(pressKit.claims.ksarSaudiPhysicalHosting, false);
 assert.equal(pressKit.claims.ksarSaudiLegalDataResidency, false);
 assert.equal(pressKit.claims.ksarUniversalCrossDeviceAcceptance, false);
 assert.equal(pressKit.claims.ksarCpolyFreezeResolved, false);
 assert.equal(pressKit.claims.ksarSalesMetricsClaimed, false);
 assert.equal(pressKit.claims.ksarAudienceMetricsClaimed, false);
+
+const modelGraphPath = path.join(
+  root,
+  "docs",
+  "assets",
+  "evidence",
+  "cns-model-graph-public.json"
+);
+const modelGraphBytes = await readFile(modelGraphPath);
+const modelGraphText = modelGraphBytes.toString("utf8");
+const modelGraph = JSON.parse(modelGraphText);
+const modelGraphIntegrity = JSON.parse(await readFile(
+  path.join(
+    root,
+    "docs",
+    "assets",
+    "evidence",
+    "cns-model-graph-public.integrity.json"
+  ),
+  "utf8"
+));
+assert.equal(
+  modelGraph.schema,
+  "sbay.cns-model-engineering-graph-public.v1"
+);
+assert.equal(
+  modelGraph.status,
+  "TRAINED_ONLY_PUBLIC_ENGINEERING_GRAPH_VERIFIED"
+);
+assert.equal(
+  modelGraph.model.sha256,
+  "8847832167ec643c66461ef8c6b7182b48286821d0fd20fd600414bf51f5dfef"
+);
+assert.equal(modelGraph.model.checker, "PASS");
+assert.equal(modelGraph.model.shapeInference, "PASS");
+assert.equal(modelGraph.graph.nodeCount, 1953);
+assert.equal(modelGraph.graph.directedNodeTensorEdges, 2933);
+assert.equal(modelGraph.graph.maximumTopologicalDepth, 143);
+assert.equal(modelGraph.initializers.count, 351);
+assert.equal(modelGraph.initializers.storedElementCount, 48710171);
+assert.equal(modelGraph.graph.outputs[0].name, "sentence_embedding");
+assert.deepEqual(modelGraph.graph.outputs[0].shape, ["batch", 768]);
+assert.equal(modelGraph.publicLayout.zAxis, "unused");
+assert.equal(modelGraph.publicLayout.blocks.length, 6);
+assert.equal(modelGraph.publicLayout.depthLayers.length, 144);
+assert.equal(
+  modelGraph.publicLayout.blocks.reduce(
+    (sum, block) => sum + block.nodeCount,
+    0
+  ),
+  modelGraph.graph.nodeCount
+);
+assert.equal(
+  modelGraph.publicLayout.depthLayers.reduce(
+    (sum, layer) => sum + layer.nodeCount,
+    0
+  ),
+  modelGraph.graph.nodeCount
+);
+assert.equal(
+  Object.values(modelGraph.graph.operatorCounts)
+    .reduce((sum, count) => sum + count, 0),
+  modelGraph.graph.nodeCount
+);
+assert.equal(
+  modelGraph.publicLayout.blocks.reduce(
+    (sum, block) => sum + block.internalTensorEdges,
+    0
+  ) + modelGraph.publicLayout.blockEdges.reduce(
+    (sum, edge) => sum + edge.count,
+    0
+  ),
+  modelGraph.graph.directedNodeTensorEdges
+);
+assert.equal(
+  modelGraph.canonicalStructure.sha256,
+  "51740c50a975b5c510f1685a939abd26fe9ef6ea0ba65fc10b6c59fffb9c67f1"
+);
+assert.equal(
+  modelGraph.comparisonAvailability.authenticZeroCheckpoint,
+  "unavailable"
+);
+assert.equal(
+  modelGraph.comparisonAvailability.zeroVsTrainedArchitectureComparison,
+  "not_computed"
+);
+assert.equal(
+  modelGraph.comparisonAvailability.trainingEffectMetrics,
+  "not_computed"
+);
+assert.equal(
+  modelGraph.comparisonAvailability.neuralPersistence,
+  "not_computed"
+);
+assert.deepEqual(modelGraph.publicSafety, {
+  rawInitializerValuesPublished: false,
+  initializerIdentitiesPublished: false,
+  rawVectorsPublished: false,
+  activationsPublished: false,
+  exactNodeNamesPublished: false,
+  exactTensorNamesPublishedBeyondInterface: false,
+  exactNodeConnectionsPublished: false,
+  absoluteSourcePathPublished: false
+});
+assert.equal(
+  modelGraphIntegrity.schema,
+  "sbay.cns-model-engineering-graph-integrity.v1"
+);
+assert.equal(modelGraphIntegrity.artifact.bytes, modelGraphBytes.length);
+assert.equal(
+  modelGraphIntegrity.artifact.sha256,
+  createHash("sha256").update(modelGraphBytes).digest("hex")
+);
+assert.equal(
+  modelGraphIntegrity.sourceAudit.sha256,
+  modelGraph.sourceAudit.sha256
+);
+assert.equal(
+  modelGraphIntegrity.canonicalStructure.sha256,
+  modelGraph.canonicalStructure.sha256
+);
+assert.equal(
+  pressKit.kSpace.publicArtifact,
+  "https://leap2026.sbay.sa/assets/evidence/cns-model-graph-public.json"
+);
+assert.equal(
+  pressKit.kSpace.integrityArtifact,
+  "https://leap2026.sbay.sa/assets/evidence/cns-model-graph-public.integrity.json"
+);
+assert.equal(pressKit.kSpace.model.sha256, modelGraph.model.sha256);
+assert.equal(
+  pressKit.kSpace.model.canonicalStructureSha256,
+  modelGraph.canonicalStructure.sha256
+);
+assert.match(
+  pressKit.kSpace.comparisonBoundary,
+  /No authentic architecture-matched zero checkpoint is available/u
+);
+assert.match(
+  pressKit.kSpace.disclosureBoundary,
+  /Exact node and tensor names, exact wiring/u
+);
+assert.doesNotMatch(modelGraphText, /[A-Z]:\\/u);
+assert.doesNotMatch(modelGraphText, /model\.base\./u);
+assert.doesNotMatch(
+  modelGraphText,
+  /"(?:nodes|edges|items|valueSha256|tensor|source|target)"\s*:/u
+);
+assert.doesNotMatch(
+  modelGraphText,
+  /"(?:rawVector|vectorComponents|weights|activations)"\s*:/iu
+);
+
+const legacyKSpace = JSON.parse(await readFile(
+  path.join(
+    root,
+    "docs",
+    "assets",
+    "evidence",
+    "cns-k-space-public.json"
+  ),
+  "utf8"
+));
+assert.equal(
+  legacyKSpace.status,
+  "SUPERSEDED_BY_MEASURED_ENGINEERING_GRAPH"
+);
+assert.equal(legacyKSpace.replacement, "./cns-model-graph-public.json");
+assert.equal(legacyKSpace.conceptualFallback, "../../cepha-k-space-concept/");
+assert.match(index, /data-model-graph/u);
+assert.match(index, /src="\.\/model-graph\.js"/u);
+assert.doesNotMatch(index, /src="\.\/k-space\.js"/u);
+assert.match(index, /الرسم الهندسي الحقيقي للنموذج المدرّب/u);
+assert.match(index, /The authentic engineering graph of the trained model/u);
+assert.match(index, /checkpoint الصفري الأصيل المطابق غير متاح/u);
+assert.match(index, /An authentic architecture-matched zero checkpoint is unavailable/u);
+assert.doesNotMatch(index, /السطح السرجي لغة عرض/u);
+
+const culturalEvidence = JSON.parse(await readFile(
+  path.join(
+    root,
+    "docs",
+    "assets",
+    "evidence",
+    "cns-cultural-newsboy-a3-20260819.json"
+  ),
+  "utf8"
+));
+assert.equal(
+  culturalEvidence.schema,
+  "sbay.cns-cultural-newsboy-a3-public.v1"
+);
+assert.equal(culturalEvidence.status, "DOCUMENTED_COMPUTED_COSTS");
+assert.equal(
+  culturalEvidence.source.commit,
+  "0ebf9988eff77078ea61e99d500092e10cd8baef"
+);
+assert.equal(
+  culturalEvidence.source.visibility,
+  "authenticated_access_required"
+);
+assert.equal(culturalEvidence.source.unauthenticatedFetchStatusObserved, 404);
+assert.equal(culturalEvidence.source.sourceRecordByteIdentityVerified, true);
+assert.equal(
+  culturalEvidence.source.workloadIndependentlyRerunByPressroom,
+  false
+);
+assert.equal(
+  culturalEvidence.source.humanReport.gitBlobSha,
+  "d0efd1e2129187e83a6f09216d8f63913ed9c537"
+);
+assert.equal(
+  culturalEvidence.source.machineRecord.gitBlobSha,
+  "a964909f2e172f68f5f1f3c0a45ca8c7d7ccceb0"
+);
+assert.equal(
+  culturalEvidence.source.localByteIdenticalRecords.humanReport.gitBlobSha,
+  culturalEvidence.source.humanReport.gitBlobSha
+);
+assert.equal(
+  culturalEvidence.source.localByteIdenticalRecords.humanReport.sha256,
+  "ec8c377023749655404d02372f5681478e7cca9e542d8ac0be8e5cd6591e9b6b"
+);
+assert.equal(
+  culturalEvidence.source.localByteIdenticalRecords.humanReport.gitBlobMatched,
+  true
+);
+assert.equal(
+  culturalEvidence.source.localByteIdenticalRecords
+    .tokenAccountingLedgerRules.gitBlobSha,
+  "48bcc3265aad9793bf4c86e31af8443f92897b3b"
+);
+assert.equal(
+  culturalEvidence.source.localByteIdenticalRecords
+    .tokenAccountingLedgerRules.sha256,
+  "767e71f032da2dd52211ef813f9c0f3b82ae9f362e197b9d44f0cc50e7e8a364"
+);
+assert.equal(
+  culturalEvidence.source.localByteIdenticalRecords
+    .tokenAccountingLedgerRules.gitBlobMatched,
+  true
+);
+assert.equal(culturalEvidence.input.articleCount, 10800);
+assert.equal(culturalEvidence.input.pairedNonPaddingR9TokenCount, 2053810);
+assert.equal(culturalEvidence.input.rawFeatureSidecarMismatchCount, 0);
+assert.equal(
+  culturalEvidence.tokenAccountingStandard.billingUnit,
+  "1M paired title/full non-padding R9 model-input tokens"
+);
+assert.equal(culturalEvidence.tokenAccountingStandard.rules.length, 6);
+assert.equal(
+  culturalEvidence.tokenAccountingStandard.sourceRecord.sha256,
+  culturalEvidence.source.localByteIdenticalRecords
+    .tokenAccountingLedgerRules.sha256
+);
+assert.equal(
+  culturalEvidence.classification.r9PlusA3.accuracy,
+  0.7805555555555556
+);
+assert.equal(
+  culturalEvidence.classification.delta.accuracy,
+  0.10240740740740739
+);
+assert.equal(
+  culturalEvidence.classification.r9PlusA3.focusMacroF1,
+  0.9427878001428764
+);
+assert.equal(
+  culturalEvidence.classification.delta.focusMacroF1,
+  0.16752492464937996
+);
+assert.equal(culturalEvidence.classification.changes.corrections, 1106);
+assert.equal(culturalEvidence.classification.changes.regressions, 0);
+assert.equal(
+  culturalEvidence.classification.changes.precision,
+  0.9972948602344455
+);
+assert.equal(
+  culturalEvidence.classification.changes
+    .protectedDeskPredictionVectorsByteIdentical,
+  true
+);
+assert.equal(
+  culturalEvidence.throughputTokensPerSecond.preparedR9A3AndPolicy,
+  4667230.240299575
+);
+assert.equal(
+  culturalEvidence.throughputTokensPerSecond.rawTextToPrediction,
+  83931.06374559269
+);
+assert.equal(
+  culturalEvidence.measuredCostPerMillionPairedTokens
+    .rawToPredictionMicrosecondsPerToken,
+  11.914539806514856
+);
+assert.equal(
+  culturalEvidence.measuredCostPerMillionPairedTokens.stagedGpuHours,
+  0.00005951662195262689
+);
+assert.equal(
+  culturalEvidence.measuredCostPerMillionPairedTokens.cpuCoreHours,
+  0.003064257539781079
+);
+assert.equal(
+  culturalEvidence.energyUpperBoundPerMillionPairedTokens
+    .stagedGpuKwhMaximum,
+  0.0000029758310976313445
+);
+assert.equal(
+  culturalEvidence.energyUpperBoundPerMillionPairedTokens
+    .measuredPowerDrawClaim,
+  false
+);
+assert.equal(culturalEvidence.activation.candidateEnabled, false);
+assert.equal(culturalEvidence.activation.productionEnabled, false);
+assert.equal(
+  culturalEvidence.classification.wholeCorpusDescriptive,
+  true
+);
+assert.equal(
+  culturalEvidence.classification.freshIndependentHoldoutRemainsAuthority,
+  true
+);
+assert.equal(pressKit.culturalCns.sourceCommit, culturalEvidence.source.commit);
+assert.equal(
+  pressKit.culturalCns.scope.pairedNonPaddingR9Tokens,
+  culturalEvidence.input.pairedNonPaddingR9TokenCount
+);
+assert.equal(
+  pressKit.culturalCns.classification.r9PlusA3Accuracy,
+  culturalEvidence.classification.r9PlusA3.accuracy
+);
+assert.equal(
+  pressKit.culturalCns.energy.measuredPowerDraw,
+  false
+);
+assert.equal(
+  pressKit.culturalCns.boundaries.productionActivationEnabled,
+  false
+);
+assert.equal(
+  pressKit.culturalCns.sourceVisibility,
+  "authenticated access required; unauthenticated fetch returned 404"
+);
+assert.equal(pressKit.culturalCns.recordByteIdentityVerified, true);
+assert.equal(
+  pressKit.culturalCns.workloadIndependentlyRerunByPressroom,
+  false
+);
+assert.equal(
+  pressKit.culturalCns.localReportSha256,
+  culturalEvidence.source.localByteIdenticalRecords.humanReport.sha256
+);
+assert.equal(
+  pressKit.culturalCns.tokenAccountingRulesSha256,
+  culturalEvidence.source.localByteIdenticalRecords
+    .tokenAccountingLedgerRules.sha256
+);
+assert.equal(
+  pressKit.culturalCns.tokenAccountingStandard.billingUnit,
+  culturalEvidence.tokenAccountingStandard.billingUnit
+);
+assert.equal(
+  pressKit.culturalCns.tokenAccountingStandard.nonPaddingModelInputs,
+  true
+);
+assert.equal(
+  pressKit.culturalCns.tokenAccountingStandard
+    .rawPreprocessingDisclosedSeparately,
+  true
+);
+assert.equal(
+  pressKit.culturalCns.tokenAccountingStandard
+    .gpuCpuMemoryAndPowerSeparated,
+  true
+);
+assert.equal(
+  pressKit.culturalCns.tokenAccountingStandard
+    .unavailablePowerTelemetryUsesUpperBound,
+  true
+);
+for (const value of [
+  "10,800",
+  "2,053,810",
+  "0.780556",
+  "0.942788",
+  "99.729%",
+  "4,667,230",
+  "83,931",
+  "11.914540",
+  "161.063 MiB",
+  "0.0000595166 GPU-h / 1M",
+  "0.00306426 core-h / 1M",
+  "≤ 0.00000297583 kWh / 1M"
+]) {
+  assert.equal(
+    registeredClaims.get(value)?.basis,
+    "declared",
+    `Cultural CNS claim ${value} must remain declared`
+  );
+}
+assert.match(index, /CNS CULTURAL NEWSBOY A3 \/ MEASURED 2026-08-19/u);
+assert.match(index, /قياسات عبء العمل الثقافي الموثقة/u);
+assert.match(index, /Documented measurements from the cultural workload/u);
+assert.match(index, /2,053,810 paired non-padding R9 tokens/u);
+assert.match(index, /0\.678148 → 0\.780556 · Δ \+0\.102407/u);
+assert.match(index, /1,106 corrections · 0 regressions/u);
+assert.match(index, /83,931/u);
+assert.match(index, /≤ 0\.00000297583 kWh \/ 1M/u);
+assert.match(index, /الاختبار الجديد المستقل مرجع الجودة/u);
+assert.match(index, /معلن · نسخة مطابقة · التفعيل معطّل/u);
+assert.match(index, /declared · record matched · activation disabled/u);
+assert.match(index, /طابقت النسخة المحلية التقرير وقواعد معيار التوكن/u);
+assert.match(index, /matched their Git blob identities byte-for-byte/u);
+assert.match(index, /مليون رمز إدخال R9 مزدوج غير محشو، لا كلمات تقديرية/u);
+assert.match(index, /one million paired non-padding R9 model-input tokens, not estimated words/u);
+assert.match(index, /href="\.\/annex-intelligence#token-accounting-standard"/u);
+assert.match(
+  index,
+  /CNSEmbedding\/blob\/0ebf9988eff77078ea61e99d500092e10cd8baef/u
+);
+
+assert.match(index, /href="\.\/cepha-k-space-concept\/"/u);
+const cephaTemplateRoot = path.join(root, "docs", "cepha-k-space-concept");
+const cephaTemplateIndex = await readFile(
+  path.join(cephaTemplateRoot, "index.html"),
+  "utf8"
+);
+const cephaTemplateRenderer = await readFile(
+  path.join(cephaTemplateRoot, "k-space.js"),
+  "utf8"
+);
+const cephaTemplateSample = await readFile(
+  path.join(cephaTemplateRoot, "assets", "evidence", "cns-k-space-public.json")
+);
+const cephaSnapshotRoot = path.join(
+  root,
+  "cepha-templates",
+  "k-space-concept-v1"
+);
+const cephaSnapshotManifest = JSON.parse(await readFile(
+  path.join(cephaSnapshotRoot, "SNAPSHOT-MANIFEST.json"),
+  "utf8"
+));
+assert.equal(
+  cephaSnapshotManifest.classification,
+  "conceptual-visual-template"
+);
+assert.equal(cephaSnapshotManifest.policy.evidenceUseAllowed, false);
+assert.equal(cephaSnapshotManifest.deployment.includedInWorkerAssets, false);
+for (const entry of cephaSnapshotManifest.files) {
+  const bytes = await readFile(path.join(
+    cephaSnapshotRoot,
+    ...entry.path.split("/")
+  ));
+  assert.equal(bytes.length, entry.bytes, `Cepha snapshot size: ${entry.path}`);
+  assert.equal(
+    createHash("sha256").update(bytes).digest("hex"),
+    entry.sha256,
+    `Cepha snapshot hash: ${entry.path}`
+  );
+}
+assert.match(
+  cephaTemplateIndex,
+  /<meta name="robots" content="noindex,nofollow,noarchive">/u
+);
+const robots = await readFile(path.join(root, "docs", "robots.txt"), "utf8");
+assert.match(robots, /Disallow: \/cepha-k-space-concept\//u);
+assert.match(cephaTemplateIndex, /قالب Cepha التصوري المحفوظ، وليس قياسًا للنموذج/u);
+assert.match(cephaTemplateIndex, /Preserved Cepha concept template, not a model measurement/u);
+assert.match(cephaTemplateIndex, /الرسم الهندسي المقاس يبقى هو مرجع الادعاءات العلمية/u);
+assert.match(cephaTemplateIndex, /Measured evidence remains authoritative/u);
+assert.doesNotMatch(cephaTemplateIndex, /<script[^>]+src=["']https?:/iu);
+assert.match(cephaTemplateRenderer, /function drawSurface\(/u);
+assert.match(cephaTemplateRenderer, /function saddleHeight\(/u);
+assert.match(cephaTemplateRenderer, /SAMPLE OK/u);
+assert.doesNotMatch(cephaTemplateRenderer, /\bmeasured nodes\b/iu);
+assert.equal(
+  createHash("sha256").update(cephaTemplateSample).digest("hex"),
+  cephaSnapshotManifest.files.find(entry =>
+    entry.path.endsWith("cns-k-space-public.sample.json")
+  ).sha256
+);
+
 const newsBoy = pressKit.operatingProof.find(item => item.name === "NewsBoy");
 assert.ok(newsBoy);
 assert.equal(newsBoy.citationsUrl, "https://newsboy.sbay.sa/#m-citations-section");
@@ -289,7 +797,8 @@ assert.equal(
   newsBoy.embeddedReaderUrl,
   "https://leap2026.sbay.sa/newsboy-reader"
 );
-assert.match(newsBoy.embeddedReaderBoundary, /Read-only same-origin relay/u);
+assert.match(newsBoy.embeddedReaderBoundary, /Read-only same-origin reader/u);
+assert.match(newsBoy.embeddedReaderBoundary, /edition-record API/u);
 assert.equal(
   newsBoy.featuredArticleUrl,
   "https://newsboy.sbay.sa/coverage/leap-2026#article-editorial_7D8F4B11CCD7DE3A45B07412"
@@ -410,6 +919,7 @@ assert.match(app, /event\.touches\.length === 2/u);
 assert.match(app, /touchDistance\(event\.touches\)/u);
 assert.match(app, /frameMaximumZoom/u);
 assert.match(app, /setNewsboyReaderState\(true, "viewport"\)/u);
+assert.match(app, /event\.preventDefault\(\);\s*openNewsboyReader\(\);/u);
 assert.doesNotMatch(app, /requestFullscreen|document\.exitFullscreen/u);
 assert.match(app, /setAttribute\("scrolling", expanded \? "yes" : "no"\)/u);
 assert.match(app, /reloadNewsboyAtTop/u);
@@ -431,7 +941,17 @@ assert.match(worker, /const FONT_PROXY_PREFIX = "\/newsboy-assets\/fonts\/"/u);
 assert.match(worker, /frame-ancestors 'self'/u);
 assert.match(worker, /script-src 'none'/u);
 assert.match(worker, /sandbox allow-popups allow-popups-to-escape-sandbox/u);
-assert.match(worker, /!\/<main\\b\[\^>\]\*class=/u);
+assert.match(worker, /function isCompleteNewsboyEdition/u);
+assert.match(worker, /function isModernNewsboyEdition/u);
+assert.match(worker, /function isCompleteNewsboyEditionRecord/u);
+assert.match(worker, /function renderNewsboyEdition/u);
+assert.match(worker, /const legacyPaper/u);
+assert.match(worker, /view-modern/u);
+assert.match(worker, /m-culture-section/u);
+assert.match(worker, /m-archive-section/u);
+assert.match(worker, /api\/coverage\/events\/leap-2026\/edition/u);
+assert.match(worker, /data-newsboy-relay="edition-api"/u);
+assert.match(worker, /\|\| !isCompleteNewsboyEdition\(html\)/u);
 assert.match(worker, /No stale capture is presented as current/u);
 assert.doesNotMatch(worker, /url\.searchParams\.get\(["']url["']\)/u);
 
@@ -539,8 +1059,11 @@ const newsboySectionHtml = index.slice(
 );
 assert.match(index, /أعلى العدد أولًا، والتصفح الكامل عند الطلب/u);
 assert.match(index, /لا تلتقط المعاينة التمرير أو لوحة المفاتيح/u);
-assert.match(index, /عند الإغلاق يعاد تحميل المصدر من أعلاه/u);
+assert.match(index, /عند النقر يفتح القارئ بملء الشاشة/u);
 assert.match(index, /The edition masthead first, full browsing on demand/u);
+assert.match(index, /clicking opens the reader full screen/u);
+assert.match(index, /closing returns to the same card position/u);
+assert.match(index, /scrolling is enabled only in full-screen mode/u);
 assert.match(index, /src="\/newsboy-reader"/u);
 assert.doesNotMatch(newsboySectionHtml, /طبعة اليوم|Today's edition/u);
 assert.doesNotMatch(
@@ -573,6 +1096,43 @@ assert.match(annex, /octet-bloom-trace-v270\.webm/u);
 assert.match(annex, /<video controls muted playsinline preload="none"/u);
 assert.match(annex, /trace-evidence\.json/u);
 assert.match(annex, /ليست نسبة دقة لنموذج ذكاء اصطناعي/u);
+assert.match(annex, /How the authentic engineering graph is derived/u);
+assert.match(
+  annex,
+  /8847832167ec643c66461ef8c6b7182b48286821d0fd20fd600414bf51f5dfef/u
+);
+assert.match(
+  annex,
+  /51740c50a975b5c510f1685a939abd26fe9ef6ea0ba65fc10b6c59fffb9c67f1/u
+);
+assert.match(annex, /d\(v\) = 0 if v has no produced-tensor parent/u);
+assert.match(annex, /The Z axis is unused/u);
+assert.match(annex, /Measured quality, throughput, and cost values/u);
+assert.match(annex, /2,053,810 paired non-padding R9 tokens/u);
+assert.match(annex, /0\.780556/u);
+assert.match(annex, /0\.942788/u);
+assert.match(annex, /99\.729%/u);
+assert.match(annex, /0\.0000595166/u);
+assert.match(annex, /0\.00000297583/u);
+assert.match(annex, /independent fresh-holdout evaluation remains the quality authority/u);
+assert.match(annex, /candidate and production activation are both disabled/u);
+assert.match(annex, /معيار التوكن المحاسبي/u);
+assert.match(annex, /Token-accounting standard/u);
+assert.match(annex, /id="token-accounting-standard"/u);
+assert.match(annex, /Unavailable power telemetry yields an explicit upper bound/u);
+assert.match(annex, /Git blob hashes computed from the local report and token-accounting rules matched/u);
+assert.match(
+  annex,
+  /ec8c377023749655404d02372f5681478e7cca9e542d8ac0be8e5cd6591e9b6b/u
+);
+assert.match(
+  annex,
+  /767e71f032da2dd52211ef813f9c0f3b82ae9f362e197b9d44f0cc50e7e8a364/u
+);
+assert.match(
+  annex,
+  /CNSEmbedding\/blob\/0ebf9988eff77078ea61e99d500092e10cd8baef/u
+);
 // Content Security Policy allows no inline script: the annex must load a module file.
 assert.equal(/<script(?![^>]*\ssrc=)/u.test(annex), false, "no inline script in the annex");
 assert.match(annex, /<script type="module" src="\.\/annex\.js">/u);

@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /cepha-k-space-concept/
 
 Sitemap: https://leap2026.sbay.sa/sitemap.xml

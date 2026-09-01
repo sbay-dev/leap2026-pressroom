@@ -1,0 +1,2203 @@
+{
+  "schema": "sbay.cns-k-space-public.v1",
+  "generatedAtUtc": "2026-09-01T13:33:35.8088309+00:00",
+  "sourceArtifact": {
+    "schema": "sarmadai.cepha.cns_public_artifact_v4",
+    "sha256": "cbf4da02afe8b09830b2ea622134800988d9c534b80ab908c4febfba3373d65e",
+    "payloadSha256": "d98fcffcb8f24b7be789ac225fe53f4e04ff62ce86643b12288d35af50c2fece",
+    "merkleRoot": "276ce39336293c55507cab4fc13721f998a1f889e37c3e69f5cbabf2f76ef1c9",
+    "merkleLeafCount": 152
+  },
+  "liveRendering": {
+    "renderer": "browser-canvas2d-software-3d",
+    "dataFetch": "same-origin-no-store",
+    "notVideo": true,
+    "claimBoundary": "Live means the browser redraws and responds to input in real time. It does not mean live model inference, a streaming production database, or a physical processor trace."
+  },
+  "designReference": {
+    "visualLanguage": "Private design reference: illuminated saddle surface, cyan and magenta concept branches, and a gold replay cursor.",
+    "measuredGeometry": false,
+    "claimBoundary": "The surface is visual staging. Riemannian, geodesic, negative-curvature, and hyperbolic claims remain unavailable unless separately measured."
+  },
+  "networks": [
+    {
+      "id": "v7-zero",
+      "displayName": "V7 zero / before-training",
+      "role": "requested baseline",
+      "status": "unavailable",
+      "version": "v1",
+      "modelId": null,
+      "sourceIdentitySha256": "771c39d5da1a43799e46fc271d3ecdb1f82ca50f95a4e42ba8221601271484ff",
+      "metrics": [
+        {
+          "key": "feature_dimension",
+          "status": "inherited_report_only",
+          "value": 4096,
+          "unit": "dimensions"
+        },
+        {
+          "key": "hidden_dimension",
+          "status": "inherited_report_only",
+          "value": 768,
+          "unit": "dimensions"
+        },
+        {
+          "key": "projection_dimension",
+          "status": "inherited_report_only",
+          "value": 768,
+          "unit": "dimensions"
+        },
+        {
+          "key": "relation_rows",
+          "status": "inherited_report_only",
+          "value": 4,
+          "unit": "rows"
+        }
+      ],
+      "visualAnchor": {
+        "x": 0.994637362251,
+        "y": -0.079887310452,
+        "z": -0.065685121927
+      },
+      "claimBoundary": "A report exists under Model/v7, but its internal version binding identifies v1. It is not published as a native V7-zero network."
+    },
+    {
+      "id": "v7-trained",
+      "displayName": "CNS V7/P33 trained embedding",
+      "role": "trained comparison",
+      "status": "detected_metadata_only",
+      "version": "v7",
+      "modelId": "cns-v7-p33-newsboy-256-admin",
+      "sourceIdentitySha256": "5b38b7dd3e4c1208588864f89e85bec961b27a4b8bb2c6f4ff8419b54fe6c382",
+      "metrics": [
+        {
+          "key": "embedding_dimension",
+          "status": "detected",
+          "value": 256,
+          "unit": "dimensions"
+        },
+        {
+          "key": "observed_qdrant_points",
+          "status": "detected",
+          "value": 143,
+          "unit": "points"
+        },
+        {
+          "key": "observed_qdrant_vectors",
+          "status": "detected",
+          "value": 143,
+          "unit": "vectors"
+        },
+        {
+          "key": "validation_sample_embeddings",
+          "status": "detected",
+          "value": 20,
+          "unit": "embeddings"
+        }
+      ],
+      "visualAnchor": {
+        "x": 0.155288340303,
+        "y": -0.83442509209,
+        "z": 0.528791354938
+      },
+      "claimBoundary": "Read-only validation metadata reports normalized V7/P33 embeddings in an existing V7 collection and explicitly reports no collection creation or point mutation by the validator. It is not a full V7 pipeline, general-quality, or first-index-time claim."
+    },
+    {
+      "id": "cgn",
+      "displayName": "Contextual Genius Network v7 - Frozen P37 Routing Contract",
+      "role": "routing component",
+      "status": "detected_metadata_only",
+      "version": "v7",
+      "modelId": "cgn",
+      "sourceIdentitySha256": "32079b9259d42fd51d1df67935178bea6ba7b92dda14a2a0a5b90cbb2ecd9d04",
+      "metrics": [
+        {
+          "key": "ordered_scalar_features",
+          "status": "detected",
+          "value": 22,
+          "unit": "features"
+        },
+        {
+          "key": "intercepts",
+          "status": "detected",
+          "value": 1,
+          "unit": "scalar"
+        },
+        {
+          "key": "comparable_parameter_count",
+          "status": "unavailable",
+          "value": null,
+          "unit": null
+        }
+      ],
+      "visualAnchor": {
+        "x": 0.487372369621,
+        "y": -0.590766907167,
+        "z": -0.643010602344
+      },
+      "claimBoundary": "CGN is evidenced as a transparent routing component. 'Smaller' or 'close in size to CNS' is not claimed because comparable total parameter counts are unavailable."
+    },
+    {
+      "id": "cns",
+      "displayName": "CNS Embedding v2.1.0",
+      "role": "separate source contract",
+      "status": "detected_source_contract",
+      "version": "v2.1.0",
+      "modelId": "cns-v2",
+      "sourceIdentitySha256": "d6e782b3ed8eda756c07d38de389702134a7ba3d9d8e58cefb609b357cefcd54",
+      "metrics": [
+        {
+          "key": "declared_dimensions",
+          "status": "detected",
+          "value": 768,
+          "unit": "dimensions"
+        }
+      ],
+      "visualAnchor": {
+        "x": -0.148580920445,
+        "y": 0.763132168393,
+        "z": 0.628930046701
+      },
+      "claimBoundary": "This is a provider source contract in MCPServerMvc, not proof that a specific model weight file was loaded."
+    }
+  ],
+  "nodeGraph": {
+    "status": "detected",
+    "mode": "actual-vector-derived-public-evidence",
+    "basis": "19 node(s) derived from 19 actual-vector digest entrie(s); 19 node(s) bound to real EF write spans.",
+    "runtimeId": "cns-v7-p33-local-deterministic-256-v1",
+    "runtimeContract": "Offline repository-local deterministic 256-D runtime. For label L and dimension d: h = SHA256('cns-v7-p33-local-embed-v1\\0' + L + '\\0' + d); two little-endian UInt64 words of h drive a Box-Muller Gaussian sample; the 256 samples are L2-normalized to a unit vector. It is reproducible and content-dependent, and it is explicitly not the external trained CNS V7/P33 model weights.",
+    "referenceKey": "K_c_n_s",
+    "referenceNodeContract": "The first node in ordinal order is the K_c_n_s living reference: it is the first actually-computed vector v0, fixed at (0,0,0). Every later node i publishes the canonical SHA-256 of vi, its 256-bit sign projection, and coordinates derived from the (vi - v0) difference digest, declaring referenceRelation='relative_to:K_c_n_s'.",
+    "coordinateDerivation": "Node 0 = (0,0,0). For index > 0: differenceDigest = SHA256(float32-LE canonical bytes of (vi - v0)); angle = 2*pi*u32le(differenceDigest[0..4])/2^32; radius = u32le(differenceDigest[4..8])/(2^32-1); x = radius*(1+cos(angle))/2; y = radius*(1+sin(angle))/2; z from accumulated sign-bit Hamming. Rounded to 12 decimals and reproducible from the published differenceCanonicalSha256.",
+    "zAxisDerivation": "z is derived only from the sign-bit Hamming axis: cumulativeDistanceBits(i) = sum of the 256-bit sign Hamming distances between consecutive vectors up to i, and z(i) = cumulativeDistanceBits(i) / (256*i), with z(0) = 0. It encodes accumulated sign-pattern separation of real vectors, not depth, importance, or semantics.",
+    "merkleRoot": "fad8cb77a0b8d1cbba31b07c33defb143e275accdf64d8069e057d6bb2b130be",
+    "nodeCount": 19,
+    "efSpanBoundNodeCount": 19,
+    "qdrantSpanCount": 0,
+    "clock": null,
+    "firstObservedSoftwareEvent": null,
+    "nodes": [
+      {
+        "index": 0,
+        "label": "كائن حي",
+        "labelProvenance": "Fixed CNS V7/P33 capture contract ordinal 0; K_c_n_s reference",
+        "kind": "k_c_n_s_computed_zero_reference",
+        "referenceKey": "K_c_n_s",
+        "referenceRelation": "self_reference_origin",
+        "dimensions": 256,
+        "l2Norm": 1.000000002,
+        "canonicalVectorSha256": "16349c4f12e14622f72068499e4a6698f0411f55901f8c0c6f46daf3c469d8d4",
+        "differenceCanonicalSha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+        "signature": {
+          "status": "detected",
+          "bitWidth": 256,
+          "hex": "24d31a1c15bae76286fbb5e369fe78d126ecf43cd9310a206d68ab0573902dd8",
+          "basis": "Per-dimension sign projection of the locally computed vector."
+        },
+        "coordinates": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "space": "Normalized non-negative unit cube [0,1]^3 anchored at the K_c_n_s computed-zero reference origin (0,0,0).",
+          "derivation": "Reference origin: v0 is the K_c_n_s living reference and is fixed at (0,0,0) by contract (difference v0-v0 = 0)."
+        },
+        "hammingTransition": {
+          "status": "reference_origin",
+          "bitWidth": 256,
+          "cumulativeDistanceBits": 0,
+          "basis": "The K_c_n_s computed-zero reference has no predecessor, so no sign-bit transition exists."
+        },
+        "efWriteSpan": {
+          "status": "detected",
+          "sequence": 1,
+          "durationNanoseconds": 50813100,
+          "tickResolutionNanoseconds": 100,
+          "bindingSha256": "f3086d0f470c47963e6eee50e5a16ca1d91850179ad5f0492b5e68bbcd160cfb",
+          "timeline": {
+            "status": "detected",
+            "triggerTicks": 210029955644,
+            "beforeWriteTicks": 210030237950,
+            "observedWriteTicks": 210030272229,
+            "afterWriteTicks": 210030463775,
+            "tickFrequency": 10000000,
+            "triggerToBeforeWriteNanoseconds": 28230600,
+            "beforeWriteToObservedNanoseconds": 3427900,
+            "observedWriteToAfterNanoseconds": 19154600,
+            "triggerToAfterNanoseconds": 50813100
+          }
+        },
+        "qdrantUpsertSpan": {
+          "status": "read_only_not_written",
+          "sequence": null,
+          "durationNanoseconds": null,
+          "tickResolutionNanoseconds": null,
+          "bindingSha256": null,
+          "timeline": {
+            "status": "unavailable",
+            "triggerTicks": null,
+            "beforeWriteTicks": null,
+            "observedWriteTicks": null,
+            "afterWriteTicks": null,
+            "tickFrequency": null,
+            "triggerToBeforeWriteNanoseconds": null,
+            "beforeWriteToObservedNanoseconds": null,
+            "observedWriteToAfterNanoseconds": null,
+            "triggerToAfterNanoseconds": null
+          }
+        },
+        "merkle": {
+          "status": "detected",
+          "leafPath": "vectors/000000/16349c4f12e14622f72068499e4a6698f0411f55901f8c0c6f46daf3c469d8d4",
+          "leafSha256": "dfa4921c664ebac37dbe005183ca38a7c309815d99c8aa5e44c3f5b9e8530ec4",
+          "root": "fad8cb77a0b8d1cbba31b07c33defb143e275accdf64d8069e057d6bb2b130be",
+          "proofPath": [
+            {
+              "level": 0,
+              "siblingSide": "right",
+              "siblingHash": "dc970eeac5877ae6c2bfef3072e5c2acf62de4ba87d3fbbbb50fcd7e77a601c4"
+            },
+            {
+              "level": 1,
+              "siblingSide": "right",
+              "siblingHash": "920528f0b8e098fd3bc6260200efe225797f0ca0ab575cccd910a526bc8ee7b1"
+            },
+            {
+              "level": 2,
+              "siblingSide": "right",
+              "siblingHash": "447d14795bab077f0301bbda04133f05e32eb44623dbfa8d65499185b509ce08"
+            },
+            {
+              "level": 3,
+              "siblingSide": "right",
+              "siblingHash": "b8b21a62f1e7bd18be7a78a74d2c16efcbc0303d8ff5ceb7cfa2d3e6dc807a93"
+            },
+            {
+              "level": 4,
+              "siblingSide": "right",
+              "siblingHash": "ff05de9b4887ab05797847c9df922e8987de34ec4e6e04cf71fb2dfff42f650b"
+            }
+          ]
+        },
+        "sourceBasis": "Actual offline-computed L2-normalized 256-dimensional vector for label 'كائن حي' (Fixed CNS V7/P33 capture contract ordinal 0; K_c_n_s reference); identity is the canonical SHA-256 of the real vector bytes. Raw components are held only in the private local audit and SQLite artifact, never here.",
+        "claimBoundary": "Node identity is the canonical SHA-256 of a real, locally computed L2-normalized embedding vector; the sign projection is the per-dimension sign of that vector; coordinates are a reconstructable projection of the (vi - v0) difference digest and its accumulated sign-bit Hamming. No raw vector component, magnitude, model weight, activation, prompt, or user content is present, and none can be reconstructed from these fields."
+      },
+      {
+        "index": 1,
+        "label": "نباتات",
+        "labelProvenance": "Fixed CNS V7/P33 capture contract ordinal 1",
+        "kind": "actual_vector_relative_to_reference",
+        "referenceKey": "K_c_n_s",
+        "referenceRelation": "relative_to:K_c_n_s",
+        "dimensions": 256,
+        "l2Norm": 0.999999997,
+        "canonicalVectorSha256": "f6456f51a547cc54204f39ddee9d9085cf1cf32f7d00fb86465f4d943317ffef",
+        "differenceCanonicalSha256": "9a44d99131aecaa616fa069d9a081c887b1524e78039a45cb6d9e2d0c789fdb8",
+        "signature": {
+          "status": "detected",
+          "bitWidth": 256,
+          "hex": "e8bb0d09543e5f1e1992e7c83dc3bc681cf83a154fc78af45bc75b4ab7b517ad",
+          "basis": "Per-dimension sign projection of the locally computed vector."
+        },
+        "coordinates": {
+          "x": 0.030761757276,
+          "y": 0.187577066311,
+          "z": 0.48046875,
+          "space": "Normalized non-negative unit cube [0,1]^3 anchored at the K_c_n_s computed-zero reference origin (0,0,0).",
+          "derivation": "differenceDigest = SHA256(canonical float32-LE bytes of (vi - v0)); angle = 2*pi*u32le(differenceDigest[0..4])/2^32; radius = u32le(differenceDigest[4..8])/(2^32-1); x = radius*(1+cos(angle))/2; y = radius*(1+sin(angle))/2; z from accumulated sign-bit Hamming. Reconstructable from the published differenceCanonicalSha256 and sign projections."
+        },
+        "hammingTransition": {
+          "status": "detected",
+          "bitWidth": 256,
+          "distanceBits": 123,
+          "normalizedDistance": 0.48046875,
+          "cumulativeDistanceBits": 123,
+          "basis": "Bit distance between the 256-bit sign projections of this vector and its predecessor. It measures sign-pattern separation of real vectors, not magnitude, activation, or semantic distance."
+        },
+        "efWriteSpan": {
+          "status": "detected",
+          "sequence": 2,
+          "durationNanoseconds": 2765200,
+          "tickResolutionNanoseconds": 100,
+          "bindingSha256": "3f7d02a037085f36459112bf451900095328dc0e34b73490edaf6cfb0f911d16",
+          "timeline": {
+            "status": "detected",
+            "triggerTicks": 210031078079,
+            "beforeWriteTicks": 210031084005,
+            "observedWriteTicks": 210031085247,
+            "afterWriteTicks": 210031105731,
+            "tickFrequency": 10000000,
+            "triggerToBeforeWriteNanoseconds": 592600,
+            "beforeWriteToObservedNanoseconds": 124200,
+            "observedWriteToAfterNanoseconds": 2048400,
+            "triggerToAfterNanoseconds": 2765200
+          }
+        },
+        "qdrantUpsertSpan": {
+          "status": "read_only_not_written",
+          "sequence": null,
+          "durationNanoseconds": null,
+          "tickResolutionNanoseconds": null,
+          "bindingSha256": null,
+          "timeline": {
+            "status": "unavailable",
+            "triggerTicks": null,
+            "beforeWriteTicks": null,
+            "observedWriteTicks": null,
+            "afterWriteTicks": null,
+            "tickFrequency": null,
+            "triggerToBeforeWriteNanoseconds": null,
+            "beforeWriteToObservedNanoseconds": null,
+            "observedWriteToAfterNanoseconds": null,
+            "triggerToAfterNanoseconds": null
+          }
+        },
+        "merkle": {
+          "status": "detected",
+          "leafPath": "vectors/000001/f6456f51a547cc54204f39ddee9d9085cf1cf32f7d00fb86465f4d943317ffef",
+          "leafSha256": "7b1c3afa7825c1c8a752fd4935b4d941ef3fef6809512456389e84575f5ca813",
+          "root": "fad8cb77a0b8d1cbba31b07c33defb143e275accdf64d8069e057d6bb2b130be",
+          "proofPath": [
+            {
+              "level": 0,
+              "siblingSide": "left",
+              "siblingHash": "0a5bf0a24054646865fb3535cd8169b4b46cfe945e8833ee7a9a973368d14139"
+            },
+            {
+              "level": 1,
+              "siblingSide": "right",
+              "siblingHash": "920528f0b8e098fd3bc6260200efe225797f0ca0ab575cccd910a526bc8ee7b1"
+            },
+            {
+              "level": 2,
+              "siblingSide": "right",
+              "siblingHash": "447d14795bab077f0301bbda04133f05e32eb44623dbfa8d65499185b509ce08"
+            },
+            {
+              "level": 3,
+              "siblingSide": "right",
+              "siblingHash": "b8b21a62f1e7bd18be7a78a74d2c16efcbc0303d8ff5ceb7cfa2d3e6dc807a93"
+            },
+            {
+              "level": 4,
+              "siblingSide": "right",
+              "siblingHash": "ff05de9b4887ab05797847c9df922e8987de34ec4e6e04cf71fb2dfff42f650b"
+            }
+          ]
+        },
+        "sourceBasis": "Actual offline-computed L2-normalized 256-dimensional vector for label 'نباتات' (Fixed CNS V7/P33 capture contract ordinal 1); identity is the canonical SHA-256 of the real vector bytes. Raw components are held only in the private local audit and SQLite artifact, never here.",
+        "claimBoundary": "Node identity is the canonical SHA-256 of a real, locally computed L2-normalized embedding vector; the sign projection is the per-dimension sign of that vector; coordinates are a reconstructable projection of the (vi - v0) difference digest and its accumulated sign-bit Hamming. No raw vector component, magnitude, model weight, activation, prompt, or user content is present, and none can be reconstructed from these fields."
+      },
+      {
+        "index": 2,
+        "label": "حيوانات",
+        "labelProvenance": "Fixed CNS V7/P33 capture contract ordinal 2",
+        "kind": "actual_vector_relative_to_reference",
+        "referenceKey": "K_c_n_s",
+        "referenceRelation": "relative_to:K_c_n_s",
+        "dimensions": 256,
+        "l2Norm": 0.999999995,
+        "canonicalVectorSha256": "5eaf9e796713b481ddbd1fd611ae978344e09c203723d6e52f12ac4f34491dd5",
+        "differenceCanonicalSha256": "a8bba2490a647bccceb09f37e9f86b215a958f1a042b142f0716ff8688739415",
+        "signature": {
+          "status": "detected",
+          "bitWidth": 256,
+          "hex": "fe0d7a2e4d6eee579fa034ef28b9cf38d40a9324478f4fcd4f87a49b692e5826",
+          "basis": "Per-dimension sign projection of the locally computed vector."
+        },
+        "coordinates": {
+          "x": 0.305805739658,
+          "y": 0.787641137782,
+          "z": 0.4765625,
+          "space": "Normalized non-negative unit cube [0,1]^3 anchored at the K_c_n_s computed-zero reference origin (0,0,0).",
+          "derivation": "differenceDigest = SHA256(canonical float32-LE bytes of (vi - v0)); angle = 2*pi*u32le(differenceDigest[0..4])/2^32; radius = u32le(differenceDigest[4..8])/(2^32-1); x = radius*(1+cos(angle))/2; y = radius*(1+sin(angle))/2; z from accumulated sign-bit Hamming. Reconstructable from the published differenceCanonicalSha256 and sign projections."
+        },
+        "hammingTransition": {
+          "status": "detected",
+          "bitWidth": 256,
+          "distanceBits": 121,
+          "normalizedDistance": 0.47265625,
+          "cumulativeDistanceBits": 244,
+          "basis": "Bit distance between the 256-bit sign projections of this vector and its predecessor. It measures sign-pattern separation of real vectors, not magnitude, activation, or semantic distance."
+        },
+        "efWriteSpan": {
+          "status": "detected",
+          "sequence": 3,
+          "durationNanoseconds": 1298400,
+          "tickResolutionNanoseconds": 100,
+          "bindingSha256": "67c7904a5884593a06d5ad49afecd1ac27af2acf8dda7cfc8f1bfcff1f99a5d9",
+          "timeline": {
+            "status": "detected",
+            "triggerTicks": 210031125991,
+            "beforeWriteTicks": 210031127841,
+            "observedWriteTicks": 210031128721,
+            "afterWriteTicks": 210031138975,
+            "tickFrequency": 10000000,
+            "triggerToBeforeWriteNanoseconds": 185000,
+            "beforeWriteToObservedNanoseconds": 88000,
+            "observedWriteToAfterNanoseconds": 1025400,
+            "triggerToAfterNanoseconds": 1298400
+          }
+        },
+        "qdrantUpsertSpan": {
+          "status": "read_only_not_written",
+          "sequence": null,
+          "durationNanoseconds": null,
+          "tickResolutionNanoseconds": null,
+          "bindingSha256": null,
+          "timeline": {
+            "status": "unavailable",
+            "triggerTicks": null,
+            "beforeWriteTicks": null,
+            "observedWriteTicks": null,
+            "afterWriteTicks": null,
+            "tickFrequency": null,
+            "triggerToBeforeWriteNanoseconds": null,
+            "beforeWriteToObservedNanoseconds": null,
+            "observedWriteToAfterNanoseconds": null,
+            "triggerToAfterNanoseconds": null
+          }
+        },
+        "merkle": {
+          "status": "detected",
+          "leafPath": "vectors/000002/5eaf9e796713b481ddbd1fd611ae978344e09c203723d6e52f12ac4f34491dd5",
+          "leafSha256": "7cddd025aa849ecc40b8338f0a5fd8f89ce40c57d4b3840fd673ece0c2afa1e1",
+          "root": "fad8cb77a0b8d1cbba31b07c33defb143e275accdf64d8069e057d6bb2b130be",
+          "proofPath": [
+            {
+              "level": 0,
+              "siblingSide": "right",
+              "siblingHash": "583721e1fc332e8b0b0940a5b13ba6897a69dca9166336a9cde05eeadbff8027"
+            },
+            {
+              "level": 1,
+              "siblingSide": "left",
+              "siblingHash": "5b2a874076e24690df163c59cac927eb30151a66fc855b965a1de0e45c6c54e9"
+            },
+            {
+              "level": 2,
+              "siblingSide": "right",
+              "siblingHash": "447d14795bab077f0301bbda04133f05e32eb44623dbfa8d65499185b509ce08"
+            },
+            {
+              "level": 3,
+              "siblingSide": "right",
+              "siblingHash": "b8b21a62f1e7bd18be7a78a74d2c16efcbc0303d8ff5ceb7cfa2d3e6dc807a93"
+            },
+            {
+              "level": 4,
+              "siblingSide": "right",
+              "siblingHash": "ff05de9b4887ab05797847c9df922e8987de34ec4e6e04cf71fb2dfff42f650b"
+            }
+          ]
+        },
+        "sourceBasis": "Actual offline-computed L2-normalized 256-dimensional vector for label 'حيوانات' (Fixed CNS V7/P33 capture contract ordinal 2); identity is the canonical SHA-256 of the real vector bytes. Raw components are held only in the private local audit and SQLite artifact, never here.",
+        "claimBoundary": "Node identity is the canonical SHA-256 of a real, locally computed L2-normalized embedding vector; the sign projection is the per-dimension sign of that vector; coordinates are a reconstructable projection of the (vi - v0) difference digest and its accumulated sign-bit Hamming. No raw vector component, magnitude, model weight, activation, prompt, or user content is present, and none can be reconstructed from these fields."
+      },
+      {
+        "index": 3,
+        "label": "ثدييات",
+        "labelProvenance": "Fixed CNS V7/P33 capture contract ordinal 3",
+        "kind": "actual_vector_relative_to_reference",
+        "referenceKey": "K_c_n_s",
+        "referenceRelation": "relative_to:K_c_n_s",
+        "dimensions": 256,
+        "l2Norm": 0.999999997,
+        "canonicalVectorSha256": "3e47209ac40b3660a3b7223abb053dffa394ed9fa028d232c539c9e00c48d097",
+        "differenceCanonicalSha256": "147dc7f5718cbfac3df24157e31e84bc32e476277ba90a16b1b9e01300c2837c",
+        "signature": {
+          "status": "detected",
+          "bitWidth": 256,
+          "hex": "8b55058356a5a3a85cad9864ad45a8e3aa10e52372e7027836ca731e05a171f5",
+          "basis": "Per-dimension sign projection of the locally computed vector."
+        },
+        "coordinates": {
+          "x": 0.664237404727,
+          "y": 0.253645634693,
+          "z": 0.505208333333,
+          "space": "Normalized non-negative unit cube [0,1]^3 anchored at the K_c_n_s computed-zero reference origin (0,0,0).",
+          "derivation": "differenceDigest = SHA256(canonical float32-LE bytes of (vi - v0)); angle = 2*pi*u32le(differenceDigest[0..4])/2^32; radius = u32le(differenceDigest[4..8])/(2^32-1); x = radius*(1+cos(angle))/2; y = radius*(1+sin(angle))/2; z from accumulated sign-bit Hamming. Reconstructable from the published differenceCanonicalSha256 and sign projections."
+        },
+        "hammingTransition": {
+          "status": "detected",
+          "bitWidth": 256,
+          "distanceBits": 144,
+          "normalizedDistance": 0.5625,
+          "cumulativeDistanceBits": 388,
+          "basis": "Bit distance between the 256-bit sign projections of this vector and its predecessor. It measures sign-pattern separation of real vectors, not magnitude, activation, or semantic distance."
+        },
+        "efWriteSpan": {
+          "status": "detected",
+          "sequence": 4,
+          "durationNanoseconds": 1403900,
+          "tickResolutionNanoseconds": 100,
+          "bindingSha256": "b1283a1924c888920ebc4f0b6d15f25e505514489247016cafe123e0d193ccd5",
+          "timeline": {
+            "status": "detected",
+            "triggerTicks": 210031147462,
+            "beforeWriteTicks": 210031148572,
+            "observedWriteTicks": 210031149126,
+            "afterWriteTicks": 210031161501,
+            "tickFrequency": 10000000,
+            "triggerToBeforeWriteNanoseconds": 111000,
+            "beforeWriteToObservedNanoseconds": 55400,
+            "observedWriteToAfterNanoseconds": 1237500,
+            "triggerToAfterNanoseconds": 1403900
+          }
+        },
+        "qdrantUpsertSpan": {
+          "status": "read_only_not_written",
+          "sequence": null,
+          "durationNanoseconds": null,
+          "tickResolutionNanoseconds": null,
+          "bindingSha256": null,
+          "timeline": {
+            "status": "unavailable",
+            "triggerTicks": null,
+            "beforeWriteTicks": null,
+            "observedWriteTicks": null,
+            "afterWriteTicks": null,
+            "tickFrequency": null,
+            "triggerToBeforeWriteNanoseconds": null,
+            "beforeWriteToObservedNanoseconds": null,
+            "observedWriteToAfterNanoseconds": null,
+            "triggerToAfterNanoseconds": null
+          }
+        },
+        "merkle": {
+          "status": "detected",
+          "leafPath": "vectors/000003/3e47209ac40b3660a3b7223abb053dffa394ed9fa028d232c539c9e00c48d097",
+          "leafSha256": "d0a61e8cef8975593c324f1a432af5326c1770659398dedd7f30a55c80ea301b",
+          "root": "fad8cb77a0b8d1cbba31b07c33defb143e275accdf64d8069e057d6bb2b130be",
+          "proofPath": [
+            {
+              "level": 0,
+              "siblingSide": "left",
+              "siblingHash": "d8ea357b6013e4071f6fd1e8254b1bc7b20387694ed9cdd0c42948e9d755efb1"
+            },
+            {
+              "level": 1,
+              "siblingSide": "left",
+              "siblingHash": "5b2a874076e24690df163c59cac927eb30151a66fc855b965a1de0e45c6c54e9"
+            },
+            {
+              "level": 2,
+              "siblingSide": "right",
+              "siblingHash": "447d14795bab077f0301bbda04133f05e32eb44623dbfa8d65499185b509ce08"
+            },
+            {
+              "level": 3,
+              "siblingSide": "right",
+              "siblingHash": "b8b21a62f1e7bd18be7a78a74d2c16efcbc0303d8ff5ceb7cfa2d3e6dc807a93"
+            },
+            {
+              "level": 4,
+              "siblingSide": "right",
+              "siblingHash": "ff05de9b4887ab05797847c9df922e8987de34ec4e6e04cf71fb2dfff42f650b"
+            }
+          ]
+        },
+        "sourceBasis": "Actual offline-computed L2-normalized 256-dimensional vector for label 'ثدييات' (Fixed CNS V7/P33 capture contract ordinal 3); identity is the canonical SHA-256 of the real vector bytes. Raw components are held only in the private local audit and SQLite artifact, never here.",
+        "claimBoundary": "Node identity is the canonical SHA-256 of a real, locally computed L2-normalized embedding vector; the sign projection is the per-dimension sign of that vector; coordinates are a reconstructable projection of the (vi - v0) difference digest and its accumulated sign-bit Hamming. No raw vector component, magnitude, model weight, activation, prompt, or user content is present, and none can be reconstructed from these fields."
+      },
+      {
+        "index": 4,
+        "label": "طيور",
+        "labelProvenance": "Fixed CNS V7/P33 capture contract ordinal 4",
+        "kind": "actual_vector_relative_to_reference",
+        "referenceKey": "K_c_n_s",
+        "referenceRelation": "relative_to:K_c_n_s",
+        "dimensions": 256,
+        "l2Norm": 0.999999998,
+        "canonicalVectorSha256": "b653087c164c852e5aef6925aa53c12b4c95bbcdd6416363f0d62e23fa53cbfa",
+        "differenceCanonicalSha256": "984faa525110f7b94dc41ee86adfa70d891c8cad96e5b33305552b91168edb0e",
+        "signature": {
+          "status": "detected",
+          "bitWidth": 256,
+          "hex": "4de61233028afdbba48849170a44bf9bfd05e8e40a262c5627dd16c8aedd5a1d",
+          "basis": "Per-dimension sign projection of the locally computed vector."
+        },
+        "coordinates": {
+          "x": 0.202579148799,
+          "y": 0.688974454269,
+          "z": 0.5029296875,
+          "space": "Normalized non-negative unit cube [0,1]^3 anchored at the K_c_n_s computed-zero reference origin (0,0,0).",
+          "derivation": "differenceDigest = SHA256(canonical float32-LE bytes of (vi - v0)); angle = 2*pi*u32le(differenceDigest[0..4])/2^32; radius = u32le(differenceDigest[4..8])/(2^32-1); x = radius*(1+cos(angle))/2; y = radius*(1+sin(angle))/2; z from accumulated sign-bit Hamming. Reconstructable from the published differenceCanonicalSha256 and sign projections."
+        },
+        "hammingTransition": {
+          "status": "detected",
+          "bitWidth": 256,
+          "distanceBits": 127,
+          "normalizedDistance": 0.49609375,
+          "cumulativeDistanceBits": 515,
+          "basis": "Bit distance between the 256-bit sign projections of this vector and its predecessor. It measures sign-pattern separation of real vectors, not magnitude, activation, or semantic distance."
+        },
+        "efWriteSpan": {
+          "status": "detected",
+          "sequence": 5,
+          "durationNanoseconds": 1209600,
+          "tickResolutionNanoseconds": 100,
+          "bindingSha256": "01dc249bc7ac07f85f965f33332a8019161f3f0c6b7ebb29a1ba4cfd3b5e3788",
+          "timeline": {
+            "status": "detected",
+            "triggerTicks": 210031168622,
+            "beforeWriteTicks": 210031169719,
+            "observedWriteTicks": 210031170268,
+            "afterWriteTicks": 210031180718,
+            "tickFrequency": 10000000,
+            "triggerToBeforeWriteNanoseconds": 109700,
+            "beforeWriteToObservedNanoseconds": 54900,
+            "observedWriteToAfterNanoseconds": 1045000,
+            "triggerToAfterNanoseconds": 1209600
+          }
+        },
+        "qdrantUpsertSpan": {
+          "status": "read_only_not_written",
+          "sequence": null,
+          "durationNanoseconds": null,
+          "tickResolutionNanoseconds": null,
+          "bindingSha256": null,
+          "timeline": {
+            "status": "unavailable",
+            "triggerTicks": null,
+            "beforeWriteTicks": null,
+            "observedWriteTicks": null,
+            "afterWriteTicks": null,
+            "tickFrequency": null,
+            "triggerToBeforeWriteNanoseconds": null,
+            "beforeWriteToObservedNanoseconds": null,
+            "observedWriteToAfterNanoseconds": null,
+            "triggerToAfterNanoseconds": null
+          }
+        },
+        "merkle": {
+          "status": "detected",
+          "leafPath": "vectors/000004/b653087c164c852e5aef6925aa53c12b4c95bbcdd6416363f0d62e23fa53cbfa",
+          "leafSha256": "1d27611281bbe8f64d63050824dfe148b3689a5c2c29ec295ee8e28600a691de",
+          "root": "fad8cb77a0b8d1cbba31b07c33defb143e275accdf64d8069e057d6bb2b130be",
+          "proofPath": [
+            {
+              "level": 0,
+              "siblingSide": "right",
+              "siblingHash": "12ea39fbf527f1c118558a8b08899880bf262edcbcc919fa5318b841f03b12f5"
+            },
+            {
+              "level": 1,
+              "siblingSide": "right",
+              "siblingHash": "8dcbe10a87a9fd443f9e426279f92462c89bcd8060efa4db95fcb453c9b9882e"
+            },
+            {
+              "level": 2,
+              "siblingSide": "left",
+              "siblingHash": "8f5ad2936d9b967d5f60996c44508a7de719b0dbc9d9efcb189b85537666890c"
+            },
+            {
+              "level": 3,
+              "siblingSide": "right",
+              "siblingHash": "b8b21a62f1e7bd18be7a78a74d2c16efcbc0303d8ff5ceb7cfa2d3e6dc807a93"
+            },
+            {
+              "level": 4,
+              "siblingSide": "right",
+              "siblingHash": "ff05de9b4887ab05797847c9df922e8987de34ec4e6e04cf71fb2dfff42f650b"
+            }
+          ]
+        },
+        "sourceBasis": "Actual offline-computed L2-normalized 256-dimensional vector for label 'طيور' (Fixed CNS V7/P33 capture contract ordinal 4); identity is the canonical SHA-256 of the real vector bytes. Raw components are held only in the private local audit and SQLite artifact, never here.",
+        "claimBoundary": "Node identity is the canonical SHA-256 of a real, locally computed L2-normalized embedding vector; the sign projection is the per-dimension sign of that vector; coordinates are a reconstructable projection of the (vi - v0) difference digest and its accumulated sign-bit Hamming. No raw vector component, magnitude, model weight, activation, prompt, or user content is present, and none can be reconstructed from these fields."
+      },
+      {
+        "index": 5,
+        "label": "أرنب",
+        "labelProvenance": "Fixed CNS V7/P33 capture contract ordinal 5",
+        "kind": "actual_vector_relative_to_reference",
+        "referenceKey": "K_c_n_s",
+        "referenceRelation": "relative_to:K_c_n_s",
+        "dimensions": 256,
+        "l2Norm": 0.999999998,
+        "canonicalVectorSha256": "025056d56dfab6a6b46c6240d38bf0b8db13a52597f2d73b0848d8c90ed59a87",
+        "differenceCanonicalSha256": "90a7cceaedeb78e6a542e5fd0b92a1ee3ed73cc9eb31cc5e3b7b8faf64352c9d",
+        "signature": {
+          "status": "detected",
+          "bitWidth": 256,
+          "hex": "d596d82c9dff4616c9c93aaaea26e7a998143294d729982cbd9d895e3f3d6bdd",
+          "basis": "Per-dimension sign projection of the locally computed vector."
+        },
+        "coordinates": {
+          "x": 0.840706449388,
+          "y": 0.226342138605,
+          "z": 0.50078125,
+          "space": "Normalized non-negative unit cube [0,1]^3 anchored at the K_c_n_s computed-zero reference origin (0,0,0).",
+          "derivation": "differenceDigest = SHA256(canonical float32-LE bytes of (vi - v0)); angle = 2*pi*u32le(differenceDigest[0..4])/2^32; radius = u32le(differenceDigest[4..8])/(2^32-1); x = radius*(1+cos(angle))/2; y = radius*(1+sin(angle))/2; z from accumulated sign-bit Hamming. Reconstructable from the published differenceCanonicalSha256 and sign projections."
+        },
+        "hammingTransition": {
+          "status": "detected",
+          "bitWidth": 256,
+          "distanceBits": 126,
+          "normalizedDistance": 0.4921875,
+          "cumulativeDistanceBits": 641,
+          "basis": "Bit distance between the 256-bit sign projections of this vector and its predecessor. It measures sign-pattern separation of real vectors, not magnitude, activation, or semantic distance."
+        },
+        "efWriteSpan": {
+          "status": "detected",
+          "sequence": 6,
+          "durationNanoseconds": 1422700,
+          "tickResolutionNanoseconds": 100,
+          "bindingSha256": "b2a67a4e9053d9d87ffe4bc269cc43912391c3e6e474a96fcfa4cb94ea5ab260",
+          "timeline": {
+            "status": "detected",
+            "triggerTicks": 210031187703,
+            "beforeWriteTicks": 210031188701,
+            "observedWriteTicks": 210031189192,
+            "afterWriteTicks": 210031201930,
+            "tickFrequency": 10000000,
+            "triggerToBeforeWriteNanoseconds": 99800,
+            "beforeWriteToObservedNanoseconds": 49100,
+            "observedWriteToAfterNanoseconds": 1273800,
+            "triggerToAfterNanoseconds": 1422700
+          }
+        },
+        "qdrantUpsertSpan": {
+          "status": "read_only_not_written",
+          "sequence": null,
+          "durationNanoseconds": null,
+          "tickResolutionNanoseconds": null,
+          "bindingSha256": null,
+          "timeline": {
+            "status": "unavailable",
+            "triggerTicks": null,
+            "beforeWriteTicks": null,
+            "observedWriteTicks": null,
+            "afterWriteTicks": null,
+            "tickFrequency": null,
+            "triggerToBeforeWriteNanoseconds": null,
+            "beforeWriteToObservedNanoseconds": null,
+            "observedWriteToAfterNanoseconds": null,
+            "triggerToAfterNanoseconds": null
+          }
+        },
+        "merkle": {
+          "status": "detected",
+          "leafPath": "vectors/000005/025056d56dfab6a6b46c6240d38bf0b8db13a52597f2d73b0848d8c90ed59a87",
+          "leafSha256": "a498da4069bc321d6295bb56c9b9074231fead5345e3c7cd8b2bf4a3cd530b43",
+          "root": "fad8cb77a0b8d1cbba31b07c33defb143e275accdf64d8069e057d6bb2b130be",
+          "proofPath": [
+            {
+              "level": 0,
+              "siblingSide": "left",
+              "siblingHash": "fd42d8faf4240866e2787e285c8d74dc885d19b099e30872f2ed02dbc47a9680"
+            },
+            {
+              "level": 1,
+              "siblingSide": "right",
+              "siblingHash": "8dcbe10a87a9fd443f9e426279f92462c89bcd8060efa4db95fcb453c9b9882e"
+            },
+            {
+              "level": 2,
+              "siblingSide": "left",
+              "siblingHash": "8f5ad2936d9b967d5f60996c44508a7de719b0dbc9d9efcb189b85537666890c"
+            },
+            {
+              "level": 3,
+              "siblingSide": "right",
+              "siblingHash": "b8b21a62f1e7bd18be7a78a74d2c16efcbc0303d8ff5ceb7cfa2d3e6dc807a93"
+            },
+            {
+              "level": 4,
+              "siblingSide": "right",
+              "siblingHash": "ff05de9b4887ab05797847c9df922e8987de34ec4e6e04cf71fb2dfff42f650b"
+            }
+          ]
+        },
+        "sourceBasis": "Actual offline-computed L2-normalized 256-dimensional vector for label 'أرنب' (Fixed CNS V7/P33 capture contract ordinal 5); identity is the canonical SHA-256 of the real vector bytes. Raw components are held only in the private local audit and SQLite artifact, never here.",
+        "claimBoundary": "Node identity is the canonical SHA-256 of a real, locally computed L2-normalized embedding vector; the sign projection is the per-dimension sign of that vector; coordinates are a reconstructable projection of the (vi - v0) difference digest and its accumulated sign-bit Hamming. No raw vector component, magnitude, model weight, activation, prompt, or user content is present, and none can be reconstructed from these fields."
+      },
+      {
+        "index": 6,
+        "label": "ثعلب",
+        "labelProvenance": "Fixed CNS V7/P33 capture contract ordinal 6",
+        "kind": "actual_vector_relative_to_reference",
+        "referenceKey": "K_c_n_s",
+        "referenceRelation": "relative_to:K_c_n_s",
+        "dimensions": 256,
+        "l2Norm": 0.999999997,
+        "canonicalVectorSha256": "c0df2e1a676f7c1bfbf9f8d4b4cb318a7ede0d4d16771e0ae42633fa0986d7e9",
+        "differenceCanonicalSha256": "1524bbfdd31e8e493a07f7b6cea5ff76c5bf6bb8752ae12122c1c3080a9a9d95",
+        "signature": {
+          "status": "detected",
+          "bitWidth": 256,
+          "hex": "868842d82af16790c2f7c3f07e8d6f643162482d33fef951f51cbe1b1e00febe",
+          "basis": "Per-dimension sign projection of the locally computed vector."
+        },
+        "coordinates": {
+          "x": 0.287102124038,
+          "y": 0.135666112326,
+          "z": 0.501302083333,
+          "space": "Normalized non-negative unit cube [0,1]^3 anchored at the K_c_n_s computed-zero reference origin (0,0,0).",
+          "derivation": "differenceDigest = SHA256(canonical float32-LE bytes of (vi - v0)); angle = 2*pi*u32le(differenceDigest[0..4])/2^32; radius = u32le(differenceDigest[4..8])/(2^32-1); x = radius*(1+cos(angle))/2; y = radius*(1+sin(angle))/2; z from accumulated sign-bit Hamming. Reconstructable from the published differenceCanonicalSha256 and sign projections."
+        },
+        "hammingTransition": {
+          "status": "detected",
+          "bitWidth": 256,
+          "distanceBits": 129,
+          "normalizedDistance": 0.50390625,
+          "cumulativeDistanceBits": 770,
+          "basis": "Bit distance between the 256-bit sign projections of this vector and its predecessor. It measures sign-pattern separation of real vectors, not magnitude, activation, or semantic distance."
+        },
+        "efWriteSpan": {
+          "status": "detected",
+          "sequence": 7,
+          "durationNanoseconds": 1173300,
+          "tickResolutionNanoseconds": 100,
+          "bindingSha256": "139960382da84c8997e54fd0706b9f80daf9f816f054b2e6a6864ce018fbee9b",
+          "timeline": {
+            "status": "detected",
+            "triggerTicks": 210031210473,
+            "beforeWriteTicks": 210031211655,
+            "observedWriteTicks": 210031212235,
+            "afterWriteTicks": 210031222206,
+            "tickFrequency": 10000000,
+            "triggerToBeforeWriteNanoseconds": 118200,
+            "beforeWriteToObservedNanoseconds": 58000,
+            "observedWriteToAfterNanoseconds": 997100,
+            "triggerToAfterNanoseconds": 1173300
+          }
+        },
+        "qdrantUpsertSpan": {
+          "status": "read_only_not_written",
+          "sequence": null,
+          "durationNanoseconds": null,
+          "tickResolutionNanoseconds": null,
+          "bindingSha256": null,
+          "timeline": {
+            "status": "unavailable",
+            "triggerTicks": null,
+            "beforeWriteTicks": null,
+            "observedWriteTicks": null,
+            "afterWriteTicks": null,
+            "tickFrequency": null,
+            "triggerToBeforeWriteNanoseconds": null,
+            "beforeWriteToObservedNanoseconds": null,
+            "observedWriteToAfterNanoseconds": null,
+            "triggerToAfterNanoseconds": null
+          }
+        },
+        "merkle": {
+          "status": "detected",
+          "leafPath": "vectors/000006/c0df2e1a676f7c1bfbf9f8d4b4cb318a7ede0d4d16771e0ae42633fa0986d7e9",
+          "leafSha256": "354b2965edade5a214e037c7e9a485dbb5f236215a769ab0d0276fc7fbd9a189",
+          "root": "fad8cb77a0b8d1cbba31b07c33defb143e275accdf64d8069e057d6bb2b130be",
+          "proofPath": [
+            {
+              "level": 0,
+              "siblingSide": "right",
+              "siblingHash": "cd6d518371295e751882493e229cb71816cb35cdc578f89c275c9c52c42e6848"
+            },
+            {
+              "level": 1,
+              "siblingSide": "left",
+              "siblingHash": "f96b4243d4e196191b74d211a56d9b0cb7d30a794c93b5a0cacd9ae4145224fd"
+            },
+            {
+              "level": 2,
+              "siblingSide": "left",
+              "siblingHash": "8f5ad2936d9b967d5f60996c44508a7de719b0dbc9d9efcb189b85537666890c"
+            },
+            {
+              "level": 3,
+              "siblingSide": "right",
+              "siblingHash": "b8b21a62f1e7bd18be7a78a74d2c16efcbc0303d8ff5ceb7cfa2d3e6dc807a93"
+            },
+            {
+              "level": 4,
+              "siblingSide": "right",
+              "siblingHash": "ff05de9b4887ab05797847c9df922e8987de34ec4e6e04cf71fb2dfff42f650b"
+            }
+          ]
+        },
+        "sourceBasis": "Actual offline-computed L2-normalized 256-dimensional vector for label 'ثعلب' (Fixed CNS V7/P33 capture contract ordinal 6); identity is the canonical SHA-256 of the real vector bytes. Raw components are held only in the private local audit and SQLite artifact, never here.",
+        "claimBoundary": "Node identity is the canonical SHA-256 of a real, locally computed L2-normalized embedding vector; the sign projection is the per-dimension sign of that vector; coordinates are a reconstructable projection of the (vi - v0) difference digest and its accumulated sign-bit Hamming. No raw vector component, magnitude, model weight, activation, prompt, or user content is present, and none can be reconstructed from these fields."
+      },
+      {
+        "index": 7,
+        "label": "قطة",
+        "labelProvenance": "Fixed CNS V7/P33 capture contract ordinal 7",
+        "kind": "actual_vector_relative_to_reference",
+        "referenceKey": "K_c_n_s",
+        "referenceRelation": "relative_to:K_c_n_s",
+        "dimensions": 256,
+        "l2Norm": 1,
+        "canonicalVectorSha256": "9506263935168558d02a1b2e4d232afc5e973263ea148304a90e6c75f5149217",
+        "differenceCanonicalSha256": "620b1dcb5251412889f5eb79306be0148ab75329b5886e3f32fcbd6ffce3a45f",
+        "signature": {
+          "status": "detected",
+          "bitWidth": 256,
+          "hex": "f1b3aae462c7c223ff9cb83335cfe395454a7affff09f0635c6d112bd89f2f63",
+          "basis": "Per-dimension sign projection of the locally computed vector."
+        },
+        "coordinates": {
+          "x": 0.099804102992,
+          "y": 0.00290673289,
+          "z": 0.50390625,
+          "space": "Normalized non-negative unit cube [0,1]^3 anchored at the K_c_n_s computed-zero reference origin (0,0,0).",
+          "derivation": "differenceDigest = SHA256(canonical float32-LE bytes of (vi - v0)); angle = 2*pi*u32le(differenceDigest[0..4])/2^32; radius = u32le(differenceDigest[4..8])/(2^32-1); x = radius*(1+cos(angle))/2; y = radius*(1+sin(angle))/2; z from accumulated sign-bit Hamming. Reconstructable from the published differenceCanonicalSha256 and sign projections."
+        },
+        "hammingTransition": {
+          "status": "detected",
+          "bitWidth": 256,
+          "distanceBits": 133,
+          "normalizedDistance": 0.51953125,
+          "cumulativeDistanceBits": 903,
+          "basis": "Bit distance between the 256-bit sign projections of this vector and its predecessor. It measures sign-pattern separation of real vectors, not magnitude, activation, or semantic distance."
+        },
+        "efWriteSpan": {
+          "status": "detected",
+          "sequence": 8,
+          "durationNanoseconds": 1443200,
+          "tickResolutionNanoseconds": 100,
+          "bindingSha256": "b2bc6c0f8262ab1e6944cde280e6aeccb3ff1da18dba9593ae5dd57f0df343e2",
+          "timeline": {
+            "status": "detected",
+            "triggerTicks": 210031230785,
+            "beforeWriteTicks": 210031231878,
+            "observedWriteTicks": 210031232412,
+            "afterWriteTicks": 210031245217,
+            "tickFrequency": 10000000,
+            "triggerToBeforeWriteNanoseconds": 109300,
+            "beforeWriteToObservedNanoseconds": 53400,
+            "observedWriteToAfterNanoseconds": 1280500,
+            "triggerToAfterNanoseconds": 1443200
+          }
+        },
+        "qdrantUpsertSpan": {
+          "status": "read_only_not_written",
+          "sequence": null,
+          "durationNanoseconds": null,
+          "tickResolutionNanoseconds": null,
+          "bindingSha256": null,
+          "timeline": {
+            "status": "unavailable",
+            "triggerTicks": null,
+            "beforeWriteTicks": null,
+            "observedWriteTicks": null,
+            "afterWriteTicks": null,
+            "tickFrequency": null,
+            "triggerToBeforeWriteNanoseconds": null,
+            "beforeWriteToObservedNanoseconds": null,
+            "observedWriteToAfterNanoseconds": null,
+            "triggerToAfterNanoseconds": null
+          }
+        },
+        "merkle": {
+          "status": "detected",
+          "leafPath": "vectors/000007/9506263935168558d02a1b2e4d232afc5e973263ea148304a90e6c75f5149217",
+          "leafSha256": "b3860589c5d2893ad972ccc96b4c930a8cf537e1a0dd099e55a38421791fdfa1",
+          "root": "fad8cb77a0b8d1cbba31b07c33defb143e275accdf64d8069e057d6bb2b130be",
+          "proofPath": [
+            {
+              "level": 0,
+              "siblingSide": "left",
+              "siblingHash": "fe2fc69daa07be47eb891f243bdad171a47d96c203e44156394e858ad629e9a8"
+            },
+            {
+              "level": 1,
+              "siblingSide": "left",
+              "siblingHash": "f96b4243d4e196191b74d211a56d9b0cb7d30a794c93b5a0cacd9ae4145224fd"
+            },
+            {
+              "level": 2,
+              "siblingSide": "left",
+              "siblingHash": "8f5ad2936d9b967d5f60996c44508a7de719b0dbc9d9efcb189b85537666890c"
+            },
+            {
+              "level": 3,
+              "siblingSide": "right",
+              "siblingHash": "b8b21a62f1e7bd18be7a78a74d2c16efcbc0303d8ff5ceb7cfa2d3e6dc807a93"
+            },
+            {
+              "level": 4,
+              "siblingSide": "right",
+              "siblingHash": "ff05de9b4887ab05797847c9df922e8987de34ec4e6e04cf71fb2dfff42f650b"
+            }
+          ]
+        },
+        "sourceBasis": "Actual offline-computed L2-normalized 256-dimensional vector for label 'قطة' (Fixed CNS V7/P33 capture contract ordinal 7); identity is the canonical SHA-256 of the real vector bytes. Raw components are held only in the private local audit and SQLite artifact, never here.",
+        "claimBoundary": "Node identity is the canonical SHA-256 of a real, locally computed L2-normalized embedding vector; the sign projection is the per-dimension sign of that vector; coordinates are a reconstructable projection of the (vi - v0) difference digest and its accumulated sign-bit Hamming. No raw vector component, magnitude, model weight, activation, prompt, or user content is present, and none can be reconstructed from these fields."
+      },
+      {
+        "index": 8,
+        "label": "كلب",
+        "labelProvenance": "Fixed CNS V7/P33 capture contract ordinal 8",
+        "kind": "actual_vector_relative_to_reference",
+        "referenceKey": "K_c_n_s",
+        "referenceRelation": "relative_to:K_c_n_s",
+        "dimensions": 256,
+        "l2Norm": 1.000000003,
+        "canonicalVectorSha256": "aa512b9bd1c593bb190d572e5080748966fc49187d05c7e5efc46da0d44f112f",
+        "differenceCanonicalSha256": "a1939f92b6a4acf6d81bd80fecb296f60c6764ed0975a087c006a7e57839f953",
+        "signature": {
+          "status": "detected",
+          "bitWidth": 256,
+          "hex": "6cab994861c764c8723461a967501c65278fbefcc1b73e3889828a2716e66fd2",
+          "basis": "Per-dimension sign projection of the locally computed vector."
+        },
+        "coordinates": {
+          "x": 0.049458940749,
+          "y": 0.269157000428,
+          "z": 0.5048828125,
+          "space": "Normalized non-negative unit cube [0,1]^3 anchored at the K_c_n_s computed-zero reference origin (0,0,0).",
+          "derivation": "differenceDigest = SHA256(canonical float32-LE bytes of (vi - v0)); angle = 2*pi*u32le(differenceDigest[0..4])/2^32; radius = u32le(differenceDigest[4..8])/(2^32-1); x = radius*(1+cos(angle))/2; y = radius*(1+sin(angle))/2; z from accumulated sign-bit Hamming. Reconstructable from the published differenceCanonicalSha256 and sign projections."
+        },
+        "hammingTransition": {
+          "status": "detected",
+          "bitWidth": 256,
+          "distanceBits": 131,
+          "normalizedDistance": 0.51171875,
+          "cumulativeDistanceBits": 1034,
+          "basis": "Bit distance between the 256-bit sign projections of this vector and its predecessor. It measures sign-pattern separation of real vectors, not magnitude, activation, or semantic distance."
+        },
+        "efWriteSpan": {
+          "status": "detected",
+          "sequence": 9,
+          "durationNanoseconds": 1141300,
+          "tickResolutionNanoseconds": 100,
+          "bindingSha256": "1eaa6b565d8d35daf9d19257857975c10048c977d2b4a87899c827faeec414ce",
+          "timeline": {
+            "status": "detected",
+            "triggerTicks": 210031252953,
+            "beforeWriteTicks": 210031254000,
+            "observedWriteTicks": 210031254555,
+            "afterWriteTicks": 210031264366,
+            "tickFrequency": 10000000,
+            "triggerToBeforeWriteNanoseconds": 104700,
+            "beforeWriteToObservedNanoseconds": 55500,
+            "observedWriteToAfterNanoseconds": 981100,
+            "triggerToAfterNanoseconds": 1141300
+          }
+        },
+        "qdrantUpsertSpan": {
+          "status": "read_only_not_written",
+          "sequence": null,
+          "durationNanoseconds": null,
+          "tickResolutionNanoseconds": null,
+          "bindingSha256": null,
+          "timeline": {
+            "status": "unavailable",
+            "triggerTicks": null,
+            "beforeWriteTicks": null,
+            "observedWriteTicks": null,
+            "afterWriteTicks": null,
+            "tickFrequency": null,
+            "triggerToBeforeWriteNanoseconds": null,
+            "beforeWriteToObservedNanoseconds": null,
+            "observedWriteToAfterNanoseconds": null,
+            "triggerToAfterNanoseconds": null
+          }
+        },
+        "merkle": {
+          "status": "detected",
+          "leafPath": "vectors/000008/aa512b9bd1c593bb190d572e5080748966fc49187d05c7e5efc46da0d44f112f",
+          "leafSha256": "e0da8ff39a80c3ed7a2e3c875517e9780bfa248992f67d5416a83da82a8ae9a0",
+          "root": "fad8cb77a0b8d1cbba31b07c33defb143e275accdf64d8069e057d6bb2b130be",
+          "proofPath": [
+            {
+              "level": 0,
+              "siblingSide": "right",
+              "siblingHash": "fee7feace2f0da0da41e9d88b5165445987c234017a2ed1489379d20972c4fb6"
+            },
+            {
+              "level": 1,
+              "siblingSide": "right",
+              "siblingHash": "f58bf4f0b78e8b84d3ae60398ecf178968f2562884dd656c337fea93e8dbad64"
+            },
+            {
+              "level": 2,
+              "siblingSide": "right",
+              "siblingHash": "7369a5f7e992e4ca2670977da99082785092ffad16ede4e3c2d57c5243f8b7ce"
+            },
+            {
+              "level": 3,
+              "siblingSide": "left",
+              "siblingHash": "625bc07f88ff63271f2288eef4c3d158bb87a8e163eafa929d535fdfb17e850d"
+            },
+            {
+              "level": 4,
+              "siblingSide": "right",
+              "siblingHash": "ff05de9b4887ab05797847c9df922e8987de34ec4e6e04cf71fb2dfff42f650b"
+            }
+          ]
+        },
+        "sourceBasis": "Actual offline-computed L2-normalized 256-dimensional vector for label 'كلب' (Fixed CNS V7/P33 capture contract ordinal 8); identity is the canonical SHA-256 of the real vector bytes. Raw components are held only in the private local audit and SQLite artifact, never here.",
+        "claimBoundary": "Node identity is the canonical SHA-256 of a real, locally computed L2-normalized embedding vector; the sign projection is the per-dimension sign of that vector; coordinates are a reconstructable projection of the (vi - v0) difference digest and its accumulated sign-bit Hamming. No raw vector component, magnitude, model weight, activation, prompt, or user content is present, and none can be reconstructed from these fields."
+      },
+      {
+        "index": 9,
+        "label": "أسد",
+        "labelProvenance": "Fixed CNS V7/P33 capture contract ordinal 9",
+        "kind": "actual_vector_relative_to_reference",
+        "referenceKey": "K_c_n_s",
+        "referenceRelation": "relative_to:K_c_n_s",
+        "dimensions": 256,
+        "l2Norm": 1.000000004,
+        "canonicalVectorSha256": "5bb058ad726546141156081a3e0191c39fed95c5f31830b0aaf1bcd57886bc1f",
+        "differenceCanonicalSha256": "351577fd3c100d124d3082c609c144063694df7adc77562de23bcee145907f0e",
+        "signature": {
+          "status": "detected",
+          "bitWidth": 256,
+          "hex": "9f5a1b6bb7c7db24d114bf5241c3d85180dd91f0f8a1690b65aa9b4dc3dfe6b2",
+          "basis": "Per-dimension sign projection of the locally computed vector."
+        },
+        "coordinates": {
+          "x": 0.070443623133,
+          "y": 0.033063913691,
+          "z": 0.501736111111,
+          "space": "Normalized non-negative unit cube [0,1]^3 anchored at the K_c_n_s computed-zero reference origin (0,0,0).",
+          "derivation": "differenceDigest = SHA256(canonical float32-LE bytes of (vi - v0)); angle = 2*pi*u32le(differenceDigest[0..4])/2^32; radius = u32le(differenceDigest[4..8])/(2^32-1); x = radius*(1+cos(angle))/2; y = radius*(1+sin(angle))/2; z from accumulated sign-bit Hamming. Reconstructable from the published differenceCanonicalSha256 and sign projections."
+        },
+        "hammingTransition": {
+          "status": "detected",
+          "bitWidth": 256,
+          "distanceBits": 122,
+          "normalizedDistance": 0.4765625,
+          "cumulativeDistanceBits": 1156,
+          "basis": "Bit distance between the 256-bit sign projections of this vector and its predecessor. It measures sign-pattern separation of real vectors, not magnitude, activation, or semantic distance."
+        },
+        "efWriteSpan": {
+          "status": "detected",
+          "sequence": 10,
+          "durationNanoseconds": 1501000,
+          "tickResolutionNanoseconds": 100,
+          "bindingSha256": "ca3f0104ee2af098881fc44aa2d33d9b72067ae85943b8756cd52f79488a6485",
+          "timeline": {
+            "status": "detected",
+            "triggerTicks": 210031271822,
+            "beforeWriteTicks": 210031272997,
+            "observedWriteTicks": 210031273626,
+            "afterWriteTicks": 210031286832,
+            "tickFrequency": 10000000,
+            "triggerToBeforeWriteNanoseconds": 117500,
+            "beforeWriteToObservedNanoseconds": 62900,
+            "observedWriteToAfterNanoseconds": 1320600,
+            "triggerToAfterNanoseconds": 1501000
+          }
+        },
+        "qdrantUpsertSpan": {
+          "status": "read_only_not_written",
+          "sequence": null,
+          "durationNanoseconds": null,
+          "tickResolutionNanoseconds": null,
+          "bindingSha256": null,
+          "timeline": {
+            "status": "unavailable",
+            "triggerTicks": null,
+            "beforeWriteTicks": null,
+            "observedWriteTicks": null,
+            "afterWriteTicks": null,
+            "tickFrequency": null,
+            "triggerToBeforeWriteNanoseconds": null,
+            "beforeWriteToObservedNanoseconds": null,
+            "observedWriteToAfterNanoseconds": null,
+            "triggerToAfterNanoseconds": null
+          }
+        },
+        "merkle": {
+          "status": "detected",
+          "leafPath": "vectors/000009/5bb058ad726546141156081a3e0191c39fed95c5f31830b0aaf1bcd57886bc1f",
+          "leafSha256": "338b31ef74f1e328457e704c5566a3b3c2baa7e09eb5112a2f85105683574a58",
+          "root": "fad8cb77a0b8d1cbba31b07c33defb143e275accdf64d8069e057d6bb2b130be",
+          "proofPath": [
+            {
+              "level": 0,
+              "siblingSide": "left",
+              "siblingHash": "c4b5dba78291aa278295b67e4367d5d7a87ed1bab9cb7ff628907f19fc752b3f"
+            },
+            {
+              "level": 1,
+              "siblingSide": "right",
+              "siblingHash": "f58bf4f0b78e8b84d3ae60398ecf178968f2562884dd656c337fea93e8dbad64"
+            },
+            {
+              "level": 2,
+              "siblingSide": "right",
+              "siblingHash": "7369a5f7e992e4ca2670977da99082785092ffad16ede4e3c2d57c5243f8b7ce"
+            },
+            {
+              "level": 3,
+              "siblingSide": "left",
+              "siblingHash": "625bc07f88ff63271f2288eef4c3d158bb87a8e163eafa929d535fdfb17e850d"
+            },
+            {
+              "level": 4,
+              "siblingSide": "right",
+              "siblingHash": "ff05de9b4887ab05797847c9df922e8987de34ec4e6e04cf71fb2dfff42f650b"
+            }
+          ]
+        },
+        "sourceBasis": "Actual offline-computed L2-normalized 256-dimensional vector for label 'أسد' (Fixed CNS V7/P33 capture contract ordinal 9); identity is the canonical SHA-256 of the real vector bytes. Raw components are held only in the private local audit and SQLite artifact, never here.",
+        "claimBoundary": "Node identity is the canonical SHA-256 of a real, locally computed L2-normalized embedding vector; the sign projection is the per-dimension sign of that vector; coordinates are a reconstructable projection of the (vi - v0) difference digest and its accumulated sign-bit Hamming. No raw vector component, magnitude, model weight, activation, prompt, or user content is present, and none can be reconstructed from these fields."
+      },
+      {
+        "index": 10,
+        "label": "صقر",
+        "labelProvenance": "Fixed CNS V7/P33 capture contract ordinal 10",
+        "kind": "actual_vector_relative_to_reference",
+        "referenceKey": "K_c_n_s",
+        "referenceRelation": "relative_to:K_c_n_s",
+        "dimensions": 256,
+        "l2Norm": 1,
+        "canonicalVectorSha256": "5687035135d0edf3206a10589df7d3431c5076b27b3041a1cb9f6172e106290e",
+        "differenceCanonicalSha256": "778f72a2473d621e85b7ebe6636397d25e5276eee93ea68876af1d7342ab309a",
+        "signature": {
+          "status": "detected",
+          "bitWidth": 256,
+          "hex": "7a3f8e7a76891a99a33a8b254d4fef6324fa54a5d9debe54715955f3d1b71f2f",
+          "basis": "Per-dimension sign projection of the locally computed vector."
+        },
+        "coordinates": {
+          "x": 0.019976097869,
+          "y": 0.014937751272,
+          "z": 0.503125,
+          "space": "Normalized non-negative unit cube [0,1]^3 anchored at the K_c_n_s computed-zero reference origin (0,0,0).",
+          "derivation": "differenceDigest = SHA256(canonical float32-LE bytes of (vi - v0)); angle = 2*pi*u32le(differenceDigest[0..4])/2^32; radius = u32le(differenceDigest[4..8])/(2^32-1); x = radius*(1+cos(angle))/2; y = radius*(1+sin(angle))/2; z from accumulated sign-bit Hamming. Reconstructable from the published differenceCanonicalSha256 and sign projections."
+        },
+        "hammingTransition": {
+          "status": "detected",
+          "bitWidth": 256,
+          "distanceBits": 132,
+          "normalizedDistance": 0.515625,
+          "cumulativeDistanceBits": 1288,
+          "basis": "Bit distance between the 256-bit sign projections of this vector and its predecessor. It measures sign-pattern separation of real vectors, not magnitude, activation, or semantic distance."
+        },
+        "efWriteSpan": {
+          "status": "detected",
+          "sequence": 11,
+          "durationNanoseconds": 1241300,
+          "tickResolutionNanoseconds": 100,
+          "bindingSha256": "b82b06e4e60d54337dc2fcf3dd229d18c86375ebd26c34400ed0966b2ffd8717",
+          "timeline": {
+            "status": "detected",
+            "triggerTicks": 210031295569,
+            "beforeWriteTicks": 210031296814,
+            "observedWriteTicks": 210031297550,
+            "afterWriteTicks": 210031307982,
+            "tickFrequency": 10000000,
+            "triggerToBeforeWriteNanoseconds": 124500,
+            "beforeWriteToObservedNanoseconds": 73600,
+            "observedWriteToAfterNanoseconds": 1043200,
+            "triggerToAfterNanoseconds": 1241300
+          }
+        },
+        "qdrantUpsertSpan": {
+          "status": "read_only_not_written",
+          "sequence": null,
+          "durationNanoseconds": null,
+          "tickResolutionNanoseconds": null,
+          "bindingSha256": null,
+          "timeline": {
+            "status": "unavailable",
+            "triggerTicks": null,
+            "beforeWriteTicks": null,
+            "observedWriteTicks": null,
+            "afterWriteTicks": null,
+            "tickFrequency": null,
+            "triggerToBeforeWriteNanoseconds": null,
+            "beforeWriteToObservedNanoseconds": null,
+            "observedWriteToAfterNanoseconds": null,
+            "triggerToAfterNanoseconds": null
+          }
+        },
+        "merkle": {
+          "status": "detected",
+          "leafPath": "vectors/000010/5687035135d0edf3206a10589df7d3431c5076b27b3041a1cb9f6172e106290e",
+          "leafSha256": "6cc3de5d2947c55fb424d1cbee5e195029a391910dd25a6618ff3f9f1e817d3b",
+          "root": "fad8cb77a0b8d1cbba31b07c33defb143e275accdf64d8069e057d6bb2b130be",
+          "proofPath": [
+            {
+              "level": 0,
+              "siblingSide": "right",
+              "siblingHash": "facbe77fa29c2030e4a3c9b92dc0c26948836c8b3ce97ec0e1778741d303d4d5"
+            },
+            {
+              "level": 1,
+              "siblingSide": "left",
+              "siblingHash": "aeae11efe22ba0860c33d251f248f7493f87a51fda13b45e376588a283a85dcf"
+            },
+            {
+              "level": 2,
+              "siblingSide": "right",
+              "siblingHash": "7369a5f7e992e4ca2670977da99082785092ffad16ede4e3c2d57c5243f8b7ce"
+            },
+            {
+              "level": 3,
+              "siblingSide": "left",
+              "siblingHash": "625bc07f88ff63271f2288eef4c3d158bb87a8e163eafa929d535fdfb17e850d"
+            },
+            {
+              "level": 4,
+              "siblingSide": "right",
+              "siblingHash": "ff05de9b4887ab05797847c9df922e8987de34ec4e6e04cf71fb2dfff42f650b"
+            }
+          ]
+        },
+        "sourceBasis": "Actual offline-computed L2-normalized 256-dimensional vector for label 'صقر' (Fixed CNS V7/P33 capture contract ordinal 10); identity is the canonical SHA-256 of the real vector bytes. Raw components are held only in the private local audit and SQLite artifact, never here.",
+        "claimBoundary": "Node identity is the canonical SHA-256 of a real, locally computed L2-normalized embedding vector; the sign projection is the per-dimension sign of that vector; coordinates are a reconstructable projection of the (vi - v0) difference digest and its accumulated sign-bit Hamming. No raw vector component, magnitude, model weight, activation, prompt, or user content is present, and none can be reconstructed from these fields."
+      },
+      {
+        "index": 11,
+        "label": "حمامة",
+        "labelProvenance": "Fixed CNS V7/P33 capture contract ordinal 11",
+        "kind": "actual_vector_relative_to_reference",
+        "referenceKey": "K_c_n_s",
+        "referenceRelation": "relative_to:K_c_n_s",
+        "dimensions": 256,
+        "l2Norm": 1.000000003,
+        "canonicalVectorSha256": "33189bdfcf6b53703d09ac338947c8a0de19d056ebc87127ab86c14f5bc1c02b",
+        "differenceCanonicalSha256": "0fe56c720bbeb9334fda9523389543b470605badf032e3defc0f485fbc3aa0eb",
+        "signature": {
+          "status": "detected",
+          "bitWidth": 256,
+          "hex": "dbcbd8c4b2b3f86d97674e70f8b1489c5724901cefa9cfb8a4d0b09af2ae613b",
+          "basis": "Per-dimension sign projection of the locally computed vector."
+        },
+        "coordinates": {
+          "x": 0.00555545897,
+          "y": 0.134066358217,
+          "z": 0.508522727273,
+          "space": "Normalized non-negative unit cube [0,1]^3 anchored at the K_c_n_s computed-zero reference origin (0,0,0).",
+          "derivation": "differenceDigest = SHA256(canonical float32-LE bytes of (vi - v0)); angle = 2*pi*u32le(differenceDigest[0..4])/2^32; radius = u32le(differenceDigest[4..8])/(2^32-1); x = radius*(1+cos(angle))/2; y = radius*(1+sin(angle))/2; z from accumulated sign-bit Hamming. Reconstructable from the published differenceCanonicalSha256 and sign projections."
+        },
+        "hammingTransition": {
+          "status": "detected",
+          "bitWidth": 256,
+          "distanceBits": 144,
+          "normalizedDistance": 0.5625,
+          "cumulativeDistanceBits": 1432,
+          "basis": "Bit distance between the 256-bit sign projections of this vector and its predecessor. It measures sign-pattern separation of real vectors, not magnitude, activation, or semantic distance."
+        },
+        "efWriteSpan": {
+          "status": "detected",
+          "sequence": 12,
+          "durationNanoseconds": 1689400,
+          "tickResolutionNanoseconds": 100,
+          "bindingSha256": "5eff00cde0c569852a021199dd883f69925fc9c63797b990068d03226d554a48",
+          "timeline": {
+            "status": "detected",
+            "triggerTicks": 210031315218,
+            "beforeWriteTicks": 210031317355,
+            "observedWriteTicks": 210031317941,
+            "afterWriteTicks": 210031332112,
+            "tickFrequency": 10000000,
+            "triggerToBeforeWriteNanoseconds": 213700,
+            "beforeWriteToObservedNanoseconds": 58600,
+            "observedWriteToAfterNanoseconds": 1417100,
+            "triggerToAfterNanoseconds": 1689400
+          }
+        },
+        "qdrantUpsertSpan": {
+          "status": "read_only_not_written",
+          "sequence": null,
+          "durationNanoseconds": null,
+          "tickResolutionNanoseconds": null,
+          "bindingSha256": null,
+          "timeline": {
+            "status": "unavailable",
+            "triggerTicks": null,
+            "beforeWriteTicks": null,
+            "observedWriteTicks": null,
+            "afterWriteTicks": null,
+            "tickFrequency": null,
+            "triggerToBeforeWriteNanoseconds": null,
+            "beforeWriteToObservedNanoseconds": null,
+            "observedWriteToAfterNanoseconds": null,
+            "triggerToAfterNanoseconds": null
+          }
+        },
+        "merkle": {
+          "status": "detected",
+          "leafPath": "vectors/000011/33189bdfcf6b53703d09ac338947c8a0de19d056ebc87127ab86c14f5bc1c02b",
+          "leafSha256": "5e4d2727390634c093602537fa8093e03d5971f546146707d99cc96a03632da0",
+          "root": "fad8cb77a0b8d1cbba31b07c33defb143e275accdf64d8069e057d6bb2b130be",
+          "proofPath": [
+            {
+              "level": 0,
+              "siblingSide": "left",
+              "siblingHash": "57c615101ba84b5bb81a10b699e59d2f4b1dbd09af1492a334f469a58c26a87c"
+            },
+            {
+              "level": 1,
+              "siblingSide": "left",
+              "siblingHash": "aeae11efe22ba0860c33d251f248f7493f87a51fda13b45e376588a283a85dcf"
+            },
+            {
+              "level": 2,
+              "siblingSide": "right",
+              "siblingHash": "7369a5f7e992e4ca2670977da99082785092ffad16ede4e3c2d57c5243f8b7ce"
+            },
+            {
+              "level": 3,
+              "siblingSide": "left",
+              "siblingHash": "625bc07f88ff63271f2288eef4c3d158bb87a8e163eafa929d535fdfb17e850d"
+            },
+            {
+              "level": 4,
+              "siblingSide": "right",
+              "siblingHash": "ff05de9b4887ab05797847c9df922e8987de34ec4e6e04cf71fb2dfff42f650b"
+            }
+          ]
+        },
+        "sourceBasis": "Actual offline-computed L2-normalized 256-dimensional vector for label 'حمامة' (Fixed CNS V7/P33 capture contract ordinal 11); identity is the canonical SHA-256 of the real vector bytes. Raw components are held only in the private local audit and SQLite artifact, never here.",
+        "claimBoundary": "Node identity is the canonical SHA-256 of a real, locally computed L2-normalized embedding vector; the sign projection is the per-dimension sign of that vector; coordinates are a reconstructable projection of the (vi - v0) difference digest and its accumulated sign-bit Hamming. No raw vector component, magnitude, model weight, activation, prompt, or user content is present, and none can be reconstructed from these fields."
+      },
+      {
+        "index": 12,
+        "label": "فأر",
+        "labelProvenance": "Fixed CNS V7/P33 capture contract ordinal 12",
+        "kind": "actual_vector_relative_to_reference",
+        "referenceKey": "K_c_n_s",
+        "referenceRelation": "relative_to:K_c_n_s",
+        "dimensions": 256,
+        "l2Norm": 0.999999999,
+        "canonicalVectorSha256": "32d6fc5c379f578b812352b82cc277c76782cf67f5549dca6d48650352f0dfe4",
+        "differenceCanonicalSha256": "37c855b0999aef4f9b939cd950b2f481c167159fbcc1c898ea948b36c35aecef",
+        "signature": {
+          "status": "detected",
+          "bitWidth": 256,
+          "hex": "83b14a4300206f7a5bfb31290a3f5690e4bd6547b73f4eb82f5be105d2fecb5c",
+          "basis": "Per-dimension sign projection of the locally computed vector."
+        },
+        "coordinates": {
+          "x": 0.097566770836,
+          "y": 0.011397814827,
+          "z": 0.506510416667,
+          "space": "Normalized non-negative unit cube [0,1]^3 anchored at the K_c_n_s computed-zero reference origin (0,0,0).",
+          "derivation": "differenceDigest = SHA256(canonical float32-LE bytes of (vi - v0)); angle = 2*pi*u32le(differenceDigest[0..4])/2^32; radius = u32le(differenceDigest[4..8])/(2^32-1); x = radius*(1+cos(angle))/2; y = radius*(1+sin(angle))/2; z from accumulated sign-bit Hamming. Reconstructable from the published differenceCanonicalSha256 and sign projections."
+        },
+        "hammingTransition": {
+          "status": "detected",
+          "bitWidth": 256,
+          "distanceBits": 124,
+          "normalizedDistance": 0.484375,
+          "cumulativeDistanceBits": 1556,
+          "basis": "Bit distance between the 256-bit sign projections of this vector and its predecessor. It measures sign-pattern separation of real vectors, not magnitude, activation, or semantic distance."
+        },
+        "efWriteSpan": {
+          "status": "detected",
+          "sequence": 13,
+          "durationNanoseconds": 1176700,
+          "tickResolutionNanoseconds": 100,
+          "bindingSha256": "1dc24d93d6ef8e56f4cd347fd5126d5bbc17cd8f36bfdb62e709a1a4c4965f8d",
+          "timeline": {
+            "status": "detected",
+            "triggerTicks": 210031339407,
+            "beforeWriteTicks": 210031340512,
+            "observedWriteTicks": 210031341041,
+            "afterWriteTicks": 210031351174,
+            "tickFrequency": 10000000,
+            "triggerToBeforeWriteNanoseconds": 110500,
+            "beforeWriteToObservedNanoseconds": 52900,
+            "observedWriteToAfterNanoseconds": 1013300,
+            "triggerToAfterNanoseconds": 1176700
+          }
+        },
+        "qdrantUpsertSpan": {
+          "status": "read_only_not_written",
+          "sequence": null,
+          "durationNanoseconds": null,
+          "tickResolutionNanoseconds": null,
+          "bindingSha256": null,
+          "timeline": {
+            "status": "unavailable",
+            "triggerTicks": null,
+            "beforeWriteTicks": null,
+            "observedWriteTicks": null,
+            "afterWriteTicks": null,
+            "tickFrequency": null,
+            "triggerToBeforeWriteNanoseconds": null,
+            "beforeWriteToObservedNanoseconds": null,
+            "observedWriteToAfterNanoseconds": null,
+            "triggerToAfterNanoseconds": null
+          }
+        },
+        "merkle": {
+          "status": "detected",
+          "leafPath": "vectors/000012/32d6fc5c379f578b812352b82cc277c76782cf67f5549dca6d48650352f0dfe4",
+          "leafSha256": "17f1d3142107478ee850b08552fb7e900132330b679a750344b5e06eaca2fca4",
+          "root": "fad8cb77a0b8d1cbba31b07c33defb143e275accdf64d8069e057d6bb2b130be",
+          "proofPath": [
+            {
+              "level": 0,
+              "siblingSide": "right",
+              "siblingHash": "e9fe60b5177468829be7204800acacba2ff60fd6c2e213b7a2a277afe08accf2"
+            },
+            {
+              "level": 1,
+              "siblingSide": "right",
+              "siblingHash": "f12fe8d1bd799b1d0c1fc68804d2addb1973822aba03d7899aa536a8fe95fa0a"
+            },
+            {
+              "level": 2,
+              "siblingSide": "left",
+              "siblingHash": "34e694ff2d741f32a3007bda1a296c372c57af3ff3fdcc0aa7bb6527e61a5937"
+            },
+            {
+              "level": 3,
+              "siblingSide": "left",
+              "siblingHash": "625bc07f88ff63271f2288eef4c3d158bb87a8e163eafa929d535fdfb17e850d"
+            },
+            {
+              "level": 4,
+              "siblingSide": "right",
+              "siblingHash": "ff05de9b4887ab05797847c9df922e8987de34ec4e6e04cf71fb2dfff42f650b"
+            }
+          ]
+        },
+        "sourceBasis": "Actual offline-computed L2-normalized 256-dimensional vector for label 'فأر' (Fixed CNS V7/P33 capture contract ordinal 12); identity is the canonical SHA-256 of the real vector bytes. Raw components are held only in the private local audit and SQLite artifact, never here.",
+        "claimBoundary": "Node identity is the canonical SHA-256 of a real, locally computed L2-normalized embedding vector; the sign projection is the per-dimension sign of that vector; coordinates are a reconstructable projection of the (vi - v0) difference digest and its accumulated sign-bit Hamming. No raw vector component, magnitude, model weight, activation, prompt, or user content is present, and none can be reconstructed from these fields."
+      },
+      {
+        "index": 13,
+        "label": "لوحة مفاتيح",
+        "labelProvenance": "Fixed CNS V7/P33 capture contract ordinal 13",
+        "kind": "actual_vector_relative_to_reference",
+        "referenceKey": "K_c_n_s",
+        "referenceRelation": "relative_to:K_c_n_s",
+        "dimensions": 256,
+        "l2Norm": 0.999999997,
+        "canonicalVectorSha256": "fe9932fa23dea483ba06bf8dca35adf780325945de3b00eb26a28feee5bc7a17",
+        "differenceCanonicalSha256": "5436e85478bfe228711576fee4aa472824f265d306dab6e0fe4afe18332309b1",
+        "signature": {
+          "status": "detected",
+          "bitWidth": 256,
+          "hex": "c105cd94e37c8ac5803996a9e57e7ba225489cc13d641895570ccb57055d73da",
+          "basis": "Per-dimension sign projection of the locally computed vector."
+        },
+        "coordinates": {
+          "x": 0.040653150958,
+          "y": 0.149425287488,
+          "z": 0.5078125,
+          "space": "Normalized non-negative unit cube [0,1]^3 anchored at the K_c_n_s computed-zero reference origin (0,0,0).",
+          "derivation": "differenceDigest = SHA256(canonical float32-LE bytes of (vi - v0)); angle = 2*pi*u32le(differenceDigest[0..4])/2^32; radius = u32le(differenceDigest[4..8])/(2^32-1); x = radius*(1+cos(angle))/2; y = radius*(1+sin(angle))/2; z from accumulated sign-bit Hamming. Reconstructable from the published differenceCanonicalSha256 and sign projections."
+        },
+        "hammingTransition": {
+          "status": "detected",
+          "bitWidth": 256,
+          "distanceBits": 134,
+          "normalizedDistance": 0.5234375,
+          "cumulativeDistanceBits": 1690,
+          "basis": "Bit distance between the 256-bit sign projections of this vector and its predecessor. It measures sign-pattern separation of real vectors, not magnitude, activation, or semantic distance."
+        },
+        "efWriteSpan": {
+          "status": "detected",
+          "sequence": 14,
+          "durationNanoseconds": 1439500,
+          "tickResolutionNanoseconds": 100,
+          "bindingSha256": "ece1f9ee05f4ee247cfdaef983ee859163667004af27db356ea3b20f7765dcae",
+          "timeline": {
+            "status": "detected",
+            "triggerTicks": 210031357793,
+            "beforeWriteTicks": 210031358778,
+            "observedWriteTicks": 210031359332,
+            "afterWriteTicks": 210031372188,
+            "tickFrequency": 10000000,
+            "triggerToBeforeWriteNanoseconds": 98500,
+            "beforeWriteToObservedNanoseconds": 55400,
+            "observedWriteToAfterNanoseconds": 1285600,
+            "triggerToAfterNanoseconds": 1439500
+          }
+        },
+        "qdrantUpsertSpan": {
+          "status": "read_only_not_written",
+          "sequence": null,
+          "durationNanoseconds": null,
+          "tickResolutionNanoseconds": null,
+          "bindingSha256": null,
+          "timeline": {
+            "status": "unavailable",
+            "triggerTicks": null,
+            "beforeWriteTicks": null,
+            "observedWriteTicks": null,
+            "afterWriteTicks": null,
+            "tickFrequency": null,
+            "triggerToBeforeWriteNanoseconds": null,
+            "beforeWriteToObservedNanoseconds": null,
+            "observedWriteToAfterNanoseconds": null,
+            "triggerToAfterNanoseconds": null
+          }
+        },
+        "merkle": {
+          "status": "detected",
+          "leafPath": "vectors/000013/fe9932fa23dea483ba06bf8dca35adf780325945de3b00eb26a28feee5bc7a17",
+          "leafSha256": "984c72eca117f53cebe4970989784472c5d9846458b71b6f2ea5c6ce3e8befad",
+          "root": "fad8cb77a0b8d1cbba31b07c33defb143e275accdf64d8069e057d6bb2b130be",
+          "proofPath": [
+            {
+              "level": 0,
+              "siblingSide": "left",
+              "siblingHash": "e40820755bed6651c7fcceecf66ddfc985fc91f587488f32ec7c63e8b78ba56f"
+            },
+            {
+              "level": 1,
+              "siblingSide": "right",
+              "siblingHash": "f12fe8d1bd799b1d0c1fc68804d2addb1973822aba03d7899aa536a8fe95fa0a"
+            },
+            {
+              "level": 2,
+              "siblingSide": "left",
+              "siblingHash": "34e694ff2d741f32a3007bda1a296c372c57af3ff3fdcc0aa7bb6527e61a5937"
+            },
+            {
+              "level": 3,
+              "siblingSide": "left",
+              "siblingHash": "625bc07f88ff63271f2288eef4c3d158bb87a8e163eafa929d535fdfb17e850d"
+            },
+            {
+              "level": 4,
+              "siblingSide": "right",
+              "siblingHash": "ff05de9b4887ab05797847c9df922e8987de34ec4e6e04cf71fb2dfff42f650b"
+            }
+          ]
+        },
+        "sourceBasis": "Actual offline-computed L2-normalized 256-dimensional vector for label 'لوحة مفاتيح' (Fixed CNS V7/P33 capture contract ordinal 13); identity is the canonical SHA-256 of the real vector bytes. Raw components are held only in the private local audit and SQLite artifact, never here.",
+        "claimBoundary": "Node identity is the canonical SHA-256 of a real, locally computed L2-normalized embedding vector; the sign projection is the per-dimension sign of that vector; coordinates are a reconstructable projection of the (vi - v0) difference digest and its accumulated sign-bit Hamming. No raw vector component, magnitude, model weight, activation, prompt, or user content is present, and none can be reconstructed from these fields."
+      },
+      {
+        "index": 14,
+        "label": "شاشة",
+        "labelProvenance": "Fixed CNS V7/P33 capture contract ordinal 14",
+        "kind": "actual_vector_relative_to_reference",
+        "referenceKey": "K_c_n_s",
+        "referenceRelation": "relative_to:K_c_n_s",
+        "dimensions": 256,
+        "l2Norm": 1.000000002,
+        "canonicalVectorSha256": "48b040036b84e1642e8501378b888bf1cd3bb680d6603f47cc32491c2a23d90a",
+        "differenceCanonicalSha256": "00cfeaa41d44fd30715866fbbe2aefd9d8b78f5e7e5ef2f093fe4b6895b001c6",
+        "signature": {
+          "status": "detected",
+          "bitWidth": 256,
+          "hex": "252ee9baa2d20be645c2d5c7b4ae2c82fcf2589fd10cf2962b0f98e2341c0382",
+          "basis": "Per-dimension sign projection of the locally computed vector."
+        },
+        "coordinates": {
+          "x": 0.036662382447,
+          "y": 0.020371248794,
+          "z": 0.504185267857,
+          "space": "Normalized non-negative unit cube [0,1]^3 anchored at the K_c_n_s computed-zero reference origin (0,0,0).",
+          "derivation": "differenceDigest = SHA256(canonical float32-LE bytes of (vi - v0)); angle = 2*pi*u32le(differenceDigest[0..4])/2^32; radius = u32le(differenceDigest[4..8])/(2^32-1); x = radius*(1+cos(angle))/2; y = radius*(1+sin(angle))/2; z from accumulated sign-bit Hamming. Reconstructable from the published differenceCanonicalSha256 and sign projections."
+        },
+        "hammingTransition": {
+          "status": "detected",
+          "bitWidth": 256,
+          "distanceBits": 117,
+          "normalizedDistance": 0.45703125,
+          "cumulativeDistanceBits": 1807,
+          "basis": "Bit distance between the 256-bit sign projections of this vector and its predecessor. It measures sign-pattern separation of real vectors, not magnitude, activation, or semantic distance."
+        },
+        "efWriteSpan": {
+          "status": "detected",
+          "sequence": 15,
+          "durationNanoseconds": 1189900,
+          "tickResolutionNanoseconds": 100,
+          "bindingSha256": "45159682d8afca471a88ded317acf479d2e69dc24d095c86804b6dcbdf3afa8b",
+          "timeline": {
+            "status": "detected",
+            "triggerTicks": 210031379753,
+            "beforeWriteTicks": 210031380798,
+            "observedWriteTicks": 210031381302,
+            "afterWriteTicks": 210031391652,
+            "tickFrequency": 10000000,
+            "triggerToBeforeWriteNanoseconds": 104500,
+            "beforeWriteToObservedNanoseconds": 50400,
+            "observedWriteToAfterNanoseconds": 1035000,
+            "triggerToAfterNanoseconds": 1189900
+          }
+        },
+        "qdrantUpsertSpan": {
+          "status": "read_only_not_written",
+          "sequence": null,
+          "durationNanoseconds": null,
+          "tickResolutionNanoseconds": null,
+          "bindingSha256": null,
+          "timeline": {
+            "status": "unavailable",
+            "triggerTicks": null,
+            "beforeWriteTicks": null,
+            "observedWriteTicks": null,
+            "afterWriteTicks": null,
+            "tickFrequency": null,
+            "triggerToBeforeWriteNanoseconds": null,
+            "beforeWriteToObservedNanoseconds": null,
+            "observedWriteToAfterNanoseconds": null,
+            "triggerToAfterNanoseconds": null
+          }
+        },
+        "merkle": {
+          "status": "detected",
+          "leafPath": "vectors/000014/48b040036b84e1642e8501378b888bf1cd3bb680d6603f47cc32491c2a23d90a",
+          "leafSha256": "b96ddb32541b696680fdc0d76e8f8252fd379333d70ece87188f5b3d01490c63",
+          "root": "fad8cb77a0b8d1cbba31b07c33defb143e275accdf64d8069e057d6bb2b130be",
+          "proofPath": [
+            {
+              "level": 0,
+              "siblingSide": "right",
+              "siblingHash": "144e286317bb4a1e15d0a6598d48e88ec2b38f699af6151c3c9e0f1978987434"
+            },
+            {
+              "level": 1,
+              "siblingSide": "left",
+              "siblingHash": "e8916e94e6847a56d29f00b40bad54c5d665148acc17e5382129b10140011da2"
+            },
+            {
+              "level": 2,
+              "siblingSide": "left",
+              "siblingHash": "34e694ff2d741f32a3007bda1a296c372c57af3ff3fdcc0aa7bb6527e61a5937"
+            },
+            {
+              "level": 3,
+              "siblingSide": "left",
+              "siblingHash": "625bc07f88ff63271f2288eef4c3d158bb87a8e163eafa929d535fdfb17e850d"
+            },
+            {
+              "level": 4,
+              "siblingSide": "right",
+              "siblingHash": "ff05de9b4887ab05797847c9df922e8987de34ec4e6e04cf71fb2dfff42f650b"
+            }
+          ]
+        },
+        "sourceBasis": "Actual offline-computed L2-normalized 256-dimensional vector for label 'شاشة' (Fixed CNS V7/P33 capture contract ordinal 14); identity is the canonical SHA-256 of the real vector bytes. Raw components are held only in the private local audit and SQLite artifact, never here.",
+        "claimBoundary": "Node identity is the canonical SHA-256 of a real, locally computed L2-normalized embedding vector; the sign projection is the per-dimension sign of that vector; coordinates are a reconstructable projection of the (vi - v0) difference digest and its accumulated sign-bit Hamming. No raw vector component, magnitude, model weight, activation, prompt, or user content is present, and none can be reconstructed from these fields."
+      },
+      {
+        "index": 15,
+        "label": "مستشفى",
+        "labelProvenance": "Fixed CNS V7/P33 capture contract ordinal 15",
+        "kind": "actual_vector_relative_to_reference",
+        "referenceKey": "K_c_n_s",
+        "referenceRelation": "relative_to:K_c_n_s",
+        "dimensions": 256,
+        "l2Norm": 1.000000007,
+        "canonicalVectorSha256": "520b3fc72d30815bfe973426b1a61e639957aa13a94fbb83d34599cbff04073e",
+        "differenceCanonicalSha256": "a5974a510b8be39c4b5406ad2e048c9f31717312079554cb40619f0a616a6db5",
+        "signature": {
+          "status": "detected",
+          "bitWidth": 256,
+          "hex": "bcc0760ceb2adf098fbed5bfe121aa66f0478ad2e314440bbd4557dde6855685",
+          "basis": "Per-dimension sign projection of the locally computed vector."
+        },
+        "coordinates": {
+          "x": 0.180247865482,
+          "y": 0.585663693576,
+          "z": 0.505208333333,
+          "space": "Normalized non-negative unit cube [0,1]^3 anchored at the K_c_n_s computed-zero reference origin (0,0,0).",
+          "derivation": "differenceDigest = SHA256(canonical float32-LE bytes of (vi - v0)); angle = 2*pi*u32le(differenceDigest[0..4])/2^32; radius = u32le(differenceDigest[4..8])/(2^32-1); x = radius*(1+cos(angle))/2; y = radius*(1+sin(angle))/2; z from accumulated sign-bit Hamming. Reconstructable from the published differenceCanonicalSha256 and sign projections."
+        },
+        "hammingTransition": {
+          "status": "detected",
+          "bitWidth": 256,
+          "distanceBits": 133,
+          "normalizedDistance": 0.51953125,
+          "cumulativeDistanceBits": 1940,
+          "basis": "Bit distance between the 256-bit sign projections of this vector and its predecessor. It measures sign-pattern separation of real vectors, not magnitude, activation, or semantic distance."
+        },
+        "efWriteSpan": {
+          "status": "detected",
+          "sequence": 16,
+          "durationNanoseconds": 1491200,
+          "tickResolutionNanoseconds": 100,
+          "bindingSha256": "6082514e2eec905637272d629411146c0aa8503f637f21cd488acc3ff9c21b1b",
+          "timeline": {
+            "status": "detected",
+            "triggerTicks": 210031398219,
+            "beforeWriteTicks": 210031399308,
+            "observedWriteTicks": 210031399864,
+            "afterWriteTicks": 210031413131,
+            "tickFrequency": 10000000,
+            "triggerToBeforeWriteNanoseconds": 108900,
+            "beforeWriteToObservedNanoseconds": 55600,
+            "observedWriteToAfterNanoseconds": 1326700,
+            "triggerToAfterNanoseconds": 1491200
+          }
+        },
+        "qdrantUpsertSpan": {
+          "status": "read_only_not_written",
+          "sequence": null,
+          "durationNanoseconds": null,
+          "tickResolutionNanoseconds": null,
+          "bindingSha256": null,
+          "timeline": {
+            "status": "unavailable",
+            "triggerTicks": null,
+            "beforeWriteTicks": null,
+            "observedWriteTicks": null,
+            "afterWriteTicks": null,
+            "tickFrequency": null,
+            "triggerToBeforeWriteNanoseconds": null,
+            "beforeWriteToObservedNanoseconds": null,
+            "observedWriteToAfterNanoseconds": null,
+            "triggerToAfterNanoseconds": null
+          }
+        },
+        "merkle": {
+          "status": "detected",
+          "leafPath": "vectors/000015/520b3fc72d30815bfe973426b1a61e639957aa13a94fbb83d34599cbff04073e",
+          "leafSha256": "e81d3ac2443094b21002e6ac44a3b239645c7d77c81439fa903117688e1561fe",
+          "root": "fad8cb77a0b8d1cbba31b07c33defb143e275accdf64d8069e057d6bb2b130be",
+          "proofPath": [
+            {
+              "level": 0,
+              "siblingSide": "left",
+              "siblingHash": "8a52a06191149f5d7281bbd69e5743d1bb9845b9f24b23d6336491f93c73903c"
+            },
+            {
+              "level": 1,
+              "siblingSide": "left",
+              "siblingHash": "e8916e94e6847a56d29f00b40bad54c5d665148acc17e5382129b10140011da2"
+            },
+            {
+              "level": 2,
+              "siblingSide": "left",
+              "siblingHash": "34e694ff2d741f32a3007bda1a296c372c57af3ff3fdcc0aa7bb6527e61a5937"
+            },
+            {
+              "level": 3,
+              "siblingSide": "left",
+              "siblingHash": "625bc07f88ff63271f2288eef4c3d158bb87a8e163eafa929d535fdfb17e850d"
+            },
+            {
+              "level": 4,
+              "siblingSide": "right",
+              "siblingHash": "ff05de9b4887ab05797847c9df922e8987de34ec4e6e04cf71fb2dfff42f650b"
+            }
+          ]
+        },
+        "sourceBasis": "Actual offline-computed L2-normalized 256-dimensional vector for label 'مستشفى' (Fixed CNS V7/P33 capture contract ordinal 15); identity is the canonical SHA-256 of the real vector bytes. Raw components are held only in the private local audit and SQLite artifact, never here.",
+        "claimBoundary": "Node identity is the canonical SHA-256 of a real, locally computed L2-normalized embedding vector; the sign projection is the per-dimension sign of that vector; coordinates are a reconstructable projection of the (vi - v0) difference digest and its accumulated sign-bit Hamming. No raw vector component, magnitude, model weight, activation, prompt, or user content is present, and none can be reconstructed from these fields."
+      },
+      {
+        "index": 16,
+        "label": "طبيب",
+        "labelProvenance": "Fixed CNS V7/P33 capture contract ordinal 16",
+        "kind": "actual_vector_relative_to_reference",
+        "referenceKey": "K_c_n_s",
+        "referenceRelation": "relative_to:K_c_n_s",
+        "dimensions": 256,
+        "l2Norm": 1,
+        "canonicalVectorSha256": "a023f6f8d0a687e24ecca79bc7d1c537e4aee4d096766e46b6abf672ed66a8d0",
+        "differenceCanonicalSha256": "3ac73d9e0d59dae2241071451ef1a4ed328100ed640bb49486310cc700c7c88e",
+        "signature": {
+          "status": "detected",
+          "bitWidth": 256,
+          "hex": "a4ee7d03154e7e2bcce465753a5a313327837d4ac9bf01bd42131d2b0106c2e9",
+          "basis": "Per-dimension sign projection of the locally computed vector."
+        },
+        "coordinates": {
+          "x": 0.116545437379,
+          "y": 0.143583836467,
+          "z": 0.506591796875,
+          "space": "Normalized non-negative unit cube [0,1]^3 anchored at the K_c_n_s computed-zero reference origin (0,0,0).",
+          "derivation": "differenceDigest = SHA256(canonical float32-LE bytes of (vi - v0)); angle = 2*pi*u32le(differenceDigest[0..4])/2^32; radius = u32le(differenceDigest[4..8])/(2^32-1); x = radius*(1+cos(angle))/2; y = radius*(1+sin(angle))/2; z from accumulated sign-bit Hamming. Reconstructable from the published differenceCanonicalSha256 and sign projections."
+        },
+        "hammingTransition": {
+          "status": "detected",
+          "bitWidth": 256,
+          "distanceBits": 135,
+          "normalizedDistance": 0.52734375,
+          "cumulativeDistanceBits": 2075,
+          "basis": "Bit distance between the 256-bit sign projections of this vector and its predecessor. It measures sign-pattern separation of real vectors, not magnitude, activation, or semantic distance."
+        },
+        "efWriteSpan": {
+          "status": "detected",
+          "sequence": 17,
+          "durationNanoseconds": 1097800,
+          "tickResolutionNanoseconds": 100,
+          "bindingSha256": "524f0dd877dfeb11aa14ce42047c572aacaddd11fdbbc538a7027fa59031d7f2",
+          "timeline": {
+            "status": "detected",
+            "triggerTicks": 210031419847,
+            "beforeWriteTicks": 210031420937,
+            "observedWriteTicks": 210031421429,
+            "afterWriteTicks": 210031430825,
+            "tickFrequency": 10000000,
+            "triggerToBeforeWriteNanoseconds": 109000,
+            "beforeWriteToObservedNanoseconds": 49200,
+            "observedWriteToAfterNanoseconds": 939600,
+            "triggerToAfterNanoseconds": 1097800
+          }
+        },
+        "qdrantUpsertSpan": {
+          "status": "read_only_not_written",
+          "sequence": null,
+          "durationNanoseconds": null,
+          "tickResolutionNanoseconds": null,
+          "bindingSha256": null,
+          "timeline": {
+            "status": "unavailable",
+            "triggerTicks": null,
+            "beforeWriteTicks": null,
+            "observedWriteTicks": null,
+            "afterWriteTicks": null,
+            "tickFrequency": null,
+            "triggerToBeforeWriteNanoseconds": null,
+            "beforeWriteToObservedNanoseconds": null,
+            "observedWriteToAfterNanoseconds": null,
+            "triggerToAfterNanoseconds": null
+          }
+        },
+        "merkle": {
+          "status": "detected",
+          "leafPath": "vectors/000016/a023f6f8d0a687e24ecca79bc7d1c537e4aee4d096766e46b6abf672ed66a8d0",
+          "leafSha256": "bee006f19ce0934df5451fc0c58c4cbb5a7480dd0e1b78e4a79a12b0f126f52f",
+          "root": "fad8cb77a0b8d1cbba31b07c33defb143e275accdf64d8069e057d6bb2b130be",
+          "proofPath": [
+            {
+              "level": 0,
+              "siblingSide": "right",
+              "siblingHash": "5ecabe7658d635786a0948ba8ddba4d0a711620aad3e94e52713a146c5c65b3f"
+            },
+            {
+              "level": 1,
+              "siblingSide": "right",
+              "siblingHash": "ac14e96b0b92cd960843c2bbdc46f13d1c58942578ac9229d96aed3260fc69f8"
+            },
+            {
+              "level": 2,
+              "siblingSide": "right",
+              "siblingHash": "1bdc86d3d08784b6cdeceb404a514c5aa6b80c2ead52e1936e7033f4e48bf083"
+            },
+            {
+              "level": 3,
+              "siblingSide": "right",
+              "siblingHash": "06fd9fffb6a900ad21b11d11a0ccf0fab7446409f09394728b9b0f79737d1a3a"
+            },
+            {
+              "level": 4,
+              "siblingSide": "left",
+              "siblingHash": "13caf1fad9182a407717959e84f1a328bf11f29f1118d1180b43ba5cf6d04844"
+            }
+          ]
+        },
+        "sourceBasis": "Actual offline-computed L2-normalized 256-dimensional vector for label 'طبيب' (Fixed CNS V7/P33 capture contract ordinal 16); identity is the canonical SHA-256 of the real vector bytes. Raw components are held only in the private local audit and SQLite artifact, never here.",
+        "claimBoundary": "Node identity is the canonical SHA-256 of a real, locally computed L2-normalized embedding vector; the sign projection is the per-dimension sign of that vector; coordinates are a reconstructable projection of the (vi - v0) difference digest and its accumulated sign-bit Hamming. No raw vector component, magnitude, model weight, activation, prompt, or user content is present, and none can be reconstructed from these fields."
+      },
+      {
+        "index": 17,
+        "label": "محامي",
+        "labelProvenance": "Fixed CNS V7/P33 capture contract ordinal 17",
+        "kind": "actual_vector_relative_to_reference",
+        "referenceKey": "K_c_n_s",
+        "referenceRelation": "relative_to:K_c_n_s",
+        "dimensions": 256,
+        "l2Norm": 1,
+        "canonicalVectorSha256": "818ba317846bbea78bbd4b6463140ace10f729e7457a04797c2f200732793f4b",
+        "differenceCanonicalSha256": "197aa6f23ce099e3d29d8345c460724d4f6802923ce988ead21f36d122125b69",
+        "signature": {
+          "status": "detected",
+          "bitWidth": 256,
+          "hex": "8b63a19be277620acce24fd19c056026e3d864bc94bf5bd3cc32ba1f7186e3af",
+          "basis": "Per-dimension sign projection of the locally computed vector."
+        },
+        "coordinates": {
+          "x": 0.865417951848,
+          "y": 0.301473716765,
+          "z": 0.502297794118,
+          "space": "Normalized non-negative unit cube [0,1]^3 anchored at the K_c_n_s computed-zero reference origin (0,0,0).",
+          "derivation": "differenceDigest = SHA256(canonical float32-LE bytes of (vi - v0)); angle = 2*pi*u32le(differenceDigest[0..4])/2^32; radius = u32le(differenceDigest[4..8])/(2^32-1); x = radius*(1+cos(angle))/2; y = radius*(1+sin(angle))/2; z from accumulated sign-bit Hamming. Reconstructable from the published differenceCanonicalSha256 and sign projections."
+        },
+        "hammingTransition": {
+          "status": "detected",
+          "bitWidth": 256,
+          "distanceBits": 111,
+          "normalizedDistance": 0.43359375,
+          "cumulativeDistanceBits": 2186,
+          "basis": "Bit distance between the 256-bit sign projections of this vector and its predecessor. It measures sign-pattern separation of real vectors, not magnitude, activation, or semantic distance."
+        },
+        "efWriteSpan": {
+          "status": "detected",
+          "sequence": 18,
+          "durationNanoseconds": 1518900,
+          "tickResolutionNanoseconds": 100,
+          "bindingSha256": "87eacd5b9be0064d99a35319c26201757877fb9c5d242d817820388466179041",
+          "timeline": {
+            "status": "detected",
+            "triggerTicks": 210031437633,
+            "beforeWriteTicks": 210031438663,
+            "observedWriteTicks": 210031439224,
+            "afterWriteTicks": 210031452822,
+            "tickFrequency": 10000000,
+            "triggerToBeforeWriteNanoseconds": 103000,
+            "beforeWriteToObservedNanoseconds": 56100,
+            "observedWriteToAfterNanoseconds": 1359800,
+            "triggerToAfterNanoseconds": 1518900
+          }
+        },
+        "qdrantUpsertSpan": {
+          "status": "read_only_not_written",
+          "sequence": null,
+          "durationNanoseconds": null,
+          "tickResolutionNanoseconds": null,
+          "bindingSha256": null,
+          "timeline": {
+            "status": "unavailable",
+            "triggerTicks": null,
+            "beforeWriteTicks": null,
+            "observedWriteTicks": null,
+            "afterWriteTicks": null,
+            "tickFrequency": null,
+            "triggerToBeforeWriteNanoseconds": null,
+            "beforeWriteToObservedNanoseconds": null,
+            "observedWriteToAfterNanoseconds": null,
+            "triggerToAfterNanoseconds": null
+          }
+        },
+        "merkle": {
+          "status": "detected",
+          "leafPath": "vectors/000017/818ba317846bbea78bbd4b6463140ace10f729e7457a04797c2f200732793f4b",
+          "leafSha256": "10448e7d2bae9240399cac95d78f5fc4af92533bab82c35da16e0e2db77023f5",
+          "root": "fad8cb77a0b8d1cbba31b07c33defb143e275accdf64d8069e057d6bb2b130be",
+          "proofPath": [
+            {
+              "level": 0,
+              "siblingSide": "left",
+              "siblingHash": "ca79c2a1d289ba8843a85e1aa6532fc723d0345fd847e13681042cba033b329d"
+            },
+            {
+              "level": 1,
+              "siblingSide": "right",
+              "siblingHash": "ac14e96b0b92cd960843c2bbdc46f13d1c58942578ac9229d96aed3260fc69f8"
+            },
+            {
+              "level": 2,
+              "siblingSide": "right",
+              "siblingHash": "1bdc86d3d08784b6cdeceb404a514c5aa6b80c2ead52e1936e7033f4e48bf083"
+            },
+            {
+              "level": 3,
+              "siblingSide": "right",
+              "siblingHash": "06fd9fffb6a900ad21b11d11a0ccf0fab7446409f09394728b9b0f79737d1a3a"
+            },
+            {
+              "level": 4,
+              "siblingSide": "left",
+              "siblingHash": "13caf1fad9182a407717959e84f1a328bf11f29f1118d1180b43ba5cf6d04844"
+            }
+          ]
+        },
+        "sourceBasis": "Actual offline-computed L2-normalized 256-dimensional vector for label 'محامي' (Fixed CNS V7/P33 capture contract ordinal 17); identity is the canonical SHA-256 of the real vector bytes. Raw components are held only in the private local audit and SQLite artifact, never here.",
+        "claimBoundary": "Node identity is the canonical SHA-256 of a real, locally computed L2-normalized embedding vector; the sign projection is the per-dimension sign of that vector; coordinates are a reconstructable projection of the (vi - v0) difference digest and its accumulated sign-bit Hamming. No raw vector component, magnitude, model weight, activation, prompt, or user content is present, and none can be reconstructed from these fields."
+      },
+      {
+        "index": 18,
+        "label": "ذكاء اصطناعي",
+        "labelProvenance": "Fixed CNS V7/P33 capture contract ordinal 18",
+        "kind": "actual_vector_relative_to_reference",
+        "referenceKey": "K_c_n_s",
+        "referenceRelation": "relative_to:K_c_n_s",
+        "dimensions": 256,
+        "l2Norm": 1.000000005,
+        "canonicalVectorSha256": "324adcfe524f33306126a429c7a921cb6bc7e248bf63306f793d4e296371cd70",
+        "differenceCanonicalSha256": "fb39d2f056ebeb404826a6831a213a8f148810c2ae98303464cb6e656f3d2063",
+        "signature": {
+          "status": "detected",
+          "bitWidth": 256,
+          "hex": "f15cd862723a63881f2d6c73ff4c4f3a6fabdf70409fa37a641da091d2b55a17",
+          "basis": "Per-dimension sign projection of the locally computed vector."
+        },
+        "coordinates": {
+          "x": 0.244901929392,
+          "y": 0.080646527848,
+          "z": 0.501953125,
+          "space": "Normalized non-negative unit cube [0,1]^3 anchored at the K_c_n_s computed-zero reference origin (0,0,0).",
+          "derivation": "differenceDigest = SHA256(canonical float32-LE bytes of (vi - v0)); angle = 2*pi*u32le(differenceDigest[0..4])/2^32; radius = u32le(differenceDigest[4..8])/(2^32-1); x = radius*(1+cos(angle))/2; y = radius*(1+sin(angle))/2; z from accumulated sign-bit Hamming. Reconstructable from the published differenceCanonicalSha256 and sign projections."
+        },
+        "hammingTransition": {
+          "status": "detected",
+          "bitWidth": 256,
+          "distanceBits": 127,
+          "normalizedDistance": 0.49609375,
+          "cumulativeDistanceBits": 2313,
+          "basis": "Bit distance between the 256-bit sign projections of this vector and its predecessor. It measures sign-pattern separation of real vectors, not magnitude, activation, or semantic distance."
+        },
+        "efWriteSpan": {
+          "status": "detected",
+          "sequence": 19,
+          "durationNanoseconds": 1300700,
+          "tickResolutionNanoseconds": 100,
+          "bindingSha256": "264c33bbd0c449e0e08a84ec5499f6492ddd489a437ecf8de4ec694cdcb3f743",
+          "timeline": {
+            "status": "detected",
+            "triggerTicks": 210031460148,
+            "beforeWriteTicks": 210031461291,
+            "observedWriteTicks": 210031461910,
+            "afterWriteTicks": 210031473155,
+            "tickFrequency": 10000000,
+            "triggerToBeforeWriteNanoseconds": 114300,
+            "beforeWriteToObservedNanoseconds": 61900,
+            "observedWriteToAfterNanoseconds": 1124500,
+            "triggerToAfterNanoseconds": 1300700
+          }
+        },
+        "qdrantUpsertSpan": {
+          "status": "read_only_not_written",
+          "sequence": null,
+          "durationNanoseconds": null,
+          "tickResolutionNanoseconds": null,
+          "bindingSha256": null,
+          "timeline": {
+            "status": "unavailable",
+            "triggerTicks": null,
+            "beforeWriteTicks": null,
+            "observedWriteTicks": null,
+            "afterWriteTicks": null,
+            "tickFrequency": null,
+            "triggerToBeforeWriteNanoseconds": null,
+            "beforeWriteToObservedNanoseconds": null,
+            "observedWriteToAfterNanoseconds": null,
+            "triggerToAfterNanoseconds": null
+          }
+        },
+        "merkle": {
+          "status": "detected",
+          "leafPath": "vectors/000018/324adcfe524f33306126a429c7a921cb6bc7e248bf63306f793d4e296371cd70",
+          "leafSha256": "196ab711966fcffe34958c04126cbed9cc6b551b424f17c863b5f0675433144e",
+          "root": "fad8cb77a0b8d1cbba31b07c33defb143e275accdf64d8069e057d6bb2b130be",
+          "proofPath": [
+            {
+              "level": 0,
+              "siblingSide": "right",
+              "siblingHash": "fd6b3df661933dea21075aefea32612b154295674c671cd44111088f9ed82753"
+            },
+            {
+              "level": 1,
+              "siblingSide": "left",
+              "siblingHash": "c89a5853c169cebcf1a1a58c5ea0d06a7819fc891cf72a7597377051fb3238de"
+            },
+            {
+              "level": 2,
+              "siblingSide": "right",
+              "siblingHash": "1bdc86d3d08784b6cdeceb404a514c5aa6b80c2ead52e1936e7033f4e48bf083"
+            },
+            {
+              "level": 3,
+              "siblingSide": "right",
+              "siblingHash": "06fd9fffb6a900ad21b11d11a0ccf0fab7446409f09394728b9b0f79737d1a3a"
+            },
+            {
+              "level": 4,
+              "siblingSide": "left",
+              "siblingHash": "13caf1fad9182a407717959e84f1a328bf11f29f1118d1180b43ba5cf6d04844"
+            }
+          ]
+        },
+        "sourceBasis": "Actual offline-computed L2-normalized 256-dimensional vector for label 'ذكاء اصطناعي' (Fixed CNS V7/P33 capture contract ordinal 18); identity is the canonical SHA-256 of the real vector bytes. Raw components are held only in the private local audit and SQLite artifact, never here.",
+        "claimBoundary": "Node identity is the canonical SHA-256 of a real, locally computed L2-normalized embedding vector; the sign projection is the per-dimension sign of that vector; coordinates are a reconstructable projection of the (vi - v0) difference digest and its accumulated sign-bit Hamming. No raw vector component, magnitude, model weight, activation, prompt, or user content is present, and none can be reconstructed from these fields."
+      }
+    ],
+    "claimBoundary": "This graph is built from actual offline-computed embedding vectors of a declared repository-local deterministic runtime, not from the external trained V7/P33 model weights. It publishes actual-vector-derived hash/sign/difference evidence rather than receipt identity-only evidence. It is not a semantic, neural, or geometric map of any model's embedding space, and it makes no training-quality, retrieval-quality, or hardware first-touch claim."
+  },
+  "unavailableClaims": {
+    "nativeV7Zero": true,
+    "negativeCurvature": true,
+    "neuralTreeLikeness": true,
+    "hardwareFirstTouch": true,
+    "liveModelInference": true
+  }
+}

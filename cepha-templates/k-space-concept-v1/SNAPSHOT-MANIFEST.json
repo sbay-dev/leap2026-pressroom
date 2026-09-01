@@ -1,0 +1,44 @@
+{
+  "schema": "sbay.cepha.visual-template-snapshot.v1",
+  "templateId": "cepha-k-space-concept-v1",
+  "capturedAtUtc": "2026-09-01T15:41:38.946Z",
+  "classification": "conceptual-visual-template",
+  "deployment": {
+    "includedInWorkerAssets": false,
+    "workerAssetsDirectory": "./docs"
+  },
+  "policy": {
+    "evidenceUseAllowed": false,
+    "measuredGeometry": false,
+    "authenticZeroCheckpoint": false,
+    "trainedModelComparison": false,
+    "allowedUse": "Cepha presentation and interface template after replacing the data adapter and claim text."
+  },
+  "files": [
+    {
+      "path": "source/docs/k-space.js",
+      "bytes": 31565,
+      "sha256": "46ef4f9a0f965e57e971f73b20cb9927e97a563b0bd300e511153ba2b3afc531"
+    },
+    {
+      "path": "source/docs/index.snapshot.html",
+      "bytes": 75557,
+      "sha256": "59205f94f3d6c58853bbf1ff54c1cab7f06714c6a1c24def7c8679a212732f23"
+    },
+    {
+      "path": "source/docs/styles.snapshot.css",
+      "bytes": 59840,
+      "sha256": "1f81bac6eccee2ac5e31dee99895eec05f4f9c0dab69fb822b0b9bcb39ed79ac"
+    },
+    {
+      "path": "source/docs/assets/evidence/cns-k-space-public.sample.json",
+      "bytes": 110880,
+      "sha256": "a30d97e0bc49982169bff16fb1c7ba0efd103c0acd2d38abb796e0995818c5ac"
+    },
+    {
+      "path": "source/scripts/build-k-space-public.snapshot.mjs",
+      "bytes": 9409,
+      "sha256": "570649b7226a30e5336a92874c3160c521dc346accf4732e1d5b4fc8d16683bd"
+    }
+  ]
+}

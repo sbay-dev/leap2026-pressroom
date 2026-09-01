@@ -1,10 +1,12 @@
 {
   "name": "sbay-leap2026-pressroom",
-  "version": "2.7.5",
+  "version": "2.9.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node scripts/check-public-boundary.mjs && node scripts/verify-wasm.mjs && node scripts/check-newsboy-worker.mjs && node --check worker.js && node --check docs/app.js && node --check docs/adg-cipher.js && node --check scripts/check-cipher.mjs && node --check scripts/capture-media.mjs && node --check scripts/capture-adjudication.mjs && node --check scripts/capture-trace-video.mjs && node --check scripts/build-trace-evidence.mjs && node --check scripts/capture-newsboy-leap.mjs && node --check scripts/build-release-manifest.mjs && node --check scripts/verify-live.mjs",
+    "check": "node scripts/check-public-boundary.mjs && node scripts/verify-wasm.mjs && node scripts/check-newsboy-worker.mjs && node --check worker.js && node --check docs/app.js && node --check docs/model-graph.js && node --check docs/k-space.js && node --check docs/cepha-k-space-concept/k-space.js && node --check docs/cepha-k-space-concept/shell.js && node --check docs/adg-cipher.js && node --check scripts/check-cipher.mjs && node --check scripts/build-model-graph-public.mjs && node --check scripts/build-k-space-public.mjs && node --check scripts/capture-media.mjs && node --check scripts/capture-adjudication.mjs && node --check scripts/capture-trace-video.mjs && node --check scripts/build-trace-evidence.mjs && node --check scripts/capture-newsboy-leap.mjs && node --check scripts/build-release-manifest.mjs && node --check scripts/verify-live.mjs",
+    "kspace:artifact": "node scripts/build-model-graph-public.mjs",
+    "model-graph:artifact": "node scripts/build-model-graph-public.mjs",
     "capture": "node scripts/capture-media.mjs",
     "capture:adjudication": "node scripts/capture-adjudication.mjs",
     "capture:og": "node scripts/capture-media.mjs --og-only",

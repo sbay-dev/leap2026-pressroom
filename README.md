@@ -28,6 +28,48 @@ NewsBoy, CP, Sarmad, CNS and QdrantServer appear as bounded operating or
 technical evidence. KSAR now has a dedicated live-commerce stage linked to its
 verified `2.1.0-leap2026` production release.
 
+The CNS stage is rendered continuously from the trained-only, public-safe
+engineering artifact at
+`docs/assets/evidence/cns-model-graph-public.json`. The source ONNX matches
+SHA-256
+`8847832167ec643c66461ef8c6b7182b48286821d0fd20fd600414bf51f5dfef`;
+its canonical value-independent structural graph hash is
+`51740c50a975b5c510f1685a939abd26fe9ef6ea0ba65fc10b6c59fffb9c67f1`.
+Every rendered point represents one authentic ONNX operator at its measured
+topological depth. The public view exposes aggregate block and edge counts but
+withholds exact node/tensor names, exact wiring, initializer identities,
+weights, vectors and activations.
+
+The audit is explicitly trained-only. The only local zero-named candidate is a
+v1 epoch-1 artifact with a different architecture, so it is rejected as an
+authentic step-0 match. The page therefore makes no zero-versus-trained,
+training-effect, Neural Persistence, representation-topology or curvature
+claim. It also does not present the animated depth scan as live inference.
+
+The same stage includes values declared from the hash-identified CNS Cultural
+NewsBoy A3 ledger at CNSEmbedding commit
+`0ebf9988eff77078ea61e99d500092e10cd8baef`. The source requires repository
+access and returned HTTP 404 to an unauthenticated verification request, so the
+pressroom does not describe it as an independently accessible public source or
+claim to have rerun the workload. Local copies of the report and token-accounting
+rules matched their Git blob identities byte-for-byte, establishing document
+identity rather than an independent workload replay. The disclosure record
+contains whole-corpus descriptive classification, throughput, memory, and
+per-million-token resource coefficients for 10,800 owned articles and
+2,053,810 paired non-padding R9 tokens. The page states that training,
+development, and calibration rows are included, fresh holdout evidence remains
+the quality authority, and activation is disabled. It also publishes the token
+accounting rule: one million paired non-padding R9 model-input tokens, with raw
+preprocessing, GPU, CPU, memory, and energy separated. GPU-energy values are
+upper bounds from the enforced 50 W limit rather than measured power draw.
+
+The previous visual treatment is preserved byte-for-byte under
+`cepha-templates/k-space-concept-v1`. A runnable, `noindex` fallback is
+available at `/cepha-k-space-concept/` and linked from the primary stage. It
+retains the old interaction and presentation capability while identifying
+itself visibly as a non-evidentiary Cepha concept template. It cannot replace
+the measured engineering graph in any scientific claim.
+
 The hero replays the WebAssembly-derived public flag pattern through WebGPU
 when available and Canvas2D otherwise: octet read, bit decode, bloom, quiet,
 then a live `trace_void` call. The processor-stage labels are explanatory, not
@@ -49,18 +91,22 @@ cross-device acceptance, sales or audience performance, raw IR broadcasting,
 or correction of the reported CPOLY freeze.
 
 NewsBoy is represented by its supplied classic editorial and modern culture
-edition captures plus a live semantic LEAP and DeepFest reader. The still
-preview cannot scroll or receive keyboard focus; a deliberate click opens a
-viewport-filling reader, and closing it reloads the source at the top while
-returning focus and the parent page to the NewsBoy section.
+edition captures plus a live semantic LEAP and DeepFest preview. The still
+preview cannot scroll or receive keyboard focus; its primary action expands the
+same sanitized relay to a full-viewport reader. Closing reloads the live route
+at the top and restores the original card position and focus. A separate action
+opens the canonical NewsBoy coverage route at
+`https://newsboy.sbay.sa/coverage/leap-2026`.
 
 The iframe uses the same-origin `/newsboy-reader` boundary in `worker.js`.
-That boundary fetches only the fixed NewsBoy coverage route, strips scripts,
-opens article links separately and proxies only the `/fonts/` asset family.
-It fails visibly when the upstream response is not a complete paper and never
-serves a saved capture as the latest issue. NewsBoy itself retains
-`frame-ancestors 'none'`; the pressroom does not weaken its global embedding
-policy or expose a general-purpose proxy.
+That boundary validates only the fixed NewsBoy coverage route, then fetches the
+fixed public edition-record API and renders an accessible, script-free reading
+view of its attributed titles, summaries, sections, dates, and source links.
+The legacy paper layout remains supported through script removal and the
+restricted `/fonts/` proxy. Incomplete source HTML or edition data fails
+visibly, and no saved capture is served as the latest issue. NewsBoy itself
+retains `frame-ancestors 'none'`; the pressroom does not weaken its global
+embedding policy or expose a general-purpose proxy.
 
 The pressroom also includes the public **ADG Arabic Adjudication Platform** as
 a separate institutional research announcement. Its two-sample public pilot

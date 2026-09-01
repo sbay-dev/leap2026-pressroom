@@ -38,7 +38,7 @@
       <a href="#problem"><span class="ar">التحدي</span><span class="en">Problem</span></a>
       <a href="#platform"><span class="ar">المنصة</span><span class="en">Platform</span></a>
       <a href="#intelligence"><span class="ar">الذكاء</span><span class="en">Intelligence</span></a>
-      <a href="#k-space"><span class="ar">هندسة النموذج</span><span class="en">Model graph</span></a>
+      <a href="#k-space"><span class="ar">فضاء K</span><span class="en">K-space</span></a>
       <a href="#outcomes"><span class="ar">القيمة</span><span class="en">Outcomes</span></a>
       <a href="#vision"><span class="ar">الرؤية</span><span class="en">Vision</span></a>
       <a href="#ksar"><span class="ar">كسار</span><span class="en">KSAR</span></a>
@@ -258,232 +258,112 @@
       </div>
     </section>
 
-    <section class="k-space-stage model-graph-stage" id="k-space" data-model-graph aria-labelledby="k-space-heading" data-state="loading">
+    <section class="k-space-stage" id="k-space" data-k-space aria-labelledby="k-space-heading" data-state="loading">
       <div class="section-shell">
         <div class="k-space-heading">
           <div class="section-heading wide-heading">
-            <p class="section-kicker">CNS V33 / MEASURED ENGINEERING GRAPH</p>
+            <p class="section-kicker">CNS K-SPACE / LIVE EVIDENCE</p>
             <h2 id="k-space-heading">
-              <span class="ar">الرسم الهندسي الحقيقي للنموذج المدرّب</span>
-              <span class="en">The authentic engineering graph of the trained model</span>
+              <span class="ar">فضاء K يعمل أمامك، لا فيديو مسجّل</span>
+              <span class="en">K-space rendered live, not a recorded video</span>
             </h2>
             <p>
-              <span class="ar">استُخرجت هذه اللوحة آليًا من ملف ONNX المدرّب المطابق لبصمته. كل نقطة تقابل عملية حقيقية عند عمقها الطوبولوجي، وتعرض الخطوط أعداد الحواف المجمعة بين الكتل. لا سطح تخيليًا، ولا نتوءات غير مقيسة، ولا أوزان خام.</span>
-              <span class="en">This panel was generated directly from the hash-matched trained ONNX. Every point corresponds to an authentic operator at its topological depth, while lines show aggregate edge counts between blocks. There is no imagined surface, unmeasured protrusion, or raw weight disclosure.</span>
+              <span class="ar">يرسم المتصفح المشهد من artifact عام في كل إطار، ويستجيب للدوران والتكبير واختيار العقدة. تعني كلمة «حي» هنا أن الرسم والتفاعل يحدثان لحظيًا في المتصفح؛ ولا تعني استدلال نموذج حيًا أو اتصالًا بقاعدة إنتاج.</span>
+              <span class="en">The browser redraws the scene from a public artifact on every frame and responds to rotation, zoom and node selection. “Live” means real-time browser rendering and interaction, not live model inference or a production-database connection.</span>
             </p>
-            <p class="k-space-status" data-graph-status aria-live="polite">
-              <span class="ar">جارٍ تحميل الرسم الهندسي المقاس…</span>
-              <span class="en">Loading the measured engineering graph…</span>
+            <p class="k-space-status" data-k-status aria-live="polite">
+              <span class="ar">جارٍ تحميل دليل K-space…</span>
+              <span class="en">Loading K-space evidence…</span>
             </p>
             <p class="k-space-runtime-boundary">
-              <span class="ar">هذا تدقيق للنموذج المدرّب V33 فقط. checkpoint الصفري الأصيل المطابق غير متاح؛ لذلك لا تعرض اللوحة مقارنة قبل/بعد التدريب، أو تغيرًا طوبولوجيًا، أو Neural Persistence.</span>
-              <span class="en">This is a trained-only V33 audit. An authentic architecture-matched zero checkpoint is unavailable, so the panel makes no pre/post-training, topology-change, or Neural Persistence claim.</span>
+              <span class="ar">مسار العقد المقيسة ناتج عن runtime محلي حتمي معلن؛ أما V7/P33 المدرّب فيظهر كمرساة metadata منفصلة قراءةً فقط، وليس بوصفه مصدر هذه العقد.</span>
+              <span class="en">The measured-node lane comes from a declared deterministic local runtime. Trained V7/P33 remains a separate read-only metadata anchor and is not presented as the source of these nodes.</span>
             </p>
-            <a class="k-space-fallback" data-graph-fallback hidden href="./cepha-k-space-concept/">
-              <span class="ar">تعذر الدليل؟ شغّل قالب Cepha المحفوظ بوصفه عرضًا تصوريًا ↗</span>
-              <span class="en">Evidence unavailable? Run the preserved Cepha concept template ↗</span>
-            </a>
           </div>
-          <div class="k-space-live-badge" aria-label="Verified ONNX engineering graph">
+          <div class="k-space-live-badge" aria-label="Live browser renderer">
             <i aria-hidden="true"></i>
-            <span>VERIFIED ONNX GRAPH</span>
-            <code data-graph-frame>DRAW 000000</code>
+            <span>LIVE BROWSER RENDER</span>
+            <code data-k-frame>FRAME 000000</code>
           </div>
         </div>
 
         <div class="k-space-layout">
-          <figure class="k-space-viewport model-graph-viewport">
+          <figure class="k-space-viewport">
             <canvas
-              data-graph-canvas
+              data-k-canvas
               width="1280"
               height="720"
               tabindex="0"
               role="img"
               aria-describedby="k-space-caption"
-              aria-label="Interactive public-safe engineering projection of the authentic trained CNS V33 ONNX. Horizontal position is topological depth, vertical lanes are measured renderer blocks, and curves are aggregate block-edge counts."></canvas>
+              aria-label="Interactive software-rendered three-dimensional K-space evidence scene. Drag to rotate, use the mouse wheel to zoom, or use arrow and plus or minus keys."></canvas>
             <div class="k-space-hud" aria-hidden="true">
-              <span data-graph-fps>RENDER WAIT</span>
-              <span data-graph-node-count>ONNX OPS —</span>
-              <span data-graph-depth-count>DEPTH —</span>
-              <span data-graph-proof-state>STRUCT —</span>
+              <span data-k-fps>RENDER WAIT</span>
+              <span data-k-node-count>MEASURED NODES —</span>
+              <span data-k-proof-state>PROOF —</span>
             </div>
             <figcaption id="k-space-caption">
-              <span class="ar">المحور الأفقي هو العمق الطوبولوجي 0–143، والمسارات الأفقية كتل هندسية مشتقة من DAG الحقيقي. كل نقطة عملية ONNX فعلية؛ الحواف الفردية والأسماء الداخلية محجوبة، والخط الذهبي مسح عرض لا تنفيذ استدلال.</span>
-              <span class="en">The horizontal axis is topological depth 0–143 and horizontal lanes are engineering blocks derived from the authentic DAG. Every point is a real ONNX operator; exact wiring and internal names are withheld, and the gold line is a display scan—not inference execution.</span>
+              <span class="ar">اسحب للتدوير، مرّر للتكبير، انقر عقدة لقراءتها، أو استخدم الأسهم و + و − من لوحة المفاتيح. السطح السرجي لغة عرض بصرية وليس قياسًا مثبتًا للانحناء.</span>
+              <span class="en">Drag to rotate, scroll to zoom, select a node, or use the arrow and +/− keys. The saddle surface is visual staging, not a measured curvature result.</span>
             </figcaption>
           </figure>
 
-          <aside class="k-space-console" aria-label="Measured model graph controls">
+          <aside class="k-space-console" aria-label="K-space live evidence controls">
             <div class="k-space-controls">
-              <button type="button" data-graph-play aria-pressed="false">
-                <span class="ar">تشغيل مسح العمق</span><span class="en">Start depth scan</span>
+              <button type="button" data-k-play aria-pressed="false">
+                <span class="ar">تشغيل الحركة</span><span class="en">Start motion</span>
               </button>
-              <button type="button" data-graph-reset>
+              <button type="button" data-k-reset>
                 <span class="ar">إعادة المنظور</span><span class="en">Reset view</span>
               </button>
-              <button type="button" data-graph-edges aria-pressed="true">
-                <span class="ar">إخفاء الحواف المجمعة</span><span class="en">Hide aggregate edges</span>
+              <button type="button" data-k-surface aria-pressed="true">
+                <span class="ar">إخفاء سطح العرض</span><span class="en">Hide visual surface</span>
               </button>
             </div>
 
             <label class="k-space-field">
-              <span>
-                <span class="ar">العمق الطوبولوجي</span>
-                <span class="en">Topological depth</span>
-                · <b data-graph-selected-depth><span class="ar">العمق 0</span><span class="en">Depth 0</span></b>
-              </span>
-              <input data-graph-timeline type="range" min="0" max="143" value="0" step="1">
+              <span><span class="ar">موضع إعادة العرض</span><span class="en">Replay position</span></span>
+              <input data-k-timeline type="range" min="0" max="0" value="0" step="1">
             </label>
             <label class="k-space-field">
-              <span><span class="ar">الكتلة الهندسية</span><span class="en">Engineering block</span></span>
-              <select data-graph-block-select></select>
+              <span><span class="ar">العقدة أو الشبكة</span><span class="en">Node or network</span></span>
+              <select data-k-node-select></select>
             </label>
 
             <dl class="k-space-details">
-              <div><dt><span class="ar">النطاق</span><span class="en">Scope</span></dt><dd data-graph-detail-name>—</dd></div>
-              <div><dt><span class="ar">العمليات</span><span class="en">Operators</span></dt><dd data-graph-detail-operators>—</dd></div>
-              <div><dt><span class="ar">مدى العمق</span><span class="en">Depth range</span></dt><dd data-graph-detail-depth>—</dd></div>
-              <div><dt>Initializers</dt><dd data-graph-detail-initializers>—</dd></div>
-              <div><dt><span class="ar">الحواف</span><span class="en">Edges</span></dt><dd data-graph-detail-edges>—</dd></div>
-              <div><dt><span class="ar">بصمة البنية</span><span class="en">Structure hash</span></dt><dd data-graph-detail-hash>—</dd></div>
+              <div><dt><span class="ar">الاسم</span><span class="en">Name</span></dt><dd data-k-detail-name>—</dd></div>
+              <div><dt><span class="ar">النوع</span><span class="en">Type</span></dt><dd data-k-detail-type>—</dd></div>
+              <div><dt><span class="ar">الإحداثيات</span><span class="en">Coordinates</span></dt><dd data-k-detail-coordinates>—</dd></div>
+              <div><dt>Hamming</dt><dd data-k-detail-hamming>—</dd></div>
+              <div><dt><span class="ar">زمن EF</span><span class="en">EF time</span></dt><dd data-k-detail-timing>—</dd></div>
+              <div><dt>Merkle</dt><dd data-k-detail-merkle>—</dd></div>
             </dl>
-            <p class="k-space-basis" data-graph-detail-basis>—</p>
-            <div class="model-graph-operators">
-              <strong><span class="ar">أكثر العمليات حضورًا</span><span class="en">Most frequent operators</span></strong>
-              <ol data-graph-operator-list></ol>
-            </div>
-            <button class="k-space-verify" type="button" data-graph-verify>
-              <span class="ar">تحقق من SHA-256 واتساق العدّ</span>
-              <span class="en">Verify SHA-256 and count consistency</span>
+            <p class="k-space-basis" data-k-detail-basis>—</p>
+            <button class="k-space-verify" type="button" data-k-verify disabled>
+              <span class="ar">أعد حساب Merkle وHamming</span>
+              <span class="en">Recompute Merkle and Hamming</span>
             </button>
-            <p class="k-space-verification" data-graph-verification aria-live="polite"></p>
+            <p class="k-space-verification" data-k-verification aria-live="polite"></p>
           </aside>
         </div>
 
-        <div class="k-space-boundaries model-graph-boundaries">
+        <div class="k-space-boundaries">
           <article>
-            <strong><span class="ar">قياس مباشر من ONNX</span><span class="en">Direct ONNX measurement</span></strong>
-            <p><span class="ar">يعرض artifact عدد العمليات والحواف والمدخلات والمخرجات والعمق وتوزيع الأنواع والكتل، ويربطها ببصمة ملف النموذج وبصمة بنيوية تستبعد قيم الأوزان.</span><span class="en">The artifact reports operator, edge, I/O, depth, type and block counts, bound to the model-file hash and a structural hash that excludes weight values.</span></p>
+            <strong><span class="ar">X/Y من عقد منشور</span><span class="en">X/Y from a published contract</span></strong>
+            <p><span class="ar">عند توفر عقد المتجهات، تُعرض الإحداثيات المشتقة نسبةً إلى أول متجه K_c_n_s؛ ولا تُسمى أبعاد embedding أصلية.</span><span class="en">When vector nodes are available, published coordinates are shown relative to the first K_c_n_s vector; they are not called original embedding dimensions.</span></p>
           </article>
           <article>
-            <strong><span class="ar">إفصاح عام غير تمكيني</span><span class="en">Non-enabling public projection</span></strong>
-            <p><span class="ar">لا تُنشر أسماء العقد والموترات الداخلية، أو التوصيلات الدقيقة، أو أسماء initializers وبصماتها، أو الأوزان والتفعيلات. الخطوط تلخص أعداد الحواف بين الكتل فقط.</span><span class="en">Internal node and tensor names, exact wiring, initializer identities and hashes, weights, and activations remain withheld. Lines summarize only block-level edge counts.</span></p>
+            <strong><span class="ar">Z من انتقال Hamming</span><span class="en">Z from Hamming transitions</span></strong>
+            <p><span class="ar">المؤشر الذهبي يعيد ترتيب العقد المرصود، ومحور Z يتبع العقد المنشور فقط؛ ولا يمثل عمقًا فيزيائيًا.</span><span class="en">The gold cursor replays the observed order, and Z follows only the published contract; it is not physical depth.</span></p>
           </article>
           <article>
-            <strong><span class="ar">المقارنة غير متاحة</span><span class="en">Comparison unavailable</span></strong>
-            <p><span class="ar">المرشح المسمى zero يعود إلى v1 وepoch 1 وبنية مختلفة، ولذلك رُفض. لا يُستبدل به checkpoint مصطنع، ولا يُستنتج أثر التدريب من رسم النموذج المدرّب وحده.</span><span class="en">The zero-named candidate belongs to v1, epoch 1 and a different architecture, so it was rejected. No synthetic checkpoint replaces it, and training impact is not inferred from the trained graph alone.</span></p>
-          </article>
-          <article>
-            <strong><span class="ar">الحوسبة بحدود معلنة</span><span class="en">Compute with declared limits</span></strong>
-            <p><span class="ar">تُنشر أعداد MatMul وGemm وConv والعمليات العنصرية، لكن لا يُختلق مجموع FLOP/MAC دون أشكال كاملة ودلالات توجيه MoE مثبتة.</span><span class="en">MatMul, Gemm, Conv and elementwise operator counts are published, but no total FLOP/MAC figure is invented without complete shapes and verified MoE routing semantics.</span></p>
+            <strong><span class="ar">غير المتاح يبقى غير متاح</span><span class="en">Unavailable stays unavailable</span></strong>
+            <p><span class="ar">لا يُختلق V7 صفري، أو انحناء سالب، أو eBPF، أو أول لمس للقرص. تظهر الحالة الناقصة بدلًا من ملئها باستعارة بصرية.</span><span class="en">No V7-zero checkpoint, negative curvature, eBPF trace or disk first-touch is invented. Missing evidence is shown as missing.</span></p>
           </article>
         </div>
-
-        <section class="cultural-cns-evidence" aria-labelledby="cultural-cns-heading">
-          <div class="cultural-cns-heading">
-            <div>
-              <p class="section-kicker">CNS CULTURAL NEWSBOY A3 / MEASURED 2026-08-19</p>
-              <h3 id="cultural-cns-heading">
-                <span class="ar">قياسات عبء العمل الثقافي الموثقة</span>
-                <span class="en">Documented measurements from the cultural workload</span>
-              </h3>
-            </div>
-            <span class="status-pill">
-              <span class="ar">معلن · نسخة مطابقة · التفعيل معطّل</span>
-              <span class="en">declared · record matched · activation disabled</span>
-            </span>
-          </div>
-          <p class="cultural-cns-boundary">
-            <span class="ar">القيم معلنة من سجل CNSEmbedding يتطلب صلاحية وصول. طابقت النسخة المحلية التقرير وقواعد معيار التوكن مع معرفي Git blob بايتًا ببايت؛ أما عبء العمل نفسه فلم تُعد منصة العرض تشغيله. يذكر السجل أن Frozen R9 + A3 صنّف مجموعة الأخبار المملوكة كاملة. النتائج وصفية لأن مجموعة البيانات تضم صفوف التدريب والتطوير والمعايرة؛ ويبقى الاختبار الجديد المستقل مرجع الجودة. لا تمنح النتائج إذن إنتاج أو ادعاء ربحية.</span>
-            <span class="en">Values are declared from a CNSEmbedding record requiring repository access. Local copies of the report and token-accounting rules matched their Git blob identities byte-for-byte; the pressroom did not rerun the workload itself. The record states that Frozen R9 + A3 classified the complete owned curriculum. Results are descriptive because the corpus includes training, development, and calibration rows; independent fresh holdout remains the quality authority. They grant no production or profitability claim.</span>
-          </p>
-
-          <div class="cultural-metric-grid">
-            <article>
-              <strong>10,800</strong>
-              <span><span class="ar">مقال</span><span class="en">articles</span></span>
-              <small><span class="ar">2,053,810 رمز R9 مزدوج غير محشو</span><span class="en">2,053,810 paired non-padding R9 tokens</span></small>
-            </article>
-            <article>
-              <strong>0.780556</strong>
-              <span>Accuracy</span>
-              <small>0.678148 → 0.780556 · Δ +0.102407</small>
-            </article>
-            <article>
-              <strong>0.942788</strong>
-              <span>Focus macro-F1</span>
-              <small>0.775263 → 0.942788 · Δ +0.167525</small>
-            </article>
-            <article>
-              <strong>99.729%</strong>
-              <span><span class="ar">دقة التغييرات</span><span class="en">change precision</span></span>
-              <small><span class="ar">1,106 تصحيحات · 0 تراجعات</span><span class="en">1,106 corrections · 0 regressions</span></small>
-            </article>
-            <article>
-              <strong>4,667,230</strong>
-              <span>token/s</span>
-              <small><span class="ar">مرحلة R9 + A3 + policy المجهزة</span><span class="en">prepared R9 + A3 + policy</span></small>
-            </article>
-            <article>
-              <strong>83,931</strong>
-              <span>token/s</span>
-              <small><span class="ar">من النص الخام إلى التنبؤ</span><span class="en">raw text to prediction</span></small>
-            </article>
-            <article>
-              <strong>11.914540</strong>
-              <span>µs/token</span>
-              <small><span class="ar">المسار الخام إلى التنبؤ</span><span class="en">raw pipeline to prediction</span></small>
-            </article>
-            <article>
-              <strong>161.063 MiB</strong>
-              <span><span class="ar">ذروة PyTorch</span><span class="en">PyTorch peak allocation</span></span>
-              <small><span class="ar">RTX A1000 · حد قدرة مفروض 50W</span><span class="en">RTX A1000 · 50W enforced limit</span></small>
-            </article>
-          </div>
-
-          <div class="cultural-cost-grid" role="list" aria-label="Measured technical cost per million paired tokens">
-            <div role="listitem">
-              <span><span class="ar">GPU مرحلي</span><span class="en">Staged GPU</span></span>
-              <strong>0.0000595166 GPU-h / 1M</strong>
-            </div>
-            <div role="listitem">
-              <span><span class="ar">زمن نواة CPU</span><span class="en">CPU core time</span></span>
-              <strong>0.00306426 core-h / 1M</strong>
-            </div>
-            <div role="listitem">
-              <span><span class="ar">حد طاقة GPU الأعلى</span><span class="en">GPU energy upper bound</span></span>
-              <strong>≤ 0.00000297583 kWh / 1M</strong>
-            </div>
-          </div>
-          <p class="cultural-cns-boundary">
-            <span class="ar">الوحدة المحاسبية هي مليون رمز إدخال R9 مزدوج غير محشو، لا كلمات تقديرية. يفصل السجل المعالجة الأولية للنص الخام عن GPU وCPU والذاكرة والطاقة. قيمة الطاقة حد أعلى محافظ من حد القدرة المفروض 50W؛ الجهاز لا يوفّر <code>power.draw</code>، لذلك لا تُعرض بوصفها قياسًا مباشرًا للقدرة. استهلك استخراج الخصائص الخام نحو 97.1% من زمن المسار وكان عنق الزجاجة، لا A3.</span>
-            <span class="en">The billing unit is one million paired non-padding R9 model-input tokens, not estimated words. The ledger separates raw preprocessing, GPU, CPU, memory, and energy. Energy is a conservative upper bound from the enforced 50W power limit; the host exposes no <code>power.draw</code>, so it is not presented as measured draw. Raw feature extraction consumed about 97.1% of pipeline wall time and was the bottleneck—not A3.</span>
-          </p>
-          <p class="cultural-cns-links">
-            <a href="https://github.com/sbay-dev/CNSEmbedding/blob/0ebf9988eff77078ea61e99d500092e10cd8baef/docs/cns_embedding/calculated_costs/CNS_CULTURAL_NEWSBOY_A3_20260819.md" rel="noopener" target="_blank">
-              <span class="ar">التقرير المثبت · يتطلب صلاحية ↗</span><span class="en">Pinned report · access required ↗</span>
-            </a>
-            <a href="https://github.com/sbay-dev/CNSEmbedding/blob/0ebf9988eff77078ea61e99d500092e10cd8baef/docs/cns_embedding/calculated_costs/CNS_CULTURAL_NEWSBOY_A3_20260819.json" rel="noopener" target="_blank">
-              <span class="ar">السجل الآلي · يتطلب صلاحية ↗</span><span class="en">Machine record · access required ↗</span>
-            </a>
-            <a href="./assets/evidence/cns-cultural-newsboy-a3-20260819.json">
-              <span class="ar">نسخة الإفصاح المحلية ↗</span><span class="en">Local disclosure record ↗</span>
-            </a>
-            <a href="./annex-intelligence#token-accounting-standard">
-              <span class="ar">معيار التوكن المحاسبي ↗</span><span class="en">Token-accounting standard ↗</span>
-            </a>
-          </p>
-        </section>
-
         <p class="k-space-links">
-          <a href="./assets/evidence/cns-model-graph-public.json">
-            <span class="ar">artifact الرسم الهندسي ↗</span><span class="en">Engineering graph artifact ↗</span>
-          </a>
-          <a href="./assets/evidence/cns-model-graph-public.integrity.json">
-            <span class="ar">سجل السلامة ↗</span><span class="en">Integrity record ↗</span>
-          </a>
-          <a href="./cepha-k-space-concept/">
-            <span class="ar">تشغيل قالب Cepha المحفوظ ↗</span><span class="en">Run preserved Cepha template ↗</span>
+          <a href="./assets/evidence/cns-k-space-public.json">
+            <span class="ar">artifact العام ↗</span><span class="en">Public artifact ↗</span>
           </a>
           <a href="./annex-intelligence">
             <span class="ar">الملحق التقني ↗</span><span class="en">Technical annex ↗</span>
@@ -706,7 +586,7 @@
             <div>
               <p class="newsboy-paper-desk"><span class="ar">نافذة العدد الحي · معاينة ساكنة</span><span class="en">Live edition window · still preview</span></p>
               <h3 id="newsboy-live-heading"><span class="ar">أعلى العدد أولًا، والتصفح الكامل عند الطلب</span><span class="en">The edition masthead first, full browsing on demand</span></h3>
-              <p><span class="ar">تعرض البطاقة أعلى أحدث عدد منشور في مسار تغطية LEAP وDeepFest من NewsBoy. لا تلتقط المعاينة التمرير أو لوحة المفاتيح؛ وعند النقر يفتح القارئ بملء الشاشة، ثم يعيدك الإغلاق إلى موضع البطاقة نفسه. يبقى زر مستقل لفتح المصدر الرسمي.</span><span class="en">The card shows the top of the latest edition published in NewsBoy's LEAP and DeepFest coverage route. The preview captures neither scrolling nor keyboard focus; clicking opens the reader full screen, and closing returns to the same card position. A separate button keeps the canonical source available.</span></p>
+              <p><span class="ar">تعرض البطاقة أعلى أحدث عدد منشور في مسار تغطية LEAP وDeepFest من NewsBoy. لا تلتقط المعاينة التمرير أو لوحة المفاتيح؛ عند النقر ينتقل القارئ إلى عنوان التغطية الرسمي في NewsBoy ويصبح التصفح متاحًا هناك.</span><span class="en">The card shows the top of the latest edition published in NewsBoy's LEAP and DeepFest coverage route. The preview captures neither scrolling nor keyboard focus; clicking navigates to the canonical NewsBoy coverage address for full browsing.</span></p>
               <a class="newsboy-paper-action" href="https://newsboy.sbay.sa/coverage/leap-2026" target="_blank" rel="noopener noreferrer">
                 <span class="ar">افتح المصدر في نافذة مستقلة</span><span class="en">Open the source separately</span> ↗
               </a>
@@ -726,10 +606,10 @@
                   aria-hidden="true"
                   sandbox="allow-popups allow-popups-to-escape-sandbox"
                   referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                <a class="newsboy-reader-open" href="https://newsboy.sbay.sa/coverage/leap-2026" target="_blank" rel="noopener noreferrer" data-newsboy-open aria-expanded="false">
+                <a class="newsboy-reader-open" href="https://newsboy.sbay.sa/coverage/leap-2026" data-newsboy-open>
                   <span class="newsboy-reader-open-label">
-                    <b><span class="ar">تصفّح العدد بملء الشاشة</span><span class="en">Browse the edition full screen</span></b>
-                    <small><span class="ar">الإغلاق يعيدك إلى البطاقة نفسها</span><span class="en">Close to return to this card</span></small>
+                    <b><span class="ar">افتح عدد التغطية الرسمي</span><span class="en">Open the canonical coverage edition</span></b>
+                    <small>newsboy.sbay.sa/coverage/leap-2026</small>
                   </span>
                 </a>
                 <button class="newsboy-reader-close" type="button" data-newsboy-close hidden>
@@ -745,8 +625,8 @@
             </div>
           </div>
           <footer>
-            <span class="ar">يبني إطار العرض نسخة قراءة ساكنة قابلة للوصول من سجل العدد الحي في NewsBoy دون حفظها كلقطة قديمة؛ يصبح التمرير متاحًا داخل وضع ملء الشاشة فقط، وتفتح روابط المواد مصادرها في نافذة مستقلة.</span>
-            <span class="en">The display frame builds an accessible static reading view from NewsBoy's live edition record without preserving it as a stale capture; scrolling is enabled only in full-screen mode, and article links open their sources separately.</span>
+            <span class="ar">ينقل إطار العرض HTML الحي من NewsBoy دون تغيير نص العدد أو حفظه كلقطة ثابتة؛ وتفتح روابط المواد مصادرها في نافذة مستقلة.</span>
+            <span class="en">The display frame relays NewsBoy's live HTML without changing edition text or preserving it as a static capture; article links open their sources separately.</span>
           </footer>
         </article>
         <div class="press-media-strip newsboy-media-strip">
@@ -866,6 +746,6 @@
   </dialog>
 
   <script type="module" src="./app.js"></script>
-  <script type="module" src="./model-graph.js"></script>
+  <script type="module" src="./k-space.js"></script>
 </body>
 </html>

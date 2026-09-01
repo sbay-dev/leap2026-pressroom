@@ -141,7 +141,14 @@ newsboyFrame?.addEventListener("load", () => {
     }, 80);
   }
 });
-newsboyOpen?.addEventListener("click", openNewsboyReader);
+newsboyOpen?.addEventListener("click", event => {
+  if (
+    event instanceof MouseEvent
+    && (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey)
+  ) return;
+  event.preventDefault();
+  openNewsboyReader();
+});
 newsboyClose?.addEventListener("click", closeNewsboyReader);
 document.addEventListener("keydown", event => {
   if (event.key === "Escape" && newsboyExpanded) {

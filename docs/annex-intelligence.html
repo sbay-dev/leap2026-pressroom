@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>الملحق التقني · منصة تموين · LEAP + DeepFest 2026</title>
-  <meta name="description" content="الملحق التقني للتمثيل البصري في صفحة منصة تموين: مصدر الرسم، اشتقاق البايتات، قراءة الشبكة، ودلالة المسار الذي لا يكتب.">
+  <meta name="description" content="الملحق التقني لصفحة منصة تموين: منهج الرسم الهندسي المقاس للنموذج المدرّب، وحدود المقارنة، ومصدر التمثيل البتّي الحتمي.">
   <meta name="theme-color" content="#040815">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://leap2026.sbay.sa/annex-intelligence">
@@ -42,9 +42,172 @@
           <span class="ar">الملحق التقني للتمثيل البصري</span>
           <span class="en">Technical annex to the visual</span>
         </h1>
-        <p class="ar">هذه الصفحة تشرح، بلا مبالغة ولا اختصار مخلّ، ما الذي يرسمه التمثيل الحي في الصفحة الرئيسة. كل رقم هنا مشتقّ من ترميز عام قابل لإعادة الحساب، ولا يُنشر منه أي جدول أقنعة أو قاعدة توجيه أو عتبة أو وزن.</p>
-        <p class="en">This page explains exactly what the live visual on the main page draws. Every number here is derived from public encoding and can be recomputed independently. No mask table, routing rule, threshold or weight is published.</p>
+        <p class="ar">هذه الصفحة تشرح، بلا مبالغة ولا اختصار مخلّ، ما الذي ترسمه اللوحتان الحيتان في الصفحة الرئيسة: الرسم الهندسي المقاس للنموذج المدرّب، وإعادة عرض البتات الحتمية. كل رقم يرتبط بملف عام وبصمة سلامة أو باشتقاق يمكن إعادة حسابه، ولا يُنشر أي وزن أو تفعيل أو توصيل داخلي دقيق.</p>
+        <p class="en">This page explains exactly what the two live panels on the main page draw: the measured engineering graph of the trained model and the deterministic bit replay. Every number is bound to a public artifact and integrity hash or to a recomputable derivation. No weight, activation, or exact internal connection is published.</p>
       </div>
+    </section>
+
+    <section class="section-shell" aria-labelledby="model-graph-method-heading">
+      <div class="section-heading wide-heading">
+        <p class="section-kicker">00 / TRAINED MODEL GRAPH</p>
+        <h2 id="model-graph-method-heading">
+          <span class="ar">كيف اشتُق الرسم الهندسي الحقيقي</span>
+          <span class="en">How the authentic engineering graph is derived</span>
+        </h2>
+        <p class="ar">مصدر اللوحة هو ملف <code>cns_native_v33_newsboy_768.onnx</code> المدرّب، لا صورة مرجعية ولا متجهات مصطنعة. طابقت بصمة الملف القيمة المتوقعة، ثم نجح <code>onnx.checker</code> واستدلال الأشكال الساكن. أُعيد التدقيق مستقلًا وأنتج ملفًا مطابقًا بايتًا ببايت قبل بناء الإسقاط العام.</p>
+        <p class="en">The panel is sourced from the trained <code>cns_native_v33_newsboy_768.onnx</code>, not from a reference image or synthetic vectors. The file matched its expected hash, then passed <code>onnx.checker</code> and static shape inference. An independent replay produced a byte-identical audit before the public projection was built.</p>
+      </div>
+
+      <div class="annex-table-wrap">
+        <table class="annex-table">
+          <caption>
+            <span class="ar">الهويات والقياسات الملزمة للرسم</span>
+            <span class="en">Identities and measurements binding the graph</span>
+          </caption>
+          <tbody>
+            <tr><th scope="row"><span class="ar">بصمة ملف النموذج</span><span class="en">Model-file hash</span></th><td colspan="4"><code>8847832167ec643c66461ef8c6b7182b48286821d0fd20fd600414bf51f5dfef</code></td></tr>
+            <tr><th scope="row"><span class="ar">بصمة تدقيق DAG</span><span class="en">DAG-audit hash</span></th><td colspan="4"><code>47dadb8b9a44ab90b6248950418fb2f660fa5d526761aab17dbda72a2bb22190</code></td></tr>
+            <tr><th scope="row"><span class="ar">بصمة البنية</span><span class="en">Structural hash</span></th><td colspan="4"><code>51740c50a975b5c510f1685a939abd26fe9ef6ea0ba65fc10b6c59fffb9c67f1</code></td></tr>
+            <tr><th scope="row"><span class="ar">بصمة artifact العام</span><span class="en">Public-artifact hash</span></th><td colspan="4"><code>207b507aee741a7170f86f7028ae04458b12e3cb500f99a7f1277d0506eeffcc</code></td></tr>
+            <tr><th scope="row"><span class="ar">عمليات ONNX</span><span class="en">ONNX operators</span></th><td><b>1,953</b></td><th scope="row"><span class="ar">حواف الموتر</span><span class="en">Tensor edges</span></th><td><b>2,933</b></td><td><code>depth 0…143</code></td></tr>
+            <tr><th scope="row">Initializers</th><td><b>351</b></td><th scope="row"><span class="ar">العناصر المخزنة</span><span class="en">Stored elements</span></th><td><b>48,710,171</b></td><td><span class="ar">لا تعني معاملات قابلة للتدريب</span><span class="en">not a trainable-parameter claim</span></td></tr>
+            <tr><th scope="row"><span class="ar">المدخلات</span><span class="en">Inputs</span></th><td><b>4</b></td><th scope="row"><span class="ar">المخرج</span><span class="en">Output</span></th><td><b>1</b></td><td><code>sentence_embedding [batch,768]</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 id="token-accounting-standard"><span class="ar">معيار التوكن المحاسبي</span><span class="en">Token-accounting standard</span></h3>
+      <ul class="annex-list">
+        <li><span class="ar">الوحدة هي مليون رمز إدخال R9 مزدوج غير محشو، وليست تقديرًا لعدد الكلمات.</span><span class="en">The unit is one million paired non-padding R9 model-input tokens, not an estimated word count.</span></li>
+        <li><span class="ar">يُذكر صراحةً ما إذا كانت الإنتاجية تشمل المعالجة الأولية للنص الخام، وتُفصل موارد GPU وCPU والذاكرة والطاقة.</span><span class="en">Throughput states whether raw preprocessing is included, while GPU, CPU, memory, and energy are reported separately.</span></li>
+        <li><span class="ar">غياب قراءة القدرة ينتج حدًا أعلى معلنًا، لا قيمة طاقة مختلقة.</span><span class="en">Unavailable power telemetry yields an explicit upper bound, never an invented energy measurement.</span></li>
+        <li><span class="ar">تبقى جودة مجموعة البيانات الكاملة وصفية، ويبقى التفعيل معطلًا إلى أن تجيزه بوابة إنتاج منفصلة.</span><span class="en">Whole-corpus quality remains descriptive, and activation stays disabled until a separate production gate authorizes it.</span></li>
+      </ul>
+
+      <div class="annex-example">
+        <p class="mono">d(v) = 0 if v has no produced-tensor parent; otherwise 1 + max d(parent)</p>
+        <p class="mono">N(block, depth) = |{ v : block(v)=block ∧ d(v)=depth }|</p>
+        <p class="mono">E(a,b) = |{ (u,v) : block(u)=a ∧ block(v)=b }|</p>
+        <p>
+          <span class="ar"><b>المحور الأفقي</b> هو <code>d(v)</code> مقسومًا على أقصى عمق 143. <b>المسار الرأسي</b> يحدد واحدة من ست كتل هندسية مشتقة من عضوية DAG الحقيقية وبادئات الأسماء داخل التدقيق الخاص. الإزاحة الصغيرة داخل الخلية تمنع تراكب النقاط فقط. <b>المحور Z غير مستخدم.</b></span>
+          <span class="en"><b>The horizontal axis</b> is <code>d(v)</code> divided by the maximum depth, 143. <b>The vertical lane</b> identifies one of six renderer blocks derived from authentic DAG membership and private-audit name prefixes. Small within-cell jitter only prevents overplotting. <b>The Z axis is unused.</b></span>
+        </p>
+        <p>
+          <span class="ar">كل نقطة مرسومة تقابل عملية ONNX حقيقية واحدة. سماكة المنحنى ترتبط لوغاريتميًا بعدد <code>E(a,b)</code> المنشور، لكنه لا يكشف التوصيل عقدة بعقدة. اللون اسم للكتلة، وليس قيمة جودة أو انحناء أو مقدار تغير بالتدريب.</span>
+          <span class="en">Every rendered point corresponds to one authentic ONNX operator. Curve width is related logarithmically to the published <code>E(a,b)</code> count, but reveals no node-to-node wiring. Colour names a block; it is not quality, curvature, or training-change magnitude.</span>
+        </p>
+      </div>
+
+      <ul class="annex-list">
+        <li><span class="ar"><b>المتاح:</b> المدخلات والمخرج، أنواع العمليات وأعدادها، العمق، أعداد الكتل والحواف المجمعة، وأنواع العناصر المخزنة.</span><span class="en"><b>Available:</b> I/O, operator types and counts, depth, aggregate block/edge counts, and stored-element dtype totals.</span></li>
+        <li><span class="ar"><b>المحجوب:</b> أسماء العقد والموترات الداخلية، الحواف الدقيقة، أسماء initializers وبصماتها، القيم الخام، الأوزان، المتجهات والتفعيلات.</span><span class="en"><b>Withheld:</b> internal node/tensor names, exact edges, initializer identities and hashes, raw values, weights, vectors, and activations.</span></li>
+        <li><span class="ar"><b>غير المحسوب:</b> checkpoint الصفري المطابق، فروق الأوزان قبل/بعد، Neural Persistence، تغير طوبولوجيا التمثيل، الانحناء الريماني، ومجموع FLOP/MAC للنموذج.</span><span class="en"><b>Not computed:</b> an architecture-matched zero checkpoint, pre/post weight deltas, Neural Persistence, representation-topology change, Riemannian curvature, or a model-total FLOP/MAC figure.</span></li>
+      </ul>
+
+      <p class="annex-note">
+        <a href="./assets/evidence/cns-model-graph-public.json"><span class="ar">artifact الرسم الهندسي</span><span class="en">Engineering graph artifact</span> ↗</a>
+        ·
+        <a href="./assets/evidence/cns-model-graph-public.integrity.json"><span class="ar">سجل السلامة</span><span class="en">Integrity record</span> ↗</a>
+      </p>
+    </section>
+
+    <section class="section-shell" aria-labelledby="cultural-cost-heading">
+      <div class="section-heading wide-heading">
+        <p class="section-kicker">00B / CNS CULTURAL NEWSBOY A3</p>
+        <h2 id="cultural-cost-heading">
+          <span class="ar">القيم المقيسة للجودة والسرعة والتكلفة</span>
+          <span class="en">Measured quality, throughput, and cost values</span>
+        </h2>
+        <p class="ar">القيم التالية معلنة من سجل CNSEmbedding مؤرخ 19 أغسطس 2026، مثبت عند commit وبصمتي Git blob، ويتطلب صلاحية وصول؛ أعاد الطلب غير الموثق 404. حُسب Git blob من النسختين المحليتين للتقرير وقواعد معيار التوكن فطابقتا معرفي المستودع بايتًا ببايت، لكن منصة العرض لم تُعد تشغيل عبء العمل نفسه. يذكر السجل قياس مجموعة الأخبار المملوكة كاملة: 10,800 مقال، و1,867,238 رمزًا للنص الكامل، و186,572 رمزًا للعناوين، بإجمالي 2,053,810 رمز R9 مزدوج غير محشو، وأن الخصائص المولدة طابقت الملف الجانبي المختوم دون اختلاف.</p>
+        <p class="en">The following values are declared from a CNSEmbedding ledger dated 19 August 2026, pinned by commit and Git blob identities, and requiring repository access; an unauthenticated request returned 404. Git blob hashes computed from the local report and token-accounting rules matched the repository identities byte-for-byte, but the pressroom did not rerun the workload itself. The record reports the complete owned curriculum: 10,800 articles, 1,867,238 full-text tokens, 186,572 title tokens, and 2,053,810 paired non-padding R9 tokens, with generated features matching the sealed sidecar at zero mismatches.</p>
+        <p class="annex-note">
+          <span class="ar"><b>حد الجودة:</b> مجموعة البيانات الكاملة تضم صفوف التدريب والتطوير والمعايرة؛ لذلك مقاييسها وصفية، ويبقى تقييم اختبار جديد مستقل مرجع الجودة. تفعيل A3 وتعريفه الإنتاجي كلاهما معطّل.</span>
+          <span class="en"><b>Quality boundary:</b> the whole corpus includes training, development, and calibration rows, so its metrics are descriptive; independent fresh-holdout evaluation remains the quality authority. A3 candidate and production activation are both disabled.</span>
+        </p>
+      </div>
+
+      <div class="annex-table-wrap">
+        <table class="annex-table">
+          <caption><span class="ar">نتيجة التصنيف على مجموعة البيانات الكاملة</span><span class="en">Whole-corpus classification result</span></caption>
+          <thead>
+            <tr>
+              <th scope="col"><span class="ar">المقياس</span><span class="en">Metric</span></th>
+              <th scope="col">Frozen R9</th>
+              <th scope="col">R9 + A3</th>
+              <th scope="col">Delta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Accuracy</th><td>0.678148</td><td><b>0.780556</b></td><td><b>+0.102407</b></td></tr>
+            <tr><th scope="row">Macro-F1</th><td>0.677728</td><td><b>0.751635</b></td><td><b>+0.073908</b></td></tr>
+            <tr><th scope="row">Focus macro-F1</th><td>0.775263</td><td><b>0.942788</b></td><td><b>+0.167525</b></td></tr>
+            <tr><th scope="row">Accepted error</th><td>0.290484</td><td><b>0.206380</b></td><td><b>-0.084104</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="annex-note">
+        <span class="ar">طبّق A3 عدد 1,109 تغييرات: 1,106 تصحيحات، وصفر تراجعات، وثلاثة انتقالات من خطأ إلى خطأ آخر. بلغت دقة التغيير <b>99.729%</b>، وبقيت متجهات توقع الفئات المحمية متطابقة بايتًا ببايت.</span>
+        <span class="en">A3 applied 1,109 changes: 1,106 corrections, zero regressions, and three wrong-to-wrong changes. Change precision was <b>99.729%</b>, while protected-desk prediction vectors remained byte-identical.</span>
+      </p>
+
+      <div class="annex-table-wrap">
+        <table class="annex-table">
+          <caption><span class="ar">الإنتاجية المقيسة</span><span class="en">Measured throughput</span></caption>
+          <tbody>
+            <tr><th scope="row">R9 full text</th><td><b>8,540,048 token/s</b></td></tr>
+            <tr><th scope="row">R9 paired title + full text</th><td><b>4,996,252 token/s</b></td></tr>
+            <tr><th scope="row">Prepared R9 + A3 + policy</th><td><b>4,667,230 token/s</b></td></tr>
+            <tr><th scope="row">A3 residual equivalent</th><td><b>1,573,921,394 token/s</b></td></tr>
+            <tr><th scope="row"><span class="ar">استخراج الخصائص الخام</span><span class="en">Raw featureization</span></th><td><b>86,420 token/s</b></td></tr>
+            <tr><th scope="row"><span class="ar">النص الخام إلى التنبؤ</span><span class="en">Raw text to prediction</span></th><td><b>83,931 token/s</b></td></tr>
+            <tr><th scope="row"><span class="ar">النص الخام إلى sidecar</span><span class="en">Raw text to sidecar</span></th><td><b>83,748 token/s</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="annex-table-wrap">
+        <table class="annex-table">
+          <caption><span class="ar">التكلفة التقنية المقيسة لكل مليون رمز مزدوج</span><span class="en">Measured technical cost per million paired tokens</span></caption>
+          <thead>
+            <tr>
+              <th scope="col"><span class="ar">المورد</span><span class="en">Resource</span></th>
+              <th scope="col"><span class="ar">GPU مرحلي</span><span class="en">Staged GPU</span></th>
+              <th scope="col"><span class="ar">GPU مخصص ينتظر CPU</span><span class="en">Dedicated GPU waiting for CPU</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">GPU-hours</th><td><b>0.0000595166</b></td><td><b>0.00330959</b></td></tr>
+            <tr><th scope="row">CPU core-hours</th><td><b>0.00306426</b></td><td><b>0.00306426</b></td></tr>
+            <tr><th scope="row"><span class="ar">حد GPU kWh الأعلى</span><span class="en">GPU kWh upper bound</span></th><td><b>0.00000297583</b></td><td><b>0.000165480</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="annex-example">
+        <p class="mono">prepared stage = 0.214260 µs/token = 0.214260 GPU-s / 1M tokens</p>
+        <p class="mono">raw text → prediction = 11.914540 µs/token = 11.914540 wall-s / 1M tokens</p>
+        <p class="mono">staged cost / 1M = gpu_rate × 0.0000595166 + cpu_rate × 0.00306426 + electricity_rate × 0.00000297583</p>
+        <p class="mono">dedicated cost / 1M = gpu_rate × 0.00330959 + cpu_rate × 0.00306426 + electricity_rate × 0.000165480</p>
+        <p>
+          <span class="ar">بلغت ذروة تخصيص PyTorch <b>161.063 MiB</b> وذروة RSS لاستخراج الخصائص <b>131.535 MiB</b>. كان متوسط استخدام GPU خلال المسار القصير <b>9.14%</b>. لا يدعم RTX A1000 على هذا المضيف قراءة <code>power.draw</code>؛ لذلك تستخدم أرقام الطاقة حد القدرة المفروض 50W كحد أعلى محافظ، لا كقياس قدرة.</span>
+          <span class="en">PyTorch peak allocation was <b>161.063 MiB</b> and raw-featureization RSS peaked at <b>131.535 MiB</b>. Mean GPU utilization during the short pipeline was <b>9.14%</b>. The RTX A1000 on this host exposes no <code>power.draw</code>, so energy values use the enforced 50W power limit as a conservative upper bound—not measured draw.</span>
+        </p>
+        <p>
+          <span class="ar">استهلك استخراج الخصائص الخام قرابة <b>97.1%</b> من زمن المسار الخام، وهو عنق الزجاجة المقيس؛ لم يكن A3 عنق الزجاجة. القياس يستبعد جلب الويب، فك الضغط، تحليل HTML للناشر، تنسيق الخدمة، ودعم الإنتاج.</span>
+          <span class="en">Raw feature extraction consumed approximately <b>97.1%</b> of raw-pipeline wall time and was the measured bottleneck; A3 was not. The measurement excludes web retrieval, decompression, publisher HTML parsing, service orchestration, and production support.</span>
+        </p>
+      </div>
+
+      <p class="annex-note">
+        <a href="https://github.com/sbay-dev/CNSEmbedding/blob/0ebf9988eff77078ea61e99d500092e10cd8baef/docs/cns_embedding/calculated_costs/CNS_CULTURAL_NEWSBOY_A3_20260819.md" rel="noopener" target="_blank"><span class="ar">التقرير المثبت عند commit 0ebf9988 · يتطلب صلاحية</span><span class="en">Report pinned at commit 0ebf9988 · access required</span> ↗</a>
+        ·
+        <a href="https://github.com/sbay-dev/CNSEmbedding/blob/0ebf9988eff77078ea61e99d500092e10cd8baef/docs/cns_embedding/calculated_costs/CNS_CULTURAL_NEWSBOY_A3_20260819.json" rel="noopener" target="_blank"><span class="ar">السجل الآلي</span><span class="en">Machine record</span> ↗</a>
+        ·
+        <a href="./assets/evidence/cns-cultural-newsboy-a3-20260819.json"><span class="ar">نسخة الإفصاح</span><span class="en">Disclosure record</span> ↗</a>
+      </p>
+      <p class="annex-note">
+        <span class="ar">بصمة SHA-256 المحلية للتقرير: <code>ec8c377023749655404d02372f5681478e7cca9e542d8ac0be8e5cd6591e9b6b</code>. بصمة قواعد معيار التوكن: <code>767e71f032da2dd52211ef813f9c0f3b82ae9f362e197b9d44f0cc50e7e8a364</code>.</span>
+        <span class="en">Local report SHA-256: <code>ec8c377023749655404d02372f5681478e7cca9e542d8ac0be8e5cd6591e9b6b</code>. Token-accounting rules SHA-256: <code>767e71f032da2dd52211ef813f9c0f3b82ae9f362e197b9d44f0cc50e7e8a364</code>.</span>
+      </p>
     </section>
 
     <section class="section-shell" aria-labelledby="source-heading">
@@ -324,8 +487,8 @@
           <span class="ar">حدّ الإفصاح</span>
           <span class="en">Disclosure boundary</span>
         </h2>
-        <p class="ar">المنشور في هذه الصفحة وفي شفرتها هو القيم المشتقة من ترميز يونيكود العام فقط. لم يُنشر ولن يُنشر هنا: جدول الأقنعة، أو قاعدة التوجيه، أو أي عتبة، أو أي وزن، أو أي ملفّ نموذج. ولا يُكتب نصّ الآية في الشفرة؛ الشاهد المصوّر أعلاه هو التضمين المصرَّح به.</p>
-        <p class="en">What this page and its source publish are values derived from public Unicode encoding only. Not published here, and never to be: the mask table, the routing rule, any threshold, any weight, any model artefact. The verse text is not typed into the source; the manuscript witness above is the authorised embedding.</p>
+        <p class="ar">ينشر الملحق نوعين من الأدلة غير التمكينية: مقاييس مجمعة مشتقة من تدقيق ONNX المدرّب، وقيمًا مشتقة من ترميز يونيكود العام للتمثيل البتّي. لا يُنشر ملف النموذج نفسه، أو وزن، أو تفعيل، أو متجه خام، أو اسم موتر داخلي، أو توصيل دقيق، أو جدول أقنعة، أو قاعدة توجيه، أو عتبة.</p>
+        <p class="en">The annex publishes two non-enabling evidence classes: aggregate measurements derived from the trained ONNX audit and values derived from public Unicode encoding for the bit visual. It publishes no model payload, weight, activation, raw vector, internal tensor name, exact connection, mask table, routing rule, or threshold.</p>
         <p class="ar">كل ما سبق قابل لإعادة الحساب من هذه الصفحة وحدها. ما لا يمكن إثباته من هذه الصفحة لا يُدّعى فيها.</p>
         <p class="en">Everything above is recomputable from this page alone. Anything that cannot be evidenced from this page is not claimed on it.</p>
       </div>

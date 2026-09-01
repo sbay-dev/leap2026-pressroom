@@ -1,0 +1,20 @@
+{
+  "schema": "sbay.cns-model-engineering-graph-integrity.v1",
+  "artifact": {
+    "path": "assets/evidence/cns-model-graph-public.json",
+    "bytes": 51108,
+    "sha256": "207b507aee741a7170f86f7028ae04458b12e3cb500f99a7f1277d0506eeffcc"
+  },
+  "sourceAudit": {
+    "schema": "sarmadai.cepha.onnx_engineering_graph_audit.v1",
+    "sha256": "47dadb8b9a44ab90b6248950418fb2f660fa5d526761aab17dbda72a2bb22190",
+    "replaySha256": "47dadb8b9a44ab90b6248950418fb2f660fa5d526761aab17dbda72a2bb22190",
+    "deterministicReplayMatched": true
+  },
+  "canonicalStructure": {
+    "contract": "onnx-struct-v2-no-initializer-values",
+    "serialization": "canonical compact JSON UTF-8 with sorted object keys; initializer payloads excluded",
+    "serializationByteLength": 409489,
+    "sha256": "51740c50a975b5c510f1685a939abd26fe9ef6ea0ba65fc10b6c59fffb9c67f1"
+  }
+}

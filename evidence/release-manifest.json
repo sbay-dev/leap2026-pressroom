@@ -2,10 +2,10 @@
   "schema": "sbay.leap2026.public-release.v1",
   "auditId": "SBAY-LEAP-DEEPFEST-20260831T043818Z",
   "capturedAtUtc": "2026-08-31T04:38:18.532Z",
-  "releaseId": "leap2026-pressroom-2.7.5",
+  "releaseId": "leap2026-pressroom-2.9.0",
   "classification": "public-non-enabling-press-material",
-  "fileCount": 71,
-  "releaseRoot": "8096852ede404014c75ecd9f05d70b890d90809d94747e05629a4d0333ea6b7a",
+  "fileCount": 92,
+  "releaseRoot": "a93e6b160234eed74eb5361377d210aca948ed442964969c67d43762c17ad3ae",
   "files": [
     {
       "path": ".gitattributes",
@@ -38,6 +38,46 @@
       "sha256": "44d945d1333c11de3918deeacf86629087627fa470b8bcf8bbfbe6dae0f6af4f"
     },
     {
+      "path": "cepha-templates/k-space-concept-v1/README.md",
+      "bytes": 2339,
+      "sha256": "ea7b0852db3b20d89a601af4a498b8fcfb360628c119d21e70ad29d84f59a209"
+    },
+    {
+      "path": "cepha-templates/k-space-concept-v1/SNAPSHOT-MANIFEST.json",
+      "bytes": 1452,
+      "sha256": "721774cdc061b8636e1ad88ef3db6a869129baa90995c533c513fb1490e77f0a"
+    },
+    {
+      "path": "cepha-templates/k-space-concept-v1/source/docs/assets/evidence/cns-k-space-public.sample.json",
+      "bytes": 110880,
+      "sha256": "a30d97e0bc49982169bff16fb1c7ba0efd103c0acd2d38abb796e0995818c5ac"
+    },
+    {
+      "path": "cepha-templates/k-space-concept-v1/source/docs/index.snapshot.html",
+      "bytes": 75557,
+      "sha256": "59205f94f3d6c58853bbf1ff54c1cab7f06714c6a1c24def7c8679a212732f23"
+    },
+    {
+      "path": "cepha-templates/k-space-concept-v1/source/docs/k-space.js",
+      "bytes": 30699,
+      "sha256": "4b686e725907fd8b4189be20ef862e6df713c709eb57be6daac2e7a00854eb3e"
+    },
+    {
+      "path": "cepha-templates/k-space-concept-v1/source/docs/styles.snapshot.css",
+      "bytes": 59840,
+      "sha256": "1f81bac6eccee2ac5e31dee99895eec05f4f9c0dab69fb822b0b9bcb39ed79ac"
+    },
+    {
+      "path": "cepha-templates/k-space-concept-v1/source/scripts/build-k-space-public.snapshot.mjs",
+      "bytes": 9151,
+      "sha256": "c39cc59cd3cf0136245186212035800b9f621412bae7be6973f9b38a93596034"
+    },
+    {
+      "path": "cepha-templates/README.md",
+      "bytes": 442,
+      "sha256": "e95b036afbac78065f8ccc5478b2b30ccded7d41f164258c6b02e448656199a4"
+    },
+    {
       "path": "docs/_headers",
       "bytes": 786,
       "sha256": "4e82a45f9d14c5cfe87ff48c6a5fb0fda09f7252b96301eef585a5056244dc34"
@@ -59,8 +99,8 @@
     },
     {
       "path": "docs/annex-intelligence.html",
-      "bytes": 31300,
-      "sha256": "1803aaf1d08659ff876ec0ee17f94ac7d7dd55c225eb6e2b0c0266041763d573"
+      "bytes": 50553,
+      "sha256": "d4a088bab392e8980b972643f8bfa71357453cff3b418831f06470d40d8ea0ba"
     },
     {
       "path": "docs/annex.js",
@@ -69,8 +109,28 @@
     },
     {
       "path": "docs/app.js",
-      "bytes": 17739,
-      "sha256": "1ca1b83d5250af4de12d17f1dde390d4c48ae2363bdc6b94c609bcd9a9ce1493"
+      "bytes": 17914,
+      "sha256": "7d5c44d959b6901d022a7b54e12fc7b0cb7d54839375c58719c573a51e0ee2a9"
+    },
+    {
+      "path": "docs/assets/evidence/cns-cultural-newsboy-a3-20260819.json",
+      "bytes": 7403,
+      "sha256": "c4eb3612c4520752c9a8c4b56bb536a5ef1ca70d74e52137f489f2e3f72412e6"
+    },
+    {
+      "path": "docs/assets/evidence/cns-k-space-public.json",
+      "bytes": 467,
+      "sha256": "313f090307f8ea0005afc4b91e4313291aa573fee6d10c5dc5d8450e6926db67"
+    },
+    {
+      "path": "docs/assets/evidence/cns-model-graph-public.integrity.json",
+      "bytes": 857,
+      "sha256": "e79e24c227ccf0d6413f54464c1c31df8db52ef09d273a464b08a7f445605b45"
+    },
+    {
+      "path": "docs/assets/evidence/cns-model-graph-public.json",
+      "bytes": 51108,
+      "sha256": "207b507aee741a7170f86f7028ae04458b12e3cb500f99a7f1277d0506eeffcc"
     },
     {
       "path": "docs/assets/press/adg-adjudication-platform.png",
@@ -143,14 +203,44 @@
       "sha256": "32c5f758fa02f58a69b9a98d328bd67e55408681072ea3dcf80bfbd12fa4cb47"
     },
     {
+      "path": "docs/cepha-k-space-concept/assets/evidence/cns-k-space-public.json",
+      "bytes": 110880,
+      "sha256": "a30d97e0bc49982169bff16fb1c7ba0efd103c0acd2d38abb796e0995818c5ac"
+    },
+    {
+      "path": "docs/cepha-k-space-concept/index.html",
+      "bytes": 10664,
+      "sha256": "e9537124db2a9bbc0247ba114fa50c56b1ae542770f5f7ed91823aeef08c91fb"
+    },
+    {
+      "path": "docs/cepha-k-space-concept/k-space.js",
+      "bytes": 30639,
+      "sha256": "d76e7019c3378abd81b6ad070e5418a110d5b74ce52fb787d0aa3bee698c6dbc"
+    },
+    {
+      "path": "docs/cepha-k-space-concept/shell.js",
+      "bytes": 752,
+      "sha256": "f96bb4ef5a785fce94712208c617c20b70ba1b5eaaeb28bc1673a88fbec03822"
+    },
+    {
+      "path": "docs/cepha-k-space-concept/styles.css",
+      "bytes": 61615,
+      "sha256": "96294f4a9df5a4e664769116ea60fbffaccd41300e887dff98e1152d102ceb16"
+    },
+    {
       "path": "docs/evidence-match.wasm",
       "bytes": 196,
       "sha256": "12a0d127025807c523d85a030ce5d7f860643b4aac6ea1d0c14564c5360772b6"
     },
     {
       "path": "docs/index.html",
-      "bytes": 67468,
-      "sha256": "3321218bd78e3b135cc4edd18f04b28320d39efc4da22bfa317d6f8c79d6212c"
+      "bytes": 86672,
+      "sha256": "e1bf9e271b1138cfb0b6fe85006e3ec5aa7f231f9bf746393ebc9c3e6af87f10"
+    },
+    {
+      "path": "docs/k-space.js",
+      "bytes": 30699,
+      "sha256": "4b686e725907fd8b4189be20ef862e6df713c709eb57be6daac2e7a00854eb3e"
     },
     {
       "path": "docs/manifest.webmanifest",
@@ -158,14 +248,19 @@
       "sha256": "7d95c192b1231dec13c27cdc5f2ffb1d9efe9b4f836c9d584486c1dfcb2e768f"
     },
     {
+      "path": "docs/model-graph.js",
+      "bytes": 30628,
+      "sha256": "12649f242280ca689a0b996374dc629b664feef343ffd318bff6ec952476a499"
+    },
+    {
       "path": "docs/press-kit.json",
-      "bytes": 8712,
-      "sha256": "35927ab01166a999e3d16d404cab9bbeba50cf95d6ceee0c20581070f34f72d7"
+      "bytes": 19194,
+      "sha256": "cca6a94c42de637c99d63a7908ed4b4f99710d7d206210619b11afe02d2e9915"
     },
     {
       "path": "docs/robots.txt",
-      "bytes": 70,
-      "sha256": "88602bb36346067b25ff47e90702043a169364dbe8180436763fcfaa2c1c2613"
+      "bytes": 104,
+      "sha256": "f6241538d9ff23dd128919b23158629e6087026a1fd75fe5cfe9d72dce132821"
     },
     {
       "path": "docs/sitemap.xml",
@@ -174,13 +269,13 @@
     },
     {
       "path": "docs/styles.css",
-      "bytes": 52827,
-      "sha256": "a4d0a41e3345f36ec5de2e9a194594c14ad97b434016fd515d13c22b1a5dbe50"
+      "bytes": 63676,
+      "sha256": "393949d004f445297294a8fadc35f05f23fda9ec4fa99fac9a5bcea4a852055a"
     },
     {
       "path": "docs/trace-evidence.json",
       "bytes": 6192,
-      "sha256": "718f6772dd936640c0aca2a754d8915449b90caa9cac5b584149942f47ebd9a3"
+      "sha256": "568613d49b794abd49798ffcba9369f7778e5666c35a19bbdd16d4d5637ae6b6"
     },
     {
       "path": "ESPRESSO-OUTREACH.md",
@@ -250,12 +345,12 @@
     {
       "path": "package-lock.json",
       "bytes": 49900,
-      "sha256": "8362e977b4d425d511c77ccdd44f7e13a415840de0ff5904f519e472845d051f"
+      "sha256": "718913738bdedb3da198c901b76e84d42d6e8a87552f4a6f4b088f59600ce0af"
     },
     {
       "path": "package.json",
-      "bytes": 1315,
-      "sha256": "136ab0ae341f15e5a762f13ba7c722d17b2ee11fb641dab9c1e36299e12bb0cc"
+      "bytes": 1732,
+      "sha256": "abd407533759a4e5f8dce62f26bf7b45379bc5a600d4b0d8a96f82a215817cba"
     },
     {
       "path": "PNU-MEDIA-CENTER-BRIEF.md",
@@ -269,13 +364,23 @@
     },
     {
       "path": "PUBLIC-DISCLOSURE-BOUNDARY.md",
-      "bytes": 10340,
-      "sha256": "879e53493bb6c3b61634ed4b44f660c0df0e2605c85cd79e89960fa5c6d8809b"
+      "bytes": 15394,
+      "sha256": "e9e6a6fd6ac7fb82d2a1dd546d522430cf7c5c65efd913a51f4abb0a166bc197"
     },
     {
       "path": "README.md",
-      "bytes": 5517,
-      "sha256": "1c45f7a005dc98355050be24157fda22849173a3da55f029f307c5008bbcbd9e"
+      "bytes": 8434,
+      "sha256": "f5e280635ba8923e09412db23823cf407e2b496a3523a7f152496d312326c8ba"
+    },
+    {
+      "path": "scripts/build-k-space-public.mjs",
+      "bytes": 9151,
+      "sha256": "c39cc59cd3cf0136245186212035800b9f621412bae7be6973f9b38a93596034"
+    },
+    {
+      "path": "scripts/build-model-graph-public.mjs",
+      "bytes": 11728,
+      "sha256": "929608b95b47e073fc054c5e59d6d139afb9b0f9459e4219fd9ff7540b0be702"
     },
     {
       "path": "scripts/build-release-manifest.mjs",
@@ -314,13 +419,13 @@
     },
     {
       "path": "scripts/check-newsboy-worker.mjs",
-      "bytes": 5108,
-      "sha256": "83084cf8a405c6a070d9f7f0bc64f42fc2720b26323ab1c5d0d0261a3a37b273"
+      "bytes": 8626,
+      "sha256": "0a59230861386ea2ea9573347b1c11536d780ae3ec1c574a5bd9431399f543ad"
     },
     {
       "path": "scripts/check-public-boundary.mjs",
-      "bytes": 31467,
-      "sha256": "0683cdf0b2c92081e223de5030debe02f35429eae4a00e741c13d28c45843880"
+      "bytes": 50995,
+      "sha256": "7cfff18515c2b6a852e8840c9245c36b75afc412799799248fad2e0599e10764"
     },
     {
       "path": "scripts/compile-wasm.ps1",
@@ -329,8 +434,8 @@
     },
     {
       "path": "scripts/verify-live.mjs",
-      "bytes": 17324,
-      "sha256": "ad1c4221a4d037b51204965da686336ebc70f39699a94ab3c7b3621dcd1f21ef"
+      "bytes": 20242,
+      "sha256": "184ffe9a6b3d70d2a54030b85e9498b7beeadba161a6f5f405c8810f144cbc58"
     },
     {
       "path": "scripts/verify-wasm.mjs",
@@ -354,8 +459,8 @@
     },
     {
       "path": "worker.js",
-      "bytes": 7362,
-      "sha256": "05003569909240da3ecfa0c7cd5b8b3c8c0e511ea90832e306df5dd39aee0f6c"
+      "bytes": 18171,
+      "sha256": "3c0fe2edf9823cdc6c85c3dd734d01407d18df45af1a63d5d48f72349aa8ccaf"
     },
     {
       "path": "wrangler.toml",

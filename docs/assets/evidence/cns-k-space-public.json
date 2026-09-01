@@ -1,0 +1,8 @@
+{
+  "schema": "sbay.cns-k-space-public-superseded.v1",
+  "status": "SUPERSEDED_BY_MEASURED_ENGINEERING_GRAPH",
+  "replacement": "./cns-model-graph-public.json",
+  "integrity": "./cns-model-graph-public.integrity.json",
+  "conceptualFallback": "../../cepha-k-space-concept/",
+  "claimBoundary": "The former deterministic concept scene is preserved only as a clearly labelled Cepha visual template. Scientific claims use the trained-only measured engineering graph."
+}

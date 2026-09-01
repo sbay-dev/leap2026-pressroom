@@ -1,0 +1,160 @@
+{
+  "schema": "sbay.cns-cultural-newsboy-a3-public.v1",
+  "status": "DOCUMENTED_COMPUTED_COSTS",
+  "source": {
+    "organization": "sbay-dev",
+    "repository": "CNSEmbedding",
+    "branch": "v3.0-dev",
+    "commit": "0ebf9988eff77078ea61e99d500092e10cd8baef",
+    "visibility": "authenticated_access_required",
+    "unauthenticatedFetchStatusObserved": 404,
+    "sourceRecordByteIdentityVerified": true,
+    "workloadIndependentlyRerunByPressroom": false,
+    "directoryUrl": "https://github.com/sbay-dev/CNSEmbedding/tree/v3.0-dev/docs/cns_embedding/calculated_costs",
+    "humanReport": {
+      "path": "docs/cns_embedding/calculated_costs/CNS_CULTURAL_NEWSBOY_A3_20260819.md",
+      "gitBlobSha": "d0efd1e2129187e83a6f09216d8f63913ed9c537",
+      "url": "https://github.com/sbay-dev/CNSEmbedding/blob/0ebf9988eff77078ea61e99d500092e10cd8baef/docs/cns_embedding/calculated_costs/CNS_CULTURAL_NEWSBOY_A3_20260819.md"
+    },
+    "machineRecord": {
+      "path": "docs/cns_embedding/calculated_costs/CNS_CULTURAL_NEWSBOY_A3_20260819.json",
+      "gitBlobSha": "a964909f2e172f68f5f1f3c0a45ca8c7d7ccceb0",
+      "url": "https://github.com/sbay-dev/CNSEmbedding/blob/0ebf9988eff77078ea61e99d500092e10cd8baef/docs/cns_embedding/calculated_costs/CNS_CULTURAL_NEWSBOY_A3_20260819.json"
+    },
+    "localByteIdenticalRecords": {
+      "humanReport": {
+        "fileName": "CNS_CULTURAL_NEWSBOY_A3_20260819.md",
+        "bytes": 4496,
+        "gitBlobSha": "d0efd1e2129187e83a6f09216d8f63913ed9c537",
+        "sha256": "ec8c377023749655404d02372f5681478e7cca9e542d8ac0be8e5cd6591e9b6b",
+        "gitBlobMatched": true
+      },
+      "tokenAccountingLedgerRules": {
+        "fileName": "معيار التوكن المحاسبي لنماذج cns.md",
+        "bytes": 1443,
+        "gitBlobSha": "48bcc3265aad9793bf4c86e31af8443f92897b3b",
+        "sha256": "767e71f032da2dd52211ef813f9c0f3b82ae9f362e197b9d44f0cc50e7e8a364",
+        "gitBlobMatched": true
+      }
+    }
+  },
+  "recordedUtc": "2026-08-19T17:24:48Z",
+  "publicationBasis": "declared_from_authenticated_repository_record",
+  "workload": "CNS Model-Cultural NewsBoy A3 full-corpus classification",
+  "activation": {
+    "candidateEnabled": false,
+    "productionEnabled": false
+  },
+  "hardware": {
+    "gpu": "NVIDIA RTX A1000",
+    "gpuPowerLimitWatts": 50,
+    "gpuPowerDrawMeasurementSupported": false,
+    "logicalCpuCount": 24
+  },
+  "input": {
+    "articleCount": 10800,
+    "fullTextTokenCount": 1867238,
+    "titleTokenCount": 186572,
+    "pairedNonPaddingR9TokenCount": 2053810,
+    "tokensPerArticleMean": 190.1675925925926,
+    "rawFeatureSidecarMismatchCount": 0
+  },
+  "tokenAccountingStandard": {
+    "billingUnit": "1M paired title/full non-padding R9 model-input tokens",
+    "rules": [
+      "Token counts are non-padding model inputs, not estimated words.",
+      "Throughput identifies whether raw preprocessing is included.",
+      "GPU, CPU, memory, and power assumptions are reported separately.",
+      "Unavailable power telemetry produces an explicit upper bound, not an invented energy measurement.",
+      "Whole-corpus quality remains descriptive when training, development, or calibration rows are included.",
+      "Production activation remains disabled without a separate production gate."
+    ],
+    "sourceRecord": {
+      "fileName": "معيار التوكن المحاسبي لنماذج cns.md",
+      "gitBlobSha": "48bcc3265aad9793bf4c86e31af8443f92897b3b",
+      "sha256": "767e71f032da2dd52211ef813f9c0f3b82ae9f362e197b9d44f0cc50e7e8a364"
+    }
+  },
+  "classification": {
+    "wholeCorpusDescriptive": true,
+    "freshIndependentHoldoutRemainsAuthority": true,
+    "frozenR9": {
+      "accuracy": 0.6781481481481482,
+      "macroF1": 0.6777275527689935,
+      "focusMacroF1": 0.7752628754934965,
+      "acceptedError": 0.290484
+    },
+    "r9PlusA3": {
+      "accuracy": 0.7805555555555556,
+      "macroF1": 0.7516350735477335,
+      "focusMacroF1": 0.9427878001428764,
+      "acceptedError": 0.20638
+    },
+    "delta": {
+      "accuracy": 0.10240740740740739,
+      "macroF1": 0.07390752077873997,
+      "focusMacroF1": 0.16752492464937996,
+      "acceptedError": -0.0841041998936736
+    },
+    "changes": {
+      "applied": 1109,
+      "corrections": 1106,
+      "regressions": 0,
+      "wrongToWrong": 3,
+      "precision": 0.9972948602344455,
+      "protectedDeskPredictionVectorsByteIdentical": true
+    }
+  },
+  "throughputTokensPerSecond": {
+    "r9FullText": 8540048.2706144,
+    "r9PairedTitleAndFullText": 4996252.463963114,
+    "preparedR9A3AndPolicy": 4667230.240299575,
+    "a3ResidualEquivalent": 1573921394.221416,
+    "rawFeatureization": 86419.6509569497,
+    "rawTextToPrediction": 83931.06374559269,
+    "rawTextToClassificationSidecar": 83747.86619419914
+  },
+  "measuredCostPerMillionPairedTokens": {
+    "preparedMicrosecondsPerToken": 0.2142598390294568,
+    "rawToPredictionMicrosecondsPerToken": 11.914539806514856,
+    "stagedGpuHours": 0.00005951662195262689,
+    "dedicatedGpuHoursWaitingForCpu": 0.003309594390698571,
+    "cpuCoreHours": 0.003064257539781079,
+    "stagedGpuSeconds": 0.2142598390294568,
+    "rawPipelineWallSeconds": 11.914539806514856
+  },
+  "energyUpperBoundPerMillionPairedTokens": {
+    "basis": "50W enforced GPU power limit; power.draw unavailable",
+    "stagedGpuKwhMaximum": 0.0000029758310976313445,
+    "dedicatedGpuKwhMaximum": 0.00016547971953492855,
+    "stagedGpuJoulesPerTokenMaximum": 0.00001071299195147284,
+    "measuredPowerDrawClaim": false
+  },
+  "memory": {
+    "pytorchPeakMiB": 161.06298828125,
+    "rawFeatureizationProcessRssPeakMiB": 131.53515625,
+    "meanGpuUtilizationPercentDuringShortPipeline": 9.14
+  },
+  "financialScenario": {
+    "status": "declared_scenario_not_current_market_quote",
+    "gpuHourlyRateUsd": 0.55,
+    "gpuOnlyStagedUsdPerMillion": 0.000032734142073944794,
+    "gpuOnlyDedicatedUsdPerMillion": 0.0018202769148842142,
+    "cpuAndElectricityExcluded": true
+  },
+  "evidenceSha256": {
+    "a3Checkpoint": "796B7D24EA8B9AD5D302624E1FBFEAA998D4A10292B5AFEF93C8D831FE065B51",
+    "freshHoldoutEvaluation": "763BEE3F2B3B5AC99AE3DFC477FA0C8007F1E394B55FF6E2516EE27016885AC3",
+    "fullCorpusOneShotReport": "DAF094178E3F303CF6BA598E30F9A746D46FF644B9BD94A3816787A7B7EAADC5",
+    "rawPipelineCostReport": "6C8EECF0DA769436AC5719F55F021CB5771291FDF2FF4D375967EC6B9CE1E8A0",
+    "classificationSidecar": "F5D3C2B49022357084A573B786F7A5D5BBCAEF650623E8F7B8093F491AC48ED7"
+  },
+  "excludedScope": [
+    "Web retrieval",
+    "Decompression",
+    "Publisher HTML parsing",
+    "Service orchestration",
+    "Production support"
+  ],
+  "claimBoundary": "Declared from a hash-identified authenticated CNSEmbedding repository record that returned 404 to an unauthenticated fetch. Local copies of the human report and ledger rules were independently hashed by the pressroom and matched the Git blob identities byte-for-byte; the workload itself was not rerun. The source record reports measured deterministic local corpus parsing, feature extraction, frozen R9 replay, and frozen A3 classification on one RTX A1000 host. Whole-corpus quality is descriptive because the corpus includes training, development, and calibration rows. Energy is a conservative upper bound from the enforced 50W limit because power.draw is unavailable. No production authorization, current market-price guarantee, or general profitability claim."
+}
